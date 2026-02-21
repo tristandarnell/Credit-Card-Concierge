@@ -253,6 +253,45 @@ h3 {
   padding: 1.2rem;
 }
 
+.guide-intro p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.guide-intro p + p {
+  margin-top: 0.75rem;
+}
+
+.guide-section {
+  margin-top: 1rem;
+}
+
+.resource-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.resource-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  font-weight: 700;
+}
+
+.resource-item:hover {
+  background: var(--surface-soft);
+}
+
+.resource-arrow {
+  color: var(--brand-dark);
+  font-size: 0.85rem;
+}
+
 .upload-layout {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
