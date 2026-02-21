@@ -1,0 +1,375 @@
+{
+  "generatedAt": "2026-02-21T21:12:42.716Z",
+  "country": "US",
+  "records": [
+    {
+      "id": "amazon-business-amex",
+      "issuer": "American Express",
+      "cardName": "Amazon Business American Express Card",
+      "network": "Amex",
+      "cardSegment": "business",
+      "popularityRank": 119,
+      "country": "US",
+      "cardUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/amazon-business-card",
+      "lastFetchedAt": "2026-02-21T21:12:44.153Z",
+      "annualFeeText": "$0",
+      "introOfferText": null,
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [
+        {
+          "period": "Mar",
+          "rateText": null,
+          "categories": [
+            "online_retail"
+          ],
+          "sourceText": "purchases at Amazon Business, AWS, Amazon.com and Whole Foods Market each calendar year, 1% Back thereafter."
+        }
+      ],
+      "rewardRules": [
+        {
+          "category": "online_retail",
+          "rateText": "3%",
+          "rateValue": 3,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "online_retail",
+          "rateText": "3%",
+          "rateValue": 3,
+          "unit": "percent_cashback",
+          "capText": "first $120,000 in U"
+        },
+        {
+          "category": "online_retail",
+          "rateText": "1%",
+          "rateValue": 1,
+          "unit": "percent_cashback"
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.56,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "amazon-business-prime-amex",
+      "issuer": "American Express",
+      "cardName": "Amazon Business Prime American Express Card",
+      "network": "Amex",
+      "cardSegment": "business",
+      "popularityRank": 118,
+      "country": "US",
+      "cardUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/amazon-business-prime-card",
+      "lastFetchedAt": "2026-02-21T21:12:44.056Z",
+      "annualFeeText": "$0",
+      "introOfferText": null,
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "online_retail",
+          "rateText": "5%",
+          "rateValue": 5,
+          "unit": "percent_cashback"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.37,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "amex-gold",
+      "issuer": "American Express",
+      "cardName": "American Express Gold Card",
+      "network": "Amex",
+      "cardSegment": "personal",
+      "popularityRank": 2,
+      "country": "US",
+      "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/gold-card",
+      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
+      "annualFeeText": null,
+      "introOfferText": null,
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [],
+      "notes": [
+        "No high-confidence reward rules detected. Add manual override if needed."
+      ],
+      "confidenceScore": 0.07,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "amex-blue-cash-preferred",
+      "issuer": "American Express",
+      "cardName": "Blue Cash Preferred Card",
+      "network": "Amex",
+      "cardSegment": "personal",
+      "popularityRank": 9,
+      "country": "US",
+      "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-preferred",
+      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
+      "annualFeeText": null,
+      "introOfferText": null,
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [],
+      "notes": [
+        "No high-confidence reward rules detected. Add manual override if needed."
+      ],
+      "confidenceScore": 0.07,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "amex-delta-gold",
+      "issuer": "American Express",
+      "cardName": "Delta SkyMiles Gold American Express Card",
+      "network": "Amex",
+      "cardSegment": "personal",
+      "popularityRank": 56,
+      "country": "US",
+      "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card",
+      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
+      "annualFeeText": null,
+      "introOfferText": null,
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [],
+      "notes": [
+        "No high-confidence reward rules detected. Add manual override if needed."
+      ],
+      "confidenceScore": 0.07,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "amex-hilton-surpass",
+      "issuer": "American Express",
+      "cardName": "Hilton Honors American Express Surpass Card",
+      "network": "Amex",
+      "cardSegment": "personal",
+      "popularityRank": 57,
+      "country": "US",
+      "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-surpass",
+      "lastFetchedAt": "2026-02-21T21:12:43.201Z",
+      "annualFeeText": null,
+      "introOfferText": null,
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [],
+      "notes": [
+        "No high-confidence reward rules detected. Add manual override if needed."
+      ],
+      "confidenceScore": 0.07,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "amex-platinum",
+      "issuer": "American Express",
+      "cardName": "The Platinum Card from American Express",
+      "network": "Amex",
+      "cardSegment": "personal",
+      "popularityRank": 13,
+      "country": "US",
+      "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/platinum",
+      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
+      "annualFeeText": null,
+      "introOfferText": null,
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [],
+      "notes": [
+        "No high-confidence reward rules detected. Add manual override if needed."
+      ],
+      "confidenceScore": 0.07,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "boa-customized-cash",
+      "issuer": "Bank of America",
+      "cardName": "Customized Cash Rewards",
+      "network": "Visa",
+      "cardSegment": "personal",
+      "popularityRank": 15,
+      "country": "US",
+      "cardUrl": "https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card",
+      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
+      "annualFeeText": "$0",
+      "introOfferText": null,
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [],
+      "notes": [
+        "No high-confidence reward rules detected. Add manual override if needed."
+      ],
+      "confidenceScore": 0.15,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "boa-premium-rewards",
+      "issuer": "Bank of America",
+      "cardName": "Premium Rewards",
+      "network": "Visa",
+      "cardSegment": "personal",
+      "popularityRank": 19,
+      "country": "US",
+      "cardUrl": "https://www.bankofamerica.com/credit-cards/products/premium-rewards-credit-card",
+      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
+      "annualFeeText": "$0",
+      "introOfferText": null,
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [],
+      "notes": [
+        "No high-confidence reward rules detected. Add manual override if needed."
+      ],
+      "confidenceScore": 0.15,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "wf-active-cash",
+      "issuer": "Wells Fargo",
+      "cardName": "Active Cash Card",
+      "network": "Visa",
+      "cardSegment": "personal",
+      "popularityRank": 11,
+      "country": "US",
+      "cardUrl": "https://creditcards.wellsfargo.com/active-cash-credit-card?sub_channel=WEB&vendor_code=WF",
+      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
+      "annualFeeText": "$0",
+      "introOfferText": null,
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [],
+      "notes": [
+        "No high-confidence reward rules detected. Add manual override if needed."
+      ],
+      "confidenceScore": 0.15,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "wf-autograph",
+      "issuer": "Wells Fargo",
+      "cardName": "Autograph Card",
+      "network": "Visa",
+      "cardSegment": "personal",
+      "popularityRank": 16,
+      "country": "US",
+      "cardUrl": "https://creditcards.wellsfargo.com/autograph-visa-credit-card?sub_channel=WEB&vendor_code=WF",
+      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
+      "annualFeeText": "$0",
+      "introOfferText": null,
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "dining",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "dining",
+          "rateText": "1X",
+          "rateValue": 1,
+          "unit": "x_points"
+        },
+        {
+          "category": "gas",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "gas",
+          "rateText": "1X",
+          "rateValue": 1,
+          "unit": "x_points"
+        },
+        {
+          "category": "phone",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "phone",
+          "rateText": "1X",
+          "rateValue": 1,
+          "unit": "x_points"
+        },
+        {
+          "category": "streaming",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "streaming",
+          "rateText": "1X",
+          "rateValue": 1,
+          "unit": "x_points"
+        },
+        {
+          "category": "transit",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "transit",
+          "rateText": "1X",
+          "rateValue": 1,
+          "unit": "x_points"
+        },
+        {
+          "category": "travel",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "travel",
+          "rateText": "1X",
+          "rateValue": 1,
+          "unit": "x_points"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.86,
+      "fetchStatus": "ok",
+      "fetchError": null
+    }
+  ],
+  "failures": [
+    {
+      "id": "boa-business-advantage-customized-cash",
+      "cardUrl": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/business-advantage-cash-rewards-mastercard-credit-card",
+      "error": "HTTP 404"
+    },
+    {
+      "id": "wf-signify-business-cash",
+      "cardUrl": "https://creditcards.wellsfargo.com/signify-business-cash-credit-card",
+      "error": "HTTP 404"
+    },
+    {
+      "id": "boa-business-advantage-travel",
+      "cardUrl": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/business-advantage-travel-rewards-world-mastercard-credit-card",
+      "error": "HTTP 404"
+    },
+    {
+      "id": "wf-autograph-journey-business",
+      "cardUrl": "https://creditcards.wellsfargo.com/autograph-journey-business-credit-card",
+      "error": "HTTP 404"
+    }
+  ]
+}
