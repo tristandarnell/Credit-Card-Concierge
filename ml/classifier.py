@@ -1,10 +1,10 @@
 """
 Transaction category classifier: TF-IDF + LR baseline and TF-IDF + all-MiniLM embeddings + LR.
+Uses merchant-normalized input (canonical merchant names) for cleaner classification signals.
 """
 
 from __future__ import annotations
 
-import re
 from pathlib import Path
 from typing import Literal
 
@@ -13,23 +13,18 @@ import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import LabelEncoder
+
+from ml.merchant_normalize import normalize_merchant
 
 ModelType = Literal["tfidf_lr", "tfidf_embedding_lr"]
 
 
-def _clean_text(text: str) -> str:
-    """Light normalization for classifier input (aligns with our NLP pipeline)."""
+def _to_merchant(text: str) -> str:
+    """Normalize raw description to canonical merchant for classification."""
     if not isinstance(text, str) or not text.strip():
         return ""
-    t = text.lower().strip()
-    t = re.sub(r"[^\w\s]", " ", t)
-    t = re.sub(r"\b[s]?\d{10,}\b", "", t, flags=re.I)
-    t = re.sub(r"\bcard\s*\d{4}\b", "", t, flags=re.I)
-    t = re.sub(r"\b\d{3}[-.]?\d{3}[-.]?\d{4}\b", "", t)
-    t = re.sub(r"\s+", " ", t).strip()
-    return t
+    return normalize_merchant(text) or ""
 
 
 class TransactionClassifier:
@@ -55,8 +50,9 @@ class TransactionClassifier:
         "Utilities",
     ]
 
-    def __init__(self, model_type: ModelType = "tfidf_lr"):
+    def __init__(self, model_type: ModelType = "tfidf_lr", confidence_threshold: float = 0.25):
         self.model_type = model_type
+        self.confidence_threshold = confidence_threshold  # Below this → "Other"
         self._tfidf: TfidfVectorizer | None = None
         self._lr: LogisticRegression | None = None
         self._label_encoder: LabelEncoder | None = None
@@ -70,7 +66,7 @@ class TransactionClassifier:
             from sentence_transformers import SentenceTransformer
 
             self._embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
-        cleaned = [_clean_text(t) for t in texts]
+        cleaned = [_to_merchant(t) for t in texts]
         return self._embedding_model.encode(cleaned, show_progress_bar=False)
 
     def fit(
@@ -84,7 +80,7 @@ class TransactionClassifier:
         """Train the classifier."""
         X = pd.Series(X).astype(str).tolist() if not isinstance(X, list) else [str(x) for x in X]
         y = pd.Series(y).tolist() if not isinstance(y, list) else list(y)
-        X_clean = [_clean_text(t) for t in X]
+        X_clean = [_to_merchant(t) for t in X]
 
         self._label_encoder = LabelEncoder()
         y_enc = self._label_encoder.fit_transform(y)
@@ -120,7 +116,7 @@ class TransactionClassifier:
 
     def _extract_features(self, X: list[str]) -> np.ndarray:
         """Get dense feature matrix for predict."""
-        X_clean = [_clean_text(t) for t in X]
+        X_clean = [_to_merchant(t) for t in X]
         X_tfidf = self._tfidf.transform(X_clean)
         X_tfidf_dense = X_tfidf.toarray() if hasattr(X_tfidf, "toarray") else np.asarray(X_tfidf)
         if self.model_type == "tfidf_lr":
@@ -129,13 +125,19 @@ class TransactionClassifier:
         return np.hstack([X_tfidf_dense, emb])
 
     def predict(self, X: pd.Series | list[str]) -> list[str]:
-        """Predict categories."""
+        """Predict categories. If confidence < threshold, returns 'Other'."""
         X_list = pd.Series(X).astype(str).tolist() if not isinstance(X, list) else [str(x) for x in X]
         if not X_list:
             return []
         X_feat = self._extract_features(X_list)
+        proba = self._lr.predict_proba(X_feat)
         pred_enc = self._lr.predict(X_feat)
-        return self._label_encoder.inverse_transform(pred_enc).tolist()
+        labels = self._label_encoder.inverse_transform(pred_enc).tolist()
+        max_conf = proba.max(axis=1)
+        return [
+            "Other" if conf < self.confidence_threshold else lbl
+            for lbl, conf in zip(labels, max_conf)
+        ]
 
     def predict_proba(self, X: pd.Series | list[str]) -> np.ndarray:
         """Predict class probabilities."""
@@ -163,6 +165,7 @@ class TransactionClassifier:
             "model_type": self.model_type,
             "tfidf_dim": self._tfidf_dim,
             "embedding_dim": self._embedding_dim,
+            "confidence_threshold": self.confidence_threshold,
         }
         joblib.dump(meta, path / "meta.joblib")
 
@@ -170,11 +173,14 @@ class TransactionClassifier:
     def load(cls, path: Path | str) -> "TransactionClassifier":
         """Load classifier."""
         path = Path(path)
-        c = cls(model_type=joblib.load(path / "meta.joblib")["model_type"])
+        meta = joblib.load(path / "meta.joblib")
+        c = cls(
+            model_type=meta["model_type"],
+            confidence_threshold=meta.get("confidence_threshold", 0.25),
+        )
         c._tfidf = joblib.load(path / "tfidf.joblib")
         c._lr = joblib.load(path / "lr.joblib")
         c._label_encoder = joblib.load(path / "label_encoder.joblib")
-        meta = joblib.load(path / "meta.joblib")
         c._tfidf_dim = meta["tfidf_dim"]
         c._embedding_dim = meta.get("embedding_dim", 0)
         return c

@@ -15,6 +15,7 @@
     "generate:statement": "npx tsx scripts/generate-synthetic-statement.ts",
     "train:classifier": "python ml/train.py",
     "train:classifier:sample": "python ml/train.py --sample 50000",
+    "train:classifier:brands": "python ml/train.py --data synthetic_brand_name_merchant_credit_card_transactions.csv",
     "predict": "python ml/predict.py",
     "test:classifier": "python ml/test_classifier.py"
   },

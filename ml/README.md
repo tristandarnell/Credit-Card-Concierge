@@ -13,19 +13,26 @@ NLP-based classification of credit card transactions into 13 categories:
 
 Detects when real data differs from the synthetic training distribution (OOD). Uses Mahalanobis distance in feature space; flags samples beyond the 99th percentile of training distances. For high-dimensional TF-IDF, uses PCA (200 dims) before fitting.
 
+## Confidence Threshold
+
+When the model's max probability is below a threshold (default 0.25), the prediction is overridden to **Other**. Use `--confidence-threshold` when training to change this.
+
 ## Usage
 
 ### Train (from project root)
 
 ```bash
+# Brand-name data (default): 50k samples with real merchant names
+npm run train:classifier:brands
+
+# Or explicitly:
+python ml/train.py --data synthetic_brand_name_merchant_credit_card_transactions.csv --skip-embedding
+
 # Quick: TF-IDF+LR only, 50k samples (~2 min)
 npm run train:classifier:sample
 
-# Full: both models, all 500k samples
-npm run train:classifier
-
-# Custom
-python ml/train.py --data synthetic_credit_card_transactions.csv --sample 10000 --output ml/artifacts --skip-embedding
+# Custom (threshold for low-confidence → Other)
+python ml/train.py --data synthetic_brand_name_merchant_credit_card_transactions.csv --confidence-threshold 0.3 --skip-embedding
 ```
 
 ### Predict

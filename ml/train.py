@@ -25,7 +25,7 @@ def main() -> None:
     parser.add_argument(
         "--data",
         type=Path,
-        default=Path("synthetic_credit_card_transactions.csv"),
+        default=Path("synthetic_brand_name_merchant_credit_card_transactions.csv"),
         help="Path to synthetic CSV (date, description, amount, category)",
     )
     parser.add_argument(
@@ -45,6 +45,12 @@ def main() -> None:
         action="store_true",
         help="Skip embedding model (faster, TF-IDF+LR only)",
     )
+    parser.add_argument(
+        "--confidence-threshold",
+        type=float,
+        default=0.25,
+        help="Below this probability, classify as Other (default: 0.25)",
+    )
     args = parser.parse_args()
 
     print("Loading data...")
@@ -60,8 +66,8 @@ def main() -> None:
     out.mkdir(parents=True, exist_ok=True)
 
     # ---- Baseline: TF-IDF + LR ----
-    print("\n--- Training TF-IDF + LR baseline ---")
-    clf_baseline = TransactionClassifier(model_type="tfidf_lr")
+    print(f"\n--- Training TF-IDF + LR baseline (confidence threshold={args.confidence_threshold}) ---")
+    clf_baseline = TransactionClassifier(model_type="tfidf_lr", confidence_threshold=args.confidence_threshold)
     clf_baseline.fit(X, y)
     clf_baseline.save(out / "tfidf_lr")
 
@@ -75,7 +81,7 @@ def main() -> None:
     # ---- Enhanced: TF-IDF + all-MiniLM embeddings + LR ----
     if not args.skip_embedding:
         print("\n--- Training TF-IDF + embedding + LR ---")
-        clf_embed = TransactionClassifier(model_type="tfidf_embedding_lr")
+        clf_embed = TransactionClassifier(model_type="tfidf_embedding_lr", confidence_threshold=args.confidence_threshold)
         clf_embed.fit(X, y)
         clf_embed.save(out / "tfidf_embedding_lr")
 
