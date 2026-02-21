@@ -1,0 +1,10 @@
+date,description,amount,type,category,category_confidence,confidence_score,is_ood
+11/19/2025,Purchase authorized on 11/18 Chi Psi Kappa Delt Instagram.Com TX S305323136433754 Card 8875,21.89,debit,Groceries,0.14562164709297112,0.28303524055415463,False
+11/24/2025,Purchase authorized on 11/21 Ctlp*Pepsi Bottlin Raleigh NC S585325695173003 Card 8875,2.65,debit,Other,0.168623714189729,0.33562322948919865,False
+11/24/2025,Purchase authorized on 11/23 Mta*Nyct Paygo NEW York NY S345327632946862 Card 8875,2.9,debit,Public Transport,0.24488117995075334,0.6022667686597172,False
+11/24/2025,Purchase authorized on 11/23 Njt Rail My-Tix Newark NJ S465327809609341 Card 8875,10.0,debit,Groceries,0.14912536756327371,0.28550392405632985,False
+11/24/2025,Venmo Payment 251123 1046387755757 Ethan Liu,10.0,credit,Restaurants,0.1783067929506714,0.809054366538305,False
+11/25/2025,Purchase authorized on 11/23 Mta*Mnr Etix Ticke 877-690-5116 NY S385327561598911 Card 8875,19.25,debit,Public Transport,0.19613559098598304,0.6405448343336257,False
+11/25/2025,Purchase authorized on 11/23 Mta*Nyct Paygo NEW York NY S465327707071858 Card 8875,2.9,debit,Public Transport,0.24488117995075334,0.6022667686597172,False
+11/25/2025,Purchase authorized on 11/23 Quality Pizza NEW York NY S465327781946058 Card 8875,3.4,debit,Groceries,0.12748176984476722,0.5493389582631863,False
+12/5/2025,Venmo Payment 251205 1046715711114 Ethan Liu,165.0,credit,Restaurants,0.1783067929506714,0.809054366538305,False
