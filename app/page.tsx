@@ -58,6 +58,12 @@ export default function HomePage() {
             <li>
               <span>1 click</span> purchase card recommendation flow
             </li>
+            <li>
+              <span>3 min</span> average setup time
+            </li>
+            <li>
+              <span>12+</span> major banks supported
+            </li>
           </ul>
         </aside>
       </section>
