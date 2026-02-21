@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
@@ -15,18 +17,18 @@ export function SiteFooter() {
           <div className="footer-col">
             <h4>Platform</h4>
             <nav className="footer-links" aria-label="Footer platform links">
-              <a href="/">Home</a>
-              <a href="/upload">Upload Statements</a>
-              <a href="/recommendations">Recommendations</a>
-              <a href="/optimizer">Purchase Optimizer</a>
-              <a href="/guide">Churning Guide</a>
+              <Link href="/">Home</Link>
+              <Link href="/upload">Upload Statements</Link>
+              <Link href="/recommendations">Recommendations</Link>
+              <Link href="/optimizer">Purchase Optimizer</Link>
+              <Link href="/guide">Churning Guide</Link>
             </nav>
           </div>
           <div className="footer-col">
             <h4>Legal</h4>
             <nav className="footer-links" aria-label="Footer legal links">
-              <a href="/privacy">Privacy Policy</a>
-              <a href="/terms">Terms of Service</a>
+              <Link href="/privacy">Privacy Policy</Link>
+              <Link href="/terms">Terms of Service</Link>
             </nav>
             <p className="footer-copy" style={{ marginTop: "1rem" }}>&copy; {year} CreditCard Concierge</p>
           </div>
