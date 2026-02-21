@@ -36,3 +36,14 @@ drop trigger if exists trg_set_updated_at_credit_card_rewards on public.credit_c
 create trigger trg_set_updated_at_credit_card_rewards
 before update on public.credit_card_rewards
 for each row execute function public.set_updated_at_credit_card_rewards();
+
+create or replace view public.credit_card_rewards_clean as
+select *
+from public.credit_card_rewards
+where fetch_status = 'ok'
+  and issuer <> 'Unknown'
+  and coalesce(jsonb_array_length(reward_rules), 0) > 0
+  and coalesce(confidence_score, 0) >= 0.4
+  and card_url !~* '(nerdwallet\\.com|creditcards\\.com|bankrate\\.com|forbes\\.com)'
+  and card_url !~* '(/advice/|/benefits(?:/|$)|/business-hub(?:/|$)|/guide(?:/|$)|/guides/|/cryptopedia/)'
+  and card_name !~* '^(all|travel|rewards|visa|mastercard|card|hotel|benefits|business hub|banking public|banking benefits|app|btc|au|sg|gb|it|fr|es|pt|newest offers|no annual fee|no foreign transaction fee)$';

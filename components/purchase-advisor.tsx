@@ -1,7 +1,17 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import { STANDARD_CATEGORIES, type StandardCategory } from "@/lib/rewards/categories";
+import type { CardRewardRecord } from "@/lib/rewards/types";
+import { CATEGORY_LABELS, formatDollars, getBestCardForPurchase } from "@/lib/rewards/scoring";
 
+type PurchaseAdvisorProps = {
+  cards: CardRewardRecord[];
+};
+
+const SELECTABLE_CATEGORIES = STANDARD_CATEGORIES.filter((category) => category !== "all_other");
+
+export function PurchaseAdvisor({ cards }: PurchaseAdvisorProps) {
 type Category = "Dining" | "Groceries" | "Travel" | "Transit" | "Gas" | "Shopping" | "Streaming" | "General";
 
 type Rule = {
@@ -25,10 +35,19 @@ const CENTS_PER_POINT = 0.015; // ~1.5 cents per point (conservative UR/MR valua
 export function PurchaseAdvisor() {
   const [merchant, setMerchant] = useState("Airbnb");
   const [amount, setAmount] = useState("285.00");
-  const [category, setCategory] = useState<Category>("Travel");
+  const [category, setCategory] = useState<StandardCategory>("travel");
   const [submitted, setSubmitted] = useState(false);
 
   const recommendation = useMemo(() => {
+    const purchaseAmount = Number(amount) || 0;
+    if (purchaseAmount <= 0 || cards.length === 0) {
+      return null;
+    }
+
+    return getBestCardForPurchase(cards, category, purchaseAmount);
+  }, [amount, cards, category]);
+
+  const recommendationValue = recommendation ? formatDollars(recommendation.estimatedRewardValue) : "$0";
     const match = rules.find((rule) => rule.categories.includes(category));
     const numericAmount = Number(amount) || 0;
 
@@ -78,6 +97,17 @@ export function PurchaseAdvisor() {
         </label>
         <label>
           Category
+          <select value={category} onChange={(event) => setCategory(event.target.value as StandardCategory)}>
+            {SELECTABLE_CATEGORIES.map((item) => (
+              <option key={item} value={item}>
+                {CATEGORY_LABELS[item]}
+              </option>
+            ))}
+          </select>
+        </label>
+        <button type="submit" className="btn btn-primary">
+          Calculate Best Card
+        </button>
           <select value={category} onChange={(event) => setCategory(event.target.value as Category)}>
             <option>Dining</option>
             <option>Groceries</option>
@@ -94,6 +124,24 @@ export function PurchaseAdvisor() {
 
       {submitted ? (
         <div className="result-card" aria-live="polite">
+          <p className="result-label">Recommended card for this purchase</p>
+          {recommendation ? (
+            <>
+              <h3>{recommendation.cardName}</h3>
+              <p>
+                {merchant} ({CATEGORY_LABELS[category]}) should use <strong>{recommendation.cardName}</strong> from{" "}
+                <strong>{recommendation.issuer}</strong> for <strong>{recommendation.matchedRule.rateText}</strong>.
+              </p>
+              <p className="result-value">Estimated reward value: {recommendationValue}</p>
+            </>
+          ) : (
+            <p>No eligible reward rule found for this purchase category yet.</p>
+          )}
+        </div>
+      ) : (
+        <p className="muted">
+          Run a purchase to preview recommendation behavior from live card reward rules.
+        </p>
           <p className="result-label">Best card for this purchase</p>
           <h3>{recommendation.card}</h3>
           <p>

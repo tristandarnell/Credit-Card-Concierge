@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
+import { getCleanRewardCards } from "@/lib/rewards/data";
 import { spendingAllocation } from "@/lib/mock-data";
 
 const missedOpportunities = [
@@ -50,6 +51,18 @@ const features = [
   }
 ];
 
+const features = [
+  "Bank-grade encryption for uploaded statements",
+  "Transparent scoring model with clear recommendation reasons",
+  "Live purchase-level optimization, not just annual card rankings",
+  "Portfolio view for multi-card households"
+];
+
+export default async function HomePage() {
+  const cards = await getCleanRewardCards(1000);
+  const issuerCount = new Set(cards.map((card) => card.issuer)).size;
+  const highConfidenceCount = cards.filter((card) => card.confidenceScore >= 0.7).length;
+
 export default function HomePage() {
   return (
     <>
@@ -99,6 +112,21 @@ export default function HomePage() {
             2 spending categories not optimally routed. Upload a statement to recalculate.
           </p>
         </div>
+        <aside className="hero-panel">
+          <h2>Current dataset snapshot</h2>
+          <ul>
+            <li>
+              <span>{cards.length}</span> clean card records
+            </li>
+            <li>
+              <span>{issuerCount}</span> issuers represented
+            </li>
+            <li>
+              <span>{highConfidenceCount}</span> high-confidence cards
+            </li>
+          </ul>
+        </aside>
+      </section>
 
         {/* Spending Allocation Panel */}
         <div className="panel">
