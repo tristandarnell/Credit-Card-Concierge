@@ -5,10 +5,10 @@ import { SectionHeading } from "@/components/section-heading";
 import { useCallback, useRef, useState } from "react";
 
 const checklist = [
-  "Statement files accepted: PDF, CSV, OFX",
-  "Data encrypted in transit and at rest",
-  "Merchant names normalized for category mapping",
-  "Recurring charges detected automatically",
+  "Accepted formats: PDF, CSV, OFX — all major bank exports",
+  "Merchant names normalized and categorized automatically",
+  "Recurring charges detected across billing periods",
+  "Statement data deleted immediately after analysis completes",
 ];
 
 export default function UploadPage() {
@@ -105,32 +105,27 @@ export default function UploadPage() {
             accept=".pdf,.csv,.ofx"
             onChange={handleFileChange}
           />
-          <p className="hint">Maximum file size: 20MB each. PDFs are parsed automatically.</p>
+          <p className="hint">Maximum file size: 20 MB each. PDFs are parsed automatically.</p>
 
           {status !== "idle" && (
             <p
-              className={
-                status === "success"
-                  ? "hint"
-                  : status === "error"
-                    ? "hint"
-                    : "hint"
-              }
               style={{
-                marginTop: "1rem",
+                marginTop: "0.75rem",
                 color:
                   status === "success"
-                    ? "var(--success, green)"
+                    ? "var(--success)"
                     : status === "error"
-                      ? "var(--error, #c00)"
+                      ? "#c00"
                       : "inherit",
                 fontWeight: status === "uploading" ? 500 : 400,
+                fontSize: "0.88rem",
               }}
               role="status"
+              aria-live="polite"
             >
-              {status === "uploading" && "⏳ "}
-              {status === "success" && "✓ "}
-              {status === "error" && "✗ "}
+              {status === "uploading" && "Analyzing... "}
+              {status === "success" && "Done — "}
+              {status === "error" && "Error: "}
               {message}
             </p>
           )}
@@ -143,6 +138,10 @@ export default function UploadPage() {
               <li key={item}>{item}</li>
             ))}
           </ul>
+          <p className="hint" style={{ marginBottom: "1rem" }}>
+            Your data is processed in memory and never written to a permanent database. Analysis
+            typically completes in under 10 seconds.
+          </p>
           <Link href="/recommendations" className="btn btn-primary full-width">
             Continue to Recommendations
           </Link>
