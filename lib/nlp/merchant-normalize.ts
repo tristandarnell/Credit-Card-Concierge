@@ -180,7 +180,7 @@ export function normalizeMerchant(text: string): string {
  * Normalize merchant for categorization.
  */
 export function normalizeMerchantDescription(rawDescription: string): string {
-  let cleaned = rawDescription
+  const cleaned = rawDescription
     .toLowerCase()
     .replace(/[^\w\s#]/g, " ")
     .replace(/\b[s]?\d{10,}\b/gi, "")
