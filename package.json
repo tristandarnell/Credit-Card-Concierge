@@ -12,7 +12,11 @@
     "rewards:sync": "node scripts/sync-rewards-to-supabase.mjs",
     "rewards:collect-and-sync": "npm run rewards:collect && npm run rewards:sync",
     "test:normalize": "npx tsx scripts/test-normalize.ts",
-    "generate:statement": "npx tsx scripts/generate-synthetic-statement.ts"
+    "generate:statement": "npx tsx scripts/generate-synthetic-statement.ts",
+    "train:classifier": "python ml/train.py",
+    "train:classifier:sample": "python ml/train.py --sample 50000",
+    "predict": "python ml/predict.py",
+    "test:classifier": "python ml/test_classifier.py"
   },
   "dependencies": {
     "@faker-js/faker": "^10.3.0",
