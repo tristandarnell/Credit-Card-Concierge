@@ -11,6 +11,7 @@
 # misc
 .DS_Store
 *.pem
+/data/rewards/raw/
 
 # debug
 npm-debug.log*

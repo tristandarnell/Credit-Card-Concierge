@@ -1,0 +1,3836 @@
+[
+  {
+    "id": "barclays-aarp-essential-rewards-mastercard",
+    "issuer": "Barclays",
+    "cardName": "aarp essential rewards mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/aarp-essential-rewards-mastercard"
+  },
+  {
+    "id": "barclays-athleta-rewards-mastercard",
+    "issuer": "Barclays",
+    "cardName": "athleta rewards mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/athleta-rewards-mastercard"
+  },
+  {
+    "id": "barclays-banana-republic-rewards-mastercard",
+    "issuer": "Barclays",
+    "cardName": "banana republic rewards mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/banana-republic-rewards-mastercard"
+  },
+  {
+    "id": "barclays-barclaysview",
+    "issuer": "Barclays",
+    "cardName": "barclaysview",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/barclaysview"
+  },
+  {
+    "id": "barclays-barnes-noble-mastercard",
+    "issuer": "Barclays",
+    "cardName": "barnes noble mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/barnes-noble-mastercard"
+  },
+  {
+    "id": "barclays-breeze-airways",
+    "issuer": "Barclays",
+    "cardName": "breeze airways",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/breeze-airways"
+  },
+  {
+    "id": "barclays-capital-vacations",
+    "issuer": "Barclays",
+    "cardName": "capital vacations",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/capital-vacations"
+  },
+  {
+    "id": "barclays-carnival-world-mastercard",
+    "issuer": "Barclays",
+    "cardName": "carnival world mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/carnival-world-mastercard"
+  },
+  {
+    "id": "barclays-emirates-skywards-premium-world-elite-mastercard",
+    "issuer": "Barclays",
+    "cardName": "emirates skywards premium world elite mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/emirates-skywards-premium-world-elite-mastercard"
+  },
+  {
+    "id": "barclays-emirates-skywards-rewards-world-elite-mastercard",
+    "issuer": "Barclays",
+    "cardName": "emirates skywards rewards world elite mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/emirates-skywards-rewards-world-elite-mastercard"
+  },
+  {
+    "id": "barclays-frontier-airlines-world-mastercard",
+    "issuer": "Barclays",
+    "cardName": "frontier airlines world mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/frontier-airlines-world-mastercard"
+  },
+  {
+    "id": "barclays-gap-good-rewards",
+    "issuer": "Barclays",
+    "cardName": "gap good rewards",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/gap-good-rewards"
+  },
+  {
+    "id": "barclays-general-motors",
+    "issuer": "Barclays",
+    "cardName": "general motors",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/general-motors"
+  },
+  {
+    "id": "barclays-general-motors-business",
+    "issuer": "Barclays",
+    "cardName": "general motors business",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/general-motors-business"
+  },
+  {
+    "id": "barclays-jetblue",
+    "issuer": "Barclays",
+    "cardName": "jetblue",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/jetblue-card"
+  },
+  {
+    "id": "barclays-jetblue-premier",
+    "issuer": "Barclays",
+    "cardName": "jetblue premier",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/jetblue-premier-card"
+  },
+  {
+    "id": "barclays-lufthansa-miles-more-world-elite-mastercard",
+    "issuer": "Barclays",
+    "cardName": "lufthansa miles more world elite mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/lufthansa-miles-more-world-elite-mastercard"
+  },
+  {
+    "id": "barclays-navyist-rewards-mastercard",
+    "issuer": "Barclays",
+    "cardName": "navyist rewards mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/navyist-rewards-mastercard"
+  },
+  {
+    "id": "barclays-rci-elite-rewards-mastercard",
+    "issuer": "Barclays",
+    "cardName": "rci elite rewards mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/rci-elite-rewards-mastercard"
+  },
+  {
+    "id": "barclays-regression-test-pages",
+    "issuer": "Barclays",
+    "cardName": "regression test pages",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/regression-test-pages"
+  },
+  {
+    "id": "barclays-upromise-world-mastercard",
+    "issuer": "Barclays",
+    "cardName": "upromise world mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/upromise-world-mastercard"
+  },
+  {
+    "id": "barclays-wyndham-rewards-earner-business",
+    "issuer": "Barclays",
+    "cardName": "wyndham rewards earner business",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/wyndham-rewards-earner-business-card"
+  },
+  {
+    "id": "barclays-xbox-mastercard",
+    "issuer": "Barclays",
+    "cardName": "xbox mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/xbox-mastercard"
+  },
+  {
+    "id": "capital-one-bass-pro-shops",
+    "issuer": "Capital One",
+    "cardName": "bass pro shops",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/bass-pro-shops"
+  },
+  {
+    "id": "capital-one-benefits-guide",
+    "issuer": "Capital One",
+    "cardName": "benefits guide",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/benefits-guide"
+  },
+  {
+    "id": "capital-one-bjs-wholesale-club",
+    "issuer": "Capital One",
+    "cardName": "bjs wholesale club",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/bjs-wholesale-club"
+  },
+  {
+    "id": "capital-one-cabelas",
+    "issuer": "Capital One",
+    "cardName": "cabelas",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/cabelas"
+  },
+  {
+    "id": "capital-one-cash-back",
+    "issuer": "Capital One",
+    "cardName": "cash back",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/cash-back"
+  },
+  {
+    "id": "capital-one-cash-back-2",
+    "issuer": "Capital One",
+    "cardName": "cash back",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/cash-back"
+  },
+  {
+    "id": "capital-one-cash-back-quicksilver",
+    "issuer": "Capital One",
+    "cardName": "cash back quicksilver",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/cash-back/quicksilver"
+  },
+  {
+    "id": "capital-one-cash-back-savor",
+    "issuer": "Capital One",
+    "cardName": "cash back savor",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/cash-back/savor"
+  },
+  {
+    "id": "capital-one-charge",
+    "issuer": "Capital One",
+    "cardName": "charge",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/charge-cards"
+  },
+  {
+    "id": "capital-one-club-business",
+    "issuer": "Capital One",
+    "cardName": "club business",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/club-business"
+  },
+  {
+    "id": "capital-one-discover",
+    "issuer": "Capital One",
+    "cardName": "discover",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/apply/credit-cards/discover"
+  },
+  {
+    "id": "capital-one-discover-offer-expired",
+    "issuer": "Capital One",
+    "cardName": "discover offer expired",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/apply/credit-cards/discover/offer-expired"
+  },
+  {
+    "id": "capital-one-discover-preapprove",
+    "issuer": "Capital One",
+    "cardName": "discover preapprove",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/apply/credit-cards/discover/preapprove"
+  },
+  {
+    "id": "capital-one-external-accounting-software-terms-conditions",
+    "issuer": "Capital One",
+    "cardName": "external accounting software terms conditions",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/external-accounting-software-terms-conditions"
+  },
+  {
+    "id": "capital-one-fair-and-building",
+    "issuer": "Capital One",
+    "cardName": "fair and building",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/fair-and-building"
+  },
+  {
+    "id": "capital-one-get-my",
+    "issuer": "Capital One",
+    "cardName": "get my",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/get-my-card"
+  },
+  {
+    "id": "capital-one-homepage",
+    "issuer": "Capital One",
+    "cardName": "homepage",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/homepage"
+  },
+  {
+    "id": "capital-one-kohls",
+    "issuer": "Capital One",
+    "cardName": "kohls",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/kohls"
+  },
+  {
+    "id": "capital-one-limited-time-offers",
+    "issuer": "Capital One",
+    "cardName": "limited time offers",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/limited-time-offers"
+  },
+  {
+    "id": "capital-one-line-increase",
+    "issuer": "Capital One",
+    "cardName": "line increase",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/credit-line-increase"
+  },
+  {
+    "id": "capital-one-low-intro-rate",
+    "issuer": "Capital One",
+    "cardName": "low intro rate",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/low-intro-rate"
+  },
+  {
+    "id": "capital-one-lp-agreements",
+    "issuer": "Capital One",
+    "cardName": "lp agreements",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/lp/credit-card-agreements"
+  },
+  {
+    "id": "capital-one-lp-npsl",
+    "issuer": "Capital One",
+    "cardName": "lp npsl",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/lp/npsl"
+  },
+  {
+    "id": "capital-one-lp-refer-a-business",
+    "issuer": "Capital One",
+    "cardName": "lp refer a business",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/lp/refer-a-business"
+  },
+  {
+    "id": "capital-one-no-annual-fee",
+    "issuer": "Capital One",
+    "cardName": "no annual fee",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/no-annual-fee"
+  },
+  {
+    "id": "capital-one-npsl-pay-over-time",
+    "issuer": "Capital One",
+    "cardName": "npsl pay over time",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/lp/npsl/pay-over-time"
+  },
+  {
+    "id": "capital-one-partner-ibt",
+    "issuer": "Capital One",
+    "cardName": "partner ibt",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/ibt"
+  },
+  {
+    "id": "capital-one-partner-up",
+    "issuer": "Capital One",
+    "cardName": "partner up",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up"
+  },
+  {
+    "id": "capital-one-platinum",
+    "issuer": "Capital One",
+    "cardName": "platinum",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/platinum"
+  },
+  {
+    "id": "capital-one-platinum-secured",
+    "issuer": "Capital One",
+    "cardName": "platinum secured",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/platinum-secured"
+  },
+  {
+    "id": "capital-one-potterybarn",
+    "issuer": "Capital One",
+    "cardName": "potterybarn",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/potterybarn"
+  },
+  {
+    "id": "capital-one-preapprove",
+    "issuer": "Capital One",
+    "cardName": "preapprove",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/apply/credit-cards/preapprove"
+  },
+  {
+    "id": "capital-one-preapprove-all",
+    "issuer": "Capital One",
+    "cardName": "preapprove all",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/lp/preapprove/all"
+  },
+  {
+    "id": "capital-one-preapprove-student",
+    "issuer": "Capital One",
+    "cardName": "preapprove student",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/apply/credit-cards/preapprove/student"
+  },
+  {
+    "id": "capital-one-quicksilver-good",
+    "issuer": "Capital One",
+    "cardName": "quicksilver good",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/quicksilver-good-credit"
+  },
+  {
+    "id": "capital-one-quicksilver-secured",
+    "issuer": "Capital One",
+    "cardName": "quicksilver secured",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/quicksilver-secured"
+  },
+  {
+    "id": "capital-one-quicksilver-student",
+    "issuer": "Capital One",
+    "cardName": "quicksilver student",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/quicksilver-student"
+  },
+  {
+    "id": "capital-one-quicksilverone",
+    "issuer": "Capital One",
+    "cardName": "quicksilverone",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/quicksilverone"
+  },
+  {
+    "id": "capital-one-refer-a-friend",
+    "issuer": "Capital One",
+    "cardName": "refer a friend",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/refer-a-friend"
+  },
+  {
+    "id": "capital-one-rei",
+    "issuer": "Capital One",
+    "cardName": "rei",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/rei"
+  },
+  {
+    "id": "capital-one-rewards",
+    "issuer": "Capital One",
+    "cardName": "rewards",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/rewards"
+  },
+  {
+    "id": "capital-one-savor-good",
+    "issuer": "Capital One",
+    "cardName": "savor good",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/savor-good-credit"
+  },
+  {
+    "id": "capital-one-savor-student",
+    "issuer": "Capital One",
+    "cardName": "savor student",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/savor-student"
+  },
+  {
+    "id": "capital-one-savorone",
+    "issuer": "Capital One",
+    "cardName": "savorone",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/savorone"
+  },
+  {
+    "id": "capital-one-small-business",
+    "issuer": "Capital One",
+    "cardName": "small business",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards"
+  },
+  {
+    "id": "capital-one-spark-miles-select",
+    "issuer": "Capital One",
+    "cardName": "spark miles select",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/spark-miles-select"
+  },
+  {
+    "id": "capital-one-students",
+    "issuer": "Capital One",
+    "cardName": "students",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/students"
+  },
+  {
+    "id": "capital-one-t-mobile",
+    "issuer": "Capital One",
+    "cardName": "t mobile",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/t-mobile"
+  },
+  {
+    "id": "capital-one-thekeyrewards",
+    "issuer": "Capital One",
+    "cardName": "thekeyrewards",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/thekeyrewards"
+  },
+  {
+    "id": "capital-one-travel-and-miles",
+    "issuer": "Capital One",
+    "cardName": "travel and miles",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/travel-and-miles"
+  },
+  {
+    "id": "capital-one-travel-and-miles-2",
+    "issuer": "Capital One",
+    "cardName": "travel and miles",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/travel-and-miles"
+  },
+  {
+    "id": "capital-one-travel-partners",
+    "issuer": "Capital One",
+    "cardName": "travel partners",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/travel-partners"
+  },
+  {
+    "id": "capital-one-up-afa-cwa-flight-attendants-union",
+    "issuer": "Capital One",
+    "cardName": "up afa cwa flight attendants union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/afa-cwa-flight-attendants-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-afge-government-employees-union",
+    "issuer": "Capital One",
+    "cardName": "up afge government employees union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/afge-government-employees-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-afm-american-federation-of-musicians-union",
+    "issuer": "Capital One",
+    "cardName": "up afm american federation of musicians union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/afm-american-federation-of-musicians-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-afscme",
+    "issuer": "Capital One",
+    "cardName": "up afscme",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/afscme-credit-card"
+  },
+  {
+    "id": "capital-one-up-aft-american-federation-of-teachers-union",
+    "issuer": "Capital One",
+    "cardName": "up aft american federation of teachers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/aft-american-federation-of-teachers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-alpa-air-line-pilots-association-union",
+    "issuer": "Capital One",
+    "cardName": "up alpa air line pilots association union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/alpa-air-line-pilots-association-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-apwu-american-postal-workers-union",
+    "issuer": "Capital One",
+    "cardName": "up apwu american postal workers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/apwu-american-postal-workers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-atu-amalgamated-transit-union",
+    "issuer": "Capital One",
+    "cardName": "up atu amalgamated transit union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/atu-amalgamated-transit-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-bctgm-bakery-workers-union",
+    "issuer": "Capital One",
+    "cardName": "up bctgm bakery workers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/bctgm-bakery-workers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-csea-california-school-employees-association",
+    "issuer": "Capital One",
+    "cardName": "up csea california school employees association",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/csea-california-school-employees-association-credit-card"
+  },
+  {
+    "id": "capital-one-up-cwa-union-communications-workers-of-america",
+    "issuer": "Capital One",
+    "cardName": "up cwa union communications workers of america",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/cwa-union-communications-workers-of-america-credit-card"
+  },
+  {
+    "id": "capital-one-up-iaff-international-association-of-fire-fighters",
+    "issuer": "Capital One",
+    "cardName": "up iaff international association of fire fighters",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/iaff-international-association-of-fire-fighters-credit-card"
+  },
+  {
+    "id": "capital-one-up-iam-association-of-machinists-and-aerospace-workers-union",
+    "issuer": "Capital One",
+    "cardName": "up iam association of machinists and aerospace workers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/iam-association-of-machinists-and-aerospace-workers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-iatse-theatrical-stage-employees-union",
+    "issuer": "Capital One",
+    "cardName": "up iatse theatrical stage employees union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/iatse-theatrical-stage-employees-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-ibb-boilermakers-union",
+    "issuer": "Capital One",
+    "cardName": "up ibb boilermakers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/ibb-boilermakers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-ibew-electrical-workers-union",
+    "issuer": "Capital One",
+    "cardName": "up ibew electrical workers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/ibew-electrical-workers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-ironworkers-union",
+    "issuer": "Capital One",
+    "cardName": "up ironworkers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/ironworkers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-iue-cwa-international-union-of-electronic-workers",
+    "issuer": "Capital One",
+    "cardName": "up iue cwa international union of electronic workers",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/iue-cwa-international-union-of-electronic-workers-credit-card"
+  },
+  {
+    "id": "capital-one-up-iuoe-operating-engineers-union",
+    "issuer": "Capital One",
+    "cardName": "up iuoe operating engineers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/iuoe-operating-engineers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-iupa-union-of-police-associations",
+    "issuer": "Capital One",
+    "cardName": "up iupa union of police associations",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/iupa-union-of-police-associations-credit-card"
+  },
+  {
+    "id": "capital-one-up-iupat-painters-union",
+    "issuer": "Capital One",
+    "cardName": "up iupat painters union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/iupat-painters-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-nalc-national-association-of-letter-carriers-union",
+    "issuer": "Capital One",
+    "cardName": "up nalc national association of letter carriers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/nalc-national-association-of-letter-carriers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-natca-air-traffic-controllers-association-union",
+    "issuer": "Capital One",
+    "cardName": "up natca air traffic controllers association union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/natca-air-traffic-controllers-association-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-nnu-national-nurses-united-union",
+    "issuer": "Capital One",
+    "cardName": "up nnu national nurses united union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/nnu-national-nurses-united-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-npmhu-national-postal-mail-handlers-union",
+    "issuer": "Capital One",
+    "cardName": "up npmhu national postal mail handlers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/npmhu-national-postal-mail-handlers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-opeiu-office-and-professional-employees-union",
+    "issuer": "Capital One",
+    "cardName": "up opeiu office and professional employees union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/opeiu-office-and-professional-employees-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-preapprove",
+    "issuer": "Capital One",
+    "cardName": "up preapprove",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/preapprove"
+  },
+  {
+    "id": "capital-one-up-smart-union",
+    "issuer": "Capital One",
+    "cardName": "up smart union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/smart-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-twu-transport-workers-union",
+    "issuer": "Capital One",
+    "cardName": "up twu transport workers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/twu-transport-workers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-uaw-united-auto-workers-union",
+    "issuer": "Capital One",
+    "cardName": "up uaw united auto workers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/uaw-united-auto-workers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-ufcw-food-and-commercial-workers-union",
+    "issuer": "Capital One",
+    "cardName": "up ufcw food and commercial workers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/ufcw-food-and-commercial-workers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-umwa-mine-workers-union",
+    "issuer": "Capital One",
+    "cardName": "up umwa mine workers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/umwa-mine-workers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-unite-here-union",
+    "issuer": "Capital One",
+    "cardName": "up unite here union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/unite-here-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-usw-united-steelworkers-union",
+    "issuer": "Capital One",
+    "cardName": "up usw united steelworkers union",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/usw-united-steelworkers-union-credit-card"
+  },
+  {
+    "id": "capital-one-up-wa-working-america",
+    "issuer": "Capital One",
+    "cardName": "up wa working america",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/partner/up/wa-working-america-credit-card"
+  },
+  {
+    "id": "capital-one-venture",
+    "issuer": "Capital One",
+    "cardName": "venture",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/venture"
+  },
+  {
+    "id": "capital-one-venture-x-business",
+    "issuer": "Capital One",
+    "cardName": "venture x business",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/venture-x-business"
+  },
+  {
+    "id": "capital-one-ventureone",
+    "issuer": "Capital One",
+    "cardName": "ventureone",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/ventureone"
+  },
+  {
+    "id": "capital-one-ventureone-good",
+    "issuer": "Capital One",
+    "cardName": "ventureone good",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/ventureone-good-credit"
+  },
+  {
+    "id": "capital-one-westelm",
+    "issuer": "Capital One",
+    "cardName": "westelm",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/westelm"
+  },
+  {
+    "id": "capital-one-williams-sonoma",
+    "issuer": "Capital One",
+    "cardName": "williams sonoma",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.capitalone.com/credit-cards/williams-sonoma"
+  },
+  {
+    "id": "chase-0-intro-apr",
+    "issuer": "Chase",
+    "cardName": "0 intro apr",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/0-intro-apr-credit-cards"
+  },
+  {
+    "id": "chase-aircanada-aeroplan",
+    "issuer": "Chase",
+    "cardName": "aircanada aeroplan",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/aircanada/aeroplan"
+  },
+  {
+    "id": "chase-airline",
+    "issuer": "Chase",
+    "cardName": "airline",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/airline-credit-cards"
+  },
+  {
+    "id": "chase-all",
+    "issuer": "Chase",
+    "cardName": "all",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/all-credit-cards"
+  },
+  {
+    "id": "chase-avios-aer-lingus",
+    "issuer": "Chase",
+    "cardName": "avios aer lingus",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/avios/aer-lingus"
+  },
+  {
+    "id": "chase-avios-british-airways",
+    "issuer": "Chase",
+    "cardName": "avios british airways",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/avios/british-airways"
+  },
+  {
+    "id": "chase-avios-iberia",
+    "issuer": "Chase",
+    "cardName": "avios iberia",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/avios/iberia"
+  },
+  {
+    "id": "chase-bank-referral",
+    "issuer": "Chase",
+    "cardName": "bank referral",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/bank-referral-credit-cards"
+  },
+  {
+    "id": "chase-business",
+    "issuer": "Chase",
+    "cardName": "business",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards"
+  },
+  {
+    "id": "chase-business-chaseforbusiness",
+    "issuer": "Chase",
+    "cardName": "business chaseforbusiness",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/chaseforbusiness"
+  },
+  {
+    "id": "chase-business-ink",
+    "issuer": "Chase",
+    "cardName": "business ink",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/ink"
+  },
+  {
+    "id": "chase-business-sapphire",
+    "issuer": "Chase",
+    "cardName": "business sapphire",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/sapphire"
+  },
+  {
+    "id": "chase-business-southwest",
+    "issuer": "Chase",
+    "cardName": "business southwest",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/southwest"
+  },
+  {
+    "id": "chase-business-united",
+    "issuer": "Chase",
+    "cardName": "business united",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/united"
+  },
+  {
+    "id": "chase-business-world-of-hyatt",
+    "issuer": "Chase",
+    "cardName": "business world of hyatt",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/world-of-hyatt"
+  },
+  {
+    "id": "chase-cash-back",
+    "issuer": "Chase",
+    "cardName": "cash back",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/cash-back-credit-cards"
+  },
+  {
+    "id": "chase-cash-back-amazon",
+    "issuer": "Chase",
+    "cardName": "cash back amazon",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/cash-back-credit-cards/amazon"
+  },
+  {
+    "id": "chase-cash-back-amazon-prime-rewards",
+    "issuer": "Chase",
+    "cardName": "cash back amazon prime rewards",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/cash-back-credit-cards/amazon-prime-rewards"
+  },
+  {
+    "id": "chase-cash-back-amazon-rewards",
+    "issuer": "Chase",
+    "cardName": "cash back amazon rewards",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/cash-back-credit-cards/amazon-rewards"
+  },
+  {
+    "id": "chase-cash-back-doordash",
+    "issuer": "Chase",
+    "cardName": "cash back doordash",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/cash-back-credit-cards/doordash"
+  },
+  {
+    "id": "chase-cash-back-freedom",
+    "issuer": "Chase",
+    "cardName": "cash back freedom",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/cash-back-credit-cards/freedom"
+  },
+  {
+    "id": "chase-cash-back-instacart",
+    "issuer": "Chase",
+    "cardName": "cash back instacart",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/cash-back-credit-cards/instacart"
+  },
+  {
+    "id": "chase-dining",
+    "issuer": "Chase",
+    "cardName": "dining",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/dining-credit-cards"
+  },
+  {
+    "id": "chase-disney-inspire",
+    "issuer": "Chase",
+    "cardName": "disney inspire",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/rewards-credit-cards/disney/inspire"
+  },
+  {
+    "id": "chase-disney-premier",
+    "issuer": "Chase",
+    "cardName": "disney premier",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/rewards-credit-cards/disney/premier"
+  },
+  {
+    "id": "chase-disney-rewards",
+    "issuer": "Chase",
+    "cardName": "disney rewards",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/rewards-credit-cards/disney/rewards"
+  },
+  {
+    "id": "chase-freedom-rise",
+    "issuer": "Chase",
+    "cardName": "freedom rise",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/cash-back-credit-cards/freedom/rise"
+  },
+  {
+    "id": "chase-hotel",
+    "issuer": "Chase",
+    "cardName": "hotel",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/hotel-credit-cards"
+  },
+  {
+    "id": "chase-ihg-business-premier",
+    "issuer": "Chase",
+    "cardName": "IHG business premier",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/IHG/business-premier"
+  },
+  {
+    "id": "chase-ihg-rewards-club-premier",
+    "issuer": "Chase",
+    "cardName": "ihg rewards club premier",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/ihg-rewards-club/premier"
+  },
+  {
+    "id": "chase-ihg-rewards-club-traveler",
+    "issuer": "Chase",
+    "cardName": "ihg rewards club traveler",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/ihg-rewards-club/traveler"
+  },
+  {
+    "id": "chase-ink-cash",
+    "issuer": "Chase",
+    "cardName": "ink cash",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/ink/cash"
+  },
+  {
+    "id": "chase-ink-unlimited",
+    "issuer": "Chase",
+    "cardName": "ink unlimited",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/ink/unlimited"
+  },
+  {
+    "id": "chase-marriott-bonvoy-bold",
+    "issuer": "Chase",
+    "cardName": "marriott bonvoy bold",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/marriott-bonvoy/bold"
+  },
+  {
+    "id": "chase-marriott-bonvoy-boundless",
+    "issuer": "Chase",
+    "cardName": "marriott bonvoy boundless",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/marriott-bonvoy/boundless"
+  },
+  {
+    "id": "chase-marriott-bonvoy-bountiful",
+    "issuer": "Chase",
+    "cardName": "marriott bonvoy bountiful",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/marriott-bonvoy/bountiful"
+  },
+  {
+    "id": "chase-mastercard",
+    "issuer": "Chase",
+    "cardName": "mastercard",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/mastercard-credit-cards"
+  },
+  {
+    "id": "chase-new-to",
+    "issuer": "Chase",
+    "cardName": "new to",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/new-to-credit-cards"
+  },
+  {
+    "id": "chase-newest-offers",
+    "issuer": "Chase",
+    "cardName": "newest offers",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/newest-offers-credit-cards"
+  },
+  {
+    "id": "chase-no-annual-fee",
+    "issuer": "Chase",
+    "cardName": "no annual fee",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/no-annual-fee-credit-cards"
+  },
+  {
+    "id": "chase-no-foreign-transaction-fee",
+    "issuer": "Chase",
+    "cardName": "no foreign transaction fee",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/no-foreign-transaction-fee-credit-cards"
+  },
+  {
+    "id": "chase-rewards",
+    "issuer": "Chase",
+    "cardName": "rewards",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/rewards-credit-cards"
+  },
+  {
+    "id": "chase-rewards-disney",
+    "issuer": "Chase",
+    "cardName": "rewards disney",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/rewards-credit-cards/disney"
+  },
+  {
+    "id": "chase-rewards-sapphire",
+    "issuer": "Chase",
+    "cardName": "rewards sapphire",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/rewards-credit-cards/sapphire"
+  },
+  {
+    "id": "chase-sapphire-reserve-2",
+    "issuer": "Chase",
+    "cardName": "sapphire reserve",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/sapphire/reserve"
+  },
+  {
+    "id": "chase-southwest-plus",
+    "issuer": "Chase",
+    "cardName": "southwest plus",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/southwest/plus"
+  },
+  {
+    "id": "chase-southwest-premier",
+    "issuer": "Chase",
+    "cardName": "southwest premier",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/southwest/premier"
+  },
+  {
+    "id": "chase-southwest-premier-business",
+    "issuer": "Chase",
+    "cardName": "southwest premier business",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/southwest/premier-business"
+  },
+  {
+    "id": "chase-travel",
+    "issuer": "Chase",
+    "cardName": "travel",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards"
+  },
+  {
+    "id": "chase-travel-aircanada",
+    "issuer": "Chase",
+    "cardName": "travel aircanada",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/aircanada"
+  },
+  {
+    "id": "chase-travel-avios",
+    "issuer": "Chase",
+    "cardName": "travel avios",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/avios"
+  },
+  {
+    "id": "chase-travel-ihg",
+    "issuer": "Chase",
+    "cardName": "travel ihg",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/ihg"
+  },
+  {
+    "id": "chase-travel-ihg-rewards-club",
+    "issuer": "Chase",
+    "cardName": "travel ihg rewards club",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/ihg-rewards-club"
+  },
+  {
+    "id": "chase-travel-marriott-bonvoy",
+    "issuer": "Chase",
+    "cardName": "travel marriott bonvoy",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/marriott-bonvoy"
+  },
+  {
+    "id": "chase-travel-southwest",
+    "issuer": "Chase",
+    "cardName": "travel southwest",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/southwest"
+  },
+  {
+    "id": "chase-travel-united",
+    "issuer": "Chase",
+    "cardName": "travel united",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/united"
+  },
+  {
+    "id": "chase-travel-world-of-hyatt",
+    "issuer": "Chase",
+    "cardName": "travel world of hyatt",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/world-of-hyatt"
+  },
+  {
+    "id": "chase-travel-world-of-hyatt-2",
+    "issuer": "Chase",
+    "cardName": "travel world of hyatt",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/world-of-hyatt-credit-card"
+  },
+  {
+    "id": "chase-united-club-infinite",
+    "issuer": "Chase",
+    "cardName": "united club infinite",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/united/club-infinite"
+  },
+  {
+    "id": "chase-united-united-business",
+    "issuer": "Chase",
+    "cardName": "united united business",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/united/united-business-card"
+  },
+  {
+    "id": "chase-united-united-club-business",
+    "issuer": "Chase",
+    "cardName": "united united club business",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/united/united-club-business"
+  },
+  {
+    "id": "chase-united-united-gateway",
+    "issuer": "Chase",
+    "cardName": "united united gateway",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/united/united-gateway"
+  },
+  {
+    "id": "chase-united-united-quest",
+    "issuer": "Chase",
+    "cardName": "united united quest",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/united/united-quest"
+  },
+  {
+    "id": "chase-visa",
+    "issuer": "Chase",
+    "cardName": "visa",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://creditcards.chase.com/visa-credit-cards"
+  },
+  {
+    "id": "credit-one-american-express",
+    "issuer": "Credit One",
+    "cardName": "american express",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/american-express-card"
+  },
+  {
+    "id": "credit-one-american-express-2",
+    "issuer": "Credit One",
+    "cardName": "american express",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/american-express-card/reviews"
+  },
+  {
+    "id": "credit-one-american-express-nascar",
+    "issuer": "Credit One",
+    "cardName": "american express nascar",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/american-express-nascar"
+  },
+  {
+    "id": "credit-one-american-express-nascar-2",
+    "issuer": "Credit One",
+    "cardName": "american express nascar",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/american-express-nascar/reviews"
+  },
+  {
+    "id": "credit-one-articles-10-awesome-things-about",
+    "issuer": "Credit One",
+    "cardName": "articles 10 awesome things about",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/10-awesome-things-about-credit-cards"
+  },
+  {
+    "id": "credit-one-articles-3-reasons-can-be-better-than-cash-when-traveling",
+    "issuer": "Credit One",
+    "cardName": "articles 3 reasons can be better than cash when traveling",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/3-reasons-credit-cards-can-be-better-than-cash-when-traveling"
+  },
+  {
+    "id": "credit-one-articles-5-ways-to-take-advantage-of-when-traveling",
+    "issuer": "Credit One",
+    "cardName": "articles 5 ways to take advantage of when traveling",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/5-ways-to-take-advantage-of-credit-cards-when-traveling"
+  },
+  {
+    "id": "credit-one-articles-6-things-you-should-know-about-secured",
+    "issuer": "Credit One",
+    "cardName": "articles 6 things you should know about secured",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/6-things-you-should-know-about-secured-credit-cards"
+  },
+  {
+    "id": "credit-one-articles-and-itemized-deductions-what-to-know-before-filing-your-taxe",
+    "issuer": "Credit One",
+    "cardName": "articles and itemized deductions what to know before filing your taxes",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/credit-cards-and-itemized-deductions-what-to-know-before-filing-your-taxes"
+  },
+  {
+    "id": "credit-one-articles-applications-for-tips-for-getting-approved",
+    "issuer": "Credit One",
+    "cardName": "articles applications for tips for getting approved",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/applications-for-credit-cards-tips-for-getting-approved"
+  },
+  {
+    "id": "credit-one-articles-applying-for-and-getting-approved",
+    "issuer": "Credit One",
+    "cardName": "articles applying for and getting approved",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/applying-for-credit-cards-and-getting-approved"
+  },
+  {
+    "id": "credit-one-articles-are-with-annual-fees-worth-it",
+    "issuer": "Credit One",
+    "cardName": "articles are with annual fees worth it",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/are-credit-cards-with-annual-fees-worth-it"
+  },
+  {
+    "id": "credit-one-articles-difference-between-and-debit",
+    "issuer": "Credit One",
+    "cardName": "articles difference between and debit",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/the-difference-between-credit-cards-and-debit-cards"
+  },
+  {
+    "id": "credit-one-articles-do-all-build-at-same-rate",
+    "issuer": "Credit One",
+    "cardName": "articles do all build at same rate",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/do-all-credit-cards-build-credit-at-the-same-rate"
+  },
+  {
+    "id": "credit-one-articles-for-sports-fans",
+    "issuer": "Credit One",
+    "cardName": "articles for sports fans",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/credit-cards-for-sports-fans"
+  },
+  {
+    "id": "credit-one-articles-from-swipe-to-signature-how-actually-work",
+    "issuer": "Credit One",
+    "cardName": "articles from swipe to signature how actually work",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/from-swipe-to-signature-how-credit-cards-actually-work"
+  },
+  {
+    "id": "credit-one-articles-guide-to-managing-multiple-for-maximum-rewards",
+    "issuer": "Credit One",
+    "cardName": "articles guide to managing multiple for maximum rewards",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/guide-to-managing-multiple-credit-cards-for-maximum-rewards"
+  },
+  {
+    "id": "credit-one-articles-how-can-help-you-save-on-entertainment-activities",
+    "issuer": "Credit One",
+    "cardName": "articles how can help you save on entertainment activities",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/how-credit-cards-can-help-you-save-on-entertainment-activities"
+  },
+  {
+    "id": "credit-one-articles-how-do-travel-work",
+    "issuer": "Credit One",
+    "cardName": "articles how do travel work",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/how-do-travel-credit-cards-work"
+  },
+  {
+    "id": "credit-one-articles-how-does-gen-z-use",
+    "issuer": "Credit One",
+    "cardName": "articles how does gen z use",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/how-does-gen-z-use-credit-cards"
+  },
+  {
+    "id": "credit-one-articles-how-many-are-too-many",
+    "issuer": "Credit One",
+    "cardName": "articles how many are too many",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/how-many-credit-cards-are-too-many"
+  },
+  {
+    "id": "credit-one-articles-how-to-keep-from-demagnetizing",
+    "issuer": "Credit One",
+    "cardName": "articles how to keep from demagnetizing",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/how-to-keep-credit-cards-from-demagnetizing"
+  },
+  {
+    "id": "credit-one-articles-invention-of",
+    "issuer": "Credit One",
+    "cardName": "articles invention of",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/the-invention-of-credit-cards"
+  },
+  {
+    "id": "credit-one-articles-loans-mortgages-after-bankruptcy",
+    "issuer": "Credit One",
+    "cardName": "articles loans mortgages after bankruptcy",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/loans-mortgages-credit-cards-after-bankruptcy"
+  },
+  {
+    "id": "credit-one-articles-pre-qualified-vs-pre-approved-whats-difference",
+    "issuer": "Credit One",
+    "cardName": "articles pre qualified vs pre approved whats difference",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/pre-qualified-vs-pre-approved-credit-cards-whats-the-difference"
+  },
+  {
+    "id": "credit-one-articles-pros-and-cons-of-department-store-infographic",
+    "issuer": "Credit One",
+    "cardName": "articles pros and cons of department store infographic",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/pros-and-cons-of-department-store-credit-cards-infographic"
+  },
+  {
+    "id": "credit-one-articles-rebuilding-your-with",
+    "issuer": "Credit One",
+    "cardName": "articles rebuilding your with",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/rebuilding-your-credit-with-credit-cards"
+  },
+  {
+    "id": "credit-one-articles-using-for-grocery-shopping",
+    "issuer": "Credit One",
+    "cardName": "articles using for grocery shopping",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/using-credit-cards-for-grocery-shopping"
+  },
+  {
+    "id": "credit-one-articles-using-to-help-your-side-hustle",
+    "issuer": "Credit One",
+    "cardName": "articles using to help your side hustle",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/using-credit-cards-to-help-your-side-hustle"
+  },
+  {
+    "id": "credit-one-articles-using-while-studying-abroad",
+    "issuer": "Credit One",
+    "cardName": "articles using while studying abroad",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/using-credit-cards-while-studying-abroad"
+  },
+  {
+    "id": "credit-one-articles-what-are-unsecured",
+    "issuer": "Credit One",
+    "cardName": "articles what are unsecured",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/what-are-unsecured-credit-cards"
+  },
+  {
+    "id": "credit-one-articles-why-have-expiration-dates",
+    "issuer": "Credit One",
+    "cardName": "articles why have expiration dates",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/articles/why-credit-cards-have-expiration-dates"
+  },
+  {
+    "id": "credit-one-card",
+    "issuer": "Credit One",
+    "cardName": "Card",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards"
+  },
+  {
+    "id": "credit-one-finder",
+    "issuer": "Credit One",
+    "cardName": "finder",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/card-finder"
+  },
+  {
+    "id": "credit-one-platinum",
+    "issuer": "Credit One",
+    "cardName": "platinum",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/platinum"
+  },
+  {
+    "id": "credit-one-platinum-no-fee",
+    "issuer": "Credit One",
+    "cardName": "platinum no fee",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/platinum-no-fee"
+  },
+  {
+    "id": "credit-one-platinum-suite-visa",
+    "issuer": "Credit One",
+    "cardName": "platinum suite visa",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/platinum-suite-visa"
+  },
+  {
+    "id": "credit-one-platinum-suite-visa-2",
+    "issuer": "Credit One",
+    "cardName": "platinum suite visa",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/platinum-suite-visa/reviews"
+  },
+  {
+    "id": "credit-one-platinum-visa-for-rebuilding",
+    "issuer": "Credit One",
+    "cardName": "platinum visa for rebuilding",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/platinum-visa-for-rebuilding-credit"
+  },
+  {
+    "id": "credit-one-platinum-visa-for-rebuilding-2",
+    "issuer": "Credit One",
+    "cardName": "platinum visa for rebuilding",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/platinum-visa-for-rebuilding-credit/reviews"
+  },
+  {
+    "id": "credit-one-platinum-x5-visa",
+    "issuer": "Credit One",
+    "cardName": "platinum x5 visa",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/platinum-x5-visa"
+  },
+  {
+    "id": "credit-one-secured-visa",
+    "issuer": "Credit One",
+    "cardName": "secured visa",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/secured-card-visa"
+  },
+  {
+    "id": "credit-one-vegas-golden-knights-visa",
+    "issuer": "Credit One",
+    "cardName": "vegas golden knights visa",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/vegas-golden-knights-visa"
+  },
+  {
+    "id": "credit-one-wander-american-express",
+    "issuer": "Credit One",
+    "cardName": "wander american express",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/wander-american-express"
+  },
+  {
+    "id": "credit-one-wander-american-express-2",
+    "issuer": "Credit One",
+    "cardName": "wander american express",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/wander-american-express/reviews"
+  },
+  {
+    "id": "fnbo-2022-selecting-right-commercial-program-for-your-business",
+    "issuer": "FNBO",
+    "cardName": "2022 selecting right commercial program for your business",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/insights/commercial-business/2022/selecting-the-right-commercial-credit-card-program-for-your-business"
+  },
+  {
+    "id": "fnbo-2023-what-virtual",
+    "issuer": "FNBO",
+    "cardName": "2023 what virtual",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/insights/commercial-business/2023/what-virtual-credit-card"
+  },
+  {
+    "id": "fnbo-2024-six-tricks-paying",
+    "issuer": "FNBO",
+    "cardName": "2024 six tricks paying",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/insights/personal-finance/2024/six-tricks-paying-credit-cards"
+  },
+  {
+    "id": "fnbo-2024-why-we-need-payments-long-term-care",
+    "issuer": "FNBO",
+    "cardName": "2024 why we need payments long term care",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/insights/commercial-business/2024/why-we-need-credit-card-payments-long-term-care"
+  },
+  {
+    "id": "fnbo-ccb",
+    "issuer": "FNBO",
+    "cardName": "ccb",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/pages/ccb/credit-cards"
+  },
+  {
+    "id": "fnbo-ccb-commercial",
+    "issuer": "FNBO",
+    "cardName": "ccb commercial",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/pages/ccb/commercial-credit-cards"
+  },
+  {
+    "id": "fnbo-ccb-small-business",
+    "issuer": "FNBO",
+    "cardName": "ccb small business",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/pages/ccb/small-business-credit-cards"
+  },
+  {
+    "id": "fnbo-commercial-banking",
+    "issuer": "FNBO",
+    "cardName": "commercial banking",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/commercial-banking/credit-cards"
+  },
+  {
+    "id": "fnbo-evergreen-2",
+    "issuer": "FNBO",
+    "cardName": "evergreen",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/small-business/credit-cards/evergreen"
+  },
+  {
+    "id": "fnbo-evergreen1",
+    "issuer": "FNBO",
+    "cardName": "evergreen1",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen1"
+  },
+  {
+    "id": "fnbo-evergreen10",
+    "issuer": "FNBO",
+    "cardName": "evergreen10",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen10"
+  },
+  {
+    "id": "fnbo-evergreen11",
+    "issuer": "FNBO",
+    "cardName": "evergreen11",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen11"
+  },
+  {
+    "id": "fnbo-evergreen12",
+    "issuer": "FNBO",
+    "cardName": "evergreen12",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen12"
+  },
+  {
+    "id": "fnbo-evergreen13",
+    "issuer": "FNBO",
+    "cardName": "evergreen13",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen13"
+  },
+  {
+    "id": "fnbo-evergreen14",
+    "issuer": "FNBO",
+    "cardName": "evergreen14",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen14"
+  },
+  {
+    "id": "fnbo-evergreen15",
+    "issuer": "FNBO",
+    "cardName": "evergreen15",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen15"
+  },
+  {
+    "id": "fnbo-evergreen2",
+    "issuer": "FNBO",
+    "cardName": "evergreen2",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen2"
+  },
+  {
+    "id": "fnbo-evergreen3",
+    "issuer": "FNBO",
+    "cardName": "evergreen3",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen3"
+  },
+  {
+    "id": "fnbo-evergreen4",
+    "issuer": "FNBO",
+    "cardName": "evergreen4",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen4"
+  },
+  {
+    "id": "fnbo-evergreen5",
+    "issuer": "FNBO",
+    "cardName": "evergreen5",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen5"
+  },
+  {
+    "id": "fnbo-evergreen6",
+    "issuer": "FNBO",
+    "cardName": "evergreen6",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen6"
+  },
+  {
+    "id": "fnbo-evergreen7",
+    "issuer": "FNBO",
+    "cardName": "evergreen7",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen7"
+  },
+  {
+    "id": "fnbo-evergreen8",
+    "issuer": "FNBO",
+    "cardName": "evergreen8",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen8"
+  },
+  {
+    "id": "fnbo-evergreen9",
+    "issuer": "FNBO",
+    "cardName": "evergreen9",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen9"
+  },
+  {
+    "id": "fnbo-fico-score",
+    "issuer": "FNBO",
+    "cardName": "fico score",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/fico-score"
+  },
+  {
+    "id": "fnbo-greenselect",
+    "issuer": "FNBO",
+    "cardName": "greenselect",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/greenselect"
+  },
+  {
+    "id": "fnbo-greenselect1",
+    "issuer": "FNBO",
+    "cardName": "greenselect1",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/greenselect1"
+  },
+  {
+    "id": "fnbo-greenselect10",
+    "issuer": "FNBO",
+    "cardName": "greenselect10",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/greenselect10"
+  },
+  {
+    "id": "fnbo-greenselect2",
+    "issuer": "FNBO",
+    "cardName": "greenselect2",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/greenselect2"
+  },
+  {
+    "id": "fnbo-greenselect3",
+    "issuer": "FNBO",
+    "cardName": "greenselect3",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/greenselect3"
+  },
+  {
+    "id": "fnbo-greenselect4",
+    "issuer": "FNBO",
+    "cardName": "greenselect4",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/greenselect4"
+  },
+  {
+    "id": "fnbo-greenselect5",
+    "issuer": "FNBO",
+    "cardName": "greenselect5",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/greenselect5"
+  },
+  {
+    "id": "fnbo-greenselect6",
+    "issuer": "FNBO",
+    "cardName": "greenselect6",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/greenselect6"
+  },
+  {
+    "id": "fnbo-greenselect7",
+    "issuer": "FNBO",
+    "cardName": "greenselect7",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/greenselect7"
+  },
+  {
+    "id": "fnbo-greenselect8",
+    "issuer": "FNBO",
+    "cardName": "greenselect8",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/greenselect8"
+  },
+  {
+    "id": "fnbo-greenselect9",
+    "issuer": "FNBO",
+    "cardName": "greenselect9",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/greenselect9"
+  },
+  {
+    "id": "fnbo-guide-to-benefits",
+    "issuer": "FNBO",
+    "cardName": "guide to benefits",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/guide-to-benefits"
+  },
+  {
+    "id": "fnbo-marketing-increase-business-budget-cashback-business",
+    "issuer": "FNBO",
+    "cardName": "marketing increase business budget cashback business",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/insights/2021/marketing/increase-business-budget-cashback-business-credit-card"
+  },
+  {
+    "id": "fnbo-multi-itapb",
+    "issuer": "FNBO",
+    "cardName": "multi itapb",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/small-business/credit-cards/multi-product-itapb"
+  },
+  {
+    "id": "fnbo-personal-banking",
+    "issuer": "FNBO",
+    "cardName": "personal banking",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards"
+  },
+  {
+    "id": "fnbo-prequal-written-instructions",
+    "issuer": "FNBO",
+    "cardName": "prequal written instructions",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/prequal-written-instructions"
+  },
+  {
+    "id": "fnbo-secured-business-edition",
+    "issuer": "FNBO",
+    "cardName": "secured business edition",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/small-business/credit-cards/secured-business-edition"
+  },
+  {
+    "id": "fnbo-secured-business-edition-buckslip",
+    "issuer": "FNBO",
+    "cardName": "secured business edition buckslip",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/small-business/credit-cards/secured-business-edition-buckslip"
+  },
+  {
+    "id": "fnbo-small-business",
+    "issuer": "FNBO",
+    "cardName": "small business",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/small-business/credit-cards"
+  },
+  {
+    "id": "fnbo-small-business-increase-business-budget-cashback-business",
+    "issuer": "FNBO",
+    "cardName": "small business increase business budget cashback business",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/insights/2021/small-business/increase-business-budget-cashback-business-credit-card"
+  },
+  {
+    "id": "fnbo-test-out-of-footprint-prequal",
+    "issuer": "FNBO",
+    "cardName": "test out of footprint prequal",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/test-out-of-footprint-prequal"
+  },
+  {
+    "id": "fnbo-virtual",
+    "issuer": "FNBO",
+    "cardName": "virtual",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/commercial-banking/credit-cards/virtual-card"
+  },
+  {
+    "id": "fnbo-visa-secured",
+    "issuer": "FNBO",
+    "cardName": "visa secured",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/visa-secured-card"
+  },
+  {
+    "id": "gemini-app",
+    "issuer": "Gemini",
+    "cardName": "app",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.gemini.com/credit-card/app"
+  },
+  {
+    "id": "gemini-btc",
+    "issuer": "Gemini",
+    "cardName": "btc",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.gemini.com/credit-card/btc"
+  },
+  {
+    "id": "gemini-business",
+    "issuer": "Gemini",
+    "cardName": "business",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.gemini.com/credit-card/business"
+  },
+  {
+    "id": "gemini-solana",
+    "issuer": "Gemini",
+    "cardName": "solana",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.gemini.com/credit-card/solana"
+  },
+  {
+    "id": "gemini-zcash",
+    "issuer": "Gemini",
+    "cardName": "zcash",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.gemini.com/credit-card/zcash"
+  },
+  {
+    "id": "navy-federal-basics-how-work-html",
+    "issuer": "Navy Federal",
+    "cardName": "basics how work.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/credit-card-basics/how-credit-cards-work.html"
+  },
+  {
+    "id": "navy-federal-basics-html",
+    "issuer": "Navy Federal",
+    "cardName": "basics.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/credit-card-basics.html"
+  },
+  {
+    "id": "navy-federal-business-html",
+    "issuer": "Navy Federal",
+    "cardName": "business .html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/services/business/credit-cards.html"
+  },
+  {
+    "id": "navy-federal-business-how-to-use-business-html",
+    "issuer": "Navy Federal",
+    "cardName": "business how to use business .html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/makingcents/business/how-to-use-business-credit-card.html"
+  },
+  {
+    "id": "navy-federal-business-put-to-work-for-your-business-html",
+    "issuer": "Navy Federal",
+    "cardName": "business put to work for your business.html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/makingcents/business/put-credit-cards-to-work-for-your-business.html"
+  },
+  {
+    "id": "navy-federal-cardholder-resources-add-authorized-user-html",
+    "issuer": "Navy Federal",
+    "cardName": "cardholder resources add authorized user.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/add-authorized-user.html"
+  },
+  {
+    "id": "navy-federal-cardholder-resources-applying-for-a-html",
+    "issuer": "Navy Federal",
+    "cardName": "cardholder resources applying for a .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/applying-for-a-credit-card.html"
+  },
+  {
+    "id": "navy-federal-cardholder-resources-fico-score-html",
+    "issuer": "Navy Federal",
+    "cardName": "cardholder resources fico score.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/fico-credit-score.html"
+  },
+  {
+    "id": "navy-federal-cardholder-resources-making-payments-html",
+    "issuer": "Navy Federal",
+    "cardName": "cardholder resources making payments.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/making-credit-card-payments.html"
+  },
+  {
+    "id": "navy-federal-cardholder-resources-member-deals-html",
+    "issuer": "Navy Federal",
+    "cardName": "cardholder resources member deals.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/member-deals.html"
+  },
+  {
+    "id": "navy-federal-cardholder-resources-redeem-rewards-html",
+    "issuer": "Navy Federal",
+    "cardName": "cardholder resources redeem rewards.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources/redeem-rewards.html"
+  },
+  {
+    "id": "navy-federal-cardholder-resources-html",
+    "issuer": "Navy Federal",
+    "cardName": "cardholder resources.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/cardholder-resources.html"
+  },
+  {
+    "id": "navy-federal-cash-rewards-html-2",
+    "issuer": "Navy Federal",
+    "cardName": "cash rewards .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/cash-rewards/reviews.html"
+  },
+  {
+    "id": "navy-federal-cash-rewards-features-html",
+    "issuer": "Navy Federal",
+    "cardName": "cash rewards features.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/cash-rewards/features.html"
+  },
+  {
+    "id": "navy-federal-cash-rewards-secured-html-2",
+    "issuer": "Navy Federal",
+    "cardName": "cash rewards secured .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/cash-rewards-secured/reviews.html"
+  },
+  {
+    "id": "navy-federal-cash-rewards-secured-features-html",
+    "issuer": "Navy Federal",
+    "cardName": "cash rewards secured features.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/cash-rewards-secured/features.html"
+  },
+  {
+    "id": "navy-federal-cash-rewards-secured-html",
+    "issuer": "Navy Federal",
+    "cardName": "cash rewards secured.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/cash-rewards-secured.html"
+  },
+  {
+    "id": "navy-federal-cash-rewards-html",
+    "issuer": "Navy Federal",
+    "cardName": "cash rewards.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/cash-rewards.html"
+  },
+  {
+    "id": "navy-federal-debt-101-html",
+    "issuer": "Navy Federal",
+    "cardName": "debt 101.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/makingcents/credit-debt/credit-cards-101.html"
+  },
+  {
+    "id": "navy-federal-debt-cash-back-vs-travel-rewards-html",
+    "issuer": "Navy Federal",
+    "cardName": "debt cash back vs travel rewards .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/makingcents/credit-debt/cash-back-vs-travel-rewards-credit-cards.html"
+  },
+  {
+    "id": "navy-federal-debt-how-many-should-you-have-html",
+    "issuer": "Navy Federal",
+    "cardName": "debt how many should you have.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/makingcents/credit-debt/how-many-credit-cards-should-you-have.html"
+  },
+  {
+    "id": "navy-federal-debt-how-to-leverage-0apr-html",
+    "issuer": "Navy Federal",
+    "cardName": "debt how to leverage 0apr .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/makingcents/credit-debt/how-to-leverage-0apr-credit-cards.html"
+  },
+  {
+    "id": "navy-federal-features-html",
+    "issuer": "Navy Federal",
+    "cardName": "features.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/features.html"
+  },
+  {
+    "id": "navy-federal-flagship-visa-signature-html",
+    "issuer": "Navy Federal",
+    "cardName": "flagship visa signature .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/flagship-visa-signature/reviews.html"
+  },
+  {
+    "id": "navy-federal-flagship-visa-signature-features-html",
+    "issuer": "Navy Federal",
+    "cardName": "flagship visa signature features.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/flagship-visa-signature/features.html"
+  },
+  {
+    "id": "navy-federal-go-rewards-html-2",
+    "issuer": "Navy Federal",
+    "cardName": "go rewards .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/go-rewards/reviews.html"
+  },
+  {
+    "id": "navy-federal-go-rewards-features-html",
+    "issuer": "Navy Federal",
+    "cardName": "go rewards features.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/go-rewards/features.html"
+  },
+  {
+    "id": "navy-federal-go-rewards-html",
+    "issuer": "Navy Federal",
+    "cardName": "go rewards.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/go-rewards.html"
+  },
+  {
+    "id": "navy-federal-loans-html",
+    "issuer": "Navy Federal",
+    "cardName": "loans .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards.html"
+  },
+  {
+    "id": "navy-federal-more-rewards-html",
+    "issuer": "Navy Federal",
+    "cardName": "more rewards .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/more-rewards/reviews.html"
+  },
+  {
+    "id": "navy-federal-more-rewards-features-html",
+    "issuer": "Navy Federal",
+    "cardName": "more rewards features.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/more-rewards/features.html"
+  },
+  {
+    "id": "navy-federal-new-wizard-staging-html",
+    "issuer": "Navy Federal",
+    "cardName": "new wizard staging.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/new-wizard-staging.html"
+  },
+  {
+    "id": "navy-federal-offers-cash-rewards-html",
+    "issuer": "Navy Federal",
+    "cardName": "offers cash rewards.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/offers/cash-rewards.html"
+  },
+  {
+    "id": "navy-federal-offers-cashrewards-secured-html",
+    "issuer": "Navy Federal",
+    "cardName": "offers cashrewards secured.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/offers/cashrewards-secured.html"
+  },
+  {
+    "id": "navy-federal-offers-flagship-visa-signature-html",
+    "issuer": "Navy Federal",
+    "cardName": "offers flagship visa signature.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/offers/flagship-visa-signature.html"
+  },
+  {
+    "id": "navy-federal-offers-go-rewards-html",
+    "issuer": "Navy Federal",
+    "cardName": "offers go rewards.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/offers/go-rewards.html"
+  },
+  {
+    "id": "navy-federal-offers-more-rewards-html",
+    "issuer": "Navy Federal",
+    "cardName": "offers more rewards.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/offers/more-rewards.html"
+  },
+  {
+    "id": "navy-federal-offers-nrewards-secured-html",
+    "issuer": "Navy Federal",
+    "cardName": "offers nrewards secured.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/offers/nrewards-secured.html"
+  },
+  {
+    "id": "navy-federal-offers-platinum-html",
+    "issuer": "Navy Federal",
+    "cardName": "offers platinum.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/offers/platinum.html"
+  },
+  {
+    "id": "navy-federal-offers-html",
+    "issuer": "Navy Federal",
+    "cardName": "offers.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/offers.html"
+  },
+  {
+    "id": "navy-federal-platinum-html-2",
+    "issuer": "Navy Federal",
+    "cardName": "platinum .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/platinum/reviews.html"
+  },
+  {
+    "id": "navy-federal-platinum-features-html",
+    "issuer": "Navy Federal",
+    "cardName": "platinum features.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/platinum/features.html"
+  },
+  {
+    "id": "navy-federal-platinum-html",
+    "issuer": "Navy Federal",
+    "cardName": "platinum.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/platinum.html"
+  },
+  {
+    "id": "navy-federal-podcast-managing-your-html",
+    "issuer": "Navy Federal",
+    "cardName": "podcast managing your .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/makingcents/podcast/managing-your-credit-cards.html"
+  },
+  {
+    "id": "navy-federal-prequalification-html",
+    "issuer": "Navy Federal",
+    "cardName": "prequalification.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/prequalification.html"
+  },
+  {
+    "id": "petal-legals-p1c2070123-petal-1-visa-cardholder-agreement",
+    "issuer": "Petal",
+    "cardName": "legals p1c2070123 petal 1 visa cardholder agreement",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://petalcard.com/legals/p1c2070123-the-petal-1-visa-credit-card-cardholder-agreement"
+  },
+  {
+    "id": "petal-legals-p1ca070123-petal-1-visa-r-cardholder-agreement",
+    "issuer": "Petal",
+    "cardName": "legals p1ca070123 petal 1 visa r cardholder agreement",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://petalcard.com/legals/p1ca070123-the-petal-1-visa-r-credit-card-cardholder-agreement"
+  },
+  {
+    "id": "petal-legals-p1cr2070123-petal-1-rise-visa-r-cardholder-agreement",
+    "issuer": "Petal",
+    "cardName": "legals p1cr2070123 petal 1 rise visa r cardholder agreement",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://petalcard.com/legals/p1cr2070123-the-petal-1-rise-visa-r-credit-card-cardholder-agreement"
+  },
+  {
+    "id": "petal-legals-p2p1r080123-petal-1-r-visa-r-cardholder-agreement",
+    "issuer": "Petal",
+    "cardName": "legals p2p1r080123 petal 1 r visa r cardholder agreement",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://petalcard.com/legals/p2p1r080123-petal-1-r-visa-r-credit-card-cardholder-agreement"
+  },
+  {
+    "id": "petal-legals-petal-1-rise-visa-r-cardholder-agreement-with-expanded-cash-like-tr-2",
+    "issuer": "Petal",
+    "cardName": "legals petal 1 rise visa r cardholder agreement with expanded cash like transaction and monthly membership fee",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://petalcard.com/legals/the-petal-1-rise-visa-r-credit-card-cardholder-agreement-with-expanded-cash-like-transaction-and-monthly-membership-fee"
+  },
+  {
+    "id": "petal-legals-petal-1-rise-visa-r-cardholder-agreement-with-expanded-cash-like-tr",
+    "issuer": "Petal",
+    "cardName": "legals petal 1 rise visa r cardholder agreement with expanded cash like transactions",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://petalcard.com/legals/the-petal-1-rise-visa-r-credit-card-cardholder-agreement-with-expanded-cash-like-transactions"
+  },
+  {
+    "id": "petal-legals-petal-1-visa-cardholder-agreement-with-expanded-cash-like-transacti",
+    "issuer": "Petal",
+    "cardName": "legals petal 1 visa cardholder agreement with expanded cash like transactions mmf",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://petalcard.com/legals/the-petal-1-visa-credit-card-cardholder-agreement-with-expanded-cash-like-transactions-mmf"
+  },
+  {
+    "id": "petal-legals-petal-1-visa-r-cardholder-agreement-with-expanded-cash-like-transac",
+    "issuer": "Petal",
+    "cardName": "legals petal 1 visa r cardholder agreement with expanded cash like transactions",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://petalcard.com/legals/the-petal-1-visa-r-credit-card-cardholder-agreement-with-expanded-cash-like-transactions"
+  },
+  {
+    "id": "petal-legals-petal-2-visa-cardholder-agreement",
+    "issuer": "Petal",
+    "cardName": "legals petal 2 visa cardholder agreement",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://petalcard.com/legals/the-petal-2-visa-credit-card-cardholder-agreement"
+  },
+  {
+    "id": "sofi-calculators-balance-transfer-calculator",
+    "issuer": "SoFi",
+    "cardName": "calculators balance transfer calculator",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/calculators/credit-card-balance-transfer-calculator"
+  },
+  {
+    "id": "sofi-calculators-points-calculator",
+    "issuer": "SoFi",
+    "cardName": "calculators points calculator",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/calculators/credit-card-points-calculator"
+  },
+  {
+    "id": "sofi-economy-markets-why-are-rates-so-high",
+    "issuer": "SoFi",
+    "cardName": "economy markets why are rates so high",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/article/economy-markets/why-are-credit-card-rates-so-high"
+  },
+  {
+    "id": "sofi-essential",
+    "issuer": "SoFi",
+    "cardName": "essential",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/credit-card/essential"
+  },
+  {
+    "id": "sofi-everyday-cash",
+    "issuer": "SoFi",
+    "cardName": "everyday cash",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/credit-card/everyday-cash"
+  },
+  {
+    "id": "sofi-ex-ess",
+    "issuer": "SoFi",
+    "cardName": "ex ess",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/apply/credit-card/ex-ess"
+  },
+  {
+    "id": "sofi-interest-calculator",
+    "issuer": "SoFi",
+    "cardName": "interest calculator",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/credit-card-interest-calculator"
+  },
+  {
+    "id": "sofi-money-life-are-discounts-worth-getting-that-store",
+    "issuer": "SoFi",
+    "cardName": "money life are discounts worth getting that store",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/article/money-life/are-the-discounts-worth-getting-that-store-credit-card"
+  },
+  {
+    "id": "sofi-money-life-are-you-stuck-on-a-treadmill",
+    "issuer": "SoFi",
+    "cardName": "money life are you stuck on a treadmill",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/article/money-life/are-you-stuck-on-a-credit-card-treadmill"
+  },
+  {
+    "id": "sofi-money-life-dear-sofi-how-do-i-avoid-messing-up-my-first",
+    "issuer": "SoFi",
+    "cardName": "money life dear sofi how do i avoid messing up my first",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/article/money-life/dear-sofi-how-do-i-avoid-messing-up-my-first-credit-card"
+  },
+  {
+    "id": "sofi-money-life-debt-is-getting-harder-to-shake",
+    "issuer": "SoFi",
+    "cardName": "money life debt is getting harder to shake",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/article/money-life/credit-card-debt-is-getting-harder-to-shake"
+  },
+  {
+    "id": "sofi-money-life-is-debt-sabotaging-your-retirement",
+    "issuer": "SoFi",
+    "cardName": "money life is debt sabotaging your retirement",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/article/money-life/is-credit-card-debt-sabotaging-your-retirement"
+  },
+  {
+    "id": "sofi-money-life-is-that-800-a-year-still-saving-you-money",
+    "issuer": "SoFi",
+    "cardName": "money life is that 800 a year still saving you money",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/article/money-life/is-that-800-a-year-credit-card-still-saving-you-money"
+  },
+  {
+    "id": "sofi-money-life-it-has-only-been-50-years-since-women-got-right-to-a",
+    "issuer": "SoFi",
+    "cardName": "money life it has only been 50 years since women got right to a",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/article/money-life/it-has-only-been-50-years-since-women-got-the-right-to-a-credit-card"
+  },
+  {
+    "id": "sofi-money-life-worst-holiday-leftover-debt",
+    "issuer": "SoFi",
+    "cardName": "money life worst holiday leftover debt",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/article/money-life/the-worst-holiday-leftover-credit-card-debt"
+  },
+  {
+    "id": "sofi-money-life-would-10-rates-on-help-or-hurt",
+    "issuer": "SoFi",
+    "cardName": "money life would 10 rates on help or hurt",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/article/money-life/would-10-rates-on-credit-cards-help-or-hurt-us"
+  },
+  {
+    "id": "sofi-personal-loans-consolidation-loans",
+    "issuer": "SoFi",
+    "cardName": "personal loans consolidation loans",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/personal-loans/credit-card-consolidation-loans"
+  },
+  {
+    "id": "sofi-small-business",
+    "issuer": "SoFi",
+    "cardName": "small business",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/small-business-credit-cards"
+  },
+  {
+    "id": "sofi-unlimited",
+    "issuer": "SoFi",
+    "cardName": "unlimited",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.sofi.com/credit-card/unlimited"
+  },
+  {
+    "id": "u-s-bank-html",
+    "issuer": "U.S. Bank",
+    "cardName": ".html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards.html"
+  },
+  {
+    "id": "u-s-bank-altitude-connect-visa-signature-html",
+    "issuer": "U.S. Bank",
+    "cardName": "altitude connect visa signature .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/altitude-connect-visa-signature-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-altitude-go-secured-visa-html",
+    "issuer": "U.S. Bank",
+    "cardName": "altitude go secured visa .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/altitude-go-secured-visa-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-bank-smartly-visa-signature-html",
+    "issuer": "U.S. Bank",
+    "cardName": "bank smartly visa signature .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/bank-smartly-visa-signature-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-basics-different-types-of-html",
+    "issuer": "U.S. Bank",
+    "cardName": "basics different types of .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/different-types-of-credit-cards.html"
+  },
+  {
+    "id": "u-s-bank-basics-fees-html",
+    "issuer": "U.S. Bank",
+    "cardName": "basics fees.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/credit-card-fees.html"
+  },
+  {
+    "id": "u-s-bank-basics-gen-z-key-terms-using-html",
+    "issuer": "U.S. Bank",
+    "cardName": "basics gen z key terms using .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/gen-z-key-terms-using-credit.html"
+  },
+  {
+    "id": "u-s-bank-basics-how-does-a-secured-work-html",
+    "issuer": "U.S. Bank",
+    "cardName": "basics how does a secured work.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/how-does-a-secured-credit-card-work.html"
+  },
+  {
+    "id": "u-s-bank-basics-how-does-interest-work-html",
+    "issuer": "U.S. Bank",
+    "cardName": "basics how does interest work.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/how-does-credit-card-interest-work.html"
+  },
+  {
+    "id": "u-s-bank-basics-how-many-should-i-have-html",
+    "issuer": "U.S. Bank",
+    "cardName": "basics how many should i have.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/how-many-credit-cards-should-i-have.html"
+  },
+  {
+    "id": "u-s-bank-basics-how-to-increase-limit-html",
+    "issuer": "U.S. Bank",
+    "cardName": "basics how to increase limit.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/how-to-increase-credit-limit.html"
+  },
+  {
+    "id": "u-s-bank-basics-minimum-payment-html",
+    "issuer": "U.S. Bank",
+    "cardName": "basics minimum payment.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/credit-card-minimum-payment.html"
+  },
+  {
+    "id": "u-s-bank-basics-statement-balance-vs-current-balance-html",
+    "issuer": "U.S. Bank",
+    "cardName": "basics statement balance vs current balance.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/statement-balance-vs-current-balance.html"
+  },
+  {
+    "id": "u-s-bank-basics-what-is-a-0-apr-html",
+    "issuer": "U.S. Bank",
+    "cardName": "basics what is a 0 apr .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/what-is-a-0-apr-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-basics-what-is-cash-back-on-html",
+    "issuer": "U.S. Bank",
+    "cardName": "basics what is cash back on .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/what-is-cash-back-on-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-basics-what-is-utilization-ratio-html",
+    "issuer": "U.S. Bank",
+    "cardName": "basics what is utilization ratio.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics/what-is-credit-utilization-ratio.html"
+  },
+  {
+    "id": "u-s-bank-building-does-closing-a-hurt-your-score-html",
+    "issuer": "U.S. Bank",
+    "cardName": "building does closing a hurt your score.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/building-credit/does-closing-a-credit-card-hurt-your-score.html"
+  },
+  {
+    "id": "u-s-bank-building-how-to-build-html",
+    "issuer": "U.S. Bank",
+    "cardName": "building how to build .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/building-credit/how-to-build-credit.html"
+  },
+  {
+    "id": "u-s-bank-building-how-to-improve-score-html",
+    "issuer": "U.S. Bank",
+    "cardName": "building how to improve score.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/building-credit/how-to-improve-credit-score.html"
+  },
+  {
+    "id": "u-s-bank-building-how-to-rebuild-using-html",
+    "issuer": "U.S. Bank",
+    "cardName": "building how to rebuild using .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/building-credit/how-to-rebuild-credit-using-credit-cards.html"
+  },
+  {
+    "id": "u-s-bank-building-what-is-a-good-score-html",
+    "issuer": "U.S. Bank",
+    "cardName": "building what is a good score.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/building-credit/what-is-a-good-credit-score.html"
+  },
+  {
+    "id": "u-s-bank-building-what-is-score-html",
+    "issuer": "U.S. Bank",
+    "cardName": "building what is score.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/building-credit/what-is-credit-score.html"
+  },
+  {
+    "id": "u-s-bank-business-accept-mail-offer-html",
+    "issuer": "U.S. Bank",
+    "cardName": "business accept mail offer.html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/business-banking/business-credit-cards/accept-mail-offer.html"
+  },
+  {
+    "id": "u-s-bank-business-banking-business-html",
+    "issuer": "U.S. Bank",
+    "cardName": "business banking business .html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/business-banking/business-credit-cards.html"
+  },
+  {
+    "id": "u-s-bank-business-business-altitude-connect-html",
+    "issuer": "U.S. Bank",
+    "cardName": "business business altitude connect .html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/business-banking/business-credit-cards/business-altitude-connect-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-business-business-leverage-rewards-html",
+    "issuer": "U.S. Bank",
+    "cardName": "business business leverage rewards .html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/business-banking/business-credit-cards/business-leverage-rewards-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-business-business-platinum-html",
+    "issuer": "U.S. Bank",
+    "cardName": "business business platinum .html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/business-banking/business-credit-cards/business-platinum-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-business-business-triple-cash-back-html",
+    "issuer": "U.S. Bank",
+    "cardName": "business business triple cash back .html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/business-banking/business-credit-cards/business-triple-cash-back-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-business-resource-center-5-business-advantages-html",
+    "issuer": "U.S. Bank",
+    "cardName": "business resource center 5 business advantages.html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/business-banking/business-resource-center/5-business-credit-card-advantages.html"
+  },
+  {
+    "id": "u-s-bank-business-resource-center-how-do-business-work-html",
+    "issuer": "U.S. Bank",
+    "cardName": "business resource center how do business work.html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/business-banking/business-resource-center/how-do-business-credit-cards-work.html"
+  },
+  {
+    "id": "u-s-bank-business-resource-center-how-to-open-business-html",
+    "issuer": "U.S. Bank",
+    "cardName": "business resource center how to open business .html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/business-banking/business-resource-center/how-to-open-business-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-business-resource-center-know-when-to-apply-for-small-business-html",
+    "issuer": "U.S. Bank",
+    "cardName": "business resource center know when to apply for small business .html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/business-banking/business-resource-center/know-when-to-apply-for-small-business-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-business-resource-center-who-can-answer-business-questions-html",
+    "issuer": "U.S. Bank",
+    "cardName": "business resource center who can answer business questions.html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/business-banking/business-resource-center/who-can-answer-business-credit-card-questions.html"
+  },
+  {
+    "id": "u-s-bank-business-spend-management-html",
+    "issuer": "U.S. Bank",
+    "cardName": "business spend management.html",
+    "network": null,
+    "cardSegment": "business",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/business-banking/business-credit-cards/spend-management.html"
+  },
+  {
+    "id": "u-s-bank-buy-now-pay-later-extendpay-html",
+    "issuer": "U.S. Bank",
+    "cardName": "buy now pay later extendpay.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/buy-now-pay-later-extendpay.html"
+  },
+  {
+    "id": "u-s-bank-cash-plus-secured-visa-html",
+    "issuer": "U.S. Bank",
+    "cardName": "cash plus secured visa .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/cash-plus-secured-visa-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-cash-plus-visa-signature-html",
+    "issuer": "U.S. Bank",
+    "cardName": "cash plus visa signature .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-co-branded-html",
+    "issuer": "U.S. Bank",
+    "cardName": "co branded .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/co-branded-credit-cards.html"
+  },
+  {
+    "id": "u-s-bank-extend-pay-loan-html",
+    "issuer": "U.S. Bank",
+    "cardName": "extend pay loan.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/extend-pay-loan.html"
+  },
+  {
+    "id": "u-s-bank-how-work-html",
+    "issuer": "U.S. Bank",
+    "cardName": "how work.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/how-credit-cards-work.html"
+  },
+  {
+    "id": "u-s-bank-insider-basics-html",
+    "issuer": "U.S. Bank",
+    "cardName": "insider basics.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/credit-card-basics.html"
+  },
+  {
+    "id": "u-s-bank-insider-building-html",
+    "issuer": "U.S. Bank",
+    "cardName": "insider building .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/building-credit.html"
+  },
+  {
+    "id": "u-s-bank-insider-managing-html",
+    "issuer": "U.S. Bank",
+    "cardName": "insider managing .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/managing-credit.html"
+  },
+  {
+    "id": "u-s-bank-insider-rewards-html",
+    "issuer": "U.S. Bank",
+    "cardName": "insider rewards.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/rewards.html"
+  },
+  {
+    "id": "u-s-bank-insider-html",
+    "issuer": "U.S. Bank",
+    "cardName": "insider.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider.html"
+  },
+  {
+    "id": "u-s-bank-managing-how-to-pay-off-debt-html",
+    "issuer": "U.S. Bank",
+    "cardName": "managing how to pay off debt.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/managing-credit/how-to-pay-off-credit-card-debt.html"
+  },
+  {
+    "id": "u-s-bank-managing-how-to-use-your-wisely-html",
+    "issuer": "U.S. Bank",
+    "cardName": "managing how to use your wisely.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/managing-credit/how-to-use-your-credit-card-wisely.html"
+  },
+  {
+    "id": "u-s-bank-managing-strategies-to-pay-off-debt-html",
+    "issuer": "U.S. Bank",
+    "cardName": "managing strategies to pay off debt.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/managing-credit/strategies-to-pay-off-credit-card-debt.html"
+  },
+  {
+    "id": "u-s-bank-managing-what-is-balance-transfer-html",
+    "issuer": "U.S. Bank",
+    "cardName": "managing what is balance transfer.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/managing-credit/what-is-balance-transfer.html"
+  },
+  {
+    "id": "u-s-bank-personal-banking-html",
+    "issuer": "U.S. Bank",
+    "cardName": "personal banking .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/customer-service/personal-banking/credit-cards.html"
+  },
+  {
+    "id": "u-s-bank-retrieve-offer-html",
+    "issuer": "U.S. Bank",
+    "cardName": "retrieve offer.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/retrieve-credit-card-offer.html"
+  },
+  {
+    "id": "u-s-bank-rewards-benefits-of-a-html",
+    "issuer": "U.S. Bank",
+    "cardName": "rewards benefits of a .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/rewards/benefits-of-a-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-rewards-buy-now-pay-later-html",
+    "issuer": "U.S. Bank",
+    "cardName": "rewards buy now pay later.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/rewards/buy-now-pay-later.html"
+  },
+  {
+    "id": "u-s-bank-rewards-how-to-choose-travel-html",
+    "issuer": "U.S. Bank",
+    "cardName": "rewards how to choose travel .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/rewards/how-to-choose-the-best-travel-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-rewards-how-to-get-cash-back-from-a-html",
+    "issuer": "U.S. Bank",
+    "cardName": "rewards how to get cash back from a .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/rewards/how-to-get-cash-back-from-a-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-rewards-how-to-maximize-rewards-html",
+    "issuer": "U.S. Bank",
+    "cardName": "rewards how to maximize rewards.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/rewards/how-to-maximize-credit-card-rewards.html"
+  },
+  {
+    "id": "u-s-bank-rewards-points-html",
+    "issuer": "U.S. Bank",
+    "cardName": "rewards points.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/rewards/credit-card-points.html"
+  },
+  {
+    "id": "u-s-bank-rewards-shop-game-day-party-html",
+    "issuer": "U.S. Bank",
+    "cardName": "rewards shop game day party.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/rewards/shop-game-day-party.html"
+  },
+  {
+    "id": "u-s-bank-rewards-using-for-travel-html",
+    "issuer": "U.S. Bank",
+    "cardName": "rewards using for travel.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/rewards/using-credit-cards-for-travel.html"
+  },
+  {
+    "id": "u-s-bank-rewards-using-holidays-maximize-rewards-html",
+    "issuer": "U.S. Bank",
+    "cardName": "rewards using holidays maximize rewards.html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/credit-card-insider/rewards/using-credit-card-holidays-maximize-rewards.html"
+  },
+  {
+    "id": "u-s-bank-secured-visa-html",
+    "issuer": "U.S. Bank",
+    "cardName": "secured visa .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/secured-visa-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-shield-visa-html",
+    "issuer": "U.S. Bank",
+    "cardName": "shield visa .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/shield-visa-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-shopper-cash-rewards-visa-signature-html",
+    "issuer": "U.S. Bank",
+    "cardName": "shopper cash rewards visa signature .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/shopper-cash-rewards-visa-signature-credit-card.html"
+  },
+  {
+    "id": "u-s-bank-split-world-mastercard-html",
+    "issuer": "U.S. Bank",
+    "cardName": "split world mastercard .html",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usbank.com/credit-cards/split-card-world-mastercard-credit-card.html"
+  },
+  {
+    "id": "unknown-6121059-millennials-arent-using-and-it-might-come-back-to-haunt",
+    "issuer": "Unknown",
+    "cardName": "6121059 millennials arent using and it might come back to haunt",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.vox.com/2014/9/8/6121059/millennials-arent-using-credit-cards-and-it-might-come-back-to-haunt"
+  },
+  {
+    "id": "usaa-banking-benefits",
+    "issuer": "USAA",
+    "cardName": "banking benefits",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usaa.com/banking/credit-cards-benefits"
+  },
+  {
+    "id": "usaa-banking-public",
+    "issuer": "USAA",
+    "cardName": "banking public",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usaa.com/banking/credit-cards-public"
+  },
+  {
+    "id": "usaa-build-secured-american-express",
+    "issuer": "USAA",
+    "cardName": "build secured american express",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usaa.com/banking/credit-cards-public/build-credit/secured-american-express"
+  },
+  {
+    "id": "usaa-build-secured-visa",
+    "issuer": "USAA",
+    "cardName": "build secured visa",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usaa.com/banking/credit-cards-public/build-credit/secured-visa"
+  },
+  {
+    "id": "usaa-cash-back-preferred-cash",
+    "issuer": "USAA",
+    "cardName": "cash back preferred cash",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usaa.com/banking/credit-cards-public/cash-back/preferred-cash"
+  },
+  {
+    "id": "usaa-cash-back-rewards-plus",
+    "issuer": "USAA",
+    "cardName": "cash back rewards plus",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usaa.com/banking/credit-cards-public/cash-back/rewards-plus"
+  },
+  {
+    "id": "usaa-low-interest-rate-advantage",
+    "issuer": "USAA",
+    "cardName": "low interest rate advantage",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usaa.com/banking/credit-cards-public/low-interest/rate-advantage"
+  },
+  {
+    "id": "usaa-rewards-american-express",
+    "issuer": "USAA",
+    "cardName": "rewards american express",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usaa.com/banking/credit-cards-public/rewards/american-express"
+  },
+  {
+    "id": "usaa-rewards-travel-eagle-navigator",
+    "issuer": "USAA",
+    "cardName": "rewards travel eagle navigator",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usaa.com/banking/credit-cards-public/rewards/travel-eagle-navigator"
+  },
+  {
+    "id": "usaa-rewards-visa-signature",
+    "issuer": "USAA",
+    "cardName": "rewards visa signature",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": null,
+    "cardUrl": "https://www.usaa.com/banking/credit-cards-public/rewards/visa-signature"
+  }
+]

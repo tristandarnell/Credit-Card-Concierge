@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "rewards:collect": "node scripts/collect-rewards.mjs",
+    "rewards:discover": "DISCOVERY_ONLY=1 node scripts/collect-rewards.mjs",
+    "rewards:sync": "node scripts/sync-rewards-to-supabase.mjs",
+    "rewards:collect-and-sync": "npm run rewards:collect && npm run rewards:sync"
   },
   "dependencies": {
     "next": "15.1.6",

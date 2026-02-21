@@ -1,0 +1,207 @@
+{
+  "linkSources": [
+    {
+      "name": "nerdwallet-best-personal",
+      "url": "https://www.nerdwallet.com/the-best-credit-cards",
+      "issuer": "Unknown",
+      "include": ["/review/", "/reviews/"],
+      "exclude": ["/best/", "/banking/", "/investing/", "/insurance/"]
+    },
+    {
+      "name": "nerdwallet-best-business",
+      "url": "https://www.nerdwallet.com/best/small-business/credit-cards",
+      "issuer": "Unknown",
+      "include": ["/review/", "/reviews/", "/small-business/"],
+      "exclude": ["/best/", "/banking/", "/investing/", "/insurance/"]
+    },
+    {
+      "name": "nerdwallet-crypto-cards",
+      "url": "https://www.nerdwallet.com/article/credit-cards/crypto-credit-cards",
+      "issuer": "Unknown",
+      "include": ["crypto", "bitcoin", "/review/"],
+      "exclude": ["/best/", "/banking/", "/investing/", "/insurance/"]
+    },
+    {
+      "name": "creditcards-reviews",
+      "url": "https://www.creditcards.com/reviews/",
+      "issuer": "Unknown",
+      "include": ["credit-card", "/reviews/"],
+      "exclude": ["/news/", "/education/"]
+    },
+    {
+      "name": "creditcards-business",
+      "url": "https://www.creditcards.com/business/",
+      "issuer": "Unknown",
+      "include": ["business", "credit-card", "/reviews/"],
+      "exclude": ["/news/", "/education/"]
+    },
+    {
+      "name": "bankrate-credit-cards",
+      "url": "https://www.bankrate.com/finance/credit-cards/",
+      "issuer": "Unknown",
+      "include": ["/credit-cards/reviews/"],
+      "exclude": ["/best/", "/compare/", "/zero-interest/", "/mortgages/", "/auto-loans/"]
+    },
+    {
+      "name": "bankrate-business-cards",
+      "url": "https://www.bankrate.com/finance/credit-cards/business/",
+      "issuer": "Unknown",
+      "include": ["/credit-cards/reviews/", "/business/"],
+      "exclude": ["/best/", "/compare/", "/zero-interest/", "/mortgages/", "/auto-loans/"]
+    },
+    {
+      "name": "forbes-advisor-cards",
+      "url": "https://www.forbes.com/advisor/credit-cards/",
+      "issuer": "Unknown",
+      "include": ["/advisor/credit-cards/reviews/"],
+      "exclude": ["/best-", "/compare/", "/mortgages/", "/loans/"]
+    },
+    {
+      "name": "forbes-advisor-business-cards",
+      "url": "https://www.forbes.com/advisor/business/credit-cards/",
+      "issuer": "Unknown",
+      "include": ["/advisor/business/credit-cards/reviews/"],
+      "exclude": ["/best-", "/compare/", "/mortgages/", "/loans/"]
+    }
+  ],
+  "sitemapSources": [
+    {
+      "name": "chase",
+      "url": "https://creditcards.chase.com/sitemap.xml",
+      "issuer": "Chase",
+      "include": ["credit-cards", "sapphire", "freedom", "business", "united", "marriott", "ihg", "southwest"]
+    },
+    {
+      "name": "amex",
+      "url": "https://www.americanexpress.com/us/sitemap.xml",
+      "issuer": "American Express",
+      "include": ["/us/credit-cards/", "/card/", "/business/"],
+      "exclude": ["/corporate"]
+    },
+    {
+      "name": "capital-one",
+      "url": "https://www.capitalone.com/sitemap.xml",
+      "issuer": "Capital One",
+      "include": ["/credit-cards/", "/small-business/"]
+    },
+    {
+      "name": "citi",
+      "url": "https://www.citi.com/sitemap.xml",
+      "issuer": "Citi",
+      "include": ["/credit-cards/", "business"]
+    },
+    {
+      "name": "discover",
+      "url": "https://www.discover.com/sitemap.xml",
+      "issuer": "Discover",
+      "include": ["/credit-cards/"],
+      "exclude": ["/student-loans/"]
+    },
+    {
+      "name": "wells-fargo",
+      "url": "https://www.wellsfargo.com/sitemap.xml",
+      "issuer": "Wells Fargo",
+      "include": ["credit-card", "creditcards", "business-credit"]
+    },
+    {
+      "name": "us-bank",
+      "url": "https://www.usbank.com/sitemap.xml",
+      "issuer": "U.S. Bank",
+      "include": ["/credit-cards", "business-credit-card"]
+    },
+    {
+      "name": "bank-of-america",
+      "url": "https://www.bankofamerica.com/sitemap.xml",
+      "issuer": "Bank of America",
+      "include": ["/credit-cards/", "/smallbusiness/credit-cards/"]
+    },
+    {
+      "name": "barclays-us",
+      "url": "https://cards.barclaycardus.com/sitemap.xml",
+      "issuer": "Barclays",
+      "include": ["/cards/", "credit-card", "business"]
+    },
+    {
+      "name": "sofi",
+      "url": "https://www.sofi.com/sitemap_index.xml",
+      "issuer": "SoFi",
+      "include": ["credit-card", "small-business", "business-credit"]
+    },
+    {
+      "name": "fnbo",
+      "url": "https://www.fnbo.com/sitemap.xml",
+      "issuer": "FNBO",
+      "include": ["credit-cards", "business", "visa", "mastercard"]
+    },
+    {
+      "name": "penfed",
+      "url": "https://www.penfed.org/sitemap.xml",
+      "issuer": "PenFed",
+      "include": ["credit-cards", "visa", "business"]
+    },
+    {
+      "name": "navy-federal",
+      "url": "https://www.navyfederal.org/sitemap.xml",
+      "issuer": "Navy Federal",
+      "include": ["credit-cards", "business"]
+    },
+    {
+      "name": "usaa",
+      "url": "https://www.usaa.com/sitemap.xml",
+      "issuer": "USAA",
+      "include": ["credit-card", "business"]
+    },
+    {
+      "name": "credit-one",
+      "url": "https://www.creditonebank.com/sitemap.xml",
+      "issuer": "Credit One",
+      "include": ["credit-cards", "business"]
+    },
+    {
+      "name": "petal",
+      "url": "https://www.petalcard.com/sitemap.xml",
+      "issuer": "Petal",
+      "include": ["card", "credit"]
+    },
+    {
+      "name": "upgrade",
+      "url": "https://www.upgrade.com/sitemap.xml",
+      "issuer": "Upgrade",
+      "include": ["credit-cards", "bitcoin", "business"]
+    },
+    {
+      "name": "gemini",
+      "url": "https://www.gemini.com/sitemap.xml",
+      "issuer": "Gemini",
+      "include": ["credit-card", "crypto", "bitcoin"]
+    },
+    {
+      "name": "nerdwallet",
+      "url": "https://www.nerdwallet.com/sitemap.xml",
+      "issuer": "Unknown",
+      "include": ["/review/", "/reviews/", "credit-card-review", "/small-business/"],
+      "exclude": ["/best/", "/banking/", "/investing/", "/insurance/"]
+    },
+    {
+      "name": "creditcards-com",
+      "url": "https://www.creditcards.com/sitemap.xml",
+      "issuer": "Unknown",
+      "include": ["/reviews/"],
+      "exclude": ["/best-", "/compare/", "/news/", "/education/"]
+    },
+    {
+      "name": "bankrate",
+      "url": "https://www.bankrate.com/sitemap.xml",
+      "issuer": "Unknown",
+      "include": ["/credit-cards/reviews/"],
+      "exclude": ["/best/", "/compare/", "/zero-interest/", "/balance-transfer/"]
+    },
+    {
+      "name": "forbes-advisor",
+      "url": "https://www.forbes.com/advisor/sitemap_index.xml",
+      "issuer": "Unknown",
+      "include": ["/advisor/credit-cards/reviews/", "/advisor/business/credit-cards/reviews/"],
+      "exclude": ["/best-", "/compare/"]
+    }
+  ]
+}

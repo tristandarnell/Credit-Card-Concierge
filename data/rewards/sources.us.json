@@ -1,0 +1,758 @@
+[
+  {
+    "id": "chase-sapphire-preferred",
+    "issuer": "Chase",
+    "cardName": "Sapphire Preferred",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 1,
+    "cardUrl": "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred"
+  },
+  {
+    "id": "amex-gold",
+    "issuer": "American Express",
+    "cardName": "American Express Gold Card",
+    "network": "Amex",
+    "cardSegment": "personal",
+    "popularityRank": 2,
+    "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/gold-card/"
+  },
+  {
+    "id": "capital-one-venture-x",
+    "issuer": "Capital One",
+    "cardName": "Venture X",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 3,
+    "cardUrl": "https://www.capitalone.com/credit-cards/venture-x/"
+  },
+  {
+    "id": "citi-double-cash",
+    "issuer": "Citi",
+    "cardName": "Double Cash",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 4,
+    "cardUrl": "https://www.citi.com/credit-cards/citi-double-cash-credit-card"
+  },
+  {
+    "id": "chase-freedom-unlimited",
+    "issuer": "Chase",
+    "cardName": "Freedom Unlimited",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 5,
+    "cardUrl": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited"
+  },
+  {
+    "id": "discover-it-cash-back",
+    "issuer": "Discover",
+    "cardName": "Discover it Cash Back",
+    "network": "Discover",
+    "cardSegment": "personal",
+    "popularityRank": 6,
+    "cardUrl": "https://www.discover.com/credit-cards/cash-back/it-card.html"
+  },
+  {
+    "id": "chase-freedom-flex",
+    "issuer": "Chase",
+    "cardName": "Freedom Flex",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 7,
+    "cardUrl": "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex"
+  },
+  {
+    "id": "capital-one-savor",
+    "issuer": "Capital One",
+    "cardName": "Savor",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 8,
+    "cardUrl": "https://www.capitalone.com/credit-cards/savor/"
+  },
+  {
+    "id": "amex-blue-cash-preferred",
+    "issuer": "American Express",
+    "cardName": "Blue Cash Preferred Card",
+    "network": "Amex",
+    "cardSegment": "personal",
+    "popularityRank": 9,
+    "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-preferred/"
+  },
+  {
+    "id": "citi-custom-cash",
+    "issuer": "Citi",
+    "cardName": "Custom Cash",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 10,
+    "cardUrl": "https://www.citi.com/credit-cards/citi-custom-cash-credit-card"
+  },
+  {
+    "id": "wf-active-cash",
+    "issuer": "Wells Fargo",
+    "cardName": "Active Cash Card",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 11,
+    "cardUrl": "https://creditcards.wellsfargo.com/active-cash-credit-card/"
+  },
+  {
+    "id": "chase-sapphire-reserve",
+    "issuer": "Chase",
+    "cardName": "Sapphire Reserve",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 12,
+    "cardUrl": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve"
+  },
+  {
+    "id": "amex-platinum",
+    "issuer": "American Express",
+    "cardName": "The Platinum Card from American Express",
+    "network": "Amex",
+    "cardSegment": "personal",
+    "popularityRank": 13,
+    "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/platinum/"
+  },
+  {
+    "id": "capital-one-quicksilver",
+    "issuer": "Capital One",
+    "cardName": "Quicksilver",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 14,
+    "cardUrl": "https://www.capitalone.com/credit-cards/quicksilver/"
+  },
+  {
+    "id": "boa-customized-cash",
+    "issuer": "Bank of America",
+    "cardName": "Customized Cash Rewards",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 15,
+    "cardUrl": "https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/"
+  },
+  {
+    "id": "wf-autograph",
+    "issuer": "Wells Fargo",
+    "cardName": "Autograph Card",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 16,
+    "cardUrl": "https://creditcards.wellsfargo.com/autograph-visa-credit-card/"
+  },
+  {
+    "id": "citi-strata-premier",
+    "issuer": "Citi",
+    "cardName": "Strata Premier",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 17,
+    "cardUrl": "https://www.citi.com/credit-cards/citi-strata-premier-credit-card"
+  },
+  {
+    "id": "discover-it-miles",
+    "issuer": "Discover",
+    "cardName": "Discover it Miles",
+    "network": "Discover",
+    "cardSegment": "personal",
+    "popularityRank": 18,
+    "cardUrl": "https://www.discover.com/credit-cards/travel/it-miles.html"
+  },
+  {
+    "id": "boa-premium-rewards",
+    "issuer": "Bank of America",
+    "cardName": "Premium Rewards",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 19,
+    "cardUrl": "https://www.bankofamerica.com/credit-cards/products/premium-rewards-credit-card/"
+  },
+  {
+    "id": "usbank-altitude-go",
+    "issuer": "U.S. Bank",
+    "cardName": "Altitude Go",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 20,
+    "cardUrl": "https://www.usbank.com/credit-cards/altitude-go-visa-signature-credit-card.html"
+  },
+  {
+    "id": "usbank-altitude-reserve",
+    "issuer": "U.S. Bank",
+    "cardName": "Altitude Reserve",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 21,
+    "cardUrl": "https://www.usbank.com/credit-cards/altitude-reserve-visa-infinite-credit-card.html"
+  },
+  {
+    "id": "barclays-jetblue-plus",
+    "issuer": "Barclays",
+    "cardName": "JetBlue Plus Card",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 22,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/jetblue-plus-card/"
+  },
+  {
+    "id": "barclays-hawaiian",
+    "issuer": "Barclays",
+    "cardName": "Hawaiian Airlines Mastercard",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 23,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/hawaiian-airlines-world-elite-mastercard/"
+  },
+  {
+    "id": "robinhood-gold-card",
+    "issuer": "Robinhood",
+    "cardName": "Robinhood Gold Card",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 24,
+    "cardUrl": "https://robinhood.com/us/en/gold/card/"
+  },
+  {
+    "id": "bilt-mastercard",
+    "issuer": "Bilt",
+    "cardName": "Bilt Mastercard",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 25,
+    "cardUrl": "https://www.biltrewards.com/card"
+  },
+  {
+    "id": "amazon-prime-visa",
+    "issuer": "Amazon",
+    "cardName": "Prime Visa",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 26,
+    "cardUrl": "https://www.amazon.com/Prime-Visa/dp/B08KHYB2T9"
+  },
+  {
+    "id": "amazon-visa",
+    "issuer": "Amazon",
+    "cardName": "Amazon Visa",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 27,
+    "cardUrl": "https://www.amazon.com/Amazon-Visa/dp/B007URFTYI"
+  },
+  {
+    "id": "amazon-store-card",
+    "issuer": "Amazon",
+    "cardName": "Amazon Store Card",
+    "network": null,
+    "cardSegment": "personal",
+    "popularityRank": 28,
+    "cardUrl": "https://www.amazon.com/cp/storecard"
+  },
+  {
+    "id": "apple-card",
+    "issuer": "Apple",
+    "cardName": "Apple Card",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 29,
+    "cardUrl": "https://www.apple.com/apple-card/"
+  },
+  {
+    "id": "sofi-credit-card",
+    "issuer": "SoFi",
+    "cardName": "SoFi Credit Card",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 30,
+    "cardUrl": "https://www.sofi.com/credit-card/"
+  },
+  {
+    "id": "gemini-credit-card",
+    "issuer": "Gemini",
+    "cardName": "Gemini Credit Card",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 31,
+    "cardUrl": "https://www.gemini.com/credit-card"
+  },
+  {
+    "id": "venmo-credit-card",
+    "issuer": "Venmo",
+    "cardName": "Venmo Credit Card",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 32,
+    "cardUrl": "https://venmo.com/about/creditcard/"
+  },
+  {
+    "id": "paypal-cashback-mastercard",
+    "issuer": "PayPal",
+    "cardName": "PayPal Cashback Mastercard",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 33,
+    "cardUrl": "https://www.paypal.com/us/digital-wallet/manage-money/paypal-cashback-mastercard"
+  },
+  {
+    "id": "fidelity-rewards-visa",
+    "issuer": "Fidelity",
+    "cardName": "Fidelity Rewards Visa Signature",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 34,
+    "cardUrl": "https://www.fidelity.com/go/visa-signature-rewards-1502"
+  },
+  {
+    "id": "penfed-power-cash",
+    "issuer": "PenFed",
+    "cardName": "Power Cash Rewards Visa Signature",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 35,
+    "cardUrl": "https://www.penfed.org/credit-cards/power-cash-rewards"
+  },
+  {
+    "id": "penfed-pathfinder",
+    "issuer": "PenFed",
+    "cardName": "Pathfinder Rewards Visa Signature",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 36,
+    "cardUrl": "https://www.penfed.org/credit-cards/pathfinder-rewards"
+  },
+  {
+    "id": "navy-federal-more-rewards",
+    "issuer": "Navy Federal",
+    "cardName": "More Rewards American Express Card",
+    "network": "Amex",
+    "cardSegment": "personal",
+    "popularityRank": 37,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/more-rewards.html"
+  },
+  {
+    "id": "navy-federal-flagship",
+    "issuer": "Navy Federal",
+    "cardName": "Visa Signature Flagship Rewards",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 38,
+    "cardUrl": "https://www.navyfederal.org/loans-cards/credit-cards/flagship-visa-signature.html"
+  },
+  {
+    "id": "fnbo-evergreen",
+    "issuer": "FNBO",
+    "cardName": "Evergreen by FNBO",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 39,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/evergreen/"
+  },
+  {
+    "id": "fnbo-getaway",
+    "issuer": "FNBO",
+    "cardName": "Getaway by FNBO",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 40,
+    "cardUrl": "https://www.fnbo.com/personal-banking/credit-cards/getaway/"
+  },
+  {
+    "id": "usaa-preferred-cash-rewards",
+    "issuer": "USAA",
+    "cardName": "Preferred Cash Rewards Visa Signature",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 41,
+    "cardUrl": "https://www.usaa.com/inet/wc/bank-credit-card-preferred-cash-rewards-visa-signature"
+  },
+  {
+    "id": "usaa-cashback-rewards-plus",
+    "issuer": "USAA",
+    "cardName": "Cashback Rewards Plus American Express",
+    "network": "Amex",
+    "cardSegment": "personal",
+    "popularityRank": 42,
+    "cardUrl": "https://www.usaa.com/inet/wc/bank-credit-card-cashback-rewards-plus-american-express"
+  },
+  {
+    "id": "credit-one-wander",
+    "issuer": "Credit One",
+    "cardName": "Wander Card",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 43,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/wander-card"
+  },
+  {
+    "id": "credit-one-x5",
+    "issuer": "Credit One",
+    "cardName": "X5 Card",
+    "network": "Amex",
+    "cardSegment": "personal",
+    "popularityRank": 44,
+    "cardUrl": "https://www.creditonebank.com/credit-cards/x5-card"
+  },
+  {
+    "id": "petal-2",
+    "issuer": "Petal",
+    "cardName": "Petal 2 Visa Credit Card",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 45,
+    "cardUrl": "https://www.petalcard.com/petal-2"
+  },
+  {
+    "id": "petal-1",
+    "issuer": "Petal",
+    "cardName": "Petal 1 Rise Visa Credit Card",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 46,
+    "cardUrl": "https://www.petalcard.com/petal-1"
+  },
+  {
+    "id": "upgrade-triple-cash",
+    "issuer": "Upgrade",
+    "cardName": "Upgrade Triple Cash Rewards Visa",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 47,
+    "cardUrl": "https://www.upgrade.com/credit-cards/triple-cash-rewards/"
+  },
+  {
+    "id": "upgrade-bitcoin-rewards",
+    "issuer": "Upgrade",
+    "cardName": "Upgrade Bitcoin Rewards Visa",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 48,
+    "cardUrl": "https://www.upgrade.com/credit-cards/bitcoin-rewards/"
+  },
+  {
+    "id": "mission-lane-visa",
+    "issuer": "Mission Lane",
+    "cardName": "Mission Lane Visa Credit Card",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 49,
+    "cardUrl": "https://www.missionlane.com/cards/visa-credit-card"
+  },
+  {
+    "id": "bread-rewards-amex",
+    "issuer": "Bread Financial",
+    "cardName": "Bread Rewards American Express Credit Card",
+    "network": "Amex",
+    "cardSegment": "personal",
+    "popularityRank": 50,
+    "cardUrl": "https://www.breadfinancial.com/en/credit-cards/bread-rewards-american-express-credit-card.html"
+  },
+  {
+    "id": "chase-marriott-boundless",
+    "issuer": "Chase",
+    "cardName": "Marriott Bonvoy Boundless",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 51,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/marriott-boundless"
+  },
+  {
+    "id": "chase-ihg-premier",
+    "issuer": "Chase",
+    "cardName": "IHG One Rewards Premier",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 52,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/ihg/premier"
+  },
+  {
+    "id": "chase-united-explorer",
+    "issuer": "Chase",
+    "cardName": "United Explorer Card",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 53,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/united/united-explorer"
+  },
+  {
+    "id": "chase-southwest-priority",
+    "issuer": "Chase",
+    "cardName": "Southwest Rapid Rewards Priority",
+    "network": "Visa",
+    "cardSegment": "personal",
+    "popularityRank": 54,
+    "cardUrl": "https://creditcards.chase.com/travel-credit-cards/southwest/priority"
+  },
+  {
+    "id": "citi-aa-platinum-select",
+    "issuer": "Citi",
+    "cardName": "AAdvantage Platinum Select",
+    "network": "Mastercard",
+    "cardSegment": "personal",
+    "popularityRank": 55,
+    "cardUrl": "https://www.citi.com/credit-cards/aadvantage-platinum-select-credit-card"
+  },
+  {
+    "id": "amex-delta-gold",
+    "issuer": "American Express",
+    "cardName": "Delta SkyMiles Gold American Express Card",
+    "network": "Amex",
+    "cardSegment": "personal",
+    "popularityRank": 56,
+    "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/"
+  },
+  {
+    "id": "amex-hilton-surpass",
+    "issuer": "American Express",
+    "cardName": "Hilton Honors American Express Surpass Card",
+    "network": "Amex",
+    "cardSegment": "personal",
+    "popularityRank": 57,
+    "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-surpass/"
+  },
+  {
+    "id": "chase-ink-business-preferred",
+    "issuer": "Chase",
+    "cardName": "Ink Business Preferred",
+    "network": "Visa",
+    "cardSegment": "business",
+    "popularityRank": 101,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/ink/business-preferred"
+  },
+  {
+    "id": "chase-ink-business-cash",
+    "issuer": "Chase",
+    "cardName": "Ink Business Cash",
+    "network": "Visa",
+    "cardSegment": "business",
+    "popularityRank": 102,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/ink/business-cash"
+  },
+  {
+    "id": "chase-ink-business-unlimited",
+    "issuer": "Chase",
+    "cardName": "Ink Business Unlimited",
+    "network": "Visa",
+    "cardSegment": "business",
+    "popularityRank": 103,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/ink/business-unlimited"
+  },
+  {
+    "id": "amex-business-gold",
+    "issuer": "American Express",
+    "cardName": "American Express Business Gold Card",
+    "network": "Amex",
+    "cardSegment": "business",
+    "popularityRank": 104,
+    "cardUrl": "https://www.americanexpress.com/us/credit-cards/business/business-gold-card/"
+  },
+  {
+    "id": "amex-business-platinum",
+    "issuer": "American Express",
+    "cardName": "Business Platinum Card",
+    "network": "Amex",
+    "cardSegment": "business",
+    "popularityRank": 105,
+    "cardUrl": "https://www.americanexpress.com/us/credit-cards/business/business-platinum-card/"
+  },
+  {
+    "id": "amex-blue-business-plus",
+    "issuer": "American Express",
+    "cardName": "Blue Business Plus",
+    "network": "Amex",
+    "cardSegment": "business",
+    "popularityRank": 106,
+    "cardUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/blue-business-plus-credit-card/"
+  },
+  {
+    "id": "capital-one-spark-cash-plus",
+    "issuer": "Capital One",
+    "cardName": "Spark Cash Plus",
+    "network": "Mastercard",
+    "cardSegment": "business",
+    "popularityRank": 107,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/spark-cash-plus/"
+  },
+  {
+    "id": "capital-one-spark-miles",
+    "issuer": "Capital One",
+    "cardName": "Spark Miles for Business",
+    "network": "Mastercard",
+    "cardSegment": "business",
+    "popularityRank": 108,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/spark-miles/"
+  },
+  {
+    "id": "citi-aa-business",
+    "issuer": "Citi",
+    "cardName": "AAdvantage Business World Elite Mastercard",
+    "network": "Mastercard",
+    "cardSegment": "business",
+    "popularityRank": 109,
+    "cardUrl": "https://www.citi.com/credit-cards/citi-aadvantage-business-world-elite-mastercard-credit-card"
+  },
+  {
+    "id": "boa-business-advantage-customized-cash",
+    "issuer": "Bank of America",
+    "cardName": "Business Advantage Customized Cash Rewards",
+    "network": "Mastercard",
+    "cardSegment": "business",
+    "popularityRank": 110,
+    "cardUrl": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/business-advantage-cash-rewards-mastercard-credit-card/"
+  },
+  {
+    "id": "boa-business-advantage-travel",
+    "issuer": "Bank of America",
+    "cardName": "Business Advantage Travel Rewards",
+    "network": "Visa",
+    "cardSegment": "business",
+    "popularityRank": 111,
+    "cardUrl": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/business-advantage-travel-rewards-world-mastercard-credit-card/"
+  },
+  {
+    "id": "wf-signify-business-cash",
+    "issuer": "Wells Fargo",
+    "cardName": "Signify Business Cash",
+    "network": "Visa",
+    "cardSegment": "business",
+    "popularityRank": 112,
+    "cardUrl": "https://creditcards.wellsfargo.com/signify-business-cash-credit-card/"
+  },
+  {
+    "id": "wf-autograph-journey-business",
+    "issuer": "Wells Fargo",
+    "cardName": "Autograph Journey Business",
+    "network": "Visa",
+    "cardSegment": "business",
+    "popularityRank": 113,
+    "cardUrl": "https://creditcards.wellsfargo.com/autograph-journey-business-credit-card/"
+  },
+  {
+    "id": "usbank-business-triple-cash",
+    "issuer": "U.S. Bank",
+    "cardName": "Business Triple Cash Rewards",
+    "network": "Visa",
+    "cardSegment": "business",
+    "popularityRank": 114,
+    "cardUrl": "https://www.usbank.com/business-banking/business-credit-cards/business-triple-cash-rewards-visa-credit-card.html"
+  },
+  {
+    "id": "usbank-business-leverage",
+    "issuer": "U.S. Bank",
+    "cardName": "Business Leverage Visa Signature",
+    "network": "Visa",
+    "cardSegment": "business",
+    "popularityRank": 115,
+    "cardUrl": "https://www.usbank.com/business-banking/business-credit-cards/business-leverage-visa-signature-credit-card.html"
+  },
+  {
+    "id": "barclays-jetblue-business",
+    "issuer": "Barclays",
+    "cardName": "JetBlue Business Card",
+    "network": "Mastercard",
+    "cardSegment": "business",
+    "popularityRank": 116,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/jetblue-business-card/"
+  },
+  {
+    "id": "barclays-aa-aviator-business",
+    "issuer": "Barclays",
+    "cardName": "AAdvantage Aviator Business Mastercard",
+    "network": "Mastercard",
+    "cardSegment": "business",
+    "popularityRank": 117,
+    "cardUrl": "https://cards.barclaycardus.com/banking/cards/aadvantage-aviator-business-mastercard/"
+  },
+  {
+    "id": "amazon-business-prime-amex",
+    "issuer": "American Express",
+    "cardName": "Amazon Business Prime American Express Card",
+    "network": "Amex",
+    "cardSegment": "business",
+    "popularityRank": 118,
+    "cardUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/amazon-business-prime-card/"
+  },
+  {
+    "id": "amazon-business-amex",
+    "issuer": "American Express",
+    "cardName": "Amazon Business American Express Card",
+    "network": "Amex",
+    "cardSegment": "business",
+    "popularityRank": 119,
+    "cardUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/amazon-business-card/"
+  },
+  {
+    "id": "amex-delta-gold-business",
+    "issuer": "American Express",
+    "cardName": "Delta SkyMiles Gold Business American Express Card",
+    "network": "Amex",
+    "cardSegment": "business",
+    "popularityRank": 120,
+    "cardUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/delta-skymiles-gold-business-card/"
+  },
+  {
+    "id": "amex-hilton-business",
+    "issuer": "American Express",
+    "cardName": "Hilton Honors American Express Business Card",
+    "network": "Amex",
+    "cardSegment": "business",
+    "popularityRank": 121,
+    "cardUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/hilton-honors-business-card/"
+  },
+  {
+    "id": "amex-marriott-business",
+    "issuer": "American Express",
+    "cardName": "Marriott Bonvoy Business American Express Card",
+    "network": "Amex",
+    "cardSegment": "business",
+    "popularityRank": 122,
+    "cardUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/marriott-bonvoy-business-credit-card/"
+  },
+  {
+    "id": "chase-ink-premier",
+    "issuer": "Chase",
+    "cardName": "Ink Business Premier",
+    "network": "Mastercard",
+    "cardSegment": "business",
+    "popularityRank": 123,
+    "cardUrl": "https://creditcards.chase.com/business-credit-cards/ink/premier"
+  },
+  {
+    "id": "capital-one-spark-cash-select",
+    "issuer": "Capital One",
+    "cardName": "Spark Cash Select",
+    "network": "Mastercard",
+    "cardSegment": "business",
+    "popularityRank": 124,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/spark-cash-select/"
+  },
+  {
+    "id": "capital-one-spark-1point5-cash",
+    "issuer": "Capital One",
+    "cardName": "Spark 1.5% Cash Select",
+    "network": "Mastercard",
+    "cardSegment": "business",
+    "popularityRank": 125,
+    "cardUrl": "https://www.capitalone.com/small-business/credit-cards/spark-cash/"
+  },
+  {
+    "id": "usbank-business-altitude-connect",
+    "issuer": "U.S. Bank",
+    "cardName": "Business Altitude Connect Visa Signature",
+    "network": "Visa",
+    "cardSegment": "business",
+    "popularityRank": 126,
+    "cardUrl": "https://www.usbank.com/business-banking/business-credit-cards/business-altitude-connect-visa-signature-card.html"
+  },
+  {
+    "id": "fnbo-business-edition",
+    "issuer": "FNBO",
+    "cardName": "Business Edition Secured Mastercard",
+    "network": "Mastercard",
+    "cardSegment": "business",
+    "popularityRank": 127,
+    "cardUrl": "https://www.fnbo.com/small-business/credit-cards/business-edition-secured-mastercard/"
+  }
+]
