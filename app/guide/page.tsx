@@ -46,11 +46,12 @@ const riskControls = [
 ];
 
 const resources = [
-  { label: "r/churning Wiki Index", href: "https://www.reddit.com/r/churning/wiki/index/" },
-  { label: "Anti-Churning Rules", href: "https://www.reddit.com/r/churning/wiki/index/#wiki_anti-churning_rules" },
-  { label: "Acronyms & Glossary", href: "https://www.reddit.com/r/churning/wiki/glossary" },
-  { label: "Credit Score Basics", href: "https://www.reddit.com/r/churning/wiki/credit_score" },
-  { label: "Flowchart", href: "https://m16p-churning.s3.us-east-2.amazonaws.com/Card+Recommendation+Flowchart+Latest.html" }
+  { label: "r/churning Wiki Index", href: "https://www.reddit.com/r/churning/wiki/index/", description: "The most comprehensive community guide to card churning strategy" },
+  { label: "Anti-Churning Rules by Issuer", href: "https://www.reddit.com/r/churning/wiki/index/#wiki_anti-churning_rules", description: "Chase 5/24, Amex once-per-lifetime, and other issuer-specific limits" },
+  { label: "Acronyms & Glossary", href: "https://www.reddit.com/r/churning/wiki/glossary", description: "SUB, MSR, MDD, PC — defined with context" },
+  { label: "The Points Guy Card Comparisons", href: "https://thepointsguy.com/credit-cards/", description: "Valuations, reviews, and side-by-side comparisons of top rewards cards" },
+  { label: "NerdWallet Credit Card Finder", href: "https://www.nerdwallet.com/credit-cards", description: "Unbiased card comparisons with editorial ratings" },
+  { label: "Card Recommendation Flowchart", href: "https://m16p-churning.s3.us-east-2.amazonaws.com/Card+Recommendation+Flowchart+Latest.html", description: "Community decision tree for sequencing card applications" }
 ];
 
 export default function GuidePage() {
@@ -156,9 +157,12 @@ export default function GuidePage() {
         <SectionHeading title="Primary Resources" subtitle="Use these for current rules, definitions, and strategy updates." />
         <div className="resource-list">
           {resources.map((resource) => (
-            <a key={resource.href} href={resource.href} target="_blank" rel="noreferrer" className="resource-item">
-              <span>{resource.label}</span>
-              <span className="resource-arrow">Open</span>
+            <a key={resource.href} href={resource.href} target="_blank" rel="noreferrer noopener" className="resource-item">
+              <div>
+                <span style={{ display: "block", fontWeight: 700 }}>{resource.label}</span>
+                <span style={{ display: "block", fontSize: "0.83rem", fontWeight: 400, color: "var(--text-muted)", marginTop: "0.15rem" }}>{resource.description}</span>
+              </div>
+              <span className="resource-arrow">Open &rarr;</span>
             </a>
           ))}
         </div>

@@ -10,16 +10,20 @@
     "rewards:collect": "node scripts/collect-rewards.mjs",
     "rewards:discover": "DISCOVERY_ONLY=1 node scripts/collect-rewards.mjs",
     "rewards:sync": "node scripts/sync-rewards-to-supabase.mjs",
-    "rewards:collect-and-sync": "npm run rewards:collect && npm run rewards:sync"
+    "rewards:collect-and-sync": "npm run rewards:collect && npm run rewards:sync",
     "test:normalize": "npx tsx scripts/test-normalize.ts",
-    "generate:statement": "npx tsx scripts/generate-synthetic-statement.ts"
+    "generate:statement": "npx tsx scripts/generate-synthetic-statement.ts",
+    "train:classifier": "python ml/train.py",
+    "train:classifier:sample": "python ml/train.py --sample 50000",
+    "predict": "python ml/predict.py",
+    "test:classifier": "python ml/test_classifier.py"
   },
   "dependencies": {
     "@faker-js/faker": "^10.3.0",
     "natural": "^8.1.0",
     "next": "15.1.6",
+    "pdf-parse": "^1.1.4",
     "pdfkit": "^0.17.2",
-    "pdf-parse": "^1.1.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "string-similarity": "^4.0.4"
