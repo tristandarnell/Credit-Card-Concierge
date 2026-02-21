@@ -109,6 +109,61 @@ a {
   width: 100%;
 }
 
+/* ── Full-width hero ────────────────────────────────────── */
+.hero-full {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/hero-bg.png');
+  background-size: cover;
+  background-position: center 40%;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(247, 248, 250, 0.97) 0%,
+    rgba(247, 248, 250, 0.92) 38%,
+    rgba(247, 248, 250, 0.55) 65%,
+    rgba(247, 248, 250, 0.1) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+  padding: 3.5rem 0;
+  max-width: 560px;
+}
+
+/* Keep card/panel/metric/cta shared styles */
+.card,
+.panel,
+.metric,
+.cta-block {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Legacy hero kept for backward compat if used elsewhere */
 .hero {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -117,11 +172,7 @@ a {
 }
 
 .hero > div,
-.hero-panel,
-.card,
-.panel,
-.metric,
-.cta-block {
+.hero-panel {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -236,6 +287,8 @@ h3 {
 
 .card-grid.two {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .card {
@@ -294,7 +347,7 @@ h3 {
 }
 
 .panel {
-  padding: 1.2rem;
+  padding: 1rem;
 }
 
 .guide-intro p {
@@ -525,6 +578,59 @@ select {
   color: var(--text-muted);
 }
 
+/* ── Outcome section ────────────────────────────────────── */
+.outcome-section {
+  text-align: center;
+}
+
+.outcome-section .section-heading {
+  text-align: center;
+}
+
+.outcome-list {
+  list-style: none;
+  margin: 1.5rem auto 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+  max-width: 560px;
+}
+
+.outcome-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.outcome-value {
+  color: var(--brand-dark);
+  font-size: 1.05rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.outcome-label {
+  color: var(--text);
+}
+
+/* ── Light secondary button (for use on hero overlay) ──── */
+.btn-secondary-light {
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--text);
+  border: 1px solid rgba(0,0,0,0.12);
+  backdrop-filter: blur(4px);
+}
+
+.btn-secondary-light:hover {
+  background: rgba(255, 255, 255, 0.97);
+}
+
 .site-footer {
   border-top: 1px solid var(--line);
   background: var(--surface);
@@ -564,6 +670,10 @@ select {
   .grid-form {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .hero-full {
+    min-height: 360px;
+  }
 }
 
 @media (max-width: 680px) {
@@ -592,5 +702,22 @@ select {
   .panel,
   .cta-block {
     padding: 1rem;
+  }
+
+  .hero-full {
+    min-height: 300px;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      to right,
+      rgba(247, 248, 250, 0.97) 0%,
+      rgba(247, 248, 250, 0.9) 60%,
+      rgba(247, 248, 250, 0.6) 100%
+    );
+  }
+
+  .hero-content {
+    padding: 2.5rem 0;
   }
 }

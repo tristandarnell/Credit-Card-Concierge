@@ -26,11 +26,22 @@ const features = [
   "Portfolio view for multi-card households"
 ];
 
+const outcomes = [
+  { value: "+$1,040", label: "estimated yearly reward uplift" },
+  { value: "18%", label: "fee waste reduction" },
+  { value: "1 click", label: "purchase card recommendation flow" },
+  { value: "3 min", label: "average setup time" },
+  { value: "12+", label: "major banks supported" }
+];
+
 export default function HomePage() {
   return (
     <>
-      <section className="hero">
-        <div>
+      {/* Full-width hero with background image */}
+      <section className="hero-full">
+        <div className="hero-bg" aria-hidden="true" />
+        <div className="hero-overlay" aria-hidden="true" />
+        <div className="hero-content">
           <p className="eyebrow">Credit Strategy Platform</p>
           <h1>Turn raw statements into a smart card strategy.</h1>
           <p className="hero-copy">
@@ -41,31 +52,24 @@ export default function HomePage() {
             <Link className="btn btn-primary" href="/upload">
               Upload Statements
             </Link>
-            <Link className="btn btn-secondary" href="/recommendations">
+            <Link className="btn btn-secondary-light" href="/recommendations">
               View Sample Recommendations
             </Link>
           </div>
         </div>
-        <aside className="hero-panel">
-          <h2>Typical customer outcome</h2>
-          <ul>
-            <li>
-              <span>+$1,040</span> estimated yearly reward uplift
+      </section>
+
+      {/* Typical customer outcome — centered, full width */}
+      <section className="section outcome-section">
+        <SectionHeading title="Typical customer outcome" />
+        <ul className="outcome-list">
+          {outcomes.map((item) => (
+            <li className="outcome-item" key={item.label}>
+              <span className="outcome-value">{item.value}</span>
+              <span className="outcome-label">{item.label}</span>
             </li>
-            <li>
-              <span>18%</span> fee waste reduction
-            </li>
-            <li>
-              <span>1 click</span> purchase card recommendation flow
-            </li>
-            <li>
-              <span>3 min</span> average setup time
-            </li>
-            <li>
-              <span>12+</span> major banks supported
-            </li>
-          </ul>
-        </aside>
+          ))}
+        </ul>
       </section>
 
       <section className="section">
