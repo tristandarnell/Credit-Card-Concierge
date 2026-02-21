@@ -1,8 +1,23 @@
 import { PurchaseAdvisor } from "@/components/purchase-advisor";
 import { SectionHeading } from "@/components/section-heading";
-import { purchaseExamples } from "@/lib/mock-data";
+import type { StandardCategory } from "@/lib/rewards/categories";
+import { CATEGORY_LABELS, formatDollars, getBestCardForPurchase } from "@/lib/rewards/scoring";
+import { getCleanRewardCards } from "@/lib/rewards/data";
 
-export default function OptimizerPage() {
+const samplePurchases: Array<{ merchant: string; category: StandardCategory; amount: number }> = [
+  { merchant: "Whole Foods", category: "groceries", amount: 142.51 },
+  { merchant: "United Airlines", category: "airfare", amount: 418.22 },
+  { merchant: "Uber", category: "transit", amount: 26.8 },
+  { merchant: "Local Cafe", category: "dining", amount: 19.75 }
+];
+
+export default async function OptimizerPage() {
+  const cards = await getCleanRewardCards(500);
+  const purchaseRows = samplePurchases.map((item) => ({
+    ...item,
+    recommendation: getBestCardForPurchase(cards, item.category, item.amount)
+  }));
+
   return (
     <section className="section section-tight">
       <SectionHeading
@@ -10,7 +25,7 @@ export default function OptimizerPage() {
         subtitle="Recommend the best card for each transaction and feed the result into checkout autofill workflows."
       />
 
-      <PurchaseAdvisor />
+      <PurchaseAdvisor cards={cards} />
 
       <div className="table-wrap">
         <table>
@@ -24,13 +39,13 @@ export default function OptimizerPage() {
             </tr>
           </thead>
           <tbody>
-            {purchaseExamples.map((item) => (
+            {purchaseRows.map((item) => (
               <tr key={`${item.merchant}-${item.amount}`}>
                 <td>{item.merchant}</td>
-                <td>{item.category}</td>
+                <td>{CATEGORY_LABELS[item.category]}</td>
                 <td>${item.amount.toFixed(2)}</td>
-                <td>{item.card}</td>
-                <td>{item.rewards}</td>
+                <td>{item.recommendation?.cardName ?? "No match"}</td>
+                <td>{item.recommendation ? formatDollars(item.recommendation.estimatedRewardValue) : "-"}</td>
               </tr>
             ))}
           </tbody>

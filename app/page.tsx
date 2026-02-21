@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
+import { getCleanRewardCards } from "@/lib/rewards/data";
 
 const steps = [
   {
@@ -26,7 +27,11 @@ const features = [
   "Portfolio view for multi-card households"
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const cards = await getCleanRewardCards(1000);
+  const issuerCount = new Set(cards.map((card) => card.issuer)).size;
+  const highConfidenceCount = cards.filter((card) => card.confidenceScore >= 0.7).length;
+
   return (
     <>
       <section className="hero">
@@ -47,16 +52,16 @@ export default function HomePage() {
           </div>
         </div>
         <aside className="hero-panel">
-          <h2>Typical customer outcome</h2>
+          <h2>Current dataset snapshot</h2>
           <ul>
             <li>
-              <span>+$1,040</span> estimated yearly reward uplift
+              <span>{cards.length}</span> clean card records
             </li>
             <li>
-              <span>18%</span> fee waste reduction
+              <span>{issuerCount}</span> issuers represented
             </li>
             <li>
-              <span>1 click</span> purchase card recommendation flow
+              <span>{highConfidenceCount}</span> high-confidence cards
             </li>
           </ul>
         </aside>

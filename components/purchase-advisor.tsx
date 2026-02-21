@@ -1,45 +1,32 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import { STANDARD_CATEGORIES, type StandardCategory } from "@/lib/rewards/categories";
+import type { CardRewardRecord } from "@/lib/rewards/types";
+import { CATEGORY_LABELS, formatDollars, getBestCardForPurchase } from "@/lib/rewards/scoring";
 
-type Category = "Dining" | "Groceries" | "Travel" | "Transit" | "General";
-
-type Rule = {
-  card: string;
-  rewards: string;
-  categories: Category[];
+type PurchaseAdvisorProps = {
+  cards: CardRewardRecord[];
 };
 
-const rules: Rule[] = [
-  { card: "Amex Gold", rewards: "4x points", categories: ["Dining", "Groceries"] },
-  { card: "Chase Sapphire Preferred", rewards: "2x points", categories: ["Travel"] },
-  { card: "Capital One Venture X", rewards: "2x miles", categories: ["Transit", "General"] }
-];
+const SELECTABLE_CATEGORIES = STANDARD_CATEGORIES.filter((category) => category !== "all_other");
 
-export function PurchaseAdvisor() {
+export function PurchaseAdvisor({ cards }: PurchaseAdvisorProps) {
   const [merchant, setMerchant] = useState("Airbnb");
   const [amount, setAmount] = useState("285.00");
-  const [category, setCategory] = useState<Category>("Travel");
+  const [category, setCategory] = useState<StandardCategory>("travel");
   const [submitted, setSubmitted] = useState(false);
 
   const recommendation = useMemo(() => {
-    const match = rules.find((rule) => rule.categories.includes(category));
-    if (!match) {
-      return { card: "Capital One Venture X", rewards: "2x miles", estValue: "$5.70" };
+    const purchaseAmount = Number(amount) || 0;
+    if (purchaseAmount <= 0 || cards.length === 0) {
+      return null;
     }
 
-    const numericAmount = Number(amount) || 0;
-    const multiplier = Number(match.rewards.charAt(0)) || 2;
-    const points = numericAmount * multiplier;
-    const centsPerPoint = 0.015;
-    const value = (points * centsPerPoint) / 100;
+    return getBestCardForPurchase(cards, category, purchaseAmount);
+  }, [amount, cards, category]);
 
-    return {
-      card: match.card,
-      rewards: match.rewards,
-      estValue: `$${value.toFixed(2)}`
-    };
-  }, [amount, category]);
+  const recommendationValue = recommendation ? formatDollars(recommendation.estimatedRewardValue) : "$0";
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -70,28 +57,39 @@ export function PurchaseAdvisor() {
         </label>
         <label>
           Category
-          <select value={category} onChange={(event) => setCategory(event.target.value as Category)}>
-            <option>Dining</option>
-            <option>Groceries</option>
-            <option>Travel</option>
-            <option>Transit</option>
-            <option>General</option>
+          <select value={category} onChange={(event) => setCategory(event.target.value as StandardCategory)}>
+            {SELECTABLE_CATEGORIES.map((item) => (
+              <option key={item} value={item}>
+                {CATEGORY_LABELS[item]}
+              </option>
+            ))}
           </select>
         </label>
-        <button type="submit" className="btn btn-primary">Calculate Best Card</button>
+        <button type="submit" className="btn btn-primary">
+          Calculate Best Card
+        </button>
       </form>
 
       {submitted ? (
         <div className="result-card" aria-live="polite">
           <p className="result-label">Recommended card for this purchase</p>
-          <h3>{recommendation.card}</h3>
-          <p>
-            {merchant} ({category}) should use <strong>{recommendation.card}</strong> for <strong>{recommendation.rewards}</strong>.
-          </p>
-          <p className="result-value">Estimated reward value: {recommendation.estValue}</p>
+          {recommendation ? (
+            <>
+              <h3>{recommendation.cardName}</h3>
+              <p>
+                {merchant} ({CATEGORY_LABELS[category]}) should use <strong>{recommendation.cardName}</strong> from{" "}
+                <strong>{recommendation.issuer}</strong> for <strong>{recommendation.matchedRule.rateText}</strong>.
+              </p>
+              <p className="result-value">Estimated reward value: {recommendationValue}</p>
+            </>
+          ) : (
+            <p>No eligible reward rule found for this purchase category yet.</p>
+          )}
         </div>
       ) : (
-        <p className="muted">Run a purchase to preview how autofill recommendations will work in your checkout flow.</p>
+        <p className="muted">
+          Run a purchase to preview recommendation behavior from live card reward rules.
+        </p>
       )}
     </div>
   );

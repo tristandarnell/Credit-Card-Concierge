@@ -18,6 +18,12 @@ This folder stores scraped and normalized reward data for major US credit cards.
 npm run rewards:collect
 ```
 
+Target specific issuers/cards during fetch (comma-separated substring filter):
+
+```bash
+FETCH_SOURCE_FILTER="amex,bank of america,wells fargo" ENABLE_DISCOVERY=0 npm run rewards:collect
+```
+
 Optional raw HTML snapshotting:
 
 ```bash
@@ -87,6 +93,12 @@ export SUPABASE_REWARDS_TABLE="credit_card_rewards"
 
 ```bash
 npm run rewards:sync
+```
+
+To sync every row from `cards.us.json` (including lower-confidence rows), disable sync filtering:
+
+```bash
+SYNC_ONLY_HIGH_QUALITY=0 npm run rewards:sync
 ```
 
 Or run collect + sync:
