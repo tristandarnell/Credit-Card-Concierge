@@ -3,17 +3,17 @@ import { STANDARD_CATEGORIES, type StandardCategory } from "@/lib/rewards/catego
 import { getCleanRewardCards } from "@/lib/rewards/data";
 import { CATEGORY_LABELS, bestRuleAcrossCard, bestRuleForCategory } from "@/lib/rewards/scoring";
 
-type CardsPageProps = {
-  searchParams?: Record<string, string | string[] | undefined> | Promise<Record<string, string | string[] | undefined>>;
-};
-
 function readParam(params: Record<string, string | string[] | undefined> | undefined, key: string): string {
   const value = params?.[key];
   return Array.isArray(value) ? value[0] ?? "" : value ?? "";
 }
 
-export default async function CardsPage({ searchParams }: CardsPageProps) {
-  const params = searchParams ? await Promise.resolve(searchParams) : undefined;
+export default async function CardsPage({
+  searchParams
+}: {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const params = (await searchParams) ?? undefined;
   const cards = await getCleanRewardCards(2000);
   const searchTerm = readParam(params, "q").trim().toLowerCase();
   const issuer = readParam(params, "issuer").trim();
