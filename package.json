@@ -10,7 +10,7 @@
     "rewards:collect": "node scripts/collect-rewards.mjs",
     "rewards:discover": "DISCOVERY_ONLY=1 node scripts/collect-rewards.mjs",
     "rewards:sync": "node scripts/sync-rewards-to-supabase.mjs",
-    "rewards:collect-and-sync": "npm run rewards:collect && npm run rewards:sync"
+    "rewards:collect-and-sync": "npm run rewards:collect && npm run rewards:sync",
     "test:normalize": "npx tsx scripts/test-normalize.ts",
     "generate:statement": "npx tsx scripts/generate-synthetic-statement.ts"
   },
