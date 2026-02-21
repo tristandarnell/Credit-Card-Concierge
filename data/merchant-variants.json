@@ -1,0 +1,18 @@
+{
+  "_comment": "Extend this map to add merchant variants. Format: \"canonical_name\": [\"variant1\", \"variant2\"]. Load at startup via setMerchantVariants() or loadMerchantVariantsFromUrl().",
+  "dominos": ["dominos", "dominos pizza", "domino"],
+  "pizza_hut": ["pizza hut", "pizza hut delivery"],
+  "dunkin": ["dunkin", "dunkin donuts", "dunkin coffee"],
+  "panera": ["panera", "panera bread"],
+  "home_depot": ["home depot", "the home depot"],
+  "lowes": ["lowes", "lowes home improvement"],
+  "best_buy": ["best buy", "bestbuy"],
+  "cvs": ["cvs", "cvs pharmacy", "cvs caremark"],
+  "walgreens": ["walgreens", "walgreens pharmacy"],
+  "safeway": ["safeway", "safeway inc"],
+  "kroger": ["kroger", "kings supers", "ralphs", "fred meyer"],
+  "sprouts": ["sprouts", "sprouts farmers market"],
+  "shell": ["shell", "shell oil", "shell gasoline"],
+  "exxon": ["exxon", "exxonmobil", "exxon mobil"],
+  "chevron": ["chevron", "chevron texaco", "chevron gasoline"]
+}
