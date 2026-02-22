@@ -3,7 +3,7 @@
      display (Arvo ≈ Archer): headings, hero, brand moments
      inter: all UI body, labels, nav, buttons
      mono (IBM Plex Mono): all numerical data */
-  --font-display-stack: var(--font-display, "Georgia"), "Times New Roman", serif;
+  --font-display-stack: var(--font-noto-serif, "Noto Serif"), Georgia, serif;
   --background: #f5f6f8;
   --surface: #ffffff;
   --surface-raised: #f0f2f6;
@@ -36,7 +36,7 @@ body {
   padding: 0;
   background: var(--background);
   color: var(--text);
-  font-family: var(--font-inter, -apple-system), BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-poppins, "Poppins"), -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.55;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
@@ -210,11 +210,11 @@ a {
 
 .page-title {
   font-family: var(--font-display-stack);
-  font-size: 1.4rem;
-  font-weight: 400;
+  font-size: 2.2rem;
+  font-weight: 700;
   color: var(--text);
   margin: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .page-subtitle {
@@ -226,25 +226,27 @@ a {
 
 /* ── Section heading ── */
 .section-heading {
-  margin-bottom: 1rem;
-  padding-bottom: 0.65rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid var(--line);
 }
 
 .section-heading h2,
 .section-heading .section-title {
-  font-size: 0.75rem;
+  font-family: var(--font-noto-serif, "Noto Serif"), Georgia, serif;
+  font-size: 2rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: -0.015em;
+  color: var(--text);
   margin: 0;
 }
 
 .section-heading p {
-  margin: 0.3rem 0 0;
-  font-size: 0.83rem;
-  color: var(--text-muted);
+  margin: 0.4rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 /* ── Sections ── */
@@ -268,28 +270,28 @@ a {
 
 h1 {
   font-family: var(--font-display-stack);
-  font-size: 1.85rem;
+  font-size: 2.4rem;
   font-weight: 700;
   color: var(--text);
   margin: 0.5rem 0 0.75rem;
-  line-height: 1.18;
-  letter-spacing: -0.015em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 h2 {
   font-family: var(--font-display-stack);
-  font-size: 1.25rem;
-  font-weight: 400;  /* Archer "Book" — warm, editorial, not heavy */
+  font-size: 1.6rem;
+  font-weight: 600;
   color: var(--text);
   margin: 0;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
 }
 
 h3 {
   font-family: var(--font-display-stack);
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--text);
   margin: 0;
   line-height: 1.3;
@@ -323,7 +325,7 @@ p {
 /* Money amounts: clean geometric sans-serif, tabular figures, tight tracking */
 .money,
 td.money {
-  font-family: var(--font-inter, -apple-system), BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-poppins, "Poppins"), -apple-system, BlinkMacSystemFont, sans-serif;
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
   letter-spacing: -0.03em;
@@ -1539,46 +1541,332 @@ select:focus {
 }
 
 /* ── Guide page ── */
-.guide-intro p {
-  margin: 0;
-  color: var(--text-secondary);
+.guide-page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 0 4rem;
 }
 
-.guide-intro p + p {
-  margin-top: 0.65rem;
+.guide-hero {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2.5rem;
+}
+
+.guide-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.75rem;
+}
+
+.guide-title {
+  font-family: var(--font-noto-serif, "Noto Serif"), Georgia, serif;
+  font-size: 2.6rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  margin: 0 0 1rem;
+  line-height: 1.15;
+}
+
+.guide-lead {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 58ch;
+  margin: 0;
+}
+
+.guide-intro-block {
+  margin-bottom: 2.5rem;
+}
+
+.guide-intro-block p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin: 0 0 0.85rem;
+}
+
+.guide-intro-block p:last-child {
+  margin-bottom: 0;
+}
+
+.guide-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.guide-checklist-block h2 {
+  margin: 0 0 1rem;
 }
 
 .guide-section {
-  margin-top: 0;
+  margin-bottom: 3rem;
 }
 
-.resource-list {
-  display: grid;
-  gap: 1px;
-  background: var(--line);
+.guide-section-title {
+  font-family: var(--font-noto-serif, "Noto Serif"), Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  margin: 0 0 0.3rem;
+}
+
+.guide-section-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0 0 1.5rem;
+  font-weight: 400;
+}
+
+.guide-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.guide-list li {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.guide-list li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.guide-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
 }
 
-.resource-item {
+.guide-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.guide-step:last-child {
+  border-bottom: none;
+}
+
+.guide-step-num {
+  font-family: var(--font-noto-serif, "Noto Serif"), Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--line);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 2.2rem;
+}
+
+.guide-step-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 0.3rem;
+}
+
+.guide-step-detail {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.guide-table-wrap {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.guide-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.guide-table thead th {
+  background: var(--text);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.7rem 1rem;
+  text-align: left;
+}
+
+.guide-table tbody tr:nth-child(even) {
+  background: var(--surface-raised);
+}
+
+.guide-table td {
+  padding: 0.85rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--line);
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.guide-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.guide-table td:first-child {
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.guide-issuer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.guide-issuer-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  align-items: baseline;
+}
+
+.guide-issuer-row:last-child {
+  border-bottom: none;
+}
+
+.guide-issuer-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.guide-issuer-rule {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.guide-resources {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.guide-resource-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--line);
   background: var(--surface);
-  padding: 0.85rem 1rem;
+  text-decoration: none;
+  transition: background 0.1s;
 }
 
-.resource-item:hover {
+.guide-resource-row:last-child {
+  border-bottom: none;
+}
+
+.guide-resource-row:hover {
   background: var(--surface-raised);
 }
 
-.resource-arrow {
+.guide-resource-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.guide-resource-desc {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.guide-resource-arrow {
+  font-size: 1rem;
   color: var(--accent);
-  font-size: 0.78rem;
-  font-weight: 700;
-  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.guide-cta {
+  margin-top: 1rem;
+  padding: 2.5rem;
+  background: var(--text);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.guide-cta h2 {
+  font-family: var(--font-noto-serif, "Noto Serif"), Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+.guide-cta p {
+  font-size: 0.9rem;
+  color: #9aaac2;
+  margin: 0 0 1.5rem;
+  line-height: 1.65;
+}
+
+.guide-cta-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .guide-two-col {
+    grid-template-columns: 1fr;
+  }
+  .guide-issuer-row {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
 }
 
 /* ── Responsive ── */
@@ -1806,11 +2094,12 @@ select:focus {
 }
 
 .brand-line1 {
-  font-family: var(--font-display-stack);
-  font-size: 0.88rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-family: var(--font-cormorant, "Cormorant Garamond"), Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
   color: var(--text);
+  text-transform: uppercase;
 }
 
 .brand-line2 {
@@ -1819,6 +2108,16 @@ select:focus {
   font-weight: 400;
   letter-spacing: 0.12em;
   color: var(--text-secondary);
+}
+
+.brand-tagline {
+  font-family: var(--font-poppins, "Poppins"), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-top: 0.05rem;
 }
 
 .main-nav-links {
@@ -1833,8 +2132,10 @@ select:focus {
   display: flex;
   align-items: center;
   padding: 0 1.1rem;
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-family: var(--font-poppins, "Poppins"), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   color: var(--text-secondary);
   text-decoration: none;
   border-bottom: 3px solid transparent;
@@ -2015,12 +2316,12 @@ select:focus {
 
 .home-hero-h1 {
   font-family: var(--font-display-stack);
-  font-size: 2.6rem;
-  font-weight: 400;
+  font-size: 3.4rem;
+  font-weight: 700;
   color: #fff;
   margin: 0 0 0.85rem;
-  line-height: 1.18;
-  letter-spacing: -0.01em;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
 }
 
 .home-hero-h1 em {
@@ -2180,13 +2481,13 @@ select:focus {
 }
 
 .home-rec-value {
-  font-family: var(--font-inter, -apple-system), BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-poppins, "Poppins"), -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 300;
   color: #1a2b5b;
   margin: 0.3rem 0 0.15rem;
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
 }

@@ -104,7 +104,7 @@ export default async function HomePage() {
         Choose the card that works for <em>you</em>
       </h1>
       <p className="home-hero-sub">
-        Personalized to your $2,400/month spend profile · {cards.length} cards analyzed
+        {cards.length} cards analyzed
       </p>
     </div>
     <div className="home-hero-photo" aria-hidden="true">
@@ -208,7 +208,7 @@ export default async function HomePage() {
           <div className="disclosure-block">
             <p className="disclosure-heading">Advertiser Disclosure</p>
             <p className="disclosure-body">
-              CreditCard Concierge is an independent, advertising-supported comparison service. We may
+              Concierge is an independent, advertising-supported comparison service. We may
               receive compensation when you click on links to products from our partners. This compensation
               does not influence our editorial rankings or recommendations, which are determined solely by
               our analysis of reward rates, fees, and spending-profile fit.

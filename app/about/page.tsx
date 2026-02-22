@@ -4,7 +4,7 @@ const founders = [
   {
     name: "Kambi Kanu",
     role: "Co-Founder",
-    bio: "Passionate about making financial optimization accessible to everyone. Kambi leads product strategy and user experience, ensuring CreditCard Concierge delivers genuine value to every user.",
+    bio: "Passionate about making financial optimization accessible to everyone. Kambi leads product strategy and user experience, ensuring Concierge delivers genuine value to every user.",
     initials: "KK",
     accent: "#1A3A6B",
   },
@@ -37,7 +37,7 @@ export default function AboutPage() {
       {/* ─── Page Header ─── */}
       <div className="page-header">
         <p className="eyebrow">Our Story</p>
-        <h1>About CreditCard Concierge</h1>
+        <h1>About Concierge</h1>
         <p className="page-subtitle">
           Built by four friends who were frustrated that choosing a credit card required a spreadsheet, a Reddit deep-dive, and a finance degree.
         </p>
@@ -52,7 +52,7 @@ export default function AboutPage() {
           </h2>
           <p style={{ maxWidth: "72ch", lineHeight: 1.7, fontSize: "0.92rem" }}>
             Most people leave hundreds of dollars in rewards on the table every year — not because they don&apos;t care, but because the information
-            is scattered, biased by affiliate incentives, and impossible to personalize. CreditCard Concierge analyzes your actual spending
+            is scattered, biased by affiliate incentives, and impossible to personalize. Concierge analyzes your actual spending
             behavior and matches you to the card that maximizes your real-world value. No guesswork, no generic lists, no hidden agendas.
           </p>
         </div>
@@ -171,7 +171,7 @@ export default function AboutPage() {
             Built With
           </p>
           <p style={{ color: "#8a9ab8", fontSize: "0.88rem", lineHeight: 1.7, maxWidth: "68ch" }}>
-            CreditCard Concierge was built using Next.js, Supabase, and TypeScript. Our rewards analysis engine
+            Concierge was built using Next.js, Supabase, and TypeScript. Our rewards analysis engine
             was developed with assistance from <strong style={{ color: "#a8c4e0" }}>Claude by Anthropic</strong> — an AI assistant
             that helped us reason through edge cases in rewards logic, draft documentation, and accelerate development.
             We believe in being transparent about the tools that helped us build this product.

@@ -5,21 +5,22 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { href: "/", label: "Overview" },
+  { href: "/", label: "Home" },
+  { href: "/login", label: "Account" },
+  { href: "/recommendations", label: "Cards" },
   { href: "/optimizer", label: "Optimization" },
   { href: "/wallet", label: "My Wallet" },
   { href: "/upload", label: "Transactions" },
   { href: "/extension", label: "Extension" },
-  { href: "/guide", label: "Insights" },
-  { href: "/login", label: "Account" },
+  { href: "/guide", label: "Guide" },
   { href: "/about", label: "About Us" },
 ];
 
-function CardIcon() {
+function BellIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
-      <line x1="1" y1="10" x2="23" y2="10" />
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+      <path d="M13.73 21a2 2 0 0 1-3.46 0" />
     </svg>
   );
 }
@@ -36,11 +37,11 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="main-nav">
         <div className="main-nav-inner">
-          <Link href="/" className="brand-logo" aria-label="CreditCard Concierge Home">
-            <CardIcon />
+          <Link href="/" className="brand-logo" aria-label="Concierge Home">
+            <BellIcon />
             <span className="brand-wordmark">
-              <span className="brand-line1">CREDITCARD</span>
-              <span className="brand-line2">CONCIERGE</span>
+              <span className="brand-line1">CONCIERGE</span>
+              <span className="brand-tagline">Credit Card Intelligence Platform</span>
             </span>
           </Link>
 
@@ -97,11 +98,6 @@ export function SiteHeader() {
         onClick={() => setMenuOpen(false)}
       />
 
-      <div className="breadcrumb-bar">
-        <div className="breadcrumb-inner">
-          <span className="breadcrumb-text">Credit Card Intelligence Platform</span>
-        </div>
-      </div>
     </header>
   );
 }
