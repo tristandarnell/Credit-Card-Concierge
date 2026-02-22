@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-02-21T23:58:35.914Z",
+  "source": "local-json",
+  "totalRecords": 63,
+  "recordsWithIssues": 1,
+  "issuesByType": {
+    "baseline_repeated_by_category": 1
+  },
+  "cardsNeedingManualReview": [
+    {
+      "id": "capital-one-capital-one-quicksilver-student",
+      "issuer": "Capital One",
+      "cardName": "capital one quicksilver student",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/capital-one-quicksilver-student",
+      "issues": [
+        "baseline_repeated_by_category"
+      ],
+      "unknownCategoryValues": [],
+      "normalizedRuleCount": 12,
+      "dedupedRuleCount": 12,
+      "manualActions": [
+        "Move baseline earn rate to all_other"
+      ]
+    }
+  ]
+}

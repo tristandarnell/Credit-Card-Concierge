@@ -9,6 +9,7 @@
     "lint": "next lint",
     "rewards:collect": "node scripts/collect-rewards.mjs",
     "rewards:discover": "DISCOVERY_ONLY=1 node scripts/collect-rewards.mjs",
+    "rewards:audit": "node scripts/audit-rewards-data.mjs",
     "rewards:sync": "node scripts/sync-rewards-to-supabase.mjs",
     "rewards:collect-and-sync": "npm run rewards:collect && npm run rewards:sync",
     "test:normalize": "npx tsx scripts/test-normalize.ts",

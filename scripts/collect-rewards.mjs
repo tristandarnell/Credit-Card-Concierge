@@ -33,12 +33,19 @@ const RETRY_JITTER_MS = Number(process.env.RETRY_JITTER_MS ?? 350);
 const MIN_CONFIDENCE_SCORE = Number(process.env.MIN_CONFIDENCE_SCORE ?? 0.4);
 const OUTPUT_REQUIRE_REWARD_RULES = process.env.OUTPUT_REQUIRE_REWARD_RULES !== "0";
 const ALLOW_AGGREGATOR_SOURCES = process.env.ALLOW_AGGREGATOR_SOURCES === "1";
+const NERDWALLET_ONLY = process.env.NERDWALLET_ONLY === "1";
 const DISCOVERY_ONLY = process.env.DISCOVERY_ONLY === "1";
-const ENABLE_DISCOVERY = process.env.ENABLE_DISCOVERY !== "0";
+const ENABLE_DISCOVERY = process.env.ENABLE_DISCOVERY === "1";
 const ENABLE_SITEMAP_DISCOVERY = process.env.ENABLE_SITEMAP_DISCOVERY !== "0";
 const DISCOVERY_SOURCE_FILTER = (process.env.DISCOVERY_SOURCE_FILTER ?? "").toLowerCase().trim();
 const FETCH_SOURCE_FILTER = (process.env.FETCH_SOURCE_FILTER ?? "").toLowerCase().trim();
 const TARGET_BUSINESS_SHARE = Number(process.env.TARGET_BUSINESS_SHARE ?? 0.3);
+const NERDWALLET_CRAWL_MAX_PAGES = Number(process.env.NERDWALLET_CRAWL_MAX_PAGES ?? 250);
+const NERDWALLET_CRAWL_DEPTH = Number(process.env.NERDWALLET_CRAWL_DEPTH ?? 3);
+const NERDWALLET_EXTRA_SEEDS = (process.env.NERDWALLET_EXTRA_SEEDS ?? "")
+  .split(",")
+  .map((value) => value.trim())
+  .filter(Boolean);
 
 const CATEGORY_ALIASES = {
   dining: ["dining", "restaurant", "restaurants", "food delivery", "takeout"],
@@ -138,10 +145,54 @@ const DOMAIN_ISSUER_HINTS = {
   "missionlane.com": "Mission Lane"
 };
 
+const ISSUER_TEXT_HINTS = [
+  ["american express", "American Express"],
+  ["amex", "American Express"],
+  ["chase", "Chase"],
+  ["capital one", "Capital One"],
+  ["citi", "Citi"],
+  ["discover", "Discover"],
+  ["wells fargo", "Wells Fargo"],
+  ["bank of america", "Bank of America"],
+  ["u.s. bank", "U.S. Bank"],
+  ["us bank", "U.S. Bank"],
+  ["barclays", "Barclays"],
+  ["navy federal", "Navy Federal"],
+  ["penfed", "PenFed"],
+  ["usaa", "USAA"],
+  ["credit one", "Credit One"],
+  ["fnbo", "FNBO"],
+  ["sofi", "SoFi"],
+  ["apple card", "Apple"],
+  ["amazon", "Amazon"],
+  ["paypal", "PayPal"],
+  ["venmo", "Venmo"],
+  ["bilt", "Bilt"],
+  ["robinhood", "Robinhood"]
+];
+
 const DEFAULT_DISCOVERY_CONFIG = {
   linkSources: [],
   sitemapSources: []
 };
+
+const NERDWALLET_SEED_URLS = [
+  "https://www.nerdwallet.com/credit-cards",
+  "https://www.nerdwallet.com/the-best-credit-cards",
+  "https://www.nerdwallet.com/best/credit-cards",
+  "https://www.nerdwallet.com/best/small-business/credit-cards",
+  "https://www.nerdwallet.com/business/credit-cards/best",
+  "https://www.nerdwallet.com/credit-cards/best",
+  "https://www.nerdwallet.com/credit-cards/best/cash-back",
+  "https://www.nerdwallet.com/credit-cards/best/rewards",
+  "https://www.nerdwallet.com/credit-cards/best/travel",
+  "https://www.nerdwallet.com/credit-cards/best/gas",
+  "https://www.nerdwallet.com/credit-cards/best/college-student",
+  "https://www.nerdwallet.com/credit-cards/best/zero-percent",
+  "https://www.nerdwallet.com/credit-cards/best/balance-transfer",
+  "https://www.nerdwallet.com/credit-cards/compare",
+  "https://www.nerdwallet.com/best/credit-cards/airline"
+];
 
 const hostThrottleState = new Map();
 
@@ -283,6 +334,17 @@ function normalizeWhitespace(text) {
   return text.replace(/\s+/g, " ").trim();
 }
 
+function decodeHtmlEntities(text) {
+  return String(text ?? "")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/&mdash;/gi, "-")
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCharCode(Number.parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, value) => String.fromCharCode(Number.parseInt(value, 10)));
+}
+
 function stripHtml(html) {
   return normalizeWhitespace(
     html
@@ -316,6 +378,63 @@ function getHostname(url) {
     return new URL(url).hostname.toLowerCase().replace(/^www\./, "");
   } catch {
     return "";
+  }
+}
+
+function isNerdwalletUrl(url) {
+  const hostname = getHostname(url);
+  return hostname === "nerdwallet.com" || hostname.endsWith(".nerdwallet.com");
+}
+
+function canonicalCrawlUrl(url) {
+  try {
+    const parsed = new URL(url);
+    parsed.hash = "";
+    parsed.search = "";
+    if (parsed.pathname !== "/") {
+      parsed.pathname = parsed.pathname.replace(/\/+$/, "");
+    }
+    return parsed.toString();
+  } catch {
+    return normalizeUrl(url);
+  }
+}
+
+function isNerdwalletReviewUrl(url) {
+  try {
+    const pathname = new URL(url).pathname.toLowerCase();
+    return /\/credit-cards\/reviews?\//i.test(pathname);
+  } catch {
+    return false;
+  }
+}
+
+function shouldCrawlNerdwalletPage(url) {
+  if (!isNerdwalletUrl(url)) {
+    return false;
+  }
+
+  try {
+    const pathname = new URL(url).pathname.toLowerCase();
+    if (!pathname || pathname === "/") {
+      return false;
+    }
+
+    if (NON_CARD_PATH_REGEX.test(pathname)) {
+      return false;
+    }
+
+    if (
+      /\/(credit-cards(?:\/|$)|the-best-credit-cards(?:\/|$)|best\/(?:small-business\/)?credit-cards(?:\/|$)|business\/credit-cards(?:\/|$)|small-business\/credit-cards(?:\/|$)|article\/credit-cards(?:\/|$))/i.test(
+        pathname
+      )
+    ) {
+      return true;
+    }
+
+    return false;
+  } catch {
+    return false;
   }
 }
 
@@ -559,16 +678,33 @@ function dedupeRules(rules) {
   const unique = new Map();
 
   for (const rule of rules) {
-    const key = `${rule.category}|${rule.unit}|${rule.rateValue}|${rule.capText ?? ""}`;
+    const key = `${rule.category}|${rule.unit}|${rule.rateValue}`;
     const existing = unique.get(key);
 
-    if (!existing || rule.rateText.length > existing.rateText.length) {
+    if (!existing) {
       unique.set(key, rule);
+      continue;
     }
+
+    const betterText = rule.rateText.length > existing.rateText.length ? rule.rateText : existing.rateText;
+    const betterCap = existing.capText ?? rule.capText;
+    const betterNotes = existing.notes ?? rule.notes;
+
+    unique.set(key, {
+      ...existing,
+      rateText: betterText,
+      capText: betterCap,
+      notes: betterNotes
+    });
   }
 
+  const normalized = [...unique.values()].map((rule) => ({
+    ...rule,
+    rateText: normalizeWhitespace(rule.rateText)
+  }));
+
   const groupedCounts = new Map();
-  return [...unique.values()]
+  return normalized
     .sort((a, b) => a.category.localeCompare(b.category) || (b.rateValue ?? 0) - (a.rateValue ?? 0))
     .filter((rule) => {
       const count = groupedCounts.get(rule.category) ?? 0;
@@ -579,6 +715,56 @@ function dedupeRules(rules) {
       groupedCounts.set(rule.category, count + 1);
       return true;
     });
+}
+
+function categoriesNearRate(sentence, rateStart, rateEnd) {
+  const left = Math.max(0, rateStart - 120);
+  const right = Math.min(sentence.length, rateEnd + 120);
+  const local = sentence.slice(left, right).toLowerCase();
+  return categoriesInText(local);
+}
+
+function hasAllOtherLanguage(text) {
+  return /(everything else|all purchases|all other purchases|all eligible purchases)/i.test(text);
+}
+
+function lowestRateValue(rates) {
+  const values = rates.map((rate) => rate.rateValue).filter((value) => typeof value === "number");
+  if (values.length === 0) {
+    return null;
+  }
+  return Math.min(...values);
+}
+
+function assignCategoriesForRate({ sentenceLower, sentenceCategories, rate, rates }) {
+  const localCategories = categoriesNearRate(
+    sentenceLower,
+    rate.index ?? 0,
+    (rate.index ?? 0) + String(rate.rateText ?? "").length
+  );
+  let categories = localCategories.length > 0 ? localCategories : sentenceCategories;
+
+  if (categories.length === 0) {
+    return [];
+  }
+
+  const hasAllOther = hasAllOtherLanguage(sentenceLower);
+  const lowestRate = lowestRateValue(rates);
+  const isLowestRate = typeof lowestRate === "number" && rate.rateValue === lowestRate;
+
+  if (hasAllOther && rates.length > 1) {
+    if (isLowestRate) {
+      return ["all_other"];
+    }
+
+    categories = categories.filter((category) => category !== "all_other");
+  }
+
+  if (categories.length === 0 && !isLowestRate && hasAllOther) {
+    categories = ["all_other"];
+  }
+
+  return [...new Set(categories)];
 }
 
 function extractRewardRules(text) {
@@ -595,8 +781,8 @@ function extractRewardRules(text) {
       continue;
     }
 
-    const categories = categoriesInText(lower);
-    if (categories.length === 0) {
+    const sentenceCategories = categoriesInText(lower);
+    if (sentenceCategories.length === 0) {
       continue;
     }
 
@@ -607,8 +793,18 @@ function extractRewardRules(text) {
 
     const capText = extractCap(sentence);
 
-    for (const category of categories) {
-      for (const rate of rates) {
+    for (const rate of rates) {
+      const categories = assignCategoriesForRate({
+        sentenceLower: lower,
+        sentenceCategories,
+        rate,
+        rates
+      });
+      if (categories.length === 0) {
+        continue;
+      }
+
+      for (const category of categories) {
         rules.push({
           category,
           rateText: rate.rateText,
@@ -622,6 +818,303 @@ function extractRewardRules(text) {
   }
 
   return dedupeRules(rules);
+}
+
+function readJsonArrayFrom(text, fromIndex) {
+  const start = text.indexOf("[", fromIndex);
+  if (start < 0) {
+    return null;
+  }
+
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+
+  for (let index = start; index < text.length; index += 1) {
+    const char = text[index];
+
+    if (inString) {
+      if (escaped) {
+        escaped = false;
+        continue;
+      }
+
+      if (char === "\\") {
+        escaped = true;
+        continue;
+      }
+
+      if (char === '"') {
+        inString = false;
+      }
+
+      continue;
+    }
+
+    if (char === '"') {
+      inString = true;
+      continue;
+    }
+
+    if (char === "[") {
+      depth += 1;
+      continue;
+    }
+
+    if (char === "]") {
+      depth -= 1;
+      if (depth === 0) {
+        return text.slice(start, index + 1);
+      }
+    }
+  }
+
+  return null;
+}
+
+function cardLabelTokens(text) {
+  const stopwords = new Set(["card", "credit", "review", "rewards", "best", "the", "for", "from"]);
+  return normalizedCardName(
+    decodeHtmlEntities(String(text ?? ""))
+      .replace(/®|℠|™/g, " ")
+      .replace(/[^a-z0-9\s]/gi, " ")
+  )
+    .split(" ")
+    .filter((token) => token.length >= 2)
+    .filter((token) => !stopwords.has(token));
+}
+
+function tokenOverlapScore(left, right) {
+  if (!left.length || !right.length) {
+    return 0;
+  }
+
+  const rightSet = new Set(right);
+  let matches = 0;
+
+  for (const token of new Set(left)) {
+    if (rightSet.has(token)) {
+      matches += 1;
+    }
+  }
+
+  return matches / Math.max(1, rightSet.size);
+}
+
+function parseNumericRateValue(value) {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value;
+  }
+
+  if (typeof value === "string") {
+    const number = Number(value.replace(/[^\d.]+/g, ""));
+    if (Number.isFinite(number)) {
+      return number;
+    }
+  }
+
+  return null;
+}
+
+function formatRateValue(value) {
+  if (!Number.isFinite(value)) {
+    return "";
+  }
+
+  if (Number.isInteger(value)) {
+    return String(value);
+  }
+
+  return String(value).replace(/0+$/, "").replace(/\.$/, "");
+}
+
+function inferRateUnit(description) {
+  const lower = description.toLowerCase();
+  if (/%|cash\s*back|cashback|statement credits?/i.test(lower)) {
+    return "percent_cashback";
+  }
+  if (/\bmiles?\b/i.test(lower)) {
+    return "x_miles";
+  }
+  return "x_points";
+}
+
+function categoriesForNerdwalletDescription(description) {
+  const lower = description.toLowerCase();
+  let categories = categoriesInText(lower);
+
+  if (/all other (travel|dining|restaurants?|grocery|groceries|gas|streaming|transit|hotel|hotels|airfare|flights?|airlines?)/i.test(lower)) {
+    categories = categories.filter((category) => category !== "all_other");
+  }
+
+  if (/(all purchases|all other purchases|all eligible purchases|every purchase)/i.test(lower)) {
+    if (!categories.includes("all_other")) {
+      categories.push("all_other");
+    }
+  }
+
+  if (categories.length === 0) {
+    categories = ["all_other"];
+  }
+
+  return [...new Set(categories)];
+}
+
+function rateTextFromUnit(rateValue, unit) {
+  const formatted = formatRateValue(rateValue);
+  if (unit === "percent_cashback") {
+    return `${formatted}% cash back`;
+  }
+  if (unit === "x_miles") {
+    return `${formatted}X miles`;
+  }
+  return `${formatted}X points`;
+}
+
+function extractNerdwalletRewardsBreakdownRules({ html, sourceCardName, finalUrl }) {
+  const decoded = html.replace(/\\"/g, '"');
+  const marker = '"rewardsRates":';
+  const candidates = [];
+  let cursor = 0;
+
+  while (cursor < decoded.length) {
+    const index = decoded.indexOf(marker, cursor);
+    if (index < 0) {
+      break;
+    }
+
+    const arrayText = readJsonArrayFrom(decoded, index + marker.length);
+    if (!arrayText) {
+      cursor = index + marker.length;
+      continue;
+    }
+
+    let entries = [];
+    try {
+      const parsed = JSON.parse(arrayText);
+      entries = Array.isArray(parsed) ? parsed : [];
+    } catch {
+      cursor = index + marker.length;
+      continue;
+    }
+
+    const rates = entries
+      .map((entry) => {
+        const rateValue = parseNumericRateValue(entry?.rate);
+        const description = normalizeWhitespace(decodeHtmlEntities(entry?.description ?? ""));
+        return { rateValue, description };
+      })
+      .filter(
+        (entry) =>
+          entry.rateValue != null &&
+          entry.rateValue > 0 &&
+          entry.rateValue <= 15 &&
+          entry.description.length > 0 &&
+          REWARD_CONTEXT_REGEX.test(entry.description.toLowerCase()) &&
+          !RATE_CONTEXT_BLOCKLIST_REGEX.test(entry.description.toLowerCase())
+      );
+
+    const leftContext = decoded.slice(Math.max(0, index - 1600), index);
+    const nameMatches = [...leftContext.matchAll(/"product":\{"name":"([^"]+)"/g)];
+    const productName =
+      nameMatches.length > 0 ? decodeHtmlEntities(nameMatches[nameMatches.length - 1][1] ?? "") : null;
+
+    candidates.push({
+      productName,
+      rates
+    });
+
+    cursor = index + marker.length;
+  }
+
+  if (candidates.length === 0) {
+    return { rules: [], productName: null };
+  }
+
+  const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/i);
+  const title = titleMatch ? normalizeWhitespace(stripHtml(titleMatch[1])) : "";
+  const urlTokens = (() => {
+    try {
+      return cardLabelTokens(new URL(finalUrl).pathname.replace(/[/-]+/g, " "));
+    } catch {
+      return [];
+    }
+  })();
+  const sourceTokens = cardLabelTokens(sourceCardName);
+  const titleTokens = cardLabelTokens(title);
+  const titleIndicatesUnavailable = /no longer available|not available/i.test(title);
+
+  const scored = candidates.map((candidate) => {
+    const candidateTokens = cardLabelTokens(candidate.productName ?? "");
+    const sourceOverlap = tokenOverlapScore(sourceTokens, candidateTokens);
+    const titleOverlap = tokenOverlapScore(titleTokens, candidateTokens);
+    const urlOverlap = tokenOverlapScore(urlTokens, candidateTokens);
+    const overlap = Math.max(sourceOverlap, titleOverlap, urlOverlap);
+    const score =
+      sourceOverlap * 5 +
+      titleOverlap * 3 +
+      urlOverlap * 2 +
+      Math.min(candidate.rates.length, 8) * 0.03;
+
+    return {
+      ...candidate,
+      overlap,
+      score
+    };
+  });
+
+  scored.sort((left, right) => right.score - left.score);
+  const best = scored[0];
+  const namedCandidates = scored.filter((candidate) => cardLabelTokens(candidate.productName ?? "").length > 0);
+  const matchingCandidates = namedCandidates.filter((candidate) => candidate.overlap > 0);
+  const fallbackCandidate =
+    matchingCandidates.length > 0
+      ? [...matchingCandidates].sort((left, right) => right.score - left.score)[0]
+      : best;
+
+  if (!fallbackCandidate || fallbackCandidate.overlap <= 0) {
+    return {
+      rules: [],
+      productName: fallbackCandidate?.productName ?? null,
+      reason: "No matching NerdWallet rewards breakdown block found for this card."
+    };
+  }
+
+  if (fallbackCandidate.rates.length === 0) {
+    const reason = titleIndicatesUnavailable
+      ? "NerdWallet page is marked unavailable and has no rewards breakdown for this card."
+      : "Matched NerdWallet card block has no rewards breakdown rates.";
+    return {
+      rules: [],
+      productName: fallbackCandidate.productName ?? null,
+      reason
+    };
+  }
+
+  const rules = [];
+  for (const entry of fallbackCandidate.rates) {
+    const unit = inferRateUnit(entry.description);
+    const rateText = rateTextFromUnit(entry.rateValue, unit);
+    const categories = categoriesForNerdwalletDescription(entry.description);
+    const capText = extractCap(entry.description);
+
+    for (const category of categories) {
+      rules.push({
+        category,
+        rateText,
+        rateValue: entry.rateValue,
+        unit,
+        capText,
+        notes: undefined
+      });
+    }
+  }
+
+  return {
+    rules: dedupeRules(rules),
+    productName: fallbackCandidate.productName ?? null,
+    reason: null
+  };
 }
 
 function extractRotatingCategories(text) {
@@ -799,7 +1292,7 @@ function looksLikeCardUrl(url) {
   }
 
   if (isAggregatorHost(url)) {
-    if (!ALLOW_AGGREGATOR_SOURCES) {
+    if (!ALLOW_AGGREGATOR_SOURCES && !NERDWALLET_ONLY) {
       return false;
     }
     return SINGLE_CARD_URL_HINT_REGEX.test(url);
@@ -849,9 +1342,21 @@ function looksLikeAggregateContent({ url, cardName, issuer, text, rewardRules })
 
 function guessIssuerFromUrl(url, fallbackIssuer = "Unknown") {
   try {
-    const hostname = new URL(url).hostname.replace(/^www\./, "");
+    const parsed = new URL(url);
+    const hostname = parsed.hostname.replace(/^www\./, "");
     const entry = Object.entries(DOMAIN_ISSUER_HINTS).find(([domain]) => hostname.endsWith(domain));
-    return entry ? entry[1] : fallbackIssuer;
+    if (entry) {
+      return entry[1];
+    }
+
+    const sourceText = normalizeWhitespace(`${hostname} ${parsed.pathname}`.replace(/[-_/]+/g, " ").toLowerCase());
+    for (const [needle, issuer] of ISSUER_TEXT_HINTS) {
+      if (sourceText.includes(needle)) {
+        return issuer;
+      }
+    }
+
+    return fallbackIssuer;
   } catch {
     return fallbackIssuer;
   }
@@ -943,8 +1448,8 @@ async function collectSitemapUrls(sitemapUrl, visited = new Set(), depth = 0) {
 }
 
 function makeSourceFromUrl(url, usedIds, fallbackIssuer = "Unknown") {
-  const issuer = guessIssuerFromUrl(url, fallbackIssuer);
   const cardName = guessCardNameFromUrl(url);
+  const issuer = guessIssuerFromUrl(url, fallbackIssuer === "Unknown" ? cardName : fallbackIssuer);
   const baseId = slugify(`${issuer}-${cardName}`);
 
   return {
@@ -1050,6 +1555,10 @@ function pickSourcesWithBusinessMix(sortedSources, limit) {
 }
 
 function sourceMatchesFilter(source) {
+  if (NERDWALLET_ONLY && !isNerdwalletUrl(source.url ?? "")) {
+    return false;
+  }
+
   if (!DISCOVERY_SOURCE_FILTER) {
     return true;
   }
@@ -1059,6 +1568,10 @@ function sourceMatchesFilter(source) {
 }
 
 function sourceMatchesFetchFilter(source) {
+  if (NERDWALLET_ONLY && !isNerdwalletUrl(source.cardUrl ?? "")) {
+    return false;
+  }
+
   if (!FETCH_SOURCE_FILTER) {
     return true;
   }
@@ -1081,7 +1594,7 @@ function isHighQualityRecord(record) {
     return false;
   }
 
-  if (!record.issuer || record.issuer === "Unknown") {
+  if ((!record.issuer || record.issuer === "Unknown") && !NERDWALLET_ONLY) {
     return false;
   }
 
@@ -1163,6 +1676,94 @@ async function mapWithConcurrency(items, concurrency, iteratee) {
   return results;
 }
 
+async function discoverNerdwalletReviewUrls(seedUrls = NERDWALLET_SEED_URLS) {
+  const maxPages = clampInt(NERDWALLET_CRAWL_MAX_PAGES, 10, 2500);
+  const maxDepth = clampInt(NERDWALLET_CRAWL_DEPTH, 1, 6);
+  const queue = [];
+  const queued = new Set();
+  const visited = new Set();
+  const discovered = new Set();
+  const stats = {
+    pagesFetched: 0,
+    pagesQueued: 0,
+    linksSeen: 0,
+    reviewLinksFound: 0,
+    errors: 0
+  };
+
+  for (const seed of seedUrls) {
+    const canonical = canonicalCrawlUrl(seed);
+    if (!isNerdwalletUrl(canonical) || queued.has(canonical)) {
+      continue;
+    }
+    queued.add(canonical);
+    queue.push({ url: canonical, depth: 0 });
+  }
+  stats.pagesQueued = queue.length;
+
+  while (queue.length > 0 && visited.size < maxPages && discovered.size < MAX_DISCOVERED_SOURCES) {
+    const current = queue.shift();
+    if (!current) {
+      continue;
+    }
+
+    const crawlUrl = canonicalCrawlUrl(current.url);
+    if (visited.has(crawlUrl)) {
+      continue;
+    }
+
+    visited.add(crawlUrl);
+
+    try {
+      const { body, finalUrl } = await fetchText(current.url);
+      stats.pagesFetched += 1;
+      const resolvedBaseUrl = normalizeUrl(finalUrl);
+      const links = extractLinksFromHtml(body, resolvedBaseUrl);
+      stats.linksSeen += links.length;
+
+      for (const link of links) {
+        const normalized = canonicalCrawlUrl(link);
+        if (!isNerdwalletUrl(normalized)) {
+          continue;
+        }
+
+        if (isNerdwalletReviewUrl(normalized)) {
+          if (!discovered.has(normalized)) {
+            discovered.add(normalized);
+            stats.reviewLinksFound += 1;
+          }
+          continue;
+        }
+
+        if (current.depth >= maxDepth) {
+          continue;
+        }
+
+        if (!shouldCrawlNerdwalletPage(normalized)) {
+          continue;
+        }
+
+        if (queued.has(normalized) || visited.has(normalized)) {
+          continue;
+        }
+
+        queued.add(normalized);
+        queue.push({ url: normalized, depth: current.depth + 1 });
+        stats.pagesQueued += 1;
+      }
+    } catch {
+      stats.errors += 1;
+    }
+
+    await sleep(SAFE_REQUEST_DELAY_MS);
+  }
+
+  return {
+    urls: [...discovered].sort((left, right) => left.localeCompare(right)),
+    stats
+  };
+}
+
 async function discoverSources(manualSources) {
   const config = await readJson(DISCOVERY_CONFIG_PATH, DEFAULT_DISCOVERY_CONFIG);
   const discovered = [];
@@ -1190,6 +1791,46 @@ async function discoverSources(manualSources) {
     seenUrls.add(normalized);
     discovered.push(makeSourceFromUrl(normalized, usedIds, issuer ?? "Unknown"));
     return true;
+  }
+
+  if (NERDWALLET_ONLY) {
+    const manualNerdwalletSeeds = manualSources
+      .map((source) => source.cardUrl)
+      .filter((url) => typeof url === "string" && isNerdwalletUrl(url));
+    const crawled = await discoverNerdwalletReviewUrls([
+      ...NERDWALLET_SEED_URLS,
+      ...NERDWALLET_EXTRA_SEEDS,
+      ...manualNerdwalletSeeds
+    ]);
+    let added = 0;
+    for (const url of crawled.urls) {
+      if (tryAddDiscovered(url, "Unknown")) {
+        added += 1;
+      }
+    }
+
+    discoveryStats.linkSources.push({
+      name: "nerdwallet-crawl",
+      url: "https://www.nerdwallet.com/credit-cards",
+      fetched: crawled.stats.pagesFetched > 0,
+      linksSeen: crawled.stats.linksSeen,
+      linksMatched: crawled.stats.reviewLinksFound,
+      added,
+      error: crawled.stats.pagesFetched === 0 ? "no pages fetched from crawl seeds" : null
+    });
+    discoveryStats.sitemapSources = [];
+    discoveryStats.discoveredCount = discovered.length;
+    discoveryStats.nerdwalletCrawl = {
+      maxPages: clampInt(NERDWALLET_CRAWL_MAX_PAGES, 10, 2500),
+      maxDepth: clampInt(NERDWALLET_CRAWL_DEPTH, 1, 6),
+      ...crawled.stats
+    };
+
+    discovered.sort((a, b) => a.issuer.localeCompare(b.issuer) || a.cardName.localeCompare(b.cardName));
+    return {
+      discovered,
+      report: discoveryStats
+    };
   }
 
   const linkSources = (Array.isArray(config.linkSources) ? config.linkSources : []).filter(sourceMatchesFilter);
@@ -1333,7 +1974,7 @@ async function main() {
   const cachedDiscovered = await readJson(DISCOVERED_SOURCE_PATH, []);
   const overrides = await readJson(OVERRIDES_PATH, {});
 
-  const shouldRunDiscovery = DISCOVERY_ONLY || ENABLE_DISCOVERY;
+  const shouldRunDiscovery = NERDWALLET_ONLY || DISCOVERY_ONLY || ENABLE_DISCOVERY;
   let discoveredSources = Array.isArray(cachedDiscovered) ? cachedDiscovered : [];
   let discoveryReport = {
     generatedAt: new Date().toISOString(),
@@ -1421,7 +2062,14 @@ async function main() {
     try {
       const { body, finalUrl } = await fetchCardPage(source.cardUrl);
       const text = stripHtml(body);
-      const rewardRules = extractRewardRules(text);
+      const nerdwalletBreakdown = isNerdwalletUrl(finalUrl)
+        ? extractNerdwalletRewardsBreakdownRules({
+            html: body,
+            sourceCardName: source.cardName,
+            finalUrl
+          })
+        : null;
+      const rewardRules = nerdwalletBreakdown ? nerdwalletBreakdown.rules : extractRewardRules(text);
       const annualFeeText = extractAnnualFee(text);
       const introOfferText = extractIntroOffer(text);
       const rotatingCategories = extractRotatingCategories(text);
@@ -1443,12 +2091,24 @@ async function main() {
       if (rotatingCategoryProgram) {
         notes.push("Detected rotating or activation-based category language.");
       }
+      if (nerdwalletBreakdown && !nerdwalletBreakdown.productName) {
+        notes.push("NerdWallet rewards breakdown found but product name match was weak.");
+      }
+      if (nerdwalletBreakdown?.reason) {
+        notes.push(nerdwalletBreakdown.reason);
+      }
       if (rewardRules.length === 0) {
         notes.push("No high-confidence reward rules detected. Add manual override if needed.");
       }
 
+      const resolvedIssuer =
+        source.issuer && source.issuer !== "Unknown"
+          ? source.issuer
+          : guessIssuerFromUrl(normalizeUrl(finalUrl), guessCardNameFromUrl(finalUrl));
+
       const record = {
         ...baseRecord,
+        issuer: resolvedIssuer,
         cardUrl: normalizeUrl(finalUrl),
         annualFeeText,
         introOfferText,
@@ -1521,6 +2181,9 @@ async function main() {
   const selectedBusinessCount = selectedSources.filter((source) => source.cardSegment === "business").length;
 
   console.log(`Sources: manual=${manualSources.length}, discovered=${discoveredSources.length}, merged=${mergedSources.length}`);
+  if (NERDWALLET_ONLY) {
+    console.log("Mode: NerdWallet-only discovery + fetch");
+  }
   console.log(
     `Concurrency: fetch=${workerCount}, discovery=${SAFE_DISCOVERY_CONCURRENCY}, per-host=${SAFE_HOST_CONCURRENCY}`
   );
@@ -1531,6 +2194,9 @@ async function main() {
     console.log(`Fetch source filter: "${FETCH_SOURCE_FILTER}"`);
   }
   console.log(`Fetched: ${selectedSources.length} sources (limit=${selectionLimit})`);
+  if (NERDWALLET_ONLY) {
+    console.log("Source scope: NerdWallet only");
+  }
   console.log(
     `Segments in fetch set: personal=${selectedPersonalCount}, business=${selectedBusinessCount} (target business share=${Math.round(
       SAFE_TARGET_BUSINESS_SHARE * 100
