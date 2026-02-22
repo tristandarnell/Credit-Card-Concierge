@@ -8,8 +8,16 @@
   </head>
   <body>
     <main class="wrap">
-      <h1>CreditCard Concierge Extension</h1>
-      <p class="muted">Configure app connection and wallet cards for checkout autofill.</p>
+      <header class="hero">
+        <div class="brand-lockup">
+          <img src="assets/logo.svg" alt="CreditCard Concierge logo" class="brand-logo" />
+          <div>
+            <p class="eyebrow">CreditCard Concierge</p>
+            <h1>Extension Settings</h1>
+          </div>
+        </div>
+        <p class="muted">Configure app connection and wallet cards for checkout autofill.</p>
+      </header>
 
       <section class="panel">
         <h2>App Connection</h2>
@@ -63,7 +71,7 @@
         <ul id="walletCards"></ul>
       </section>
 
-      <p id="status" class="muted"></p>
+      <p id="status" class="status-line"></p>
       <p class="warning">
         Security note: card details are stored in your browser extension local storage for autofill. Use on your own device only.
       </p>
@@ -71,4 +79,3 @@
     <script src="options.js"></script>
   </body>
 </html>
-
