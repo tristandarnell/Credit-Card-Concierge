@@ -44,6 +44,7 @@ const SUPABASE_READ_KEY =
   "";
 const SUPABASE_TABLE = process.env.SUPABASE_REWARDS_TABLE ?? "credit_card_rewards";
 const SUPABASE_CLEAN_VIEW = process.env.SUPABASE_REWARDS_CLEAN_VIEW ?? `${SUPABASE_TABLE}_clean`;
+const ALLOW_AGGREGATOR_REWARD_SOURCES = process.env.ALLOW_AGGREGATOR_REWARD_SOURCES === "1";
 
 const SELECT_COLUMNS = [
   "id",
@@ -240,7 +241,7 @@ function qualityIssues(record: CardRewardRecord): string[] {
     reasons.push("Unknown issuer");
   }
 
-  if (AGGREGATOR_HOST_REGEX.test(record.cardUrl)) {
+  if (!ALLOW_AGGREGATOR_REWARD_SOURCES && AGGREGATOR_HOST_REGEX.test(record.cardUrl)) {
     reasons.push("Aggregator source");
   }
 

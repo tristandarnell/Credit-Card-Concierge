@@ -1,11 +1,22 @@
 {
-  "generatedAt": "2026-02-21T21:12:42.708Z",
+  "generatedAt": "2026-02-22T02:22:21.026Z",
   "discoverySourceFilter": null,
-  "discoveryEnabled": false,
+  "discoveryEnabled": true,
   "discoveryOnlyMode": false,
   "manualSourceCount": 84,
-  "discoveredCount": 426,
+  "discoveredCount": 57,
   "linkSources": [],
   "sitemapSources": [],
-  "note": "Discovery disabled; using cached discovered source file."
+  "nerdwalletCrawl": {
+    "seedCount": 10,
+    "maxPages": 40,
+    "maxDepth": 1,
+    "seedOnly": true,
+    "pagesFetched": 10,
+    "pagesQueued": 10,
+    "linksSeen": 3935,
+    "reviewLinksFound": 126,
+    "added": 57,
+    "errors": 0
+  }
 }
