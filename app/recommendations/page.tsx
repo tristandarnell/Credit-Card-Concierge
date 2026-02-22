@@ -22,16 +22,14 @@ export default async function RecommendationsPage() {
   const spendProfileFromCsv = categorizedPath ? await buildSpendProfileFromCsv(categorizedPath) : null;
   const spendProfile = spendProfileFromCsv?.profile ?? DEFAULT_ANNUAL_SPEND_PROFILE;
   const hasUserData = !!categorizedPath;
-  let profileMeta: { totalSpend: number; monthsOfData: number } | null = null;
-  let spendingTrends: Awaited<ReturnType<typeof buildSpendingTrendsFromCsv>> = null;
-  if (categorizedPath) {
-    const meta = await buildSpendProfileFromCsv(categorizedPath);
-    profileMeta = { totalSpend: meta.totalSpend, monthsOfData: meta.monthsOfData };
-    spendingTrends = await buildSpendingTrendsFromCsv(categorizedPath);
-  }
   const profileMeta = spendProfileFromCsv
-    ? { totalSpend: spendProfileFromCsv.totalSpend, monthsOfData: spendProfileFromCsv.monthsOfData }
+    ? {
+        totalSpend: spendProfileFromCsv.totalSpend,
+        monthsOfData: spendProfileFromCsv.monthsOfData,
+        daysOfData: spendProfileFromCsv.daysOfData,
+      }
     : null;
+  const spendingTrends = categorizedPath ? await buildSpendingTrendsFromCsv(categorizedPath) : null;
 
   const rankedCards = cards
     .map((card) => ({
@@ -58,8 +56,8 @@ export default async function RecommendationsPage() {
   const minValue = topCards.length > 0 ? Math.min(...topCards.map((item) => item.netAnnualValue)) : 0;
 
   const annualizedSpend =
-    profileMeta && profileMeta.monthsOfData > 0
-      ? Math.round((profileMeta.totalSpend * 12) / profileMeta.monthsOfData)
+    profileMeta && profileMeta.daysOfData > 0
+      ? Math.round((profileMeta.totalSpend * 365) / profileMeta.daysOfData)
       : 0;
 
   const maxRewardPoint =
@@ -112,7 +110,11 @@ export default async function RecommendationsPage() {
       ? [
           {
             label: "Your uploaded spend",
-            value: `${profileMeta.monthsOfData} mo · ~$${Math.round(profileMeta.totalSpend).toLocaleString()}`,
+            value: `${
+              profileMeta.daysOfData < 31
+                ? `${profileMeta.daysOfData} days`
+                : `${profileMeta.monthsOfData.toFixed(1)} mo`
+            } · ~$${Math.round(profileMeta.totalSpend).toLocaleString()}`,
           } as const,
           {
             label: "Est. annual spend",
