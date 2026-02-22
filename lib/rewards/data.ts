@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { STANDARD_CATEGORIES, type StandardCategory } from "@/lib/rewards/categories";
+import { CATEGORY_ALIASES, STANDARD_CATEGORIES, type StandardCategory } from "@/lib/rewards/categories";
 import type { CardRewardRecord, RewardRule, RewardUnit } from "@/lib/rewards/types";
 
 type SupabaseRewardRow = {
@@ -96,6 +96,31 @@ const GENERIC_CARD_NAME_EXACT = new Set([
   "no foreign transaction fee"
 ]);
 const CATEGORY_SET = new Set<StandardCategory>(STANDARD_CATEGORIES);
+const CATEGORY_LOOKUP: ReadonlyMap<string, StandardCategory> = (() => {
+  const map = new Map<string, StandardCategory>();
+
+  for (const category of STANDARD_CATEGORIES) {
+    map.set(normalizeToken(category), category);
+    map.set(normalizeToken(category.replace(/_/g, " ")), category);
+
+    for (const alias of CATEGORY_ALIASES[category]) {
+      map.set(normalizeToken(alias), category);
+    }
+  }
+
+  map.set("drug store", "drugstores");
+  map.set("drug stores", "drugstores");
+  map.set("gas station", "gas");
+  map.set("gas stations", "gas");
+  map.set("grocery store", "groceries");
+  map.set("grocery stores", "groceries");
+  map.set("phone bill", "phone");
+  map.set("phone bills", "phone");
+  map.set("mobile phone", "phone");
+  map.set("mobile phones", "phone");
+
+  return map;
+})();
 
 function hasSupabaseReadConfig(): boolean {
   return SUPABASE_URL.length > 0 && SUPABASE_READ_KEY.length > 0;
@@ -105,6 +130,16 @@ function normalizeCardName(cardName: string): string {
   return cardName
     .toLowerCase()
     .replace(/[-_]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function normalizeToken(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[_/+-]+/g, " ")
+    .replace(/[^a-z0-9 ]+/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -122,7 +157,24 @@ function normalizeCategory(category: unknown): StandardCategory {
     return "all_other";
   }
 
-  return CATEGORY_SET.has(category as StandardCategory) ? (category as StandardCategory) : "all_other";
+  if (CATEGORY_SET.has(category as StandardCategory)) {
+    return category as StandardCategory;
+  }
+
+  const normalized = normalizeToken(category);
+  const mapped = CATEGORY_LOOKUP.get(normalized);
+  if (mapped) {
+    return mapped;
+  }
+
+  if (normalized.endsWith("s")) {
+    const singular = CATEGORY_LOOKUP.get(normalized.slice(0, -1));
+    if (singular) {
+      return singular;
+    }
+  }
+
+  return "all_other";
 }
 
 function normalizeRewardRule(rule: unknown): RewardRule | null {
@@ -152,12 +204,46 @@ function normalizeRewardRule(rule: unknown): RewardRule | null {
 
   return {
     category: normalizeCategory(value.category),
-    rateText: value.rateText,
+    rateText: value.rateText.trim(),
     rateValue: Number.isFinite(rateValue ?? NaN) ? (rateValue as number) : null,
     unit: normalizeRewardUnit(value.unit),
     capText: typeof value.capText === "string" ? value.capText : undefined,
     notes: typeof value.notes === "string" ? value.notes : undefined
   };
+}
+
+function ruleDedupKey(rule: RewardRule): string {
+  const rateValue = typeof rule.rateValue === "number" ? String(rule.rateValue) : "null";
+  return `${rule.category}|${rateValue}|${rule.unit}|${normalizeToken(rule.rateText)}`;
+}
+
+function normalizeRewardRules(input: unknown): RewardRule[] {
+  if (!Array.isArray(input)) {
+    return [];
+  }
+
+  const deduped = new Map<string, RewardRule>();
+  for (const rule of input) {
+    const normalized = normalizeRewardRule(rule);
+    if (!normalized) {
+      continue;
+    }
+
+    const key = ruleDedupKey(normalized);
+    const existing = deduped.get(key);
+    if (!existing) {
+      deduped.set(key, normalized);
+      continue;
+    }
+
+    deduped.set(key, {
+      ...existing,
+      capText: existing.capText ?? normalized.capText,
+      notes: existing.notes ?? normalized.notes
+    });
+  }
+
+  return [...deduped.values()];
 }
 
 function isNonUsLocalizedPath(cardUrl: string): boolean {
@@ -174,9 +260,7 @@ function isNonUsLocalizedPath(cardUrl: string): boolean {
 }
 
 function mapRecordFromDb(row: SupabaseRewardRow): CardRewardRecord {
-  const rewardRules = Array.isArray(row.reward_rules)
-    ? row.reward_rules.map((rule) => normalizeRewardRule(rule)).filter((rule): rule is RewardRule => rule != null)
-    : [];
+  const rewardRules = normalizeRewardRules(row.reward_rules);
 
   return {
     id: row.id,
@@ -220,9 +304,7 @@ function mapRecordFromLocal(record: unknown): CardRewardRecord | null {
     cardSegment: value.cardSegment === "business" ? "business" : "personal",
     popularityRank: typeof value.popularityRank === "number" ? value.popularityRank : null,
     country: "US",
-    rewardRules: Array.isArray(value.rewardRules)
-      ? value.rewardRules.map((rule) => normalizeRewardRule(rule)).filter((rule): rule is RewardRule => rule != null)
-      : [],
+    rewardRules: normalizeRewardRules(value.rewardRules),
     notes: Array.isArray(value.notes) ? value.notes.filter((note): note is string => typeof note === "string") : [],
     confidenceScore: Number.isFinite(value.confidenceScore) ? value.confidenceScore : 0,
     fetchStatus: value.fetchStatus === "ok" ? "ok" : "error",

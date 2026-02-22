@@ -60,6 +60,12 @@ NerdWallet-only discovery:
 DISCOVERY_ONLY=1 DISCOVERY_SOURCE_FILTER=nerdwallet npm run rewards:collect
 ```
 
+NerdWallet-only crawl + scrape:
+
+```bash
+NERDWALLET_ONLY=1 ENABLE_DISCOVERY=1 ENABLE_SITEMAP_DISCOVERY=0 NERDWALLET_CRAWL_MAX_PAGES=300 NERDWALLET_CRAWL_DEPTH=4 OUTPUT_REQUIRE_REWARD_RULES=1 MIN_CONFIDENCE_SCORE=0.45 npm run rewards:collect
+```
+
 Retry/backoff controls:
 
 ```bash
@@ -99,6 +105,12 @@ To sync every row from `cards.us.json` (including lower-confidence rows), disabl
 
 ```bash
 SYNC_ONLY_HIGH_QUALITY=0 npm run rewards:sync
+```
+
+Generate card-by-card audit report for manual cleanup (Supabase-aware):
+
+```bash
+npm run rewards:audit
 ```
 
 Or run collect + sync:

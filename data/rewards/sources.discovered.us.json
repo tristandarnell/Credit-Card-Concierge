@@ -202,7 +202,7 @@
     "issuer": "Unknown",
     "cardName": "chase sapphire reserve",
     "network": null,
-    "cardSegment": "personal",
+    "cardSegment": "business",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/chase-sapphire-reserve"
   },
@@ -211,7 +211,7 @@
     "issuer": "Unknown",
     "cardName": "chase slate",
     "network": null,
-    "cardSegment": "personal",
+    "cardSegment": "business",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/chase-slate"
   },
@@ -274,7 +274,7 @@
     "issuer": "Unknown",
     "cardName": "costco anywhere visa",
     "network": null,
-    "cardSegment": "personal",
+    "cardSegment": "business",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/costco-anywhere-visa"
   },
@@ -355,7 +355,7 @@
     "issuer": "Unknown",
     "cardName": "marriott bonvoy boundless",
     "network": null,
-    "cardSegment": "personal",
+    "cardSegment": "business",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/marriott-bonvoy-boundless"
   },
@@ -382,7 +382,7 @@
     "issuer": "Unknown",
     "cardName": "penfed pathfinder rewards",
     "network": null,
-    "cardSegment": "personal",
+    "cardSegment": "business",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/penfed-pathfinder-rewards"
   },
@@ -427,7 +427,7 @@
     "issuer": "Unknown",
     "cardName": "wells fargo autograph",
     "network": null,
-    "cardSegment": "personal",
+    "cardSegment": "business",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/wells-fargo-autograph"
   },
@@ -445,7 +445,7 @@
     "issuer": "Unknown",
     "cardName": "wells fargo reflect",
     "network": null,
-    "cardSegment": "personal",
+    "cardSegment": "business",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/wells-fargo-reflect-card"
   },
@@ -508,7 +508,7 @@
     "issuer": "Unknown",
     "cardName": "chase ink preferred",
     "network": null,
-    "cardSegment": "business",
+    "cardSegment": "personal",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/business/credit-cards/reviews/chase-ink-preferred"
   }
