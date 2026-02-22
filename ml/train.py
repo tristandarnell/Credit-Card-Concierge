@@ -49,7 +49,13 @@ def main() -> None:
         "--confidence-threshold",
         type=float,
         default=0.25,
-        help="Below this probability, classify as Other (default: 0.25)",
+        help="LR: below this probability, try semantic fallback (default: 0.25)",
+    )
+    parser.add_argument(
+        "--semantic-threshold",
+        type=float,
+        default=0.5,
+        help="Semantic: below this similarity, label as Other (default: 0.5)",
     )
     args = parser.parse_args()
 
@@ -66,8 +72,12 @@ def main() -> None:
     out.mkdir(parents=True, exist_ok=True)
 
     # ---- Baseline: TF-IDF + LR ----
-    print(f"\n--- Training TF-IDF + LR baseline (confidence threshold={args.confidence_threshold}) ---")
-    clf_baseline = TransactionClassifier(model_type="tfidf_lr", confidence_threshold=args.confidence_threshold)
+    print(f"\n--- Training TF-IDF + LR + semantic fallback (lr_threshold={args.confidence_threshold}, semantic_threshold={args.semantic_threshold}) ---")
+    clf_baseline = TransactionClassifier(
+        model_type="tfidf_lr",
+        confidence_threshold=args.confidence_threshold,
+        semantic_similarity_threshold=args.semantic_threshold,
+    )
     clf_baseline.fit(X, y)
     clf_baseline.save(out / "tfidf_lr")
 
@@ -81,7 +91,11 @@ def main() -> None:
     # ---- Enhanced: TF-IDF + all-MiniLM embeddings + LR ----
     if not args.skip_embedding:
         print("\n--- Training TF-IDF + embedding + LR ---")
-        clf_embed = TransactionClassifier(model_type="tfidf_embedding_lr", confidence_threshold=args.confidence_threshold)
+        clf_embed = TransactionClassifier(
+            model_type="tfidf_embedding_lr",
+            confidence_threshold=args.confidence_threshold,
+            semantic_similarity_threshold=args.semantic_threshold,
+        )
         clf_embed.fit(X, y)
         clf_embed.save(out / "tfidf_embedding_lr")
 
