@@ -1,11 +1,29 @@
 {
-  "generatedAt": "2026-02-21T21:12:42.708Z",
+  "generatedAt": "2026-02-22T00:27:45.437Z",
   "discoverySourceFilter": null,
-  "discoveryEnabled": false,
+  "discoveryEnabled": true,
   "discoveryOnlyMode": false,
   "manualSourceCount": 84,
-  "discoveredCount": 426,
-  "linkSources": [],
+  "discoveredCount": 264,
+  "linkSources": [
+    {
+      "name": "nerdwallet-crawl",
+      "url": "https://www.nerdwallet.com/credit-cards",
+      "fetched": true,
+      "linksSeen": 182156,
+      "linksMatched": 264,
+      "added": 264,
+      "error": null
+    }
+  ],
   "sitemapSources": [],
-  "note": "Discovery disabled; using cached discovered source file."
+  "nerdwalletCrawl": {
+    "maxPages": 600,
+    "maxDepth": 5,
+    "pagesFetched": 598,
+    "pagesQueued": 1464,
+    "linksSeen": 182156,
+    "reviewLinksFound": 264,
+    "errors": 2
+  }
 }
