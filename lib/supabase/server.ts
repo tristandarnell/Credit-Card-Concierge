@@ -13,7 +13,11 @@ const SUPABASE_ANON_KEY =
   "";
 
 export function hasSupabaseServerConfig(): boolean {
-  return SUPABASE_URL.length > 0 && SUPABASE_SERVICE_ROLE_KEY.length > 0 && SUPABASE_ANON_KEY.length > 0;
+  return SUPABASE_URL.length > 0 && SUPABASE_ANON_KEY.length > 0;
+}
+
+export function hasSupabaseServiceRoleConfig(): boolean {
+  return SUPABASE_URL.length > 0 && SUPABASE_SERVICE_ROLE_KEY.length > 0;
 }
 
 function withNoTrailingSlash(url: string): string {
@@ -32,6 +36,13 @@ function serviceRoleHeaders(extra?: HeadersInit): Headers {
   const headers = new Headers(extra);
   headers.set("apikey", SUPABASE_SERVICE_ROLE_KEY);
   headers.set("Authorization", `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`);
+  return headers;
+}
+
+function userScopedHeaders(accessToken: string, extra?: HeadersInit): Headers {
+  const headers = new Headers(extra);
+  headers.set("apikey", SUPABASE_ANON_KEY);
+  headers.set("Authorization", `Bearer ${accessToken}`);
   return headers;
 }
 
@@ -71,15 +82,26 @@ export async function getUserFromAccessToken(token: string): Promise<SupabaseAut
   };
 }
 
-export async function supabaseRest<T>(pathWithQuery: string, init?: RequestInit): Promise<T> {
+export async function supabaseRest<T>(pathWithQuery: string, init?: RequestInit, accessToken?: string): Promise<T> {
   if (!hasSupabaseServerConfig()) {
     throw new Error("Supabase server config is missing.");
+  }
+
+  let headers: Headers;
+  if (hasSupabaseServiceRoleConfig()) {
+    headers = serviceRoleHeaders(init?.headers);
+  } else if (accessToken) {
+    headers = userScopedHeaders(accessToken, init?.headers);
+  } else {
+    throw new Error(
+      "Supabase service role key is missing and no user access token was provided for a user-scoped request."
+    );
   }
 
   const endpoint = `${withNoTrailingSlash(SUPABASE_URL)}/rest/v1/${pathWithQuery.replace(/^\/+/, "")}`;
   const response = await fetch(endpoint, {
     ...init,
-    headers: serviceRoleHeaders(init?.headers),
+    headers,
     cache: "no-store"
   });
 

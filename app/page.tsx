@@ -1,24 +1,42 @@
 import Link from "next/link";
-import { getCleanRewardCards } from "@/lib/rewards/data";
+import Image, { type StaticImageData } from "next/image";
+import { getCleanRewardCards, getRawRewardCards } from "@/lib/rewards/data";
 import {
   estimateNetAnnualCardValue,
   formatDollars,
   CATEGORY_LABELS
 } from "@/lib/rewards/scoring";
 import type { CardRewardRecord } from "@/lib/rewards/types";
+import chaseSapphirePreferredImage from "@/public/cards/chase-sapphire-preferred.png";
+import amexGoldImage from "@/public/cards/amex-gold.png";
+import ventureXImage from "@/public/cards/capital-one-venture-x.jpeg";
+import coverImage from "@/public/coverimage.jpeg";
+
+type FeaturedCard = {
+  id: string;
+  cardName: string;
+  issuer: string;
+  conf: number;
+  annualValue: string;
+  fitScore: number;
+  useCase: string;
+  photo: StaticImageData;
+  signupBonus: string;
+  accent: string;
+  highlights: string[];
+};
 
 /* ── Hardcoded top-3 with real researched data ── */
-const TOP_CARDS = [
+const TOP_CARDS: FeaturedCard[] = [
   {
     id: "chase-sapphire-preferred",
     cardName: "Chase Sapphire Preferred",
     issuer: "Chase",
     conf: 88,
-    annualFee: "$95",
     annualValue: "$1,140",
     fitScore: 92,
     useCase: "Dining + travel",
-    photoSrc: "/cards/Chase Sapphire Preferred.png",
+    photo: chaseSapphirePreferredImage,
     signupBonus: "75,000 points after $5,000 spend in first 3 months — worth ~$750–$937",
     accent: "#1A3A6B",
     highlights: [
@@ -33,11 +51,10 @@ const TOP_CARDS = [
     cardName: "American Express Gold",
     issuer: "American Express",
     conf: 82,
-    annualFee: "$325",
     annualValue: "$1,280",
     fitScore: 87,
     useCase: "Dining + groceries",
-    photoSrc: "/cards/Amex Gold Image.avif",
+    photo: amexGoldImage,
     signupBonus: "60,000 Membership Rewards points after $6,000 spend in 6 months",
     accent: "#C49A22",
     highlights: [
@@ -52,11 +69,10 @@ const TOP_CARDS = [
     cardName: "Capital One Venture X",
     issuer: "Capital One",
     conf: 76,
-    annualFee: "$395",
     annualValue: "$1,175",
     fitScore: 84,
     useCase: "General spend + travel",
-    photoSrc: "/cards/capitaloneventurex.jpeg",
+    photo: ventureXImage,
     signupBonus: "75,000 miles after $4,000 spend in first 3 months — worth ~$750+",
     accent: "#003B5C",
     highlights: [
@@ -80,6 +96,36 @@ function issuerAccent(issuer: string): string {
   return ISSUER_ACCENT[issuer] ?? "#6B7280";
 }
 
+function normalizeCardLookupKey(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function resolveFeaturedAnnualFee(cards: CardRewardRecord[], featuredCard: (typeof TOP_CARDS)[number]): string {
+  const featuredName = normalizeCardLookupKey(featuredCard.cardName);
+  const featuredId = normalizeCardLookupKey(featuredCard.id);
+
+  const exactIdMatch = cards.find((card) => normalizeCardLookupKey(card.id) === featuredId);
+  if (exactIdMatch?.annualFeeText) {
+    return exactIdMatch.annualFeeText;
+  }
+
+  const exactNameMatch = cards.find((card) => normalizeCardLookupKey(card.cardName) === featuredName);
+  if (exactNameMatch?.annualFeeText) {
+    return exactNameMatch.annualFeeText;
+  }
+
+  const fuzzyNameMatch = cards.find((card) => {
+    const cardName = normalizeCardLookupKey(card.cardName);
+    return cardName.includes(featuredName) || featuredName.includes(cardName);
+  });
+
+  return fuzzyNameMatch?.annualFeeText ?? "Unknown";
+}
+
 function bestUseCase(card: CardRewardRecord): string {
   const top = card.rewardRules
     .filter((r) => (r.rateValue ?? 0) > 1.5)
@@ -97,7 +143,7 @@ const editorialTopics = [
 ];
 
 export default async function HomePage() {
-  const cards = await getCleanRewardCards(1000);
+  const [cards, rawCards] = await Promise.all([getCleanRewardCards(1000), getRawRewardCards(2000)]);
 
   const rankedCards = cards
     .map((card) => ({ card, value: estimateNetAnnualCardValue(card) }))
@@ -112,6 +158,11 @@ export default async function HomePage() {
   }
 
   const tableCards = rankedCards.slice(0, 6);
+  const featuredFeeCards = rawCards.length > 0 ? rawCards : cards;
+  const featuredCards = TOP_CARDS.map((card) => ({
+    ...card,
+    annualFee: resolveFeaturedAnnualFee(featuredFeeCards, card)
+  }));
 
   const now = new Date();
   const timestamp = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, "0")}-${String(now.getUTCDate()).padStart(2, "0")} · ${String(now.getUTCHours()).padStart(2, "0")}:${String(now.getUTCMinutes()).padStart(2, "0")} UTC`;
@@ -130,18 +181,14 @@ export default async function HomePage() {
       </p>
     </div>
     <div className="home-hero-photo" aria-hidden="true">
-      <img
-        src="/coverimage.jpeg"
-        alt=""
-        className="home-hero-img"
-      />
+      <Image src={coverImage} alt="" className="home-hero-img" fill priority sizes="100vw" />
     </div>
   </div>
 
       {/* ─── Top 3 Card Grid (hardcoded with real researched data) ─── */}
       <div className="home-cards-section full-bleed">
         <div className="home-cards-grid">
-          {TOP_CARDS.map((c) => (
+          {featuredCards.map((c, index) => (
             <article
               key={c.id}
               className="home-rec-card"
@@ -149,11 +196,13 @@ export default async function HomePage() {
             >
               {/* Real card photo */}
               <div className="home-card-photo-wrap">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={c.photoSrc}
+                <Image
+                  src={c.photo}
                   alt={c.cardName}
                   className="home-card-photo"
+                  sizes="(max-width: 760px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  fill
+                  priority={index < 2}
                 />
               </div>
 
@@ -205,19 +254,20 @@ export default async function HomePage() {
 
         <div className="editorial-photo-grid">
           {editorialTopics.map((topic) => (
-  <div
-    key={topic.label}
-    className="editorial-photo"
-    style={{
-      background: topic.bg,
-      backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%), url(${topic.img})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-    }}
-  >
-    <span className="editorial-photo-label">{topic.label}</span>
-  </div>
-))}
+            <div
+              key={topic.label}
+              className="editorial-photo"
+              style={{
+                backgroundColor: topic.bg,
+                backgroundImage: `url(${topic.img})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              <span className="editorial-photo-label">{topic.label}</span>
+            </div>
+          ))}
         </div>
 
         <div className="editorial-cta">

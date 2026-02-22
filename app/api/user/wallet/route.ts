@@ -29,7 +29,28 @@ function unauthorized() {
 }
 
 function configMissing() {
-  return NextResponse.json({ error: "Supabase auth/storage is not configured." }, { status: 500 });
+  return NextResponse.json({ error: "Supabase auth is not configured. Missing URL or anon key." }, { status: 500 });
+}
+
+function walletStorageError(error: unknown, fallbackMessage: string) {
+  const message = error instanceof Error ? error.message : fallbackMessage;
+  const lower = message.toLowerCase();
+
+  if (lower.includes("relation") && lower.includes(TABLE.toLowerCase())) {
+    return NextResponse.json(
+      { error: `Wallet table "${TABLE}" was not found. Apply supabase/schema/user_wallet.sql in Supabase SQL Editor.` },
+      { status: 500 }
+    );
+  }
+
+  if (lower.includes("row-level security") || lower.includes("permission denied")) {
+    return NextResponse.json(
+      { error: "Wallet access was denied by RLS. Re-apply policies from supabase/schema/user_wallet.sql." },
+      { status: 403 }
+    );
+  }
+
+  return NextResponse.json({ error: fallbackMessage }, { status: 500 });
 }
 
 async function requireUser(request: NextRequest) {
@@ -47,7 +68,7 @@ async function requireUser(request: NextRequest) {
     return { error: unauthorized() as NextResponse } as const;
   }
 
-  return { user } as const;
+  return { user, accessToken: token } as const;
 }
 
 function mapWalletRow(row: WalletRow) {
@@ -69,15 +90,21 @@ export async function GET(request: NextRequest) {
     return auth.error;
   }
 
-  const userId = encodeURIComponent(auth.user.id);
-  const rows = await supabaseRest<WalletRow[]>(
-    `${TABLE}?user_id=eq.${userId}&select=wallet_entry_id,user_id,card_id,card_name,issuer,card_segment,network,created_at,updated_at&order=updated_at.desc`
-  );
+  try {
+    const userId = encodeURIComponent(auth.user.id);
+    const rows = await supabaseRest<WalletRow[]>(
+      `${TABLE}?user_id=eq.${userId}&select=wallet_entry_id,user_id,card_id,card_name,issuer,card_segment,network,created_at,updated_at&order=updated_at.desc`,
+      undefined,
+      auth.accessToken
+    );
 
-  return NextResponse.json({
-    count: rows.length,
-    wallet: rows.map(mapWalletRow)
-  });
+    return NextResponse.json({
+      count: rows.length,
+      wallet: rows.map(mapWalletRow)
+    });
+  } catch (error) {
+    return walletStorageError(error, "Could not load wallet.");
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -107,17 +134,23 @@ export async function POST(request: NextRequest) {
     network: card.network ?? null
   };
 
-  const rows = await supabaseRest<WalletRow[]>(
-    `${TABLE}?on_conflict=user_id,card_id`,
-    {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        Prefer: "resolution=merge-duplicates,return=representation"
+  let rows: WalletRow[];
+  try {
+    rows = await supabaseRest<WalletRow[]>(
+      `${TABLE}?on_conflict=user_id,card_id`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Prefer: "resolution=merge-duplicates,return=representation"
+        },
+        body: JSON.stringify(upsertPayload)
       },
-      body: JSON.stringify(upsertPayload)
-    }
-  );
+      auth.accessToken
+    );
+  } catch (error) {
+    return walletStorageError(error, "Could not save wallet entry.");
+  }
 
   const saved = rows[0];
   if (!saved) {
@@ -139,17 +172,22 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: "cardId is required." }, { status: 400 });
   }
 
-  const userId = encodeURIComponent(auth.user.id);
-  const encodedCardId = encodeURIComponent(cardId);
-  const deleted = await supabaseRest<WalletRow[]>(
-    `${TABLE}?user_id=eq.${userId}&card_id=eq.${encodedCardId}`,
-    {
-      method: "DELETE",
-      headers: {
-        Prefer: "return=representation"
-      }
-    }
-  );
+  try {
+    const userId = encodeURIComponent(auth.user.id);
+    const encodedCardId = encodeURIComponent(cardId);
+    const deleted = await supabaseRest<WalletRow[]>(
+      `${TABLE}?user_id=eq.${userId}&card_id=eq.${encodedCardId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Prefer: "return=representation"
+        }
+      },
+      auth.accessToken
+    );
 
-  return NextResponse.json({ deleted: deleted.length > 0 });
+    return NextResponse.json({ deleted: deleted.length > 0 });
+  } catch (error) {
+    return walletStorageError(error, "Could not remove wallet entry.");
+  }
 }

@@ -1,8 +1,25 @@
-const cardImageMap: Record<string, string> = {
-  "chase sapphire preferred": "/cards/Chase Sapphire Preferred.png",
-  "american express gold": "/cards/Amex Gold Image.avif",
-  "amex gold": "/cards/Amex Gold Image.avif",
-  "capital one venture x": "/cards/capitaloneventurex.jpeg",
+import Image, { type StaticImageData } from "next/image";
+import chaseSapphirePreferredImage from "@/public/cards/chase-sapphire-preferred.png";
+import amexGoldImage from "@/public/cards/amex-gold.png";
+import ventureXImage from "@/public/cards/capital-one-venture-x.jpeg";
+
+type CardImageMeta = {
+  src: StaticImageData;
+};
+
+const cardImageMap: Record<string, CardImageMeta> = {
+  "chase sapphire preferred": {
+    src: chaseSapphirePreferredImage
+  },
+  "american express gold": {
+    src: amexGoldImage
+  },
+  "amex gold": {
+    src: amexGoldImage
+  },
+  "capital one venture x": {
+    src: ventureXImage
+  }
 };
 
 function normalizeCardName(value: string): string {
@@ -13,7 +30,7 @@ function normalizeCardName(value: string): string {
     .trim();
 }
 
-function resolveCardImage(name: string): string | null {
+function resolveCardImage(name: string): CardImageMeta | null {
   const normalized = normalizeCardName(name);
   const exact = cardImageMap[normalized];
   if (exact) {
@@ -34,13 +51,18 @@ function resolveCardImage(name: string): string | null {
 }
 
 export function CardVisual({ name }: { name: string }) {
-  const src = resolveCardImage(name);
-  if (!src) return null;
+  const imageMeta = resolveCardImage(name);
+  if (!imageMeta) return null;
 
   return (
     <div className="card-visual-wrap">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={name} style={{ display: "block", width: "100%", height: "auto" }} />
+      <Image
+        src={imageMeta.src}
+        alt={name}
+        className="card-visual-img"
+        sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        fill
+      />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import { Sidebar } from "@/components/sidebar";
 import { AppProviders } from "@/components/app-providers";
+import { MobileNav } from "@/components/mobile-nav";
 
 export const metadata: Metadata = {
   title: "CreditCard Concierge",
@@ -22,6 +23,7 @@ export default function RootLayout({
           <div className="app-shell">
             <Sidebar />
             <div className="workspace">
+              <MobileNav />
               <main className="workspace-main">{children}</main>
               <footer className="workspace-footer">
                 &copy; {new Date().getFullYear()} CreditCard Concierge &middot; Affiliate disclosure:

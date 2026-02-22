@@ -1,1 +1,98 @@
-{}
+{
+  "unknown-american-express-blue-cash-everyday": {
+    "cardName": "American Express Blue Cash Everyday",
+    "annualFeeText": "$0"
+  },
+  "unknown-american-express-blue-cash-preferred": {
+    "cardName": "American Express Blue Cash Preferred",
+    "annualFeeText": "$95"
+  },
+  "unknown-american-express-gold-delta-skymiles": {
+    "cardName": "American Express Gold",
+    "annualFeeText": "$325"
+  },
+  "unknown-american-express-premier-rewards-gold": {
+    "cardName": "American Express Premier Rewards Gold",
+    "annualFeeText": "$325"
+  },
+  "unknown-bankofamerica-cash-rewards": {
+    "cardName": "Bank of America Customized Cash Rewards",
+    "annualFeeText": "$0"
+  },
+  "unknown-capital-one-quicksilver": {
+    "cardName": "Capital One Quicksilver",
+    "annualFeeText": "$0"
+  },
+  "unknown-capital-one-savor": {
+    "cardName": "Capital One Savor",
+    "annualFeeText": "$0"
+  },
+  "unknown-capital-one-savorone-student": {
+    "cardName": "Capital One Savor Student",
+    "annualFeeText": "$0"
+  },
+  "unknown-capital-one-venture": {
+    "cardName": "Capital One Venture",
+    "annualFeeText": "$95"
+  },
+  "unknown-capital-one-venture-x": {
+    "cardName": "Capital One Venture X",
+    "annualFeeText": "$395"
+  },
+  "unknown-chase-freedom-flex": {
+    "cardName": "Chase Freedom Flex",
+    "annualFeeText": "$0"
+  },
+  "unknown-chase-freedom-rise": {
+    "cardName": "Chase Freedom Rise",
+    "annualFeeText": "$0"
+  },
+  "unknown-chase-freedom-unlimited": {
+    "cardName": "Chase Freedom Unlimited",
+    "annualFeeText": "$0"
+  },
+  "unknown-chase-sapphire-preferred": {
+    "cardName": "Chase Sapphire Preferred",
+    "annualFeeText": "$95"
+  },
+  "unknown-citi-double-cash": {
+    "cardName": "Citi Double Cash",
+    "annualFeeText": "$0"
+  },
+  "unknown-citi-strata-premier": {
+    "cardName": "Citi Strata Premier",
+    "annualFeeText": "$95"
+  },
+  "unknown-discover-it-cash-back": {
+    "cardName": "Discover it Cash Back",
+    "annualFeeText": "$0"
+  },
+  "unknown-discover-it-chrome": {
+    "cardName": "Discover it Chrome",
+    "annualFeeText": "$0"
+  },
+  "unknown-discover-it-student-cash-back": {
+    "cardName": "Discover it Student Cash Back",
+    "annualFeeText": "$0"
+  },
+  "unknown-discover-it-student-chrome": {
+    "cardName": "Discover it Student Chrome",
+    "annualFeeText": "$0"
+  },
+  "unknown-penfed-pathfinder-rewards": {
+    "cardName": "PenFed Pathfinder Rewards",
+    "annualFeeText": "$95"
+  },
+  "unknown-bank-shield": {
+    "cardName": "U.S. Bank Shield",
+    "annualFeeText": "$0"
+  },
+  "unknown-wells-fargo-active-cash": {
+    "cardName": "Wells Fargo Active Cash",
+    "annualFeeText": "$0"
+  },
+  "unknown-wells-fargo-autograph-journey": {
+    "cardName": "Wells Fargo Autograph Journey",
+    "annualFeeText": "$95"
+  }
+}
