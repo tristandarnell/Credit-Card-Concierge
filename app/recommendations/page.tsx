@@ -23,7 +23,11 @@ export default async function RecommendationsPage() {
   const spendProfile = spendProfileFromCsv?.profile ?? DEFAULT_ANNUAL_SPEND_PROFILE;
   const hasUserData = !!categorizedPath;
   const profileMeta = spendProfileFromCsv
-    ? { totalSpend: spendProfileFromCsv.totalSpend, monthsOfData: spendProfileFromCsv.monthsOfData }
+    ? {
+        totalSpend: spendProfileFromCsv.totalSpend,
+        monthsOfData: spendProfileFromCsv.monthsOfData,
+        daysOfData: spendProfileFromCsv.daysOfData,
+      }
     : null;
   const spendingTrends = categorizedPath ? await buildSpendingTrendsFromCsv(categorizedPath) : null;
 
@@ -52,8 +56,8 @@ export default async function RecommendationsPage() {
   const minValue = topCards.length > 0 ? Math.min(...topCards.map((item) => item.netAnnualValue)) : 0;
 
   const annualizedSpend =
-    profileMeta && profileMeta.monthsOfData > 0
-      ? Math.round((profileMeta.totalSpend * 12) / profileMeta.monthsOfData)
+    profileMeta && profileMeta.daysOfData > 0
+      ? Math.round((profileMeta.totalSpend * 365) / profileMeta.daysOfData)
       : 0;
 
   const maxRewardPoint =
@@ -106,7 +110,11 @@ export default async function RecommendationsPage() {
       ? [
           {
             label: "Your uploaded spend",
-            value: `${profileMeta.monthsOfData} mo · ~$${Math.round(profileMeta.totalSpend).toLocaleString()}`,
+            value: `${
+              profileMeta.daysOfData < 31
+                ? `${profileMeta.daysOfData} days`
+                : `${profileMeta.monthsOfData.toFixed(1)} mo`
+            } · ~$${Math.round(profileMeta.totalSpend).toLocaleString()}`,
           } as const,
           {
             label: "Est. annual spend",
@@ -427,34 +435,6 @@ export default async function RecommendationsPage() {
           </p>
         </article>
       ) : null}
-
-      <div className="card-grid three">
-        {topCards.map(({ card, netAnnualValue }) => {
-          const denominator = Math.max(1, maxValue - minValue);
-          const fitScore = Math.round(60 + ((netAnnualValue - minValue) / denominator) * 40);
-          const highlights = topRewardHighlights(card, 3);
-
-          return (
-            <article className="card" key={card.id}>
-              <CardVisual name={card.cardName} />
-              <div className="card-head">
-                <h3>{card.cardName}</h3>
-                <span className="score">Fit {fitScore}</span>
-              </div>
-              <p className="muted">{card.issuer}</p>
-              <p className="value">{formatDollars(netAnnualValue)}/year</p>
-              <p className="muted">Annual fee: {card.annualFeeText ?? "Unknown"}</p>
-              <ul className="compact-list">
-                {highlights.length > 0 ? (
-                  highlights.map((reason) => <li key={reason}>{reason}</li>)
-                ) : (
-                  <li>No high-confidence reward highlights available</li>
-                )}
-              </ul>
-            </article>
-          );
-        })}
-      </div>
 
       <div className="table-wrap">
         <table>

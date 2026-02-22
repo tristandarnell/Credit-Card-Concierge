@@ -13,6 +13,7 @@
     "rewards:sync": "node scripts/sync-rewards-to-supabase.mjs",
     "rewards:collect-and-sync": "npm run rewards:collect && npm run rewards:sync",
     "test:normalize": "npx tsx scripts/test-normalize.ts",
+    "debug:pdf": "npx tsx scripts/debug-pdf-parsing.ts",
     "generate:statement": "npx tsx scripts/generate-synthetic-statement.ts",
     "generate:statements": "npx tsx scripts/generate-synthetic-statements.ts",
     "generate:synthetic": "python data/synthetic_cc_transaction.py --brand-names -o synthetic_brand_name_merchant_credit_card_transactions.csv",
@@ -25,7 +26,7 @@
   "dependencies": {
     "@faker-js/faker": "^10.3.0",
     "natural": "^8.1.0",
-    "next": "^15.1.11",
+    "next": "^16.1.6",
     "pdf-parse": "^1.1.4",
     "pdfkit": "^0.17.2",
     "react": "^19.1.2",
@@ -41,7 +42,7 @@
     "@types/react-dom": "^19.1.9",
     "@types/string-similarity": "^4.0.2",
     "eslint": "9.21.0",
-    "eslint-config-next": "^15.1.11",
+    "eslint-config-next": "^16.1.6",
     "tsx": "^4.21.0",
     "typescript": "5.7.3"
   }
