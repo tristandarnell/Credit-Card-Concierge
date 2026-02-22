@@ -118,6 +118,7 @@ const CATEGORY_LOOKUP: ReadonlyMap<string, StandardCategory> = (() => {
   map.set("phone bills", "phone");
   map.set("mobile phone", "phone");
   map.set("mobile phones", "phone");
+  map.set("other", "all_other");
 
   return map;
 })();

@@ -14,6 +14,7 @@
     "rewards:collect-and-sync": "npm run rewards:collect && npm run rewards:sync",
     "test:normalize": "npx tsx scripts/test-normalize.ts",
     "generate:statement": "npx tsx scripts/generate-synthetic-statement.ts",
+    "generate:synthetic": "python data/synthetic_cc_transaction.py --brand-names -o synthetic_brand_name_merchant_credit_card_transactions.csv",
     "train:classifier": "python ml/train.py",
     "train:classifier:sample": "python ml/train.py --sample 50000",
     "train:classifier:brands": "python ml/train.py --data synthetic_brand_name_merchant_credit_card_transactions.csv",

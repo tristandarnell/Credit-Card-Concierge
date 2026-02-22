@@ -20,10 +20,10 @@ def test_sample_predictions():
     monitor = ConfidenceMonitor.load("ml/artifacts/confidence_monitor_tfidf_lr.npz")
 
     cases = [
-        ("DEBIT STARBUCKS 123", "Coffee Shops"),
-        ("Mta*Nyct Paygo NEW York NY", "Public Transport"),
-        ("Venmo Payment 251123 Ethan Liu", "Restaurants"),
-        ("PURCHASE AUTHORIZED Ctlp*Pepsi Bottlin Raleigh NC", "Other"),
+        ("DEBIT STARBUCKS 123", "dining"),
+        ("Mta*Nyct Paygo NEW York NY", "transit"),
+        ("Venmo Payment 251123 Ethan Liu", "all_other"),
+        ("PURCHASE AUTHORIZED Ctlp*Pepsi Bottlin Raleigh NC", "groceries"),
     ]
 
     print("=== Sample predictions ===\n")
@@ -41,7 +41,11 @@ def test_sample_predictions():
 
 def test_held_out_accuracy():
     """Accuracy on held-out synthetic data (different seed from train)."""
-    df = pd.read_csv("synthetic_credit_card_transactions.csv").dropna(subset=["description", "category"])
+    # Use brand-name synthetic data (same format as training)
+    csv_path = "synthetic_brand_name_merchant_credit_card_transactions.csv"
+    if not Path(csv_path).exists():
+        csv_path = "synthetic_credit_card_transactions.csv"
+    df = pd.read_csv(csv_path).dropna(subset=["description", "category"])
     test = df.sample(n=500, random_state=999)
 
     clf = TransactionClassifier.load("ml/artifacts/tfidf_lr")

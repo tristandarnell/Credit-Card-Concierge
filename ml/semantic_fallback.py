@@ -39,7 +39,7 @@ def build_centroids(X: list[str], y: list[str]) -> tuple[np.ndarray, list[str]]:
     merchants = [_to_merchant(t) for t in X]
     embeddings = encoder.encode(merchants, show_progress_bar=False)
 
-    categories = sorted(set(c for c in y if c != "Other"))
+    categories = sorted(set(c for c in y if c != "all_other"))
     centroids = []
     for cat in categories:
         mask = np.array([yi == cat for yi in y])
@@ -61,7 +61,7 @@ def predict_semantic(
     Returns (predicted_labels, max_similarity_per_sample).
     """
     if centroids.size == 0 or not categories:
-        return ["Other"] * len(texts), np.zeros(len(texts))
+        return ["all_other"] * len(texts), np.zeros(len(texts))
 
     encoder = _get_encoder()
     merchants = [_to_merchant(t) for t in texts]

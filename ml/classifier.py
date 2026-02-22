@@ -29,25 +29,28 @@ def _to_merchant(text: str) -> str:
 
 class TransactionClassifier:
     """
-    Classifies transaction descriptions into:
-    Groceries, Restaurants, Coffee Shops, Gas, Public Transport, Airfare,
-    Hotels, Streaming, Utilities, Insurance, Electronics, Clothing, Other.
+    Classifies transaction descriptions into StandardCategory-aligned categories:
+    dining, groceries, gas, travel, airfare, hotels, transit, streaming,
+    drugstores, online_retail, entertainment, utilities, phone, office_supply,
+    all_other (low-confidence fallback).
     """
 
     CATEGORIES = [
-        "Airfare",
-        "Clothing",
-        "Coffee Shops",
-        "Electronics",
-        "Gas",
-        "Groceries",
-        "Hotels",
-        "Insurance",
-        "Other",
-        "Public Transport",
-        "Restaurants",
-        "Streaming",
-        "Utilities",
+        "airfare",
+        "all_other",
+        "dining",
+        "drugstores",
+        "entertainment",
+        "gas",
+        "groceries",
+        "hotels",
+        "office_supply",
+        "online_retail",
+        "phone",
+        "streaming",
+        "transit",
+        "travel",
+        "utilities",
     ]
 
     def __init__(
@@ -83,11 +86,11 @@ class TransactionClassifier:
         tfidf_ngram_range: tuple[int, int] = (1, 2),
         lr_max_iter: int = 500,
     ) -> "TransactionClassifier":
-        """Train the classifier. Excludes 'Other' from training (reserved for low-confidence at inference)."""
+        """Train the classifier. Excludes 'all_other' from training (reserved for low-confidence at inference)."""
         X = pd.Series(X).astype(str).tolist() if not isinstance(X, list) else [str(x) for x in X]
         y = pd.Series(y).tolist() if not isinstance(y, list) else list(y)
-        # Exclude Other – model learns only named categories; Other = low-confidence fallback
-        mask = [yi != "Other" for yi in y]
+        # Exclude all_other – model learns only named categories; all_other = low-confidence fallback
+        mask = [yi != "all_other" for yi in y]
         X = [xi for xi, m in zip(X, mask) if m]
         y = [yi for yi, m in zip(y, mask) if m]
         if not X:
@@ -182,10 +185,10 @@ class TransactionClassifier:
                 if sim >= self.semantic_similarity_threshold:
                     result.append((idx, lbl, float(sim), "semantic"))
                 else:
-                    result.append((idx, "Other", float(sim), "rejected"))
+                    result.append((idx, "all_other", float(sim), "rejected"))
         else:
             for idx in need_fallback_idx:
-                result.append((idx, "Other", 0.0, "rejected"))
+                result.append((idx, "all_other", 0.0, "rejected"))
 
         result.sort(key=lambda r: r[0])
         return [r[1] for r in result]

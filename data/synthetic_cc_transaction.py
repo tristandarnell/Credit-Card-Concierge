@@ -31,18 +31,34 @@ SLEEP_PER_1K_MERCHANTS_SEC = 0.1  # Pause every 1k merchants when building pools
 SLEEP_EVERY_N_TRANSACTIONS = 5000  # Pause every N transactions (0 = no pause)
 SLEEP_PER_CHUNK_SEC = 0.5         # Seconds to sleep when pausing
 
-categories = ["Groceries", "Restaurants", "Coffee Shops", "Gas", "Public Transport",
-              "Airfare", "Hotels", "Streaming", "Utilities", "Insurance",
-              "Electronics", "Clothing", "Other"]
+# Categories align with lib/rewards/categories.ts StandardCategory (snake_case)
+categories = [
+    "dining", "groceries", "gas", "travel", "airfare", "hotels", "transit",
+    "streaming", "drugstores", "online_retail", "entertainment", "utilities",
+    "phone", "office_supply", "all_other"
+]
 
-category_weights = [0.12,0.12,0.08,0.05,0.05,0.03,0.03,0.04,0.08,0.05,0.06,0.08,0.21]
+category_weights = [
+    0.15, 0.12, 0.05, 0.04, 0.03, 0.03, 0.05, 0.05, 0.04, 0.14,
+    0.05, 0.06, 0.03, 0.03, 0.13
+]
 
 amount_ranges = {
-    "Groceries": (5,200), "Restaurants": (10,150), "Coffee Shops": (2,15),
-    "Gas": (20,100), "Public Transport": (2,50), "Airfare": (100,1000),
-    "Hotels": (80,500), "Streaming": (5,20), "Utilities": (50,300),
-    "Insurance": (50,400), "Electronics": (20,2000), "Clothing": (10,500),
-    "Other": (1,500)
+    "dining": (2, 150),
+    "groceries": (5, 200),
+    "gas": (20, 100),
+    "travel": (30, 400),
+    "airfare": (100, 1000),
+    "hotels": (80, 500),
+    "transit": (2, 50),
+    "streaming": (5, 20),
+    "drugstores": (5, 150),
+    "online_retail": (10, 500),
+    "entertainment": (10, 200),
+    "utilities": (50, 300),
+    "phone": (40, 150),
+    "office_supply": (5, 200),
+    "all_other": (1, 500),
 }
 
 # -----------------------------
@@ -51,19 +67,21 @@ amount_ranges = {
 MERCHANT_POOL_SIZE = 40_000
 
 real_merchants = {
-    "Groceries": ["WALMART", "TARGET", "COSTCO", "WHOLE FOODS", "TRADER JOE'S", "KROGER", "SAFEWAY", "ALDI", "LIDL", "PUBLIX", "HEB", "MEIJER", "SPROUTS", "PEPSI", "PEPSI BOTTLING", "CTLP PEPSI"],
-    "Restaurants": ["MCDONALDS", "BURGER KING", "WENDYS", "CHIPOTLE", "SUBWAY", "TACO BELL", "KFC", "OLIVE GARDEN", "CHEESECAKE FACTORY", "PF CHANGS", "APPLEBEES", "IHOP", "DENNYS", "DOMINOS", "PIZZA HUT"],
-    "Coffee Shops": ["STARBUCKS", "DUNKIN", "PEETS COFFEE", "CARIBOU COFFEE", "BLUE BOTTLE", "TIM HORTONS"],
-    "Gas": ["SHELL", "EXXON", "BP", "CHEVRON", "SUNOCO", "CITGO", "VALERO", "MOBIL"],
-    "Public Transport": ["UBER", "LYFT", "AMTRAK", "NYC MTA", "NJT", "NJT RAIL", "NJT RAIL MY-TIX", "BART", "WMATA", "SEPTA", "CTA", "LA METRO"],
-    "Airfare": ["DELTA AIR LINES", "AMERICAN AIRLINES", "UNITED AIRLINES", "SOUTHWEST", "JETBLUE", "ALASKA AIR", "FRONTIER", "SPIRIT AIR"],
-    "Hotels": ["MARRIOTT", "HILTON", "HYATT", "IHG", "WYNDHAM", "CHOICE HOTELS", "BEST WESTERN", "AIRBNB"],
-    "Streaming": ["NETFLIX", "SPOTIFY", "HULU", "DISNEY PLUS", "HBO MAX", "APPLE MUSIC", "YOUTUBE PREMIUM", "AMAZON PRIME"],
-    "Utilities": ["COMCAST", "VERIZON", "AT&T", "T MOBILE", "PG&E", "CON EDISON", "DUKE ENERGY", "XFINITY"],
-    "Insurance": ["GEICO", "STATE FARM", "ALLSTATE", "PROGRESSIVE", "USAA", "LIBERTY MUTUAL", "NATIONWIDE"],
-    "Electronics": ["APPLE STORE", "BEST BUY", "AMAZON", "MICROSOFT", "SAMSUNG", "NEWEGG", "B&H PHOTO", "GAMESTOP"],
-    "Clothing": ["H&M", "ZARA", "NIKE", "ADIDAS", "UNIQLO", "GAP", "OLD NAVY", "NORDSTROM", "MACYS", "LEVIS"],
-    "Other": ["AMAZON MARKETPLACE", "ETSY", "EBAY", "PAYPAL", "VENMO", "VENMO PAYMENT", "SQUARE", "STRIPE", "FACEBOOK ADS", "GOOGLE SERVICES"]
+    "dining": ["MCDONALDS", "BURGER KING", "WENDYS", "CHIPOTLE", "SUBWAY", "TACO BELL", "KFC", "OLIVE GARDEN", "CHEESECAKE FACTORY", "PF CHANGS", "APPLEBEES", "IHOP", "DENNYS", "DOMINOS", "PIZZA HUT", "STARBUCKS", "DUNKIN", "PEETS COFFEE", "CARIBOU COFFEE", "BLUE BOTTLE", "TIM HORTONS"],
+    "groceries": ["WALMART", "TARGET", "COSTCO", "WHOLE FOODS", "TRADER JOE'S", "KROGER", "SAFEWAY", "ALDI", "LIDL", "PUBLIX", "HEB", "MEIJER", "SPROUTS", "PEPSI", "PEPSI BOTTLING", "CTLP PEPSI"],
+    "gas": ["SHELL", "EXXON", "BP", "CHEVRON", "SUNOCO", "CITGO", "VALERO", "MOBIL"],
+    "travel": ["ENTERPRISE", "HERTZ", "BUDGET", "AVIS", "EXPEDIA", "BOOKING.COM", "KAYAK", "TRIPADVISOR"],
+    "airfare": ["DELTA AIR LINES", "AMERICAN AIRLINES", "UNITED AIRLINES", "SOUTHWEST", "JETBLUE", "ALASKA AIR", "FRONTIER", "SPIRIT AIR"],
+    "hotels": ["MARRIOTT", "HILTON", "HYATT", "IHG", "WYNDHAM", "CHOICE HOTELS", "BEST WESTERN", "AIRBNB"],
+    "transit": ["UBER", "LYFT", "AMTRAK", "NYC MTA", "NJT", "NJT RAIL", "NJT RAIL MY-TIX", "BART", "WMATA", "SEPTA", "CTA", "LA METRO"],
+    "streaming": ["NETFLIX", "SPOTIFY", "HULU", "DISNEY PLUS", "HBO MAX", "APPLE MUSIC", "YOUTUBE PREMIUM", "AMAZON PRIME"],
+    "drugstores": ["CVS", "WALGREENS", "RITE AID", "CVS PHARMACY", "WALGREENS PHARMACY"],
+    "online_retail": ["AMAZON", "AMAZON.COM", "EBAY", "WALMART.COM", "TARGET.COM", "BEST BUY", "APPLE STORE", "H&M", "ZARA", "NIKE", "ADIDAS", "UNIQLO", "GAP", "OLD NAVY", "NORDSTROM", "MACYS", "ETSY"],
+    "entertainment": ["AMC THEATRES", "CINEPOLIS", "REGAL CINEMAS", "TICKETMASTER", "LIVE NATION", "STEAM", "PLAYSTATION", "XBOX", "NINTENDO"],
+    "utilities": ["COMCAST", "PG&E", "CON EDISON", "DUKE ENERGY", "XFINITY", "SPECTRUM", "COX COMMUNICATIONS"],
+    "phone": ["VERIZON", "AT&T", "T MOBILE", "T-MOBILE", "SPRINT", "CRICKET", "MINT MOBILE"],
+    "office_supply": ["STAPLES", "OFFICE DEPOT", "OFFICE MAX", "AMAZON BUSINESS"],
+    "all_other": ["AMAZON MARKETPLACE", "PAYPAL", "VENMO", "VENMO PAYMENT", "SQUARE", "STRIPE", "FACEBOOK ADS", "GOOGLE SERVICES", "GEICO", "STATE FARM", "ALLSTATE", "PROGRESSIVE"]
 }
 
 merchant_templates = {

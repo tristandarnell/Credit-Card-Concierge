@@ -1,8 +1,8 @@
 # Transaction Category Classifier
 
-NLP-based classification of credit card transactions into 13 categories:
+NLP-based classification of credit card transactions into 15 categories (aligned with `lib/rewards/categories.ts`):
 
-**Categories:** Groceries, Restaurants, Coffee Shops, Gas, Public Transport, Airfare, Hotels, Streaming, Utilities, Insurance, Electronics, Clothing, Other
+**Categories:** dining, groceries, gas, travel, airfare, hotels, transit, streaming, drugstores, online_retail, entertainment, utilities, phone, office_supply, all_other (low-confidence fallback)
 
 ## Models
 
@@ -17,7 +17,7 @@ Detects when real data differs from the synthetic training distribution (OOD). U
 
 1. **LR**: If max probability ≥ threshold (default 0.25) → use LR prediction
 2. **Semantic fallback**: If LR rejects → compare embedding (all-MiniLM) to category centroids. If best similarity ≥ semantic threshold (default 0.5) → use that category
-3. **Other**: If both reject → label as **Other**
+3. **all_other**: If both reject → label as **all_other**
 
 Use `--confidence-threshold` and `--semantic-threshold` when training to tune.
 
@@ -35,7 +35,7 @@ python ml/train.py --data synthetic_brand_name_merchant_credit_card_transactions
 # Quick: TF-IDF+LR only, 50k samples (~2 min)
 npm run train:classifier:sample
 
-# Custom (threshold for low-confidence → Other)
+# Custom (threshold for low-confidence → all_other)
 python ml/train.py --data synthetic_brand_name_merchant_credit_card_transactions.csv --confidence-threshold 0.3 --skip-embedding
 ```
 
