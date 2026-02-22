@@ -1,8 +1,9 @@
 import { SectionHeading } from "@/components/section-heading";
+import { SpendingTrendsChart } from "@/components/spending-trends-chart";
 import { CardVisual } from "@/components/card-visual";
 import { buildRewardsInsights } from "@/lib/rewards/insights";
 import { getCleanRewardCards } from "@/lib/rewards/data";
-import { getCategorizedTransactionsPath } from "@/lib/rewards/spend-profile";
+import { getCategorizedTransactionsPath, buildSpendingTrendsFromCsv } from "@/lib/rewards/spend-profile";
 import { buildSpendProfileFromCsv } from "@/lib/rewards/spend-profile";
 import {
   buildPortfolioParetoFrontier,
@@ -21,6 +22,13 @@ export default async function RecommendationsPage() {
   const spendProfileFromCsv = categorizedPath ? await buildSpendProfileFromCsv(categorizedPath) : null;
   const spendProfile = spendProfileFromCsv?.profile ?? DEFAULT_ANNUAL_SPEND_PROFILE;
   const hasUserData = !!categorizedPath;
+  let profileMeta: { totalSpend: number; monthsOfData: number } | null = null;
+  let spendingTrends: Awaited<ReturnType<typeof buildSpendingTrendsFromCsv>> = null;
+  if (categorizedPath) {
+    const meta = await buildSpendProfileFromCsv(categorizedPath);
+    profileMeta = { totalSpend: meta.totalSpend, monthsOfData: meta.monthsOfData };
+    spendingTrends = await buildSpendingTrendsFromCsv(categorizedPath);
+  }
   const profileMeta = spendProfileFromCsv
     ? { totalSpend: spendProfileFromCsv.totalSpend, monthsOfData: spendProfileFromCsv.monthsOfData }
     : null;
@@ -163,6 +171,10 @@ export default async function RecommendationsPage() {
           </article>
         ))}
       </div>
+
+      {spendingTrends?.monthly?.length ? (
+        <SpendingTrendsChart trends={spendingTrends} />
+      ) : null}
 
       {portfolio.cards.length > 0 && (
         <article className="panel" style={{ marginBottom: "2rem" }}>

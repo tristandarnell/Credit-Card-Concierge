@@ -2160,6 +2160,14 @@ select:focus {
   color: var(--text-secondary);
 }
 
+/* ── Spending chart: no focus outline on click ── */
+.spending-chart-container:focus,
+.spending-chart-container:focus-visible,
+.spending-chart-container *:focus,
+.spending-chart-container *:focus-visible {
+  outline: none;
+}
+
 @media (max-width: 900px) {
   .home-cards-grid {
     grid-template-columns: 1fr;

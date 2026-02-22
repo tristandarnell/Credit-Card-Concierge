@@ -150,3 +150,82 @@ export async function getCategorizedTransactionsPath(): Promise<string | null> {
     return null;
   }
 }
+
+export type MonthlySpend = {
+  month: string;
+  monthLabel: string;
+  total: number;
+  byCategory: Partial<Record<StandardCategory, number>>;
+};
+
+export type SpendingTrends = {
+  monthly: MonthlySpend[];
+  byCategory: Record<StandardCategory, number>;
+};
+
+/**
+ * Build spending trends (monthly totals and category breakdown) from categorized CSV.
+ */
+export async function buildSpendingTrendsFromCsv(csvPath: string): Promise<SpendingTrends | null> {
+  const content = await fs.readFile(csvPath, "utf-8");
+  const lines = content.split("\n").filter((l) => l.trim());
+  if (lines.length < 2) return null;
+
+  const header = lines[0].toLowerCase();
+  const cols = header.split(",");
+  const dateIdx = cols.findIndex((h) => h.includes("date"));
+  const amountIdx = cols.findIndex((h) => h.includes("amount"));
+  const typeIdx = cols.findIndex((h) => h.includes("type"));
+  const categoryIdx = header.includes("category") ? cols.findIndex((h) => h.includes("category")) : -1;
+
+  if (amountIdx < 0 || dateIdx < 0) return null;
+
+  const byMonth = new Map<string, { total: number; byCategory: Record<string, number> }>();
+  const byCategory: Record<string, number> = {};
+
+  for (let i = 1; i < lines.length; i++) {
+    const row = parseCsvRow(lines[i]);
+    if (row.length <= amountIdx) continue;
+
+    const amount = parseFloat(row[amountIdx]?.replace(/[^0-9.-]/g, "") || "0");
+    if (!Number.isFinite(amount) || amount <= 0) continue;
+
+    if (typeIdx >= 0 && row[typeIdx]?.toLowerCase() === "credit") continue;
+
+    const d = dateIdx >= 0 && row[dateIdx] ? parseDate(row[dateIdx]) : null;
+    if (!d) continue;
+
+    const monthKey = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+
+    let category: StandardCategory = "all_other";
+    if (categoryIdx >= 0 && row[categoryIdx]) {
+      category = normalizeCategory(row[categoryIdx]);
+    }
+
+    if (!byMonth.has(monthKey)) {
+      byMonth.set(monthKey, {
+        total: 0,
+        byCategory: {},
+      });
+    }
+    const entry = byMonth.get(monthKey)!;
+    entry.total += amount;
+    entry.byCategory[category] = (entry.byCategory[category] ?? 0) + amount;
+
+    byCategory[category] = (byCategory[category] ?? 0) + amount;
+  }
+
+  const monthly: MonthlySpend[] = [...byMonth.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([monthKey, { total, byCategory: bc }]) => ({
+      month: monthKey,
+      monthLabel: new Date(monthKey + "-01").toLocaleString("default", { month: "short", year: "2-digit" }),
+      total,
+      byCategory: bc as Partial<Record<StandardCategory, number>>,
+    }));
+
+  return {
+    monthly,
+    byCategory: byCategory as Record<StandardCategory, number>,
+  };
+}
