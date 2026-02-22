@@ -32,10 +32,10 @@ function bestUseCase(card: CardRewardRecord): string {
 }
 
 const editorialTopics = [
-  { label: "Maximize dining rewards with the right card", bg: "#2D1A0E" },
-  { label: "Travel smarter with premium card benefits", bg: "#0E1829" },
-  { label: "Groceries — your hidden rewards opportunity", bg: "#1A271A" },
-  { label: "Zero-fee cards for everyday cash back", bg: "#1A1A2D" }
+  { label: "Maximize dining rewards with the right card", bg: "#2D1A0E", img: "/dining.jpeg" },
+  { label: "Travel smarter with premium card benefits", bg: "#0E1829", img: "/travel.jpeg" },
+  { label: "Groceries — your hidden rewards opportunity", bg: "#1A271A", img: "/groceries.webp" },
+  { label: "Zero-fee cards for everyday cash back", bg: "#1A1A2D", img: "/cashback.jpeg" }
 ];
 
 export default async function HomePage() {
@@ -60,20 +60,26 @@ export default async function HomePage() {
   const timestamp = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, "0")}-${String(now.getUTCDate()).padStart(2, "0")} · ${String(now.getUTCHours()).padStart(2, "0")}:${String(now.getUTCMinutes()).padStart(2, "0")} UTC`;
 
   return (
-    <>
-      {/* ─── Hero ─── */}
-      <div className="home-hero full-bleed">
-        <div className="home-hero-text-wrap">
-          <p className="home-eyebrow">Card Comparison · Portfolio Audit</p>
-          <h1 className="home-hero-h1">
-            Choose the card that works for <em>you</em>
-          </h1>
-          <p className="home-hero-sub">
-            Personalized to your $2,400/month spend profile · {cards.length} cards analyzed
-          </p>
-        </div>
-        <div className="home-hero-photo" aria-hidden="true" />
-      </div>
+<>
+  {/* ─── Hero ─── */}
+  <div className="home-hero full-bleed">
+    <div className="home-hero-text-wrap">
+      <p className="home-eyebrow">Card Comparison · Portfolio Audit</p>
+      <h1 className="home-hero-h1">
+        Choose the card that works for <em>you</em>
+      </h1>
+      <p className="home-hero-sub">
+        Personalized to your $2,400/month spend profile · {cards.length} cards analyzed
+      </p>
+    </div>
+    <div className="home-hero-photo" aria-hidden="true">
+      <img
+        src="/coverimage.jpeg"
+        alt=""
+        className="home-hero-img"
+      />
+    </div>
+  </div>
 
       {/* ─── Top 3 Card Grid ─── */}
       <div className="home-cards-section full-bleed">
@@ -144,14 +150,19 @@ export default async function HomePage() {
 
         <div className="editorial-photo-grid">
           {editorialTopics.map((topic) => (
-            <div
-              key={topic.label}
-              className="editorial-photo"
-              style={{ background: topic.bg }}
-            >
-              <span className="editorial-photo-label">{topic.label}</span>
-            </div>
-          ))}
+  <div
+    key={topic.label}
+    className="editorial-photo"
+    style={{
+      background: topic.bg,
+      backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%), url(${topic.img})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}
+  >
+    <span className="editorial-photo-label">{topic.label}</span>
+  </div>
+))}
         </div>
 
         <div className="editorial-cta">
