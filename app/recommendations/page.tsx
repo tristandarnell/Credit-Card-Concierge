@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { SectionHeading } from "@/components/section-heading";
 import { SpendingTrendsChart } from "@/components/spending-trends-chart";
 import { CardVisual } from "@/components/card-visual";
@@ -16,9 +17,12 @@ import {
 } from "@/lib/rewards/scoring";
 
 export default async function RecommendationsPage() {
-  const cards = await getCleanRewardCards(1000);
-
   const categorizedPath = await getCategorizedTransactionsPath();
+  if (!categorizedPath) {
+    redirect("/upload");
+  }
+
+  const cards = await getCleanRewardCards(1000);
   const spendProfileFromCsv = categorizedPath ? await buildSpendProfileFromCsv(categorizedPath) : null;
   const spendProfile = spendProfileFromCsv?.profile ?? DEFAULT_ANNUAL_SPEND_PROFILE;
   const hasUserData = !!categorizedPath;
@@ -435,34 +439,6 @@ export default async function RecommendationsPage() {
           </p>
         </article>
       ) : null}
-
-      <div className="card-grid three">
-        {topCards.map(({ card, netAnnualValue }) => {
-          const denominator = Math.max(1, maxValue - minValue);
-          const fitScore = Math.round(60 + ((netAnnualValue - minValue) / denominator) * 40);
-          const highlights = topRewardHighlights(card, 3);
-
-          return (
-            <article className="card" key={card.id}>
-              <CardVisual name={card.cardName} />
-              <div className="card-head">
-                <h3>{card.cardName}</h3>
-                <span className="score">Fit {fitScore}</span>
-              </div>
-              <p className="muted">{card.issuer}</p>
-              <p className="value">{formatDollars(netAnnualValue)}/year</p>
-              <p className="muted">Annual fee: {card.annualFeeText ?? "Unknown"}</p>
-              <ul className="compact-list">
-                {highlights.length > 0 ? (
-                  highlights.map((reason) => <li key={reason}>{reason}</li>)
-                ) : (
-                  <li>No high-confidence reward highlights available</li>
-                )}
-              </ul>
-            </article>
-          );
-        })}
-      </div>
 
       <div className="table-wrap">
         <table>

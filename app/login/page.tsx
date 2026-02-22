@@ -139,7 +139,7 @@ export default function LoginPage() {
                 </button>
               </div>
 
-              <form className="grid-form" onSubmit={handleSubmit}>
+              <form className="login-form" onSubmit={handleSubmit}>
                 <label>
                   Email
                   <input

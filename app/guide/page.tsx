@@ -1,125 +1,113 @@
 import Link from "next/link";
-import { SectionHeading } from "@/components/section-heading";
-
-const starterChecklist = [
-  "Pay every statement in full and on time before attempting any signup-bonus strategy.",
-  "Pause churning if you are preparing for a mortgage or other major loan in the next 12 months.",
-  "Choose 1-2 cards with bonuses you can earn through normal spending.",
-  "Track application date, bonus deadline, annual fee date, and downgrade/cancel window."
-];
 
 const processSteps = [
   {
-    title: "1) Choose the right offer",
-    detail:
-      "Compare elevated public offers, bank pre-approvals, and transfer-partner value before you apply."
+    num: "01",
+    title: "Choose the right offer",
+    detail: "Compare elevated public offers, bank pre-approvals, and transfer-partner value before you apply.",
   },
   {
-    title: "2) Confirm eligibility",
-    detail:
-      "Check issuer limits and anti-churning rules first. Rules vary by bank and can change frequently."
+    num: "02",
+    title: "Confirm eligibility",
+    detail: "Check issuer limits and anti-churning rules first. Rules vary by bank and can change frequently.",
   },
   {
-    title: "3) Plan minimum spend",
-    detail:
-      "Map organic expenses to your bonus window so you do not overspend or miss the target."
+    num: "03",
+    title: "Plan minimum spend",
+    detail: "Map organic expenses to your bonus window so you do not overspend or miss the target.",
   },
   {
-    title: "4) Execute and monitor",
-    detail:
-      "Set autopay immediately, verify bonus posting, and schedule a review before annual fee renewal."
-  }
+    num: "04",
+    title: "Execute and monitor",
+    detail: "Set autopay immediately, verify bonus posting, and schedule a review before annual fee renewal.",
+  },
 ];
 
 const issuerNotes = [
-  "Chase: 5/24 is a common gating rule used by churners. Prioritize Chase strategy earlier if relevant.",
-  "Amex: welcome-bonus and velocity language can restrict repeat eligibility.",
-  "Citi/Barclays/US Bank/BoA/Capital One/Discover: each has separate approval and bonus-repeat behavior.",
-  "All issuers: account shutdown risk increases with aggressive behavior, unusual spend patterns, or policy abuse."
-];
-
-const riskControls = [
-  "Never carry a balance to earn points.",
-  "Avoid manufactured spend unless you fully understand issuer policy and tax/legal implications.",
-  "Keep clean records in case an issuer asks for documentation.",
-  "Start slow and scale only after your process is reliable."
+  { issuer: "Chase", rule: "5/24 gates most approvals. Prioritize Chase applications early in your strategy." },
+  { issuer: "Amex", rule: "Welcome-bonus language can restrict repeat eligibility — read terms carefully." },
+  { issuer: "Citi / Barclays / US Bank / BoA / Capital One", rule: "Each has distinct approval and bonus-repeat behavior. Research individually." },
+  { issuer: "All issuers", rule: "Shutdown risk increases with aggressive behavior, unusual spend patterns, or policy abuse." },
 ];
 
 const resources = [
   { label: "r/churning Wiki Index", href: "https://www.reddit.com/r/churning/wiki/index/", description: "The most comprehensive community guide to card churning strategy" },
   { label: "Anti-Churning Rules by Issuer", href: "https://www.reddit.com/r/churning/wiki/index/#wiki_anti-churning_rules", description: "Chase 5/24, Amex once-per-lifetime, and other issuer-specific limits" },
   { label: "Acronyms & Glossary", href: "https://www.reddit.com/r/churning/wiki/glossary", description: "SUB, MSR, MDD, PC — defined with context" },
-  { label: "The Points Guy Card Comparisons", href: "https://thepointsguy.com/credit-cards/", description: "Valuations, reviews, and side-by-side comparisons of top rewards cards" },
-  { label: "NerdWallet Credit Card Finder", href: "https://www.nerdwallet.com/credit-cards", description: "Unbiased card comparisons with editorial ratings" },
-  { label: "Card Recommendation Flowchart", href: "https://m16p-churning.s3.us-east-2.amazonaws.com/Card+Recommendation+Flowchart+Latest.html", description: "Community decision tree for sequencing card applications" }
+  { label: "The Points Guy", href: "https://thepointsguy.com/credit-cards/", description: "Valuations, reviews, and side-by-side comparisons of top rewards cards" },
+  { label: "NerdWallet Card Finder", href: "https://www.nerdwallet.com/credit-cards", description: "Unbiased card comparisons with editorial ratings" },
+  { label: "Card Recommendation Flowchart", href: "https://m16p-churning.s3.us-east-2.amazonaws.com/Card+Recommendation+Flowchart+Latest.html", description: "Community decision tree for sequencing card applications" },
 ];
 
 export default function GuidePage() {
   return (
-    <section className="section section-tight">
-      <SectionHeading
-        title="Credit Card Churning Guide"
-        subtitle="A practical starter guide based on the r/churning wiki structure, adapted for clear execution and risk control."
-      />
+    <div className="guide-page">
 
-      <article className="guide-intro panel">
-        <p>
-          Churning means earning credit-card signup bonuses and category rewards in a controlled way. Done well, it is
-          a disciplined process. Done poorly, it can damage credit, trigger fees, or lead to issuer shutdowns.
+      {/* ── Hero ── */}
+      <div className="guide-hero">
+        <p className="guide-eyebrow">Credit Card Strategy</p>
+        <h1 className="guide-title">The Churning Guide</h1>
+        <p className="guide-lead">
+          A practical introduction to earning signup bonuses and maximizing rewards — with clear rules on risk and pace.
         </p>
-        <p>
-          If your priority is stable finances and predictable approvals, use a conservative pace and follow strict
-          tracking.
-        </p>
-      </article>
-
-      <div className="card-grid two">
-        <article className="card">
-          <h3>Beginner Checklist</h3>
-          <ul className="compact-list">
-            {starterChecklist.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </article>
-
-        <article className="card">
-          <h3>Risk Controls</h3>
-          <ul className="compact-list">
-            {riskControls.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </article>
       </div>
 
-      <section className="section guide-section">
-        <SectionHeading title="Execution Framework" subtitle="Use this order for every new card application cycle." />
-        <div className="card-grid two">
+      {/* ── Intro ── */}
+      <div className="guide-intro-block">
+        <p>
+          Churning means earning credit-card signup bonuses and category rewards in a controlled, repeatable way.
+          Done well, it&apos;s a disciplined process. Done poorly, it can damage credit, trigger fees, or lead to issuer shutdowns.
+        </p>
+        <p>
+          Start conservative. Track everything. Scale only after your process is reliable.
+        </p>
+      </div>
+
+      {/* ── Two-col checklist ── */}
+      <div className="guide-two-col">
+        <div className="guide-checklist-block">
+          <h2 className="guide-section-title">Beginner Checklist</h2>
+          <ul className="guide-list">
+            <li>Pay every statement in full and on time before attempting any signup-bonus strategy.</li>
+            <li>Pause churning if you are preparing for a mortgage or major loan in the next 12 months.</li>
+            <li>Choose 1–2 cards with bonuses you can earn through normal spending.</li>
+            <li>Track application date, bonus deadline, annual fee date, and downgrade/cancel window.</li>
+          </ul>
+        </div>
+        <div className="guide-checklist-block">
+          <h2 className="guide-section-title">Risk Controls</h2>
+          <ul className="guide-list">
+            <li>Never carry a balance to earn points.</li>
+            <li>Avoid manufactured spend unless you fully understand issuer policy and tax implications.</li>
+            <li>Keep clean records in case an issuer requests documentation.</li>
+            <li>Start slow and scale only after your process is reliable.</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* ── Execution steps ── */}
+      <div className="guide-section">
+        <h2 className="guide-section-title">Execution Framework</h2>
+        <p className="guide-section-sub">Use this order for every new card application cycle.</p>
+        <div className="guide-steps">
           {processSteps.map((step) => (
-            <article className="card" key={step.title}>
-              <h3>{step.title}</h3>
-              <p>{step.detail}</p>
-            </article>
+            <div className="guide-step" key={step.num}>
+              <span className="guide-step-num">{step.num}</span>
+              <div>
+                <h3 className="guide-step-title">{step.title}</h3>
+                <p className="guide-step-detail">{step.detail}</p>
+              </div>
+            </div>
           ))}
         </div>
-      </section>
+      </div>
 
-      <section className="section guide-section">
-        <SectionHeading title="Issuer Rule Awareness" subtitle="Treat bank rules as hard constraints, not suggestions." />
-        <article className="card">
-          <ul className="compact-list">
-            {issuerNotes.map((note) => (
-              <li key={note}>{note}</li>
-            ))}
-          </ul>
-        </article>
-      </section>
-
-      <section className="section guide-section">
-        <SectionHeading title="Quick 90-Day Plan" subtitle="A conservative pace for first-time churners." />
-        <div className="table-wrap">
-          <table>
+      {/* ── 90-day plan ── */}
+      <div className="guide-section">
+        <h2 className="guide-section-title">Quick 90-Day Plan</h2>
+        <p className="guide-section-sub">A conservative pace for first-time churners.</p>
+        <div className="guide-table-wrap">
+          <table className="guide-table">
             <thead>
               <tr>
                 <th>Window</th>
@@ -129,57 +117,71 @@ export default function GuidePage() {
             </thead>
             <tbody>
               <tr>
-                <td>Days 1-7</td>
+                <td>Days 1–7</td>
                 <td>Pick one target card and verify eligibility rules</td>
                 <td>Single approved application with tracking sheet created</td>
               </tr>
               <tr>
-                <td>Days 8-45</td>
+                <td>Days 8–45</td>
                 <td>Complete minimum spend with normal expenses</td>
                 <td>Progress checkpoint at 50% and 80% of spend goal</td>
               </tr>
               <tr>
-                <td>Days 46-75</td>
+                <td>Days 46–75</td>
                 <td>Confirm bonus posted and evaluate next issuer</td>
                 <td>Decision memo: continue, pause, or optimize setup</td>
               </tr>
               <tr>
-                <td>Days 76-90</td>
+                <td>Days 76–90</td>
                 <td>Review card portfolio and renewal calendar</td>
                 <td>Downgrade/cancel watchlist and next-quarter plan</td>
               </tr>
             </tbody>
           </table>
         </div>
-      </section>
+      </div>
 
-      <section className="section guide-section">
-        <SectionHeading title="Primary Resources" subtitle="Use these for current rules, definitions, and strategy updates." />
-        <div className="resource-list">
-          {resources.map((resource) => (
-            <a key={resource.href} href={resource.href} target="_blank" rel="noreferrer noopener" className="resource-item">
+      {/* ── Issuer rules ── */}
+      <div className="guide-section">
+        <h2 className="guide-section-title">Issuer Rule Awareness</h2>
+        <p className="guide-section-sub">Treat bank rules as hard constraints, not suggestions.</p>
+        <div className="guide-issuer-list">
+          {issuerNotes.map((item) => (
+            <div className="guide-issuer-row" key={item.issuer}>
+              <span className="guide-issuer-name">{item.issuer}</span>
+              <span className="guide-issuer-rule">{item.rule}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Resources ── */}
+      <div className="guide-section">
+        <h2 className="guide-section-title">Primary Resources</h2>
+        <p className="guide-section-sub">Use these for current rules, definitions, and strategy updates.</p>
+        <div className="guide-resources">
+          {resources.map((r) => (
+            <a key={r.href} href={r.href} target="_blank" rel="noreferrer noopener" className="guide-resource-row">
               <div>
-                <span style={{ display: "block", fontWeight: 700 }}>{resource.label}</span>
-                <span style={{ display: "block", fontSize: "0.83rem", fontWeight: 400, color: "var(--text-muted)", marginTop: "0.15rem" }}>{resource.description}</span>
+                <span className="guide-resource-label">{r.label}</span>
+                <span className="guide-resource-desc">{r.description}</span>
               </div>
-              <span className="resource-arrow">Open &rarr;</span>
+              <span className="guide-resource-arrow">→</span>
             </a>
           ))}
         </div>
-      </section>
+      </div>
 
-      <section className="cta-block">
-        <h2>Put this guide into workflow.</h2>
-        <p>Upload statements, get ranked card recommendations, and then optimize each purchase in your dashboard.</p>
-        <div className="hero-actions">
-          <Link href="/upload" className="btn btn-primary">
-            Upload Statements
-          </Link>
-          <Link href="/optimizer" className="btn btn-secondary">
-            Open Purchase Optimizer
-          </Link>
+      {/* ── CTA ── */}
+      <div className="guide-cta">
+        <h2>Put this guide into practice.</h2>
+        <p>Upload your statements, get personalized card rankings, and optimize every purchase.</p>
+        <div className="guide-cta-actions">
+          <Link href="/upload" className="btn btn-primary">Upload Statements</Link>
+          <Link href="/optimizer" className="btn btn-secondary">Open Optimizer</Link>
         </div>
-      </section>
-    </section>
+      </div>
+
+    </div>
   );
 }

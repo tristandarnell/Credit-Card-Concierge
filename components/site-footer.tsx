@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="container">
         <div className="footer-inner">
           <div>
-            <p className="footer-brand">CreditCard Concierge</p>
+            <p className="footer-brand">Concierge</p>
             <p className="footer-note">
               Purpose-built credit card recommendations from your real spending data.
               Not affiliated with any bank or card issuer.
@@ -27,17 +27,14 @@ export function SiteFooter() {
           </div>
           <div className="footer-col">
             <h4>Legal</h4>
-            <nav className="footer-links" aria-label="Footer legal links">
-              <Link href="/privacy">Privacy Policy</Link>
-              <Link href="/terms">Terms of Service</Link>
-            </nav>
-            <p className="footer-copy" style={{ marginTop: "1rem" }}>&copy; {year} CreditCard Concierge</p>
+
+            <p className="footer-copy" style={{ marginTop: "1rem" }}>&copy; {year} Concierge</p>
           </div>
         </div>
         <p className="footer-disclaimer">
           Affiliate disclosure: We may earn commissions when you apply for cards through our recommendations.
           Card rankings are based solely on your spending data analysis, not commission rates.
-          CreditCard Concierge is not a bank, lender, or licensed financial advisor.
+          Concierge is not a bank, lender, or licensed financial advisor.
           All reward projections are estimates and may differ from actual earned rewards.
         </p>
       </div>

@@ -1,39 +1,60 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/upload", label: "File Upload" },
-  { href: "/guide", label: "Churning Guide" },
+  { href: "/login", label: "Account" },
+  { href: "/optimizer", label: "Best Card" },
+  { href: "/wallet", label: "My Wallet" },
+  { href: "/upload", label: "Upload Statements" },
+  { href: "/extension", label: "Extension" },
+  { href: "/guide", label: "Guide" },
   { href: "/about", label: "About Us" },
 ];
 
-function CardIcon() {
+function BellIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
-      <line x1="1" y1="10" x2="23" y2="10" />
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+      <path d="M13.73 21a2 2 0 0 1-3.46 0" />
     </svg>
   );
 }
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header className="site-header">
-      {/* Main nav */}
       <div className="main-nav">
         <div className="main-nav-inner">
-          <Link href="/" className="brand-logo" aria-label="CreditCard Concierge Home">
-            <CardIcon />
+          <Link href="/" className="brand-logo" aria-label="Concierge Home">
+            <BellIcon />
             <span className="brand-wordmark">
-              <span className="brand-line1">CREDITCARD</span>
-              <span className="brand-line2">CONCIERGE</span>
+              <span className="brand-line1">CONCIERGE</span>
+              <span className="brand-tagline">AI-Driven Credit Card Intelligence Platform</span>
             </span>
           </Link>
+
+          <button
+            type="button"
+            className="mobile-hamburger-toggle"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((value) => !value)}
+          >
+            <span className={menuOpen ? "hamburger-line open" : "hamburger-line"} />
+            <span className={menuOpen ? "hamburger-line open" : "hamburger-line"} />
+            <span className={menuOpen ? "hamburger-line open" : "hamburger-line"} />
+          </button>
 
           <nav aria-label="Main navigation" className="main-nav-links">
             {navLinks.map((link) => {
@@ -52,12 +73,30 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {/* Breadcrumb */}
-      <div className="breadcrumb-bar">
-        <div className="breadcrumb-inner">
-          <span className="breadcrumb-text">Card Comparison &amp; Portfolio Audit</span>
+      <div className={menuOpen ? "mobile-hamburger-panel open" : "mobile-hamburger-panel"}>
+        <div className="mobile-hamburger-panel-inner">
+          {navLinks.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link
+                key={`mobile-${link.href}`}
+                href={link.href}
+                className={active ? "mobile-hamburger-link active" : "mobile-hamburger-link"}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
       </div>
+      <button
+        type="button"
+        className={menuOpen ? "mobile-hamburger-backdrop open" : "mobile-hamburger-backdrop"}
+        aria-label="Close menu backdrop"
+        onClick={() => setMenuOpen(false)}
+      />
+
     </header>
   );
 }

@@ -1,8 +1,24 @@
 import Link from "next/link";
+import Image from "next/image";
+import { redirect } from "next/navigation";
 import { getCleanRewardCards } from "@/lib/rewards/data";
+import { getCategorizedTransactionsPath } from "@/lib/rewards/spend-profile";
 
 /* ── Hardcoded top-3 with real researched data ── */
-const TOP_CARDS = [
+const TOP_CARDS: Array<{
+  id: string;
+  cardName: string;
+  issuer: string;
+  conf: number;
+  annualFee: string;
+  annualValue: string;
+  fitScore: number;
+  useCase: string;
+  photoSrc: string;
+  signupBonus: string;
+  accent: string;
+  highlights: string[];
+}> = [
   {
     id: "chase-sapphire-preferred",
     cardName: "Chase Sapphire Preferred",
@@ -71,9 +87,12 @@ const editorialTopics = [
 ];
 
 export default async function HomePage() {
+  const categorizedPath = await getCategorizedTransactionsPath();
+  if (!categorizedPath) {
+    redirect("/upload");
+  }
+
   const cards = await getCleanRewardCards(1000);
-
-
 
   return (
 <>
@@ -85,22 +104,18 @@ export default async function HomePage() {
         Choose the card that works for <em>you</em>
       </h1>
       <p className="home-hero-sub">
-        Personalized to your $2,400/month spend profile · {cards.length} cards analyzed
+        {cards.length} cards analyzed
       </p>
     </div>
     <div className="home-hero-photo" aria-hidden="true">
-      <img
-        src="/coverimage.jpeg"
-        alt=""
-        className="home-hero-img"
-      />
+      <Image src="/coverimage.jpeg" alt="" className="home-hero-img" fill priority sizes="100vw" />
     </div>
   </div>
 
       {/* ─── Top 3 Card Grid (hardcoded with real researched data) ─── */}
       <div className="home-cards-section full-bleed">
         <div className="home-cards-grid">
-          {TOP_CARDS.map((c) => (
+          {TOP_CARDS.map((c, index) => (
             <article
               key={c.id}
               className="home-rec-card"
@@ -108,11 +123,13 @@ export default async function HomePage() {
             >
               {/* Real card photo */}
               <div className="home-card-photo-wrap">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={c.photoSrc}
                   alt={c.cardName}
                   className="home-card-photo"
+                  fill
+                  priority={index < 2}
+                  sizes="(max-width: 900px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
 
@@ -191,7 +208,7 @@ export default async function HomePage() {
           <div className="disclosure-block">
             <p className="disclosure-heading">Advertiser Disclosure</p>
             <p className="disclosure-body">
-              CreditCard Concierge is an independent, advertising-supported comparison service. We may
+              Concierge is an independent, advertising-supported comparison service. We may
               receive compensation when you click on links to products from our partners. This compensation
               does not influence our editorial rankings or recommendations, which are determined solely by
               our analysis of reward rates, fees, and spending-profile fit.
@@ -218,8 +235,8 @@ export default async function HomePage() {
             <p className="disclosure-heading">Data &amp; Privacy</p>
             <p className="disclosure-body">
               Any transaction data or bank statements you upload are analyzed locally and are not stored,
-              sold, or shared with third parties. See our{" "}
-              <Link href="/privacy" className="disclosure-link">Privacy Policy</Link> for full details.
+              sold, or shared with third parties.
+
             </p>
           </div>
         </div>
