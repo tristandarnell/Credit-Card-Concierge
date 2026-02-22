@@ -402,3 +402,104 @@ export function formatDollars(value: number): string {
     maximumFractionDigits: 0
   }).format(value);
 }
+
+export type PortfolioCardRecommendation = {
+  card: CardRewardRecord;
+  netValue: number;
+  categories: Array<{ category: StandardCategory; amount: number; rewardValue: number; rateText: string }>;
+};
+
+export type PortfolioRecommendation = {
+  cards: PortfolioCardRecommendation[];
+  totalProjectedValue: number;
+  totalFees: number;
+  categoryAssignments: Array<{ category: StandardCategory; cardName: string; amount: number; rewardValue: number }>;
+};
+
+/**
+ * Recommend an optimal credit card portfolio for a given spend profile.
+ * Assigns each category to the best card and ranks cards by contribution.
+ */
+export function recommendPortfolio(
+  cards: CardRewardRecord[],
+  profile: AnnualSpendProfile,
+  maxCards = 5
+): PortfolioRecommendation {
+  const categoryAssignments: PortfolioRecommendation["categoryAssignments"] = [];
+  const cardContributions = new Map<string, { value: number; categories: PortfolioCardRecommendation["categories"] }>();
+
+  for (const category of STANDARD_CATEGORIES) {
+    const amount = profile[category] ?? 0;
+    if (amount <= 0) continue;
+
+    const best = getBestCardForPurchase(cards, category, amount);
+    if (!best) {
+      categoryAssignments.push({ category, cardName: "No card", amount, rewardValue: 0 });
+      continue;
+    }
+
+    categoryAssignments.push({
+      category,
+      cardName: best.cardName,
+      amount,
+      rewardValue: best.estimatedRewardValue
+    });
+
+    const existing = cardContributions.get(best.cardId) ?? { value: 0, categories: [] };
+    existing.value += best.estimatedRewardValue;
+    existing.categories.push({
+      category,
+      amount,
+      rewardValue: best.estimatedRewardValue,
+      rateText: best.matchedRule.rateText
+    });
+    cardContributions.set(best.cardId, existing);
+  }
+
+  // Build candidate cards with net value (rewards - fee)
+  const candidates: PortfolioCardRecommendation[] = [...cardContributions.entries()].map(([cardId, contrib]) => {
+    const card = cards.find((c) => c.id === cardId)!;
+    const fee = parseAnnualFee(card.annualFeeText);
+    return {
+      card,
+      netValue: contrib.value - fee,
+      categories: contrib.categories
+    };
+  });
+
+  // Only recommend cards with positive net value; rank by net value
+  const portfolioCards = candidates
+    .filter((p) => p.netValue > 0)
+    .sort((a, b) => b.netValue - a.netValue)
+    .slice(0, maxCards);
+
+  // If no cards have positive net, fall back to best no-fee cards that earn rewards,
+  // or if none exist, the single least-negative option
+  const noFeeEarners = candidates
+    .filter((p) => parseAnnualFee(p.card.annualFeeText) === 0 && p.netValue >= 0)
+    .sort((a, b) => b.netValue - a.netValue)
+    .slice(0, maxCards);
+
+  const finalCards =
+    portfolioCards.length > 0
+      ? portfolioCards
+      : noFeeEarners.length > 0
+        ? noFeeEarners
+        : candidates.sort((a, b) => b.netValue - a.netValue).slice(0, 1);
+
+  const totalProjectedValue = finalCards.reduce((sum, p) => sum + p.netValue, 0);
+  const totalFees = finalCards.reduce((sum, p) => sum + parseAnnualFee(p.card.annualFeeText), 0);
+
+  // Only show category assignments for cards we're actually recommending
+  const recommendedCardNames = new Set(finalCards.map((p) => p.card.cardName));
+  const filteredAssignments = categoryAssignments.filter(
+    (a) => a.cardName !== "No card" && recommendedCardNames.has(a.cardName)
+  );
+
+  return {
+    cards: finalCards,
+    totalProjectedValue,
+    totalFees,
+    categoryAssignments: filteredAssignments
+  };
+}

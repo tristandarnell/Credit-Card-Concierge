@@ -1,8 +1,8 @@
 # Transaction Category Classifier
 
-NLP-based classification of credit card transactions into 13 categories:
+NLP-based classification of credit card transactions into 15 categories (aligned with `lib/rewards/categories.ts`):
 
-**Categories:** Groceries, Restaurants, Coffee Shops, Gas, Public Transport, Airfare, Hotels, Streaming, Utilities, Insurance, Electronics, Clothing, Other
+**Categories:** dining, groceries, gas, travel, airfare, hotels, transit, streaming, drugstores, online_retail, entertainment, utilities, phone, office_supply, all_other (low-confidence fallback)
 
 ## Models
 
@@ -13,19 +13,30 @@ NLP-based classification of credit card transactions into 13 categories:
 
 Detects when real data differs from the synthetic training distribution (OOD). Uses Mahalanobis distance in feature space; flags samples beyond the 99th percentile of training distances. For high-dimensional TF-IDF, uses PCA (200 dims) before fitting.
 
+## Two-Stage Prediction
+
+1. **LR**: If max probability ≥ threshold (default 0.25) → use LR prediction
+2. **Semantic fallback**: If LR rejects → compare embedding (all-MiniLM) to category centroids. If best similarity ≥ semantic threshold (default 0.5) → use that category
+3. **all_other**: If both reject → label as **all_other**
+
+Use `--confidence-threshold` and `--semantic-threshold` when training to tune.
+
 ## Usage
 
 ### Train (from project root)
 
 ```bash
+# Brand-name data (default): 50k samples with real merchant names
+npm run train:classifier:brands
+
+# Or explicitly:
+python ml/train.py --data synthetic_brand_name_merchant_credit_card_transactions.csv --skip-embedding
+
 # Quick: TF-IDF+LR only, 50k samples (~2 min)
 npm run train:classifier:sample
 
-# Full: both models, all 500k samples
-npm run train:classifier
-
-# Custom
-python ml/train.py --data synthetic_credit_card_transactions.csv --sample 10000 --output ml/artifacts --skip-embedding
+# Custom (threshold for low-confidence → all_other)
+python ml/train.py --data synthetic_brand_name_merchant_credit_card_transactions.csv --confidence-threshold 0.3 --skip-embedding
 ```
 
 ### Predict
