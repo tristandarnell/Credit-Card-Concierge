@@ -1494,9 +1494,30 @@ select:focus {
 
 .home-hero-photo {
   width: 100%;
-  height: 380px;
-  background: linear-gradient(160deg, #1a1a2e 0%, #16213e 45%, #0f3460 100%);
-  /* Replace with: background-image: url('/hero-photo.jpg'); background-size: cover; */
+  height: 720px;
+  overflow: hidden;
+  position: relative;
+}
+
+.home-hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(27, 43, 75, 0.35) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+  pointer-events: none;
+}
+
+.home-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 
 /* ── Top card grid ── */
@@ -1801,12 +1822,6 @@ select:focus {
   }
 }
 
-.home-hero-photo {
-  width: 100%;
-  height: 400px;        /* ← this is probably missing */
-  overflow: hidden;
-  position: relative;
-}
 
 .home-hero-img {
   width: 100%;
