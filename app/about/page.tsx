@@ -5,28 +5,28 @@ const founders = [
     name: "Kambi Kanu",
     role: "Co-Founder",
     bio: "Passionate about making financial optimization accessible to everyone. Kambi leads product strategy and user experience, ensuring CreditCard Concierge delivers genuine value to every user.",
-    initials: "KK",
+    photo: "/image.png",
     accent: "#1A3A6B",
   },
   {
     name: "Tristan Darnell",
     role: "Co-Founder",
     bio: "Full-stack engineer and systems thinker. Tristan architected the rewards analysis engine and the data pipeline that powers our personalized card recommendations.",
-    initials: "TD",
+    photo: "/tristan.png",
     accent: "#C8102E",
   },
   {
     name: "Ethan Liu",
     role: "Co-Founder",
     bio: "Data scientist with a focus on behavioral finance. Ethan built the spending categorization models and the fit-score algorithm that matches users to their ideal cards.",
-    initials: "EL",
+    photo: "/ethan.png",
     accent: "#1B2B4B",
   },
   {
     name: "Charles Zheng",
     role: "Co-Founder",
     bio: "Financial analyst and rewards strategist. Charles maintains our card database, monitors issuer rule changes, and ensures our recommendations reflect real-world value.",
-    initials: "CZ",
+    photo: "/charles.png",
     accent: "#C49A22",
   },
 ];
@@ -111,20 +111,23 @@ export default function AboutPage() {
             <div key={f.name} className="card" style={{ padding: "1.5rem", borderTop: `3px solid ${f.accent}` }}>
               <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.85rem" }}>
                 <div style={{
-                  width: "44px",
-                  height: "44px",
+                  width: "64px",
+                  height: "64px",
                   borderRadius: "50%",
-                  background: f.accent,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "#fff",
-                  fontWeight: 700,
-                  fontSize: "0.82rem",
-                  letterSpacing: "0.05em",
+                  overflow: "hidden",
                   flexShrink: 0,
+                  border: `2px solid ${f.accent}`,
                 }}>
-                  {f.initials}
+                  <img
+                    src={f.photo}
+                    alt={f.name}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "center top",
+                    }}
+                  />
                 </div>
                 <div>
                   <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "#0f1724" }}>{f.name}</div>
