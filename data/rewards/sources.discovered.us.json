@@ -1,23 +1,5 @@
 [
   {
-    "id": "unknown-alaska-airlines",
-    "issuer": "Unknown",
-    "cardName": "alaska airlines",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/alaska-airlines-credit-card"
-  },
-  {
-    "id": "unknown-amazon-prime-rewards",
-    "issuer": "Unknown",
-    "cardName": "amazon prime rewards",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/amazon-prime-rewards"
-  },
-  {
     "id": "unknown-american-express-blue-cash-everyday",
     "issuer": "Unknown",
     "cardName": "american express blue cash everyday",
@@ -45,15 +27,6 @@
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/american-express-gold-delta-skymiles"
   },
   {
-    "id": "unknown-american-express-platinum",
-    "issuer": "Unknown",
-    "cardName": "american express platinum",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/american-express-platinum"
-  },
-  {
     "id": "unknown-american-express-premier-rewards-gold",
     "issuer": "Unknown",
     "cardName": "american express premier rewards gold",
@@ -61,24 +34,6 @@
     "cardSegment": "personal",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/american-express-premier-rewards-gold"
-  },
-  {
-    "id": "unknown-apple",
-    "issuer": "Unknown",
-    "cardName": "apple",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/apple-card"
-  },
-  {
-    "id": "unknown-bank-of-america-unlimited-cash-rewards",
-    "issuer": "Unknown",
-    "cardName": "bank of america unlimited cash rewards",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/bank-of-america-unlimited-cash-rewards"
   },
   {
     "id": "unknown-bank-shield",
@@ -115,15 +70,6 @@
     "cardSegment": "personal",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/capital-one-quicksilver"
-  },
-  {
-    "id": "unknown-capital-one-quicksilver-student",
-    "issuer": "Unknown",
-    "cardName": "capital one quicksilver student",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/capital-one-quicksilver-student"
   },
   {
     "id": "unknown-capital-one-savor",
@@ -198,15 +144,6 @@
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/chase-sapphire-preferred"
   },
   {
-    "id": "unknown-chase-sapphire-reserve",
-    "issuer": "Unknown",
-    "cardName": "chase sapphire reserve",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/chase-sapphire-reserve"
-  },
-  {
     "id": "unknown-chase-slate",
     "issuer": "Unknown",
     "cardName": "chase slate",
@@ -214,15 +151,6 @@
     "cardSegment": "personal",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/chase-slate"
-  },
-  {
-    "id": "unknown-citi-custom-cash",
-    "issuer": "Unknown",
-    "cardName": "citi custom cash",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/citi-custom-cash"
   },
   {
     "id": "unknown-citi-diamond-preferred",
@@ -252,15 +180,6 @@
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/citi-simplicity"
   },
   {
-    "id": "unknown-citi-strata-elite",
-    "issuer": "Unknown",
-    "cardName": "citi strata elite",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/citi-strata-elite"
-  },
-  {
     "id": "unknown-citi-strata-premier",
     "issuer": "Unknown",
     "cardName": "citi strata premier",
@@ -268,15 +187,6 @@
     "cardSegment": "personal",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/citi-strata-premier"
-  },
-  {
-    "id": "unknown-costco-anywhere-visa",
-    "issuer": "Unknown",
-    "cardName": "costco anywhere visa",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/costco-anywhere-visa"
   },
   {
     "id": "unknown-discover-it-cash-back",
@@ -306,15 +216,6 @@
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/discover-it-chrome"
   },
   {
-    "id": "unknown-discover-it-secured",
-    "issuer": "Unknown",
-    "cardName": "discover it secured",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/discover-it-secured"
-  },
-  {
     "id": "unknown-discover-it-student-cash-back",
     "issuer": "Unknown",
     "cardName": "discover it student cash back",
@@ -333,51 +234,6 @@
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/discover-it-student-chrome"
   },
   {
-    "id": "unknown-firstcard-secured",
-    "issuer": "Unknown",
-    "cardName": "firstcard secured",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/firstcard-secured"
-  },
-  {
-    "id": "unknown-jetblue-plus",
-    "issuer": "Unknown",
-    "cardName": "jetblue plus",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/jetblue-plus"
-  },
-  {
-    "id": "unknown-marriott-bonvoy-boundless",
-    "issuer": "Unknown",
-    "cardName": "marriott bonvoy boundless",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/marriott-bonvoy-boundless"
-  },
-  {
-    "id": "unknown-navy-federal-platinum",
-    "issuer": "Unknown",
-    "cardName": "navy federal platinum",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/navy-federal-platinum"
-  },
-  {
-    "id": "unknown-paypal-cashback",
-    "issuer": "Unknown",
-    "cardName": "paypal cashback",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/paypal-cashback"
-  },
-  {
     "id": "unknown-penfed-pathfinder-rewards",
     "issuer": "Unknown",
     "cardName": "penfed pathfinder rewards",
@@ -385,15 +241,6 @@
     "cardSegment": "personal",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/penfed-pathfinder-rewards"
-  },
-  {
-    "id": "unknown-southwest-rapid-rewards-priority",
-    "issuer": "Unknown",
-    "cardName": "southwest rapid rewards priority",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/southwest-rapid-rewards-priority"
   },
   {
     "id": "unknown-synchrony-premier",
@@ -421,15 +268,6 @@
     "cardSegment": "personal",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/wells-fargo-active-cash"
-  },
-  {
-    "id": "unknown-wells-fargo-autograph",
-    "issuer": "Unknown",
-    "cardName": "wells fargo autograph",
-    "network": null,
-    "cardSegment": "personal",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/wells-fargo-autograph"
   },
   {
     "id": "unknown-wells-fargo-autograph-journey",
@@ -468,15 +306,6 @@
     "cardUrl": "https://www.nerdwallet.com/business/credit-cards/reviews/bank-of-america-business-advantage-unlimited-cash-rewards"
   },
   {
-    "id": "unknown-capital-one-spark-miles",
-    "issuer": "Unknown",
-    "cardName": "capital one spark miles",
-    "network": null,
-    "cardSegment": "business",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/business/credit-cards/reviews/capital-one-spark-miles"
-  },
-  {
     "id": "unknown-capital-one-venture-x-business",
     "issuer": "Unknown",
     "cardName": "capital one venture x business",
@@ -493,23 +322,5 @@
     "cardSegment": "business",
     "popularityRank": null,
     "cardUrl": "https://www.nerdwallet.com/business/credit-cards/reviews/chase-ink-business-unlimited"
-  },
-  {
-    "id": "unknown-chase-ink-cash",
-    "issuer": "Unknown",
-    "cardName": "chase ink cash",
-    "network": null,
-    "cardSegment": "business",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/business/credit-cards/reviews/chase-ink-cash"
-  },
-  {
-    "id": "unknown-chase-ink-preferred",
-    "issuer": "Unknown",
-    "cardName": "chase ink preferred",
-    "network": null,
-    "cardSegment": "business",
-    "popularityRank": null,
-    "cardUrl": "https://www.nerdwallet.com/business/credit-cards/reviews/chase-ink-preferred"
   }
 ]

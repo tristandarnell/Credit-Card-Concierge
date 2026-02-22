@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Card Autofill</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Checkout Card Pick</h1>
+        <button id="openOptions" class="link-btn" type="button">Wallet Settings</button>
+      </header>
+
+      <section class="panel">
+        <p id="status" class="status">Loading checkout context...</p>
+        <div id="details" class="hidden"></div>
+        <button id="autofillBtn" type="button" class="primary" disabled>Autofill Recommended Card</button>
+      </section>
+
+      <p class="fine-print">
+        Autofill works on compatible checkout fields. Hosted payment iframes (Stripe/Shopify/etc.) may block script access.
+      </p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
+

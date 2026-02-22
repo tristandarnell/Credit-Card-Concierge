@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CreditCard Concierge Extension Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>CreditCard Concierge Extension</h1>
+      <p class="muted">Configure app connection and wallet cards for checkout autofill.</p>
+
+      <section class="panel">
+        <h2>App Connection</h2>
+        <label>
+          App Base URL
+          <input id="appBaseUrl" type="url" placeholder="http://localhost:3000" />
+        </label>
+        <div class="row">
+          <button id="saveSettings" type="button">Save Settings</button>
+          <button id="loadCatalog" type="button" class="secondary">Load Card Catalog</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Add Wallet Card</h2>
+        <label>
+          Card from App Dataset
+          <select id="cardIdSelect"></select>
+        </label>
+        <div class="grid">
+          <label>
+            Cardholder Name
+            <input id="cardholderName" type="text" autocomplete="off" />
+          </label>
+          <label>
+            Card Number
+            <input id="cardNumber" type="text" inputmode="numeric" autocomplete="off" />
+          </label>
+          <label>
+            Exp Month (MM)
+            <input id="expMonth" type="text" inputmode="numeric" maxlength="2" autocomplete="off" />
+          </label>
+          <label>
+            Exp Year (YYYY)
+            <input id="expYear" type="text" inputmode="numeric" maxlength="4" autocomplete="off" />
+          </label>
+          <label>
+            CVC
+            <input id="cvc" type="password" inputmode="numeric" maxlength="4" autocomplete="off" />
+          </label>
+          <label>
+            Billing ZIP
+            <input id="zip" type="text" inputmode="numeric" maxlength="10" autocomplete="off" />
+          </label>
+        </div>
+        <button id="saveWalletCard" type="button">Save Wallet Card</button>
+      </section>
+
+      <section class="panel">
+        <h2>Wallet Cards</h2>
+        <ul id="walletCards"></ul>
+      </section>
+
+      <p id="status" class="muted"></p>
+      <p class="warning">
+        Security note: card details are stored in your browser extension local storage for autofill. Use on your own device only.
+      </p>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>
+

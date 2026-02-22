@@ -36,6 +36,27 @@ npm run dev
 - `/upload` Statement upload workflow UI
 - `/recommendations` Ranked recommendation view
 - `/optimizer` Per-purchase optimization + autofill preview
+- `/extension` Browser extension setup page
+
+## Browser Extension (Checkout Autofill MVP)
+
+Extension source lives in `extension/`.
+
+Features:
+- Detect checkout context (merchant + amount)
+- Ask app API for best card from user wallet
+- Autofill compatible credit-card form fields on page
+
+Load in Chrome:
+
+1. Open `chrome://extensions`
+2. Enable Developer mode
+3. Click **Load unpacked**
+4. Select the `extension` folder
+5. Open extension **Options**
+6. Set App Base URL (`http://localhost:3000` for local dev)
+7. Load card catalog and add wallet cards
+8. Use extension popup on checkout pages
 
 ## Notes
 

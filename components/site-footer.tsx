@@ -21,6 +21,7 @@ export function SiteFooter() {
               <Link href="/upload">Upload Statements</Link>
               <Link href="/recommendations">Recommendations</Link>
               <Link href="/optimizer">Purchase Optimizer</Link>
+              <Link href="/extension">Browser Extension</Link>
               <Link href="/guide">Churning Guide</Link>
             </nav>
           </div>
