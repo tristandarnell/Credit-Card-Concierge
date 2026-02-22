@@ -27,10 +27,7 @@ export function SiteFooter() {
           </div>
           <div className="footer-col">
             <h4>Legal</h4>
-            <nav className="footer-links" aria-label="Footer legal links">
-              <Link href="/privacy">Privacy Policy</Link>
-              <Link href="/terms">Terms of Service</Link>
-            </nav>
+
             <p className="footer-copy" style={{ marginTop: "1rem" }}>&copy; {year} CreditCard Concierge</p>
           </div>
         </div>
