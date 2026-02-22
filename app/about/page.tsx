@@ -25,7 +25,7 @@ const founders = [
   {
     name: "Charles Zheng",
     role: "Co-Founder",
-    bio: "Financial analyst and rewards strategist. Charles maintains our card database, monitors issuer rule changes, and ensures our recommendations reflect real-world value.",
+    bio: "Software engineer that likes building with AI and behavioral systems. Wants to have AI make all his decisions for him.",
     initials: "CZ",
     accent: "#C49A22",
   },
