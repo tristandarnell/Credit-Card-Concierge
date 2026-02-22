@@ -78,6 +78,7 @@ const primaryNav: NavItem[] = [
   { href: "/", label: "Overview", icon: <GridIcon /> },
   { href: "/recommendations", label: "Cards", icon: <CardIcon /> },
   { href: "/optimizer", label: "Optimization", icon: <ZapIcon /> },
+  { href: "/wallet", label: "My Wallet", icon: <CardIcon /> },
   { href: "/extension", label: "Extension", icon: <PlugIcon /> },
   { href: "/guide", label: "Insights", icon: <TrendingIcon /> },
 ];
@@ -85,6 +86,7 @@ const primaryNav: NavItem[] = [
 const secondaryNav: NavItem[] = [
   { href: "/upload", label: "Transactions", icon: <UploadIcon /> },
   { href: "/guide", label: "Rewards Guide", icon: <BookIcon /> },
+  { href: "/login", label: "Account", icon: <BookIcon /> },
 ];
 
 export function Sidebar() {

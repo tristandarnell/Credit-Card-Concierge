@@ -37,6 +37,8 @@ npm run dev
 - `/recommendations` Ranked recommendation view
 - `/optimizer` Per-purchase optimization + autofill preview
 - `/extension` Browser extension setup page
+- `/login` Account sign-in/sign-up
+- `/wallet` User-saved wallet cards (synced to Supabase per account)
 
 ## Browser Extension (Checkout Autofill MVP)
 
@@ -67,7 +69,14 @@ Set these for live data:
 ```bash
 export SUPABASE_URL="https://<project-ref>.supabase.co"
 export SUPABASE_SERVICE_ROLE_KEY="<service-role-key>"
+export NEXT_PUBLIC_SUPABASE_URL="https://<project-ref>.supabase.co"
+export NEXT_PUBLIC_SUPABASE_ANON_KEY="<anon-key>"
 ```
+
+Apply wallet/account schema in Supabase SQL editor:
+
+- `supabase/schema/rewards.sql`
+- `supabase/schema/user_wallet.sql`
 
 ## Rewards Data Pipeline (US)
 

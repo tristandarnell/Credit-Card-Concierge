@@ -8,22 +8,27 @@
   </head>
   <body>
     <main class="container">
-      <header>
-        <h1>Checkout Card Pick</h1>
-        <button id="openOptions" class="link-btn" type="button">Wallet Settings</button>
+      <header class="brand-header">
+        <div class="brand-lockup">
+          <img src="assets/logo.svg" alt="CreditCard Concierge logo" class="brand-logo" />
+          <div>
+            <p class="eyebrow">CreditCard Concierge</p>
+            <h1>Checkout Assistant</h1>
+          </div>
+        </div>
+        <button id="openOptions" class="link-btn" type="button">Wallet</button>
       </header>
 
       <section class="panel">
         <p id="status" class="status">Loading checkout context...</p>
-        <div id="details" class="hidden"></div>
+        <div id="details" class="details hidden"></div>
         <button id="autofillBtn" type="button" class="primary" disabled>Autofill Recommended Card</button>
       </section>
 
       <p class="fine-print">
-        Autofill works on compatible checkout fields. Hosted payment iframes (Stripe/Shopify/etc.) may block script access.
+        Works on compatible checkout fields. Hosted payment iframes (Stripe, Shopify, etc.) may block script access.
       </p>
     </main>
     <script src="popup.js"></script>
   </body>
 </html>
-
