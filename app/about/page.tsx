@@ -170,7 +170,7 @@ export default function AboutPage() {
           }}>
             Built With
           </p>
-          <p style={{ color: "#c0ccd e", fontSize: "0.88rem", lineHeight: 1.7, maxWidth: "68ch", color: "#8a9ab8" }}>
+          <p style={{ color: "#8a9ab8", fontSize: "0.88rem", lineHeight: 1.7, maxWidth: "68ch" }}>
             CreditCard Concierge was built using Next.js, Supabase, and TypeScript. Our rewards analysis engine
             was developed with assistance from <strong style={{ color: "#a8c4e0" }}>Claude by Anthropic</strong> — an AI assistant
             that helped us reason through edge cases in rewards logic, draft documentation, and accelerate development.

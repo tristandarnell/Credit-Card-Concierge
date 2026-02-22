@@ -1,8 +1,22 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getCleanRewardCards } from "@/lib/rewards/data";
 
 /* ── Hardcoded top-3 with real researched data ── */
-const TOP_CARDS = [
+const TOP_CARDS: Array<{
+  id: string;
+  cardName: string;
+  issuer: string;
+  conf: number;
+  annualFee: string;
+  annualValue: string;
+  fitScore: number;
+  useCase: string;
+  photoSrc: string;
+  signupBonus: string;
+  accent: string;
+  highlights: string[];
+}> = [
   {
     id: "chase-sapphire-preferred",
     cardName: "Chase Sapphire Preferred",
@@ -89,18 +103,14 @@ export default async function HomePage() {
       </p>
     </div>
     <div className="home-hero-photo" aria-hidden="true">
-      <img
-        src="/coverimage.jpeg"
-        alt=""
-        className="home-hero-img"
-      />
+      <Image src="/coverimage.jpeg" alt="" className="home-hero-img" fill priority sizes="100vw" />
     </div>
   </div>
 
       {/* ─── Top 3 Card Grid (hardcoded with real researched data) ─── */}
       <div className="home-cards-section full-bleed">
         <div className="home-cards-grid">
-          {TOP_CARDS.map((c) => (
+          {TOP_CARDS.map((c, index) => (
             <article
               key={c.id}
               className="home-rec-card"
@@ -108,11 +118,13 @@ export default async function HomePage() {
             >
               {/* Real card photo */}
               <div className="home-card-photo-wrap">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={c.photoSrc}
                   alt={c.cardName}
                   className="home-card-photo"
+                  fill
+                  priority={index < 2}
+                  sizes="(max-width: 900px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
 

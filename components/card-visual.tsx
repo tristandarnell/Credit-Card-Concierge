@@ -1,8 +1,10 @@
+import Image from "next/image";
+
 const cardImageMap: Record<string, string> = {
   "chase sapphire preferred": "/cards/Chase Sapphire Preferred.png",
   "american express gold": "/cards/Amex Gold Image.avif",
   "amex gold": "/cards/Amex Gold Image.avif",
-  "capital one venture x": "/cards/capitaloneventurex.jpeg",
+  "capital one venture x": "/cards/capitaloneventurex.jpeg"
 };
 
 function normalizeCardName(value: string): string {
@@ -39,8 +41,13 @@ export function CardVisual({ name }: { name: string }) {
 
   return (
     <div className="card-visual-wrap">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={name} style={{ display: "block", width: "100%", height: "auto" }} />
+      <Image
+        src={src}
+        alt={name}
+        className="card-visual-img"
+        fill
+        sizes="(max-width: 900px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
     </div>
   );
 }

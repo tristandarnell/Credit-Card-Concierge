@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import "./globals.css";
-import { SiteHeader } from "@/components/site-header";
 import { AppProviders } from "@/components/app-providers";
+import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
   title: "CreditCard Concierge",
