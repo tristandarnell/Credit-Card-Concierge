@@ -18,7 +18,7 @@ const founders = [
   {
     name: "Ethan Liu",
     role: "Co-Founder",
-    bio: "Freshman at Duke University studying Computer Science and Mathematics. Pursuing career in SWE or AI/ML Engineer. Built the NLP classification pipeline for statement analysis.",
+    bio: "Freshman at Duke University studying Computer Science and Mathematics. Built the NLP classification pipeline for statement analysis. Pursuing career in SWE or AI/ML Engineering.",
     initials: "EL",
     accent: "#1B2B4B",
   },
