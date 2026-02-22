@@ -1,8 +1,9 @@
 import { SectionHeading } from "@/components/section-heading";
+import { SpendingTrendsChart } from "@/components/spending-trends-chart";
 import { CardVisual } from "@/components/card-visual";
 import { buildRewardsInsights } from "@/lib/rewards/insights";
 import { getCleanRewardCards } from "@/lib/rewards/data";
-import { getCategorizedTransactionsPath } from "@/lib/rewards/spend-profile";
+import { getCategorizedTransactionsPath, buildSpendingTrendsFromCsv } from "@/lib/rewards/spend-profile";
 import { buildSpendProfileFromCsv } from "@/lib/rewards/spend-profile";
 import {
   buildPortfolioParetoFrontier,
@@ -22,8 +23,13 @@ export default async function RecommendationsPage() {
   const spendProfile = spendProfileFromCsv?.profile ?? DEFAULT_ANNUAL_SPEND_PROFILE;
   const hasUserData = !!categorizedPath;
   const profileMeta = spendProfileFromCsv
-    ? { totalSpend: spendProfileFromCsv.totalSpend, monthsOfData: spendProfileFromCsv.monthsOfData }
+    ? {
+        totalSpend: spendProfileFromCsv.totalSpend,
+        monthsOfData: spendProfileFromCsv.monthsOfData,
+        daysOfData: spendProfileFromCsv.daysOfData,
+      }
     : null;
+  const spendingTrends = categorizedPath ? await buildSpendingTrendsFromCsv(categorizedPath) : null;
 
   const rankedCards = cards
     .map((card) => ({
@@ -50,8 +56,8 @@ export default async function RecommendationsPage() {
   const minValue = topCards.length > 0 ? Math.min(...topCards.map((item) => item.netAnnualValue)) : 0;
 
   const annualizedSpend =
-    profileMeta && profileMeta.monthsOfData > 0
-      ? Math.round((profileMeta.totalSpend * 12) / profileMeta.monthsOfData)
+    profileMeta && profileMeta.daysOfData > 0
+      ? Math.round((profileMeta.totalSpend * 365) / profileMeta.daysOfData)
       : 0;
 
   const maxRewardPoint =
@@ -104,7 +110,11 @@ export default async function RecommendationsPage() {
       ? [
           {
             label: "Your uploaded spend",
-            value: `${profileMeta.monthsOfData} mo · ~$${Math.round(profileMeta.totalSpend).toLocaleString()}`,
+            value: `${
+              profileMeta.daysOfData < 31
+                ? `${profileMeta.daysOfData} days`
+                : `${profileMeta.monthsOfData.toFixed(1)} mo`
+            } · ~$${Math.round(profileMeta.totalSpend).toLocaleString()}`,
           } as const,
           {
             label: "Est. annual spend",
@@ -163,6 +173,10 @@ export default async function RecommendationsPage() {
           </article>
         ))}
       </div>
+
+      {spendingTrends?.monthly?.length ? (
+        <SpendingTrendsChart trends={spendingTrends} />
+      ) : null}
 
       {portfolio.cards.length > 0 && (
         <article className="panel" style={{ marginBottom: "2rem" }}>

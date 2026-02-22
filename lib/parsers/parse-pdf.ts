@@ -67,10 +67,7 @@ export function parseStatementText(
       const amount = parseFloat(amountStr.replace(/,/g, ""));
       const normalizedDesc = desc.split(/\s+/).filter(Boolean).join(" ");
       const txnType: "debit" | "credit" =
-        (normalizedDesc.includes("Venmo") || normalizedDesc.toLowerCase().includes("deposit")) &&
-        amount > 0
-          ? "credit"
-          : "debit";
+        normalizedDesc.toLowerCase().includes("deposit") && amount > 0 ? "credit" : "debit";
       transactions.push({
         date: fullDate,
         description: normalizedDesc,
@@ -117,10 +114,7 @@ export function parseStatementText(
         const amount = parseFloat(amountStr.replace(/,/g, ""));
         const normalizedDesc = desc.split(/\s+/).filter(Boolean).join(" ");
         const txnType: "debit" | "credit" =
-          (normalizedDesc.includes("Venmo") || normalizedDesc.toLowerCase().includes("deposit")) &&
-          amount > 0
-            ? "credit"
-            : "debit";
+          normalizedDesc.toLowerCase().includes("deposit") && amount > 0 ? "credit" : "debit";
         transactions.push({
           date: fullDate,
           description: normalizedDesc,

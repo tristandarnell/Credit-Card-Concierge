@@ -307,10 +307,14 @@ p {
   color: var(--accent);
 }
 
-.section-heading {
-  margin-bottom: 1rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid var(--line);
+/* Money amounts: clean geometric sans-serif, tabular figures, tight tracking */
+.money,
+td.money {
+  font-family: var(--font-inter, -apple-system), BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  letter-spacing: -0.03em;
+  font-weight: 800;
 }
 
 .section-heading h2,
@@ -1238,9 +1242,11 @@ input[type="file"] {
 }
 
 .main-nav-links {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  gap: 0;
+  margin-left: auto;
 }
 
 .main-nav-link {
@@ -1261,22 +1267,6 @@ input[type="file"] {
   color: var(--accent-strong);
 }
 
-.nav-search-btn {
-  margin-left: auto;
-  border: 1px solid var(--line);
-  background: #f4f8fd;
-  border-radius: 10px;
-  width: 36px;
-  height: 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-}
-
-.nav-search-btn:hover {
-  background: #eaf2fb;
-}
 
 .breadcrumb-bar {
   border-top: 1px solid var(--line);
@@ -1477,11 +1467,15 @@ input[type="file"] {
 }
 
 .home-rec-value {
-  margin: 0.45rem 0 0.2rem;
-  font-family: var(--font-display);
-  color: var(--success);
-  font-size: 1.4rem;
+  font-family: var(--font-inter, -apple-system), BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a2b5b;
+  margin: 0.3rem 0 0.15rem;
   line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
 }
 
 .home-signup-bonus {
@@ -1634,31 +1628,70 @@ input[type="file"] {
   color: var(--text-muted);
 }
 
-.home-table-meta {
-  margin-top: 0.9rem;
-  padding-top: 0.9rem;
-  border-top: 1px solid var(--line);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
-  gap: 0.65rem;
+/* ── Disclosure Strip ── */
+.home-disclosure {
+  background: #1a2235;
+  padding: 2.5rem 2.5rem;
+  margin-top: 0;
 }
 
-.home-meta-item {
+.home-disclosure-inner {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
-  gap: 0.1rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
 }
 
-.home-meta-label {
-  font-size: 0.61rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.disclosure-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.disclosure-heading {
+  font-size: 0.7rem;
   font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9aaac2;
+  margin: 0;
 }
 
-.home-meta-value {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+.disclosure-body {
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: #5a6d8a;
+  margin: 0;
+}
+
+.disclosure-link {
+  color: #7a9abf;
+  text-decoration: underline;
+}
+
+.disclosure-link:hover {
+  color: #a8c4e0;
+}
+
+@media (max-width: 900px) {
+  .home-disclosure-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-disclosure-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Spending chart: no focus outline on click ── */
+.spending-chart-container:focus,
+.spending-chart-container:focus-visible,
+.spending-chart-container *:focus,
+.spending-chart-container *:focus-visible {
+  outline: none;
 }
 
 /* ── Responsive ───────────────────────────────────────────── */

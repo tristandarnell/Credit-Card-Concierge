@@ -7,16 +7,8 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/upload", label: "File Upload" },
   { href: "/guide", label: "Churning Guide" },
+  { href: "/about", label: "About Us" },
 ];
-
-function SearchIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-    </svg>
-  );
-}
 
 function CardIcon() {
   return (
@@ -32,17 +24,6 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
-      {/* Utility bar */}
-      <div className="utility-bar">
-        <div className="utility-bar-inner">
-          <span className="utility-brand">CreditCardConcierge.ai</span>
-          <nav className="utility-nav" aria-label="Utility navigation">
-            <Link href="/about" className="utility-link">About Us</Link>
-            <Link href="/signin" className="utility-link">Sign In</Link>
-          </nav>
-        </div>
-      </div>
-
       {/* Main nav */}
       <div className="main-nav">
         <div className="main-nav-inner">
@@ -68,10 +49,6 @@ export function SiteHeader() {
               );
             })}
           </nav>
-
-          <button className="nav-search-btn" aria-label="Search">
-            <SearchIcon />
-          </button>
         </div>
       </div>
 
