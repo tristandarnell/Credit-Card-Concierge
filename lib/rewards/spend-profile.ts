@@ -27,7 +27,7 @@ function normalizeCategory(raw: string): StandardCategory {
  */
 export async function buildSpendProfileFromCsv(
   csvPath: string
-): Promise<{ profile: AnnualSpendProfile; totalSpend: number; monthsOfData: number }> {
+): Promise<{ profile: AnnualSpendProfile; totalSpend: number; monthsOfData: number; daysOfData: number }> {
   const content = await fs.readFile(csvPath, "utf-8");
   const lines = content.split("\n").filter((l) => l.trim());
   if (lines.length < 2) {
@@ -35,6 +35,7 @@ export async function buildSpendProfileFromCsv(
       profile: Object.fromEntries(STANDARD_CATEGORIES.map((c) => [c, 0])) as AnnualSpendProfile,
       totalSpend: 0,
       monthsOfData: 0,
+      daysOfData: 0,
     };
   }
 
@@ -82,16 +83,16 @@ export async function buildSpendProfileFromCsv(
     }
   }
 
-  // Annualize: infer months of data from date range
-  let monthsOfData = 12;
+  // Annualize: use days between first and last transaction
+  let daysOfData = 365;
   if (dates.length >= 2) {
     const minDate = Math.min(...dates);
     const maxDate = Math.max(...dates);
     const daysDiff = (maxDate - minDate) / (1000 * 60 * 60 * 24);
-    monthsOfData = Math.max(1, Math.min(12, Math.round(daysDiff / 30) + 1));
+    daysOfData = Math.max(1, daysDiff);
   }
-
-  const factor = 12 / monthsOfData;
+  const monthsOfData = (daysOfData * 12) / 365; // for display / backward compat
+  const factor = 365 / daysOfData;
   const profile = Object.fromEntries(
     STANDARD_CATEGORIES.map((c) => [c, Number(((byCategory[c] ?? 0) * factor).toFixed(2))])
   ) as AnnualSpendProfile;
@@ -100,6 +101,7 @@ export async function buildSpendProfileFromCsv(
     profile,
     totalSpend,
     monthsOfData,
+    daysOfData,
   };
 }
 
