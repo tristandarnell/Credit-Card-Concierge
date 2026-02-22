@@ -30,7 +30,11 @@ export function renderStatement(
     startingBalance = 2500,
   } = options;
 
-  const doc = new PDFDocument({ size: "letter", margin: 50 });
+  const doc = new PDFDocument({
+    size: "letter",
+    margin: 50,
+    pdfVersion: "1.7",
+  });
   let balance = startingBalance;
 
   // Compute running balances

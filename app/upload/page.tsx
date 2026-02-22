@@ -18,21 +18,25 @@ export default function UploadPage() {
 
   const handleFileChange = useCallback(
     async (e: React.ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0];
-      if (!file) return;
+      const files = e.target.files;
+      if (!files?.length) return;
 
-      if (file.type !== "application/pdf") {
+      const fileList = Array.from(files);
+      const invalid = fileList.find((f) => f.type !== "application/pdf");
+      if (invalid) {
         setStatus("error");
-        setMessage("Please select a PDF file.");
+        setMessage(`"${invalid.name}" is not a PDF. Please select PDF files only.`);
         return;
       }
 
       setStatus("uploading");
-      setMessage("Parsing PDF and extracting transactions...");
+      setMessage(`Parsing ${fileList.length} statement(s) and categorizing transactions...`);
 
       try {
         const formData = new FormData();
-        formData.append("file", file);
+        for (const file of fileList) {
+          formData.append("file", file);
+        }
 
         const res = await fetch("/api/parse-pdf", {
           method: "POST",
@@ -46,7 +50,10 @@ export default function UploadPage() {
         }
 
         setStatus("success");
-        setMessage(data.message ?? `Extracted ${data.count} transactions and saved to CSV.`);
+        setMessage(
+          data.message ??
+            `Extracted ${data.count} transactions from ${data.filesProcessed ?? 1} file(s). Ready for recommendations.`
+        );
       } catch (err) {
         setStatus("error");
         setMessage(err instanceof Error ? err.message : "Failed to parse PDF.");
@@ -60,11 +67,13 @@ export default function UploadPage() {
   const handleDrop = useCallback(
     (e: React.DragEvent) => {
       e.preventDefault();
-      const file = e.dataTransfer.files?.[0];
-      if (file) {
+      const files = e.dataTransfer.files;
+      if (files?.length) {
         const dt = new DataTransfer();
-        dt.items.add(file);
-        if (inputRef.current) {
+        for (let i = 0; i < files.length; i++) {
+          if (files[i].type === "application/pdf") dt.items.add(files[i]);
+        }
+        if (dt.files.length && inputRef.current) {
           inputRef.current.files = dt.files;
           handleFileChange({ target: inputRef.current } as React.ChangeEvent<HTMLInputElement>);
         }
@@ -92,7 +101,7 @@ export default function UploadPage() {
           onDrop={handleDrop}
           onDragOver={handleDragOver}
         >
-          <p className="dropzone-label">Drag and drop statement files</p>
+          <p className="dropzone-label">Drag and drop credit card statement PDFs</p>
           <p className="muted">or</p>
           <label className="btn btn-secondary" htmlFor="statement-files">
             Choose Files
@@ -105,7 +114,7 @@ export default function UploadPage() {
             accept=".pdf,.csv,.ofx"
             onChange={handleFileChange}
           />
-          <p className="hint">Maximum file size: 20 MB each. PDFs are parsed automatically.</p>
+          <p className="hint">Select multiple PDFs to combine statements. Parsed and categorized automatically.</p>
 
           {status !== "idle" && (
             <p
@@ -142,8 +151,12 @@ export default function UploadPage() {
             Your data is processed in memory and never written to a permanent database. Analysis
             typically completes in under 10 seconds.
           </p>
-          <Link href="/recommendations" className="btn btn-primary full-width">
-            Continue to Recommendations
+          <Link
+            href="/recommendations"
+            className="btn btn-primary full-width"
+            style={{ marginTop: status === "success" ? "0.5rem" : undefined }}
+          >
+            {status === "success" ? "View portfolio recommendations" : "Continue to recommendations"}
           </Link>
         </aside>
       </div>
