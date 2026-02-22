@@ -7,6 +7,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/upload", label: "File Upload" },
   { href: "/guide", label: "Churning Guide" },
+  { href: "/about", label: "About Us" },
 ];
 
 function CardIcon() {
@@ -23,17 +24,6 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
-      {/* Utility bar */}
-      <div className="utility-bar">
-        <div className="utility-bar-inner">
-          <span className="utility-brand">CreditCardConcierge.ai</span>
-          <nav className="utility-nav" aria-label="Utility navigation">
-            <Link href="/about" className="utility-link">About Us</Link>
-            <Link href="/signin" className="utility-link">Sign In</Link>
-          </nav>
-        </div>
-      </div>
-
       {/* Main nav */}
       <div className="main-nav">
         <div className="main-nav-inner">
