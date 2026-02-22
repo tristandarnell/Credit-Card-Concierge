@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { AppProviders } from "@/components/app-providers";
+import { MobileNav } from "@/components/mobile-nav";
 
 export const metadata: Metadata = {
   title: "CreditCard Concierge",

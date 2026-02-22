@@ -691,16 +691,63 @@ function extractCap(text) {
 }
 
 function extractAnnualFee(text) {
-  const feeMatch =
-    text.match(/annual fee(?:\s+of)?\s*\$([\d,]+)/i) ||
-    text.match(/\$([\d,]+)\s+annual fee/i);
+  const normalized = normalizeWhitespace(text).toLowerCase();
 
-  if (feeMatch?.[1]) {
-    return `$${feeMatch[1]}`;
+  function collect(pattern) {
+    const values = [];
+    let match = null;
+    while ((match = pattern.exec(normalized)) !== null) {
+      const value = Number((match[1] ?? "").replace(/[^0-9.]/g, ""));
+      if (Number.isFinite(value) && value >= 0 && value <= 5000) {
+        values.push(Math.round(value));
+      }
+    }
+    return values;
   }
 
-  if (/no annual fee/i.test(text)) {
+  if (/^(none|n\/a|na|not applicable|not available|unknown)$/.test(normalized)) {
+    return null;
+  }
+
+  if (/^(no annual fee|annual fee waived|no fee|free|zero)$/.test(normalized)) {
     return "$0";
+  }
+
+  const transitionValues = collect(
+    /(?:then|thereafter|after(?:\s+the)?\s+first\s+year|after\s+year\s+one)[^0-9]{0,30}(?:\$|usd\s*)?([\d,]+(?:\.\d{1,2})?)/gi
+  );
+  if (transitionValues.length > 0) {
+    const value = transitionValues.find((candidate) => candidate > 0) ?? transitionValues[0];
+    return `$${value}`;
+  }
+
+  const explicitAnnualValues = [
+    ...collect(/annual fee(?:\s+of)?(?:\s*[:\-])?(?:\s+is)?\s*(?:\$|usd\s*)?([\d,]+(?:\.\d{1,2})?)/gi),
+    ...collect(/(?:\$|usd\s*)?([\d,]+(?:\.\d{1,2})?)\s+annual fee/gi),
+    ...collect(
+      /annual membership fee(?:\s+of)?(?:\s*[:\-])?(?:\s+is)?\s*(?:\$|usd\s*)?([\d,]+(?:\.\d{1,2})?)/gi
+    ),
+    ...collect(/(?:\$|usd\s*)?([\d,]+(?:\.\d{1,2})?)\s+(?:yearly fee|fee per year|per year)/gi)
+  ];
+  if (explicitAnnualValues.length > 0) {
+    const introContext = /intro|introductory|first year|first-year|waived/.test(normalized);
+    const value = introContext
+      ? explicitAnnualValues.find((candidate) => candidate > 0) ?? explicitAnnualValues[0]
+      : explicitAnnualValues[0];
+    return `$${value}`;
+  }
+
+  if (/no annual fee|annual fee waived/.test(normalized)) {
+    return "$0";
+  }
+
+  if (normalized.length <= 28) {
+    const directValues = collect(
+      /^(?:\$|usd\s*)?([\d,]+(?:\.\d{1,2})?)(?:\s*(?:usd|per year|annually|annual))?$/gi
+    );
+    if (directValues.length > 0) {
+      return `$${directValues[0]}`;
+    }
   }
 
   return null;

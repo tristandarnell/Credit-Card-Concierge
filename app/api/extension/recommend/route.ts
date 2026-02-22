@@ -60,7 +60,9 @@ async function walletIdsFromAccount(request: NextRequest): Promise<string[]> {
 
   const userId = encodeURIComponent(user.id);
   const rows = await supabaseRest<UserWalletRow[]>(
-    `${USER_WALLET_TABLE}?user_id=eq.${userId}&select=card_id`
+    `${USER_WALLET_TABLE}?user_id=eq.${userId}&select=card_id`,
+    undefined,
+    accessToken
   );
 
   return rows.map((row) => row.card_id).filter(Boolean);

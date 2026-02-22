@@ -361,16 +361,123 @@ export function estimateAnnualCardValue(
   return Number(total.toFixed(2));
 }
 
+const FEE_NUMBER_MAX = 5000;
+const ANNUAL_FEE_PHRASE_REGEX = /annual fee|annual membership fee|yearly fee|per year/i;
+const INTRO_FEE_REGEX = /intro|introductory|first year|first-year|waived/i;
+const NO_ANNUAL_FEE_REGEX = /no annual fee|annual fee waived|no fee|zero annual fee/i;
+
+function toFeeNumber(raw: string): number | null {
+  const parsed = Number(raw.replace(/[^0-9.]/g, ""));
+  if (!Number.isFinite(parsed) || parsed < 0 || parsed > FEE_NUMBER_MAX) {
+    return null;
+  }
+  return Math.round(parsed);
+}
+
+function collectFeeValues(text: string, pattern: RegExp): number[] {
+  const values: number[] = [];
+  let match: RegExpExecArray | null = null;
+  while ((match = pattern.exec(text)) !== null) {
+    const fee = toFeeNumber(match[1] ?? "");
+    if (fee != null) {
+      values.push(fee);
+    }
+  }
+  return values;
+}
+
+function pickAnnualFeeValue(text: string): number | null {
+  const normalized = text.toLowerCase().replace(/\s+/g, " ").trim();
+
+  if (/^(none|n\/a|na|not applicable|not available|unknown)$/i.test(normalized)) {
+    return null;
+  }
+
+  if (/^(no annual fee|annual fee waived|no fee|free|zero)$/i.test(normalized)) {
+    return 0;
+  }
+
+  const transitionValues = collectFeeValues(
+    normalized,
+    /(?:then|thereafter|after(?:\s+the)?\s+first\s+year|after\s+year\s+one)[^0-9]{0,30}(?:\$|usd\s*)?([\d,]+(?:\.\d{1,2})?)/gi
+  );
+  if (transitionValues.length > 0) {
+    const nonZero = transitionValues.find((value) => value > 0);
+    return nonZero ?? transitionValues[0];
+  }
+
+  const explicitAnnualValues = [
+    ...collectFeeValues(
+      normalized,
+      /annual fee(?:\s+of)?(?:\s*[:\-])?(?:\s+is)?\s*(?:\$|usd\s*)?([\d,]+(?:\.\d{1,2})?)/gi
+    ),
+    ...collectFeeValues(normalized, /(?:\$|usd\s*)?([\d,]+(?:\.\d{1,2})?)\s+annual fee/gi),
+    ...collectFeeValues(
+      normalized,
+      /annual membership fee(?:\s+of)?(?:\s*[:\-])?(?:\s+is)?\s*(?:\$|usd\s*)?([\d,]+(?:\.\d{1,2})?)/gi
+    ),
+    ...collectFeeValues(
+      normalized,
+      /(?:\$|usd\s*)?([\d,]+(?:\.\d{1,2})?)\s+(?:annual membership fee|yearly fee|fee per year|per year)/gi
+    )
+  ];
+
+  if (explicitAnnualValues.length > 0) {
+    if (INTRO_FEE_REGEX.test(normalized)) {
+      const nonZero = explicitAnnualValues.find((value) => value > 0);
+      return nonZero ?? explicitAnnualValues[0];
+    }
+    return explicitAnnualValues[0];
+  }
+
+  if (NO_ANNUAL_FEE_REGEX.test(normalized)) {
+    return 0;
+  }
+
+  if (ANNUAL_FEE_PHRASE_REGEX.test(normalized)) {
+    const nearby = collectFeeValues(
+      normalized,
+      /(?:annual fee|annual membership fee|yearly fee|per year)[^0-9]{0,24}(?:\$|usd\s*)?([\d,]+(?:\.\d{1,2})?)/gi
+    );
+    if (nearby.length > 0) {
+      return nearby[0];
+    }
+  }
+
+  if (normalized.length <= 28) {
+    const direct = collectFeeValues(normalized, /^(?:\$|usd\s*)?([\d,]+(?:\.\d{1,2})?)(?:\s*(?:usd|per year|annually|annual))?$/gi);
+    if (direct.length > 0) {
+      return direct[0];
+    }
+  }
+
+  return null;
+}
+
+export function normalizeAnnualFeeText(annualFeeText: string | null): string | null {
+  if (!annualFeeText || annualFeeText.trim().length === 0) {
+    return null;
+  }
+
+  const value = pickAnnualFeeValue(annualFeeText);
+  if (value == null) {
+    return null;
+  }
+
+  return `$${value.toLocaleString("en-US")}`;
+}
+
 export function parseAnnualFee(annualFeeText: string | null): number {
-  if (!annualFeeText) {
+  const normalized = normalizeAnnualFeeText(annualFeeText);
+  if (!normalized) {
     return 0;
   }
 
-  if (/no annual fee/i.test(annualFeeText)) {
+  if (normalized === "$0") {
     return 0;
   }
 
-  const match = annualFeeText.match(/\$([\d,]+)/);
+  const match = normalized.match(/\$([\d,]+)/);
   if (!match) {
     return 0;
   }

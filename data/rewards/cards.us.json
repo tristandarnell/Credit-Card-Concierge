@@ -5,7 +5,7 @@
     {
       "id": "unknown-american-express-blue-cash-everyday",
       "issuer": "American Express",
-      "cardName": "american express blue cash everyday",
+      "cardName": "American Express Blue Cash Everyday",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -65,14 +65,14 @@
     {
       "id": "unknown-american-express-blue-cash-preferred",
       "issuer": "American Express",
-      "cardName": "american express blue cash preferred",
+      "cardName": "American Express Blue Cash Preferred",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
       "country": "US",
       "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/american-express-blue-cash-preferred",
       "lastFetchedAt": "2026-02-22T02:58:56.405Z",
-      "annualFeeText": "$0",
+      "annualFeeText": "$95",
       "introOfferText": "Intro Offer As High as $300 cash back.",
       "rotatingCategoryProgram": true,
       "rotatingCategories": [
@@ -135,14 +135,14 @@
     {
       "id": "unknown-american-express-gold-delta-skymiles",
       "issuer": "American Express",
-      "cardName": "american express gold delta skymiles",
+      "cardName": "American Express Gold",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
       "country": "US",
       "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/american-express-gold-delta-skymiles",
       "lastFetchedAt": "2026-02-22T02:58:56.405Z",
-      "annualFeeText": "$0",
+      "annualFeeText": "$325",
       "introOfferText": "Earn 70,000 Bonus Miles after you spend $3,000 in purchases with your new Card, and an additional 20,000 bonus miles after you make an additional $2,000 in purchases on the Card, both within your first 6 months.",
       "rotatingCategoryProgram": false,
       "rotatingCategories": [],
@@ -180,7 +180,7 @@
     {
       "id": "unknown-american-express-premier-rewards-gold",
       "issuer": "American Express",
-      "cardName": "american express premier rewards gold",
+      "cardName": "American Express Premier Rewards Gold",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -243,7 +243,7 @@
     {
       "id": "unknown-bankofamerica-cash-rewards",
       "issuer": "Bank of America",
-      "cardName": "bankofamerica cash rewards",
+      "cardName": "Bank of America Customized Cash Rewards",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -291,7 +291,7 @@
     {
       "id": "unknown-capital-one-quicksilver",
       "issuer": "Capital One",
-      "cardName": "capital one quicksilver",
+      "cardName": "Capital One Quicksilver",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -334,7 +334,7 @@
     {
       "id": "unknown-capital-one-savor",
       "issuer": "Capital One",
-      "cardName": "capital one savor",
+      "cardName": "Capital One Savor",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -407,7 +407,7 @@
     {
       "id": "unknown-capital-one-savorone-student",
       "issuer": "Capital One",
-      "cardName": "capital one savorone student",
+      "cardName": "Capital One Savor Student",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -478,7 +478,7 @@
     {
       "id": "unknown-capital-one-venture",
       "issuer": "Capital One",
-      "cardName": "capital one venture",
+      "cardName": "Capital One Venture",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -519,7 +519,7 @@
     {
       "id": "unknown-capital-one-venture-x",
       "issuer": "Capital One",
-      "cardName": "capital one venture x",
+      "cardName": "Capital One Venture X",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -574,7 +574,7 @@
     {
       "id": "unknown-chase-freedom-flex",
       "issuer": "Chase",
-      "cardName": "chase freedom flex",
+      "cardName": "Chase Freedom Flex",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -684,7 +684,7 @@
     {
       "id": "unknown-chase-freedom-rise",
       "issuer": "Chase",
-      "cardName": "chase freedom rise",
+      "cardName": "Chase Freedom Rise",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -711,7 +711,7 @@
     {
       "id": "unknown-chase-freedom-unlimited",
       "issuer": "Chase",
-      "cardName": "chase freedom unlimited",
+      "cardName": "Chase Freedom Unlimited",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -759,7 +759,7 @@
     {
       "id": "unknown-chase-sapphire-preferred",
       "issuer": "Chase",
-      "cardName": "chase sapphire preferred",
+      "cardName": "Chase Sapphire Preferred",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -817,7 +817,7 @@
     {
       "id": "unknown-citi-double-cash",
       "issuer": "Citi",
-      "cardName": "citi double cash",
+      "cardName": "Citi Double Cash",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -858,7 +858,7 @@
     {
       "id": "unknown-citi-strata-premier",
       "issuer": "Citi",
-      "cardName": "citi strata premier",
+      "cardName": "Citi Strata Premier",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -932,7 +932,7 @@
     {
       "id": "unknown-discover-it-cash-back",
       "issuer": "Discover",
-      "cardName": "discover it cash back",
+      "cardName": "Discover it Cash Back",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -998,7 +998,7 @@
     {
       "id": "unknown-discover-it-chrome",
       "issuer": "Discover",
-      "cardName": "discover it chrome",
+      "cardName": "Discover it Chrome",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -1051,7 +1051,7 @@
     {
       "id": "unknown-discover-it-student-cash-back",
       "issuer": "Discover",
-      "cardName": "discover it student cash back",
+      "cardName": "Discover it Student Cash Back",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -1109,7 +1109,7 @@
     {
       "id": "unknown-discover-it-student-chrome",
       "issuer": "Discover",
-      "cardName": "discover it student chrome",
+      "cardName": "Discover it Student Chrome",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -1150,7 +1150,7 @@
     {
       "id": "unknown-penfed-pathfinder-rewards",
       "issuer": "PenFed",
-      "cardName": "penfed pathfinder rewards",
+      "cardName": "PenFed Pathfinder Rewards",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -1189,7 +1189,7 @@
     {
       "id": "unknown-bank-shield",
       "issuer": "U.S. Bank",
-      "cardName": "bank shield",
+      "cardName": "U.S. Bank Shield",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -1222,7 +1222,7 @@
     {
       "id": "unknown-wells-fargo-active-cash",
       "issuer": "Wells Fargo",
-      "cardName": "wells fargo active cash",
+      "cardName": "Wells Fargo Active Cash",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,
@@ -1249,7 +1249,7 @@
     {
       "id": "unknown-wells-fargo-autograph-journey",
       "issuer": "Wells Fargo",
-      "cardName": "wells fargo autograph journey",
+      "cardName": "Wells Fargo Autograph Journey",
       "network": null,
       "cardSegment": "personal",
       "popularityRank": null,

@@ -181,8 +181,8 @@ export default function WalletPage() {
         <div className="panel">
           <p>Supabase auth is not configured yet.</p>
           <p className="muted" style={{ marginTop: "0.5rem" }}>
-            Add <code>NEXT_PUBLIC_SUPABASE_URL</code>, <code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code>,{" "}
-            <code>SUPABASE_SERVICE_ROLE_KEY</code> to <code>.env.local</code>.
+            Add <code>NEXT_PUBLIC_SUPABASE_URL</code> and <code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code> to{" "}
+            <code>.env.local</code>.
           </p>
         </div>
       ) : null}
