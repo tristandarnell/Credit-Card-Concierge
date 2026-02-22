@@ -14,6 +14,11 @@ const checklist = [
 export default function UploadPage() {
   const [status, setStatus] = useState<"idle" | "uploading" | "success" | "error">("idle");
   const [message, setMessage] = useState<string>("");
+  const [optimization, setOptimization] = useState<{
+    lostRewardsDollars: number;
+    potentialSavingsDollars: number;
+    rewardEfficiencyScore: number;
+  } | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = useCallback(
@@ -31,6 +36,7 @@ export default function UploadPage() {
 
       setStatus("uploading");
       setMessage(`Parsing ${fileList.length} statement(s) and categorizing transactions...`);
+      setOptimization(null);
 
       try {
         const formData = new FormData();
@@ -50,12 +56,25 @@ export default function UploadPage() {
         }
 
         setStatus("success");
+        if (
+          data.optimization &&
+          typeof data.optimization.lostRewardsDollars === "number" &&
+          typeof data.optimization.potentialSavingsDollars === "number" &&
+          typeof data.optimization.rewardEfficiencyScore === "number"
+        ) {
+          setOptimization({
+            lostRewardsDollars: data.optimization.lostRewardsDollars,
+            potentialSavingsDollars: data.optimization.potentialSavingsDollars,
+            rewardEfficiencyScore: data.optimization.rewardEfficiencyScore,
+          });
+        }
         setMessage(
           data.message ??
             `Extracted ${data.count} transactions from ${data.filesProcessed ?? 1} file(s). Ready for recommendations.`
         );
       } catch (err) {
         setStatus("error");
+        setOptimization(null);
         setMessage(err instanceof Error ? err.message : "Failed to parse PDF.");
       } finally {
         if (inputRef.current) inputRef.current.value = "";
@@ -137,6 +156,26 @@ export default function UploadPage() {
               {status === "error" && "Error: "}
               {message}
             </p>
+          )}
+
+          {status === "success" && optimization && (
+            <div className="upload-impact">
+              <h4 style={{ marginBottom: "0.45rem" }}>Optimization Snapshot (Annualized)</h4>
+              <div className="upload-impact-grid">
+                <div>
+                  <p className="upload-impact-label">Lost rewards</p>
+                  <p className="upload-impact-value">${Math.round(optimization.lostRewardsDollars).toLocaleString()}/yr</p>
+                </div>
+                <div>
+                  <p className="upload-impact-label">Potential savings</p>
+                  <p className="upload-impact-value">${Math.round(optimization.potentialSavingsDollars).toLocaleString()}/yr</p>
+                </div>
+                <div>
+                  <p className="upload-impact-label">Reward efficiency</p>
+                  <p className="upload-impact-value">{optimization.rewardEfficiencyScore}/100</p>
+                </div>
+              </div>
+            </div>
           )}
         </div>
 

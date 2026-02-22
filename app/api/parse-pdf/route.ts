@@ -6,6 +6,9 @@ import { spawn } from "child_process";
 const pdfParse = require("pdf-parse");
 import { parseStatementText, transactionsToCsv } from "@/lib/parsers/parse-pdf";
 import type { Transaction } from "@/lib/parsers/parse-pdf";
+import { getCleanRewardCards } from "@/lib/rewards/data";
+import { buildSpendProfileFromCsv } from "@/lib/rewards/spend-profile";
+import { buildRewardsInsights } from "@/lib/rewards/insights";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const CSV_RAW_PATH = path.join(DATA_DIR, "transactions_cleaned.csv");
@@ -110,11 +113,43 @@ export async function POST(request: NextRequest) {
       await writeFile(CSV_CATEGORIZED_PATH, csv, "utf-8");
     }
 
+    let optimization: {
+      lostRewardsDollars: number;
+      potentialSavingsDollars: number;
+      rewardEfficiencyScore: number;
+    } | null = null;
+
+    try {
+      const cards = await getCleanRewardCards(1000);
+      const spendProfile = await buildSpendProfileFromCsv(CSV_CATEGORIZED_PATH);
+      const insights = await buildRewardsInsights({
+        cards,
+        spendProfile: spendProfile.profile,
+        categorizedCsvPath: CSV_CATEGORIZED_PATH
+      });
+
+      const lostRewardsDollars = Number(
+        (insights.rewardLeakScore.wrongCardLeak + insights.rewardLeakScore.missedCategoryLeak).toFixed(2)
+      );
+      const potentialSavingsDollars = Number(
+        (lostRewardsDollars + insights.rewardLeakScore.annualFeeMismatchLeak).toFixed(2)
+      );
+
+      optimization = {
+        lostRewardsDollars,
+        potentialSavingsDollars,
+        rewardEfficiencyScore: insights.rewardLeakScore.score
+      };
+    } catch (insightErr) {
+      console.warn("Could not compute post-upload optimization summary:", insightErr);
+    }
+
     return NextResponse.json({
       success: true,
       count: allTransactions.length,
       filesProcessed: fileList.length,
       message: `Extracted ${allTransactions.length} transactions from ${fileList.length} file(s). Categorized and ready for portfolio recommendations.`,
+      optimization
     });
   } catch (err) {
     console.error("Parse PDF error:", err);
