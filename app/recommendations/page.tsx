@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { SectionHeading } from "@/components/section-heading";
 import { SpendingTrendsChart } from "@/components/spending-trends-chart";
 import { CardVisual } from "@/components/card-visual";
@@ -16,9 +17,12 @@ import {
 } from "@/lib/rewards/scoring";
 
 export default async function RecommendationsPage() {
-  const cards = await getCleanRewardCards(1000);
-
   const categorizedPath = await getCategorizedTransactionsPath();
+  if (!categorizedPath) {
+    redirect("/upload");
+  }
+
+  const cards = await getCleanRewardCards(1000);
   const spendProfileFromCsv = categorizedPath ? await buildSpendProfileFromCsv(categorizedPath) : null;
   const spendProfile = spendProfileFromCsv?.profile ?? DEFAULT_ANNUAL_SPEND_PROFILE;
   const hasUserData = !!categorizedPath;

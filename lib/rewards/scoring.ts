@@ -338,6 +338,40 @@ export function getBestCardForPurchase(
   )[0];
 }
 
+export type BestCardForAllPurchasesResult = {
+  cardId: string;
+  cardName: string;
+  issuer: string;
+  totalRewardValue: number;
+};
+
+/** Returns the single card that earns the most when used for all purchases combined. */
+export function getBestCardForAllPurchases(
+  cards: CardRewardRecord[],
+  purchases: Array<{ category: StandardCategory; amount: number }>
+): BestCardForAllPurchasesResult | null {
+  if (purchases.length === 0) return null;
+
+  let best: BestCardForAllPurchasesResult | null = null;
+
+  for (const card of cards) {
+    let total = 0;
+    for (const p of purchases) {
+      total += estimateCardRewardForCategory(card, p.category, p.amount);
+    }
+    if (total > 0 && (!best || total > best.totalRewardValue)) {
+      best = {
+        cardId: card.id,
+        cardName: card.cardName,
+        issuer: card.issuer,
+        totalRewardValue: Number(total.toFixed(2)),
+      };
+    }
+  }
+
+  return best;
+}
+
 export function estimateAnnualCardValue(
   card: CardRewardRecord,
   profile: AnnualSpendProfile = DEFAULT_ANNUAL_SPEND_PROFILE

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import { getCleanRewardCards } from "@/lib/rewards/data";
+import { getCategorizedTransactionsPath } from "@/lib/rewards/spend-profile";
 
 /* ── Hardcoded top-3 with real researched data ── */
 const TOP_CARDS: Array<{
@@ -85,9 +87,12 @@ const editorialTopics = [
 ];
 
 export default async function HomePage() {
+  const categorizedPath = await getCategorizedTransactionsPath();
+  if (!categorizedPath) {
+    redirect("/upload");
+  }
+
   const cards = await getCleanRewardCards(1000);
-
-
 
   return (
 <>

@@ -76,7 +76,6 @@ function PlugIcon() {
 
 const primaryNav: NavItem[] = [
   { href: "/", label: "Overview", icon: <GridIcon /> },
-  { href: "/recommendations", label: "Cards", icon: <CardIcon /> },
   { href: "/optimizer", label: "Optimization", icon: <ZapIcon /> },
   { href: "/wallet", label: "My Wallet", icon: <CardIcon /> },
   { href: "/extension", label: "Extension", icon: <PlugIcon /> },
