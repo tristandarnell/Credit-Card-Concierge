@@ -23,7 +23,7 @@ export interface RenderOptions {
 export function renderStatement(
   transactions: (Transaction | RenderableTransaction)[],
   options: RenderOptions = {}
-): PDFDocument {
+): InstanceType<typeof PDFDocument> {
   const {
     accountHolder = "John Doe",
     statementDate = "December 5, 2025",
@@ -74,7 +74,6 @@ export function renderStatement(
 
   for (const t of txnsWithBalance) {
     const r = t as RenderableTransaction;
-    const isCredit = t.type === "credit";
     const amtStr = t.amount.toFixed(2);
     const balStr = r.endingBalance != null ? r.endingBalance.toLocaleString("en-US", { minimumFractionDigits: 2 }) : "";
 

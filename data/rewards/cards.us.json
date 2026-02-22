@@ -1,47 +1,1126 @@
 {
-  "generatedAt": "2026-02-21T21:12:42.716Z",
+  "generatedAt": "2026-02-22T02:22:25.760Z",
   "country": "US",
   "records": [
     {
-      "id": "amazon-business-amex",
-      "issuer": "American Express",
-      "cardName": "Amazon Business American Express Card",
-      "network": "Amex",
-      "cardSegment": "business",
-      "popularityRank": 119,
+      "id": "unknown-amazon-prime-rewards",
+      "issuer": "Amazon",
+      "cardName": "amazon prime rewards",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
       "country": "US",
-      "cardUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/amazon-business-card",
-      "lastFetchedAt": "2026-02-21T21:12:44.153Z",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/amazon-prime-rewards",
+      "lastFetchedAt": "2026-02-22T02:22:25.760Z",
       "annualFeeText": "$0",
-      "introOfferText": null,
+      "introOfferText": "Intro Offer $150 Recommended credit score Intro APR N/A Regular APR 18.",
       "rotatingCategoryProgram": true,
       "rotatingCategories": [
         {
           "period": "Mar",
+          "rateText": "5% back",
+          "categories": [
+            "online_retail"
+          ],
+          "sourceText": "Rewards: 5% back at Amazon.com, Whole Foods Market and Shopbop."
+        },
+        {
+          "period": "Unspecified period",
           "rateText": null,
           "categories": [
             "online_retail"
           ],
-          "sourceText": "purchases at Amazon Business, AWS, Amazon.com and Whole Foods Market each calendar year, 1% Back thereafter."
+          "sourceText": "(Activation is required.) And in the past, Amazon.com has been among that card&#x27;s 5% bonus categories — but, again, only for a three-month period, and only up to that combined quarterly $1,500 cap."
         }
       ],
       "rewardRules": [
         {
-          "category": "online_retail",
-          "rateText": "3%",
-          "rateValue": 3,
+          "category": "all_other",
+          "rateText": "1% cash back",
+          "rateValue": 1,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "dining",
+          "rateText": "2% cash back",
+          "rateValue": 2,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "gas",
+          "rateText": "2% cash back",
+          "rateValue": 2,
           "unit": "percent_cashback"
         },
         {
           "category": "online_retail",
-          "rateText": "3%",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "notes": "Requires booking through an issuer travel portal."
+        },
+        {
+          "category": "transit",
+          "rateText": "2% cash back",
+          "rateValue": 2,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "travel",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "notes": "Requires booking through an issuer travel portal."
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.85,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-american-express-blue-cash-everyday",
+      "issuer": "American Express",
+      "cardName": "american express blue cash everyday",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/american-express-blue-cash-everyday",
+      "lastFetchedAt": "2026-02-22T02:22:25.760Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Intro Offer As High as $200 cash back.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [
+        {
+          "period": "APR",
+          "rateText": null,
+          "categories": [
+            "groceries",
+            "gas"
+          ],
+          "sourceText": "Pros and Cons Pros No annual fee High rewards rate Intro APR period Bonus categories Cons Requires good/excellent credit Spending caps on bonus rewards Detailed Review If you spend a lot at the grocery store, the gas pum"
+        }
+      ],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1% cash back",
+          "rateValue": 1,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "gas",
+          "rateText": "3% cash back",
           "rateValue": 3,
           "unit": "percent_cashback",
-          "capText": "first $120,000 in U"
+          "capText": "up to $6,000 per year, then 1%)"
+        },
+        {
+          "category": "groceries",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback",
+          "capText": "up to $6,000 per year in purchases, then 1%)"
         },
         {
           "category": "online_retail",
-          "rateText": "1%",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback",
+          "capText": "up to $6,000 per year, then 1%)"
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.71,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-american-express-blue-cash-preferred",
+      "issuer": "American Express",
+      "cardName": "american express blue cash preferred",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/american-express-blue-cash-preferred",
+      "lastFetchedAt": "2026-02-22T02:22:25.760Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Intro Offer As High as $300 cash back.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [
+        {
+          "period": "mar",
+          "rateText": "3% cash back",
+          "categories": [
+            "dining",
+            "groceries",
+            "travel",
+            "hotels",
+            "streaming",
+            "entertainment"
+          ],
+          "sourceText": "You&#x27;ll earn 3% cash back on dining, entertainment, popular streaming services and at grocery stores (excluding superstores like Walmart and Target); 8% cash back on Capital One Entertainment purchases; 5% back on ho"
+        }
+      ],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1% cash back",
+          "rateValue": 1,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "gas",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback",
+          "notes": "Rate is limited to select/eligible merchants."
+        },
+        {
+          "category": "groceries",
+          "rateText": "6% cash back",
+          "rateValue": 6,
+          "unit": "percent_cashback",
+          "capText": "on up to $6,000 per year in purchases (then 1%)"
+        },
+        {
+          "category": "streaming",
+          "rateText": "6% cash back",
+          "rateValue": 6,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "transit",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback",
+          "notes": "Rate is limited to select/eligible merchants."
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.78,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-american-express-gold-delta-skymiles",
+      "issuer": "American Express",
+      "cardName": "american express gold delta skymiles",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/american-express-gold-delta-skymiles",
+      "lastFetchedAt": "2026-02-22T02:22:25.760Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Earn 70,000 Bonus Miles after you spend $3,000 in purchases with your new Card, and an additional 20,000 bonus miles after you make an additional $2,000 in purchases on the Card, both within your first 6 months.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "2X miles",
+          "rateValue": 2,
+          "unit": "x_miles"
+        },
+        {
+          "category": "all_other",
+          "rateText": "1X miles",
+          "rateValue": 1,
+          "unit": "x_miles"
+        },
+        {
+          "category": "dining",
+          "rateText": "2X miles",
+          "rateValue": 2,
+          "unit": "x_miles"
+        },
+        {
+          "category": "groceries",
+          "rateText": "2X miles",
+          "rateValue": 2,
+          "unit": "x_miles"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.66,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-american-express-platinum",
+      "issuer": "American Express",
+      "cardName": "american express platinum",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/american-express-platinum",
+      "lastFetchedAt": "2026-02-22T02:22:25.760Z",
+      "annualFeeText": "$895",
+      "introOfferText": "Intro Offer As High As 175,000 Points.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "airfare",
+          "rateText": "5X points",
+          "rateValue": 5,
+          "unit": "x_points",
+          "capText": "on up to $500,000 on these purchases per calendar year"
+        },
+        {
+          "category": "all_other",
+          "rateText": "1X points",
+          "rateValue": 1,
+          "unit": "x_points"
+        },
+        {
+          "category": "hotels",
+          "rateText": "5X points",
+          "rateValue": 5,
+          "unit": "x_points"
+        },
+        {
+          "category": "travel",
+          "rateText": "5X points",
+          "rateValue": 5,
+          "unit": "x_points",
+          "capText": "on up to $500,000 on these purchases per calendar year"
+        },
+        {
+          "category": "travel",
+          "rateText": "5X points",
+          "rateValue": 5,
+          "unit": "x_points"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.73,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-american-express-premier-rewards-gold",
+      "issuer": "American Express",
+      "cardName": "american express premier rewards gold",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/american-express-premier-rewards-gold",
+      "lastFetchedAt": "2026-02-22T02:22:25.760Z",
+      "annualFeeText": "$325",
+      "introOfferText": "Intro Offer As High As 100,000 Points.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [
+        {
+          "period": "mar",
+          "rateText": "4X",
+          "categories": [
+            "groceries"
+          ],
+          "sourceText": "Earn 4X Membership Rewards® points per dollar spent at US supermarkets, on up to $25,000 in purchases per calendar year, then 1X points for the rest of the year."
+        }
+      ],
+      "rewardRules": [
+        {
+          "category": "airfare",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "all_other",
+          "rateText": "1X points",
+          "rateValue": 1,
+          "unit": "x_points"
+        },
+        {
+          "category": "dining",
+          "rateText": "4X points",
+          "rateValue": 4,
+          "unit": "x_points"
+        },
+        {
+          "category": "groceries",
+          "rateText": "4X points",
+          "rateValue": 4,
+          "unit": "x_points",
+          "capText": "on up to $25,000 per year in purchases, then 1X)"
+        },
+        {
+          "category": "groceries",
+          "rateText": "4X points",
+          "rateValue": 4,
+          "unit": "x_points"
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.78,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-bank-of-america-unlimited-cash-rewards",
+      "issuer": "Bank of America",
+      "cardName": "bank of america unlimited cash rewards",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/bank-of-america-unlimited-cash-rewards",
+      "lastFetchedAt": "2026-02-22T02:22:26.074Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Sign-up bonus: $200 online cash rewards bonus after making at least $1,000 in purchases in the first 90 days of your account opening.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "2% cash back",
+          "rateValue": 2,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "all_other",
+          "rateText": "1.5% cash back",
+          "rateValue": 1.5,
+          "unit": "percent_cashback"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.52,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-bankofamerica-cash-rewards",
+      "issuer": "Bank of America",
+      "cardName": "bankofamerica cash rewards",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/bankofamerica-cash-rewards",
+      "lastFetchedAt": "2026-02-22T02:22:26.972Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Sign-up bonus: $200 online cash rewards bonus after you make at least $1,000 in purchases in the first 90 days of account opening.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1% cash back",
+          "rateValue": 1,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "groceries",
+          "rateText": "6% cash back",
+          "rateValue": 6,
+          "unit": "percent_cashback",
+          "capText": "up to $2,500 in combined choice category/grocery store/wholesale club quarterly purchases)"
+        },
+        {
+          "category": "groceries",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback",
+          "capText": "up to $2,500 in combined choice category/grocery store/wholesale club quarterly purchases)"
+        },
+        {
+          "category": "groceries",
+          "rateText": "2% cash back",
+          "rateValue": 2,
+          "unit": "percent_cashback",
+          "capText": "up to $2,500 in combined choice category/grocery store/wholesale club quarterly purchases)"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.66,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-capital-one-quicksilver",
+      "issuer": "Capital One",
+      "cardName": "capital one quicksilver",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/capital-one-quicksilver",
+      "lastFetchedAt": "2026-02-22T02:22:27.484Z",
+      "annualFeeText": "$0",
+      "introOfferText": "sign-up bonus as well as a 0% APR promotion.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1.5% cash back",
+          "rateValue": 1.5,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "hotels",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "notes": "Requires booking through an issuer travel portal."
+        },
+        {
+          "category": "travel",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "notes": "Requires booking through an issuer travel portal."
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.59,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-capital-one-quicksilver-student",
+      "issuer": "Capital One",
+      "cardName": "capital one quicksilver student",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/capital-one-quicksilver-student",
+      "lastFetchedAt": "2026-02-22T02:22:27.736Z",
+      "annualFeeText": "$0",
+      "introOfferText": "welcome offer.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1.5% cash back",
+          "rateValue": 1.5,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "hotels",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "notes": "Requires booking through an issuer travel portal."
+        },
+        {
+          "category": "travel",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "notes": "Requires booking through an issuer travel portal."
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.59,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-capital-one-savor",
+      "issuer": "Capital One",
+      "cardName": "capital one savor",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/capital-one-savor",
+      "lastFetchedAt": "2026-02-22T02:22:27.889Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Intro Offer $200 Recommended credit score Intro APR 0% intro APR for 12 months on purchases and balance transfers; balance transfer fee applies Regular APR 18.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1% cash back",
+          "rateValue": 1,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "dining",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "entertainment",
+          "rateText": "8% cash back",
+          "rateValue": 8,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "entertainment",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "groceries",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "hotels",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "notes": "Requires booking through an issuer travel portal."
+        },
+        {
+          "category": "streaming",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "travel",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "notes": "Requires booking through an issuer travel portal."
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.94,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-capital-one-savorone-student",
+      "issuer": "Capital One",
+      "cardName": "capital one savorone student",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/capital-one-savorone-student",
+      "lastFetchedAt": "2026-02-22T02:22:28.190Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Intro Offer $50 Recommended credit score Intro APR N/A Regular APR 18.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1% cash back",
+          "rateValue": 1,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "dining",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "entertainment",
+          "rateText": "8% cash back",
+          "rateValue": 8,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "entertainment",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "groceries",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "hotels",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "notes": "Requires booking through an issuer travel portal."
+        },
+        {
+          "category": "streaming",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "travel",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "notes": "Requires booking through an issuer travel portal."
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.94,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-capital-one-venture",
+      "issuer": "Capital One",
+      "cardName": "capital one venture",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/capital-one-venture",
+      "lastFetchedAt": "2026-02-22T02:22:28.694Z",
+      "annualFeeText": "$95",
+      "introOfferText": "Earn 75,000 bonus points after you spend $5,000 on purchases in the first 3 months from account opening.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "2X miles",
+          "rateValue": 2,
+          "unit": "x_miles"
+        },
+        {
+          "category": "hotels",
+          "rateText": "5X miles",
+          "rateValue": 5,
+          "unit": "x_miles",
+          "notes": "Requires booking through an issuer travel portal."
+        },
+        {
+          "category": "travel",
+          "rateText": "5X miles",
+          "rateValue": 5,
+          "unit": "x_miles",
+          "notes": "Requires booking through an issuer travel portal."
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.59,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-capital-one-venture-x",
+      "issuer": "Capital One",
+      "cardName": "capital one venture x",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/capital-one-venture-x",
+      "lastFetchedAt": "2026-02-22T02:22:28.867Z",
+      "annualFeeText": "$395",
+      "introOfferText": "welcome bonus, rich ongoing rewards, airport lounge access and more.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "airfare",
+          "rateText": "5X miles",
+          "rateValue": 5,
+          "unit": "x_miles",
+          "notes": "Requires booking through an issuer travel portal."
+        },
+        {
+          "category": "all_other",
+          "rateText": "2X miles",
+          "rateValue": 2,
+          "unit": "x_miles"
+        },
+        {
+          "category": "hotels",
+          "rateText": "10X miles",
+          "rateValue": 10,
+          "unit": "x_miles",
+          "notes": "Requires booking through an issuer travel portal."
+        },
+        {
+          "category": "travel",
+          "rateText": "10X miles",
+          "rateValue": 10,
+          "unit": "x_miles",
+          "notes": "Requires booking through an issuer travel portal."
+        },
+        {
+          "category": "travel",
+          "rateText": "5X miles",
+          "rateValue": 5,
+          "unit": "x_miles",
+          "notes": "Requires booking through an issuer travel portal."
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.73,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-chase-freedom-flex",
+      "issuer": "Chase",
+      "cardName": "chase freedom flex",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/chase-freedom-flex",
+      "lastFetchedAt": "2026-02-22T02:22:29.475Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Intro Offer $200 Recommended credit score Intro APR 0% intro APR on Purchases and Balance Transfers for 15 months Regular APR 18.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [
+        {
+          "period": "Unspecified period",
+          "rateText": "5%",
+          "categories": [
+            "travel"
+          ],
+          "sourceText": "(See the quarterly 5% bonus calendar below.) 5% back on travel booked through Chase."
+        },
+        {
+          "period": "Unspecified period",
+          "rateText": null,
+          "categories": [
+            "dining",
+            "drugstores"
+          ],
+          "sourceText": "Unlike the 5% bonus categories, which are capped at $1,500 in spending per quarter, the 3% earnings on dining and drugstores are unlimited."
+        },
+        {
+          "period": "sep",
+          "rateText": null,
+          "categories": [
+            "travel"
+          ],
+          "sourceText": "Craig Joseph, writer, travel rewards Drawbacks and Considerations It&#x27;s not a &#x27;set and forget&#x27; card In order to make the most of the Chase Freedom Flex® , you&#x27;ll have to pay attention to bonus categori"
+        },
+        {
+          "period": "Unspecified period",
+          "rateText": null,
+          "categories": [
+            "groceries",
+            "streaming"
+          ],
+          "sourceText": "If your refrigerator breaks, you need a new one now, even if this quarter&#x27;s bonus categories are groceries and streaming services."
+        },
+        {
+          "period": "mar",
+          "rateText": null,
+          "categories": [
+            "dining",
+            "travel",
+            "drugstores"
+          ],
+          "sourceText": "Combine that with 5% back on travel booked via Chase, 3% on dining and at drugstores, and 1% on everything else, and it&#x27;s one of the most lucrative cash-back cards on the market."
+        },
+        {
+          "period": "Unspecified period",
+          "rateText": "5%",
+          "categories": [
+            "dining",
+            "travel",
+            "drugstores"
+          ],
+          "sourceText": "You’ll earn 5% on up to $1,500 in spending per quarter in bonus categories that you activate, plus 5% on travel purchased through Chase, 3% at restaurants and drugstores, and 1% on all other purchases."
+        }
+      ],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "capText": "on up to $1,500 in combined purchases in bonus categories each quarter you activate"
+        },
+        {
+          "category": "all_other",
+          "rateText": "1% cash back",
+          "rateValue": 1,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "dining",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "drugstores",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "travel",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "notes": "Requires booking through an issuer travel portal."
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.78,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-chase-freedom-rise",
+      "issuer": "Chase",
+      "cardName": "chase freedom rise",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/chase-freedom-rise",
+      "lastFetchedAt": "2026-02-22T02:22:29.515Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Intro Offer $25 Recommended credit score Intro APR N/A Regular APR 25.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1.5% cash back",
+          "rateValue": 1.5,
+          "unit": "percent_cashback"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.45,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-chase-freedom-unlimited",
+      "issuer": "Chase",
+      "cardName": "chase freedom unlimited",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/chase-freedom-unlimited",
+      "lastFetchedAt": "2026-02-22T02:22:29.830Z",
+      "annualFeeText": "$0",
+      "introOfferText": "welcome offer make it a top contender among cash-back cards.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1.5% cash back",
+          "rateValue": 1.5,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "dining",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "drugstores",
+          "rateText": "3% cash back",
+          "rateValue": 3,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "travel",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "notes": "Requires booking through an issuer travel portal."
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.66,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-chase-sapphire-preferred",
+      "issuer": "Chase",
+      "cardName": "chase sapphire preferred",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/chase-sapphire-preferred",
+      "lastFetchedAt": "2026-02-22T02:22:29.981Z",
+      "annualFeeText": "$95",
+      "introOfferText": "Earn 75,000 bonus points after you spend $5,000 on purchases in the first 3 months from account opening.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1X points",
+          "rateValue": 1,
+          "unit": "x_points"
+        },
+        {
+          "category": "dining",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "groceries",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "streaming",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "travel",
+          "rateText": "5X points",
+          "rateValue": 5,
+          "unit": "x_points",
+          "notes": "Requires booking through an issuer travel portal."
+        },
+        {
+          "category": "travel",
+          "rateText": "2X points",
+          "rateValue": 2,
+          "unit": "x_points"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.8,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-chase-sapphire-reserve",
+      "issuer": "Chase",
+      "cardName": "chase sapphire reserve",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/chase-sapphire-reserve",
+      "lastFetchedAt": "2026-02-22T02:22:30.376Z",
+      "annualFeeText": "$795",
+      "introOfferText": "Earn 125,000 bonus points after you spend $6,000 on purchases in the first 3 months from account opening.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "airfare",
+          "rateText": "4X points",
+          "rateValue": 4,
+          "unit": "x_points"
+        },
+        {
+          "category": "all_other",
+          "rateText": "8X points",
+          "rateValue": 8,
+          "unit": "x_points",
+          "notes": "Requires booking through an issuer travel portal."
+        },
+        {
+          "category": "all_other",
+          "rateText": "1X points",
+          "rateValue": 1,
+          "unit": "x_points"
+        },
+        {
+          "category": "dining",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "hotels",
+          "rateText": "4X points",
+          "rateValue": 4,
+          "unit": "x_points"
+        },
+        {
+          "category": "travel",
+          "rateText": "8X points",
+          "rateValue": 8,
+          "unit": "x_points",
+          "notes": "Requires booking through an issuer travel portal."
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.8,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-citi-custom-cash",
+      "issuer": "Citi",
+      "cardName": "citi custom cash",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/citi-custom-cash",
+      "lastFetchedAt": "2026-02-22T02:22:30.910Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Intro Offer $200 Recommended credit score Intro APR 0% intro APR on purchases and balance transfers for 15 months Regular APR 18.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [
+        {
+          "period": "sep",
+          "rateText": "5%",
+          "categories": [
+            "travel"
+          ],
+          "sourceText": "Craig Joseph, writer, travel rewards Drawbacks and Considerations Low spending cap for bonus rewards The Citi Custom Cash® Card earns 5% on up to $500 spent in your highest spend category per billing cycle, then 1% back "
+        },
+        {
+          "period": "Unspecified period",
+          "rateText": "3% back",
+          "categories": [
+            "dining",
+            "drugstores"
+          ],
+          "sourceText": "Similarly, the Chase Freedom Flex® offers 3% back on dining and drugstores, along with the 5% you’ll earn in quarterly bonus categories."
+        }
+      ],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback",
+          "capText": "first $500 spent, 1% cash back thereafter"
+        },
+        {
+          "category": "all_other",
+          "rateText": "1% cash back",
           "rateValue": 1,
           "unit": "percent_cashback"
         }
@@ -49,327 +1128,694 @@
       "notes": [
         "Detected rotating or activation-based category language."
       ],
-      "confidenceScore": 0.56,
+      "confidenceScore": 0.57,
       "fetchStatus": "ok",
       "fetchError": null
     },
     {
-      "id": "amazon-business-prime-amex",
-      "issuer": "American Express",
-      "cardName": "Amazon Business Prime American Express Card",
-      "network": "Amex",
-      "cardSegment": "business",
-      "popularityRank": 118,
+      "id": "unknown-citi-double-cash",
+      "issuer": "Citi",
+      "cardName": "citi double cash",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
       "country": "US",
-      "cardUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/amazon-business-prime-card",
-      "lastFetchedAt": "2026-02-21T21:12:44.056Z",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/citi-double-cash",
+      "lastFetchedAt": "2026-02-22T02:22:31.631Z",
       "annualFeeText": "$0",
-      "introOfferText": null,
+      "introOfferText": "Intro Offer $200 Recommended credit score Intro APR 0% intro APR on balance transfers for 18 months Regular APR 17.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [
+        {
+          "period": "mar",
+          "rateText": null,
+          "categories": [
+            "dining",
+            "groceries",
+            "gas",
+            "travel"
+          ],
+          "sourceText": "Paul Soucy, content director, credit cards and travel rewards Drawbacks and Considerations No everyday bonus categories Double cash on all purchases is great, but it’s less than you’ll find on cards that offer elevated r"
+        }
+      ],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "2% cash back",
+          "rateValue": 2,
+          "unit": "percent_cashback"
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.5,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-citi-strata-elite",
+      "issuer": "Citi",
+      "cardName": "citi strata elite",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/citi-strata-elite",
+      "lastFetchedAt": "2026-02-22T02:22:32.094Z",
+      "annualFeeText": "$595",
+      "introOfferText": "Intro Offer 75,000 Points Recommended credit score Intro APR N/A Regular APR 20.",
       "rotatingCategoryProgram": false,
       "rotatingCategories": [],
       "rewardRules": [
         {
-          "category": "online_retail",
-          "rateText": "5%",
+          "category": "all_other",
+          "rateText": "1.5X points",
+          "rateValue": 1.5,
+          "unit": "x_points"
+        },
+        {
+          "category": "dining",
+          "rateText": "6X points",
+          "rateValue": 6,
+          "unit": "x_points"
+        },
+        {
+          "category": "dining",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "hotels",
+          "rateText": "12X points",
+          "rateValue": 12,
+          "unit": "x_points"
+        },
+        {
+          "category": "travel",
+          "rateText": "6X points",
+          "rateValue": 6,
+          "unit": "x_points"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.73,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-citi-strata-premier",
+      "issuer": "Citi",
+      "cardName": "citi strata premier",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/citi-strata-premier",
+      "lastFetchedAt": "2026-02-22T02:22:32.489Z",
+      "annualFeeText": "$95",
+      "introOfferText": "Earn 75,000 bonus points after you spend $5,000 on purchases in the first 3 months from account opening.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [
+        {
+          "period": "may",
+          "rateText": null,
+          "categories": [
+            "hotels"
+          ],
+          "sourceText": "Hotel discount may be of limited value The card offers $100 off a single hotel stay of at least $500 (not including taxes and fees) once every calendar year, when you book through Citi."
+        }
+      ],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1X points",
+          "rateValue": 1,
+          "unit": "x_points"
+        },
+        {
+          "category": "dining",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "gas",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "groceries",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "hotels",
+          "rateText": "10X points",
+          "rateValue": 10,
+          "unit": "x_points"
+        },
+        {
+          "category": "hotels",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "travel",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.92,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-discover-it-cash-back",
+      "issuer": "Discover",
+      "cardName": "discover it cash back",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/discover-it-cash-back",
+      "lastFetchedAt": "2026-02-22T02:22:33.098Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Intro Offer Cashback Match™ Recommended credit score Intro APR 0% intro APR for 15 months on purchases and balance transfers Regular APR 17.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [
+        {
+          "period": "Unspecified period",
+          "rateText": "5% cash back",
+          "categories": [
+            "dining",
+            "groceries",
+            "gas"
+          ],
+          "sourceText": "Earn 5% cash back on everyday purchases at different places you shop each quarter like grocery stores, restaurants, gas stations, and more, up to the quarterly maximum when you activate."
+        },
+        {
+          "period": "Unspecified period",
+          "rateText": null,
+          "categories": [
+            "travel"
+          ],
+          "sourceText": "Sally French, writer/spokesperson, travel rewards Of the two main cash back programs with rotating quarterly categories — Discover&#x27;s and Chase&#x27;s — I find that Discover&#x27;s offerings are more valuable to more"
+        }
+      ],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1% cash back",
+          "rateValue": 1,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "dining",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "gas",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "groceries",
+          "rateText": "5% cash back",
           "rateValue": 5,
           "unit": "percent_cashback"
         }
       ],
-      "notes": [],
-      "confidenceScore": 0.37,
-      "fetchStatus": "ok",
-      "fetchError": null
-    },
-    {
-      "id": "amex-gold",
-      "issuer": "American Express",
-      "cardName": "American Express Gold Card",
-      "network": "Amex",
-      "cardSegment": "personal",
-      "popularityRank": 2,
-      "country": "US",
-      "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/gold-card",
-      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
-      "annualFeeText": null,
-      "introOfferText": null,
-      "rotatingCategoryProgram": false,
-      "rotatingCategories": [],
-      "rewardRules": [],
       "notes": [
-        "No high-confidence reward rules detected. Add manual override if needed."
+        "Detected rotating or activation-based category language."
       ],
-      "confidenceScore": 0.07,
+      "confidenceScore": 0.71,
       "fetchStatus": "ok",
       "fetchError": null
     },
     {
-      "id": "amex-blue-cash-preferred",
-      "issuer": "American Express",
-      "cardName": "Blue Cash Preferred Card",
-      "network": "Amex",
+      "id": "unknown-discover-it-chrome",
+      "issuer": "Discover",
+      "cardName": "discover it chrome",
+      "network": null,
       "cardSegment": "personal",
-      "popularityRank": 9,
+      "popularityRank": null,
       "country": "US",
-      "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-preferred",
-      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
-      "annualFeeText": null,
-      "introOfferText": null,
-      "rotatingCategoryProgram": false,
-      "rotatingCategories": [],
-      "rewardRules": [],
-      "notes": [
-        "No high-confidence reward rules detected. Add manual override if needed."
-      ],
-      "confidenceScore": 0.07,
-      "fetchStatus": "ok",
-      "fetchError": null
-    },
-    {
-      "id": "amex-delta-gold",
-      "issuer": "American Express",
-      "cardName": "Delta SkyMiles Gold American Express Card",
-      "network": "Amex",
-      "cardSegment": "personal",
-      "popularityRank": 56,
-      "country": "US",
-      "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card",
-      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
-      "annualFeeText": null,
-      "introOfferText": null,
-      "rotatingCategoryProgram": false,
-      "rotatingCategories": [],
-      "rewardRules": [],
-      "notes": [
-        "No high-confidence reward rules detected. Add manual override if needed."
-      ],
-      "confidenceScore": 0.07,
-      "fetchStatus": "ok",
-      "fetchError": null
-    },
-    {
-      "id": "amex-hilton-surpass",
-      "issuer": "American Express",
-      "cardName": "Hilton Honors American Express Surpass Card",
-      "network": "Amex",
-      "cardSegment": "personal",
-      "popularityRank": 57,
-      "country": "US",
-      "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-surpass",
-      "lastFetchedAt": "2026-02-21T21:12:43.201Z",
-      "annualFeeText": null,
-      "introOfferText": null,
-      "rotatingCategoryProgram": false,
-      "rotatingCategories": [],
-      "rewardRules": [],
-      "notes": [
-        "No high-confidence reward rules detected. Add manual override if needed."
-      ],
-      "confidenceScore": 0.07,
-      "fetchStatus": "ok",
-      "fetchError": null
-    },
-    {
-      "id": "amex-platinum",
-      "issuer": "American Express",
-      "cardName": "The Platinum Card from American Express",
-      "network": "Amex",
-      "cardSegment": "personal",
-      "popularityRank": 13,
-      "country": "US",
-      "cardUrl": "https://www.americanexpress.com/us/credit-cards/card/platinum",
-      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
-      "annualFeeText": null,
-      "introOfferText": null,
-      "rotatingCategoryProgram": false,
-      "rotatingCategories": [],
-      "rewardRules": [],
-      "notes": [
-        "No high-confidence reward rules detected. Add manual override if needed."
-      ],
-      "confidenceScore": 0.07,
-      "fetchStatus": "ok",
-      "fetchError": null
-    },
-    {
-      "id": "boa-customized-cash",
-      "issuer": "Bank of America",
-      "cardName": "Customized Cash Rewards",
-      "network": "Visa",
-      "cardSegment": "personal",
-      "popularityRank": 15,
-      "country": "US",
-      "cardUrl": "https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card",
-      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/discover-it-chrome",
+      "lastFetchedAt": "2026-02-22T02:22:33.622Z",
       "annualFeeText": "$0",
-      "introOfferText": null,
-      "rotatingCategoryProgram": false,
-      "rotatingCategories": [],
-      "rewardRules": [],
-      "notes": [
-        "No high-confidence reward rules detected. Add manual override if needed."
+      "introOfferText": "Intro Offer Cashback Match™ Recommended credit score Intro APR 0% intro APR on Purchases for 6 months and 0% intro APR on Balance Transfers for 18 months Regular APR 17.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [
+        {
+          "period": "Unspecified period",
+          "rateText": "2% cash back",
+          "categories": [
+            "dining",
+            "gas"
+          ],
+          "sourceText": "Bonus categories that would benefit most people With the Discover it® Chrome , you get 2% cash back on restaurant dining and gas purchases, on up to $1,000 in combined spending each quarter, and 1% after that."
+        }
       ],
-      "confidenceScore": 0.15,
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1% cash back",
+          "rateValue": 1,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "dining",
+          "rateText": "2% cash back",
+          "rateValue": 2,
+          "unit": "percent_cashback",
+          "capText": "on up to $1,000 in combined purchases each quarter, automatically"
+        },
+        {
+          "category": "gas",
+          "rateText": "2% cash back",
+          "rateValue": 2,
+          "unit": "percent_cashback",
+          "capText": "on up to $1,000 in combined purchases each quarter, automatically"
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.64,
       "fetchStatus": "ok",
       "fetchError": null
     },
     {
-      "id": "boa-premium-rewards",
-      "issuer": "Bank of America",
-      "cardName": "Premium Rewards",
-      "network": "Visa",
+      "id": "unknown-discover-it-secured",
+      "issuer": "Discover",
+      "cardName": "discover it secured",
+      "network": null,
       "cardSegment": "personal",
-      "popularityRank": 19,
+      "popularityRank": null,
       "country": "US",
-      "cardUrl": "https://www.bankofamerica.com/credit-cards/products/premium-rewards-credit-card",
-      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/discover-it-secured",
+      "lastFetchedAt": "2026-02-22T02:22:33.878Z",
       "annualFeeText": "$0",
-      "introOfferText": null,
-      "rotatingCategoryProgram": false,
-      "rotatingCategories": [],
-      "rewardRules": [],
-      "notes": [
-        "No high-confidence reward rules detected. Add manual override if needed."
-      ],
-      "confidenceScore": 0.15,
-      "fetchStatus": "ok",
-      "fetchError": null
-    },
-    {
-      "id": "wf-active-cash",
-      "issuer": "Wells Fargo",
-      "cardName": "Active Cash Card",
-      "network": "Visa",
-      "cardSegment": "personal",
-      "popularityRank": 11,
-      "country": "US",
-      "cardUrl": "https://creditcards.wellsfargo.com/active-cash-credit-card?sub_channel=WEB&vendor_code=WF",
-      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
-      "annualFeeText": "$0",
-      "introOfferText": null,
-      "rotatingCategoryProgram": false,
-      "rotatingCategories": [],
-      "rewardRules": [],
-      "notes": [
-        "No high-confidence reward rules detected. Add manual override if needed."
-      ],
-      "confidenceScore": 0.15,
-      "fetchStatus": "ok",
-      "fetchError": null
-    },
-    {
-      "id": "wf-autograph",
-      "issuer": "Wells Fargo",
-      "cardName": "Autograph Card",
-      "network": "Visa",
-      "cardSegment": "personal",
-      "popularityRank": 16,
-      "country": "US",
-      "cardUrl": "https://creditcards.wellsfargo.com/autograph-visa-credit-card?sub_channel=WEB&vendor_code=WF",
-      "lastFetchedAt": "2026-02-21T21:12:42.716Z",
-      "annualFeeText": "$0",
-      "introOfferText": null,
+      "introOfferText": "Intro Offer Cashback Match™ Recommended credit score Intro APR 10.",
       "rotatingCategoryProgram": false,
       "rotatingCategories": [],
       "rewardRules": [
         {
-          "category": "dining",
-          "rateText": "3X points",
-          "rateValue": 3,
-          "unit": "x_points"
+          "category": "all_other",
+          "rateText": "1% cash back",
+          "rateValue": 1,
+          "unit": "percent_cashback"
         },
         {
           "category": "dining",
-          "rateText": "1X",
-          "rateValue": 1,
-          "unit": "x_points"
+          "rateText": "2% cash back",
+          "rateValue": 2,
+          "unit": "percent_cashback",
+          "capText": "on up to $1,000 in combined purchases each quarter, automatically"
         },
         {
           "category": "gas",
-          "rateText": "3X points",
-          "rateValue": 3,
-          "unit": "x_points"
+          "rateText": "2% cash back",
+          "rateValue": 2,
+          "unit": "percent_cashback",
+          "capText": "on up to $1,000 in combined purchases each quarter, automatically"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.59,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-discover-it-student-cash-back",
+      "issuer": "Discover",
+      "cardName": "discover it student cash back",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/discover-it-student-cash-back",
+      "lastFetchedAt": "2026-02-22T02:22:34.235Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Intro Offer Cashback Match™ Recommended credit score Intro APR 0% intro APR on Purchases for 6 months and 10.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [
+        {
+          "period": "Unspecified period",
+          "rateText": "5% cash back",
+          "categories": [
+            "dining",
+            "groceries",
+            "gas"
+          ],
+          "sourceText": "Earn 5% cash back on everyday purchases at different places you shop each quarter like grocery stores, restaurants, gas stations, and more, up to the quarterly maximum when you activate."
+        }
+      ],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1% cash back",
+          "rateValue": 1,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "dining",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback"
         },
         {
           "category": "gas",
-          "rateText": "1X",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "groceries",
+          "rateText": "5% cash back",
+          "rateValue": 5,
+          "unit": "percent_cashback"
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.71,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-discover-it-student-chrome",
+      "issuer": "Discover",
+      "cardName": "discover it student chrome",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/discover-it-student-chrome",
+      "lastFetchedAt": "2026-02-22T02:22:34.655Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Intro Offer Cashback Match™ Recommended credit score Intro APR 0% intro APR on Purchases for 6 months and 10.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1% cash back",
           "rateValue": 1,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "dining",
+          "rateText": "2% cash back",
+          "rateValue": 2,
+          "unit": "percent_cashback",
+          "capText": "on up to $1,000 in combined purchases each quarter, automatically"
+        },
+        {
+          "category": "gas",
+          "rateText": "2% cash back",
+          "rateValue": 2,
+          "unit": "percent_cashback",
+          "capText": "on up to $1,000 in combined purchases each quarter, automatically"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.59,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-paypal-cashback",
+      "issuer": "PayPal",
+      "cardName": "paypal cashback",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/paypal-cashback",
+      "lastFetchedAt": "2026-02-22T02:22:36.117Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Intro Offer N/A Recommended credit score Intro APR N/A Regular APR 18.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1.5% cash back",
+          "rateValue": 1.5,
+          "unit": "percent_cashback"
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.45,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-penfed-pathfinder-rewards",
+      "issuer": "PenFed",
+      "cardName": "penfed pathfinder rewards",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/penfed-pathfinder-rewards",
+      "lastFetchedAt": "2026-02-22T02:22:36.499Z",
+      "annualFeeText": "$95",
+      "introOfferText": "Intro Offer 50,000 Points Recommended credit score Intro APR N/A Regular APR 17.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1.5X points",
+          "rateValue": 1.5,
           "unit": "x_points"
         },
         {
-          "category": "phone",
-          "rateText": "3X points",
-          "rateValue": 3,
-          "unit": "x_points"
-        },
-        {
-          "category": "phone",
-          "rateText": "1X",
-          "rateValue": 1,
-          "unit": "x_points"
-        },
-        {
-          "category": "streaming",
-          "rateText": "3X points",
-          "rateValue": 3,
-          "unit": "x_points"
-        },
-        {
-          "category": "streaming",
-          "rateText": "1X",
-          "rateValue": 1,
-          "unit": "x_points"
-        },
-        {
-          "category": "transit",
-          "rateText": "3X points",
-          "rateValue": 3,
-          "unit": "x_points"
-        },
-        {
-          "category": "transit",
-          "rateText": "1X",
-          "rateValue": 1,
+          "category": "travel",
+          "rateText": "4X points",
+          "rateValue": 4,
           "unit": "x_points"
         },
         {
           "category": "travel",
           "rateText": "3X points",
           "rateValue": 3,
-          "unit": "x_points"
-        },
-        {
-          "category": "travel",
-          "rateText": "1X",
-          "rateValue": 1,
           "unit": "x_points"
         }
       ],
       "notes": [],
-      "confidenceScore": 0.86,
+      "confidenceScore": 0.59,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-bank-shield",
+      "issuer": "U.S. Bank",
+      "cardName": "bank shield",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/us-bank-shield",
+      "lastFetchedAt": "2026-02-22T02:22:26.594Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Intro Offer N/A Recommended credit score Intro APR 0% intro APR for 18 billing cycles on purchases and balance transfers Regular APR 16.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "hotels",
+          "rateText": "4% cash back",
+          "rateValue": 4,
+          "unit": "percent_cashback"
+        },
+        {
+          "category": "travel",
+          "rateText": "4% cash back",
+          "rateValue": 4,
+          "unit": "percent_cashback"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.52,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-wells-fargo-active-cash",
+      "issuer": "Wells Fargo",
+      "cardName": "wells fargo active cash",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/wells-fargo-active-cash",
+      "lastFetchedAt": "2026-02-22T02:22:37.544Z",
+      "annualFeeText": "$0",
+      "introOfferText": "sign-up bonus and an intro APR promotion.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "2X points",
+          "rateValue": 2,
+          "unit": "x_points"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.45,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-wells-fargo-autograph",
+      "issuer": "Wells Fargo",
+      "cardName": "wells fargo autograph",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/wells-fargo-autograph",
+      "lastFetchedAt": "2026-02-22T02:22:37.789Z",
+      "annualFeeText": "$0",
+      "introOfferText": "Intro Offer 20,000 Points Recommended credit score Intro APR 0% intro APR for 12 months from account opening on purchases Regular APR 18.",
+      "rotatingCategoryProgram": true,
+      "rotatingCategories": [
+        {
+          "period": "Unspecified period",
+          "rateText": "5% back",
+          "categories": [
+            "travel"
+          ],
+          "sourceText": "(It offers 5% back on travel booked through Chase.) While excellent in many ways, the card’s 5% rotating bonus categories are capped at $1,500 per quarter before dropping to 1% cash back."
+        }
+      ],
+      "rewardRules": [
+        {
+          "category": "all_other",
+          "rateText": "1X points",
+          "rateValue": 1,
+          "unit": "x_points"
+        },
+        {
+          "category": "dining",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "gas",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "phone",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "streaming",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "transit",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "travel",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        }
+      ],
+      "notes": [
+        "Detected rotating or activation-based category language."
+      ],
+      "confidenceScore": 0.92,
+      "fetchStatus": "ok",
+      "fetchError": null
+    },
+    {
+      "id": "unknown-wells-fargo-autograph-journey",
+      "issuer": "Wells Fargo",
+      "cardName": "wells fargo autograph journey",
+      "network": null,
+      "cardSegment": "personal",
+      "popularityRank": null,
+      "country": "US",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/wells-fargo-autograph-journey",
+      "lastFetchedAt": "2026-02-22T02:22:38.120Z",
+      "annualFeeText": "$95",
+      "introOfferText": "Intro Offer 60,000 Points Recommended credit score Intro APR N/A Regular APR 19.",
+      "rotatingCategoryProgram": false,
+      "rotatingCategories": [],
+      "rewardRules": [
+        {
+          "category": "airfare",
+          "rateText": "4X points",
+          "rateValue": 4,
+          "unit": "x_points"
+        },
+        {
+          "category": "all_other",
+          "rateText": "1X points",
+          "rateValue": 1,
+          "unit": "x_points"
+        },
+        {
+          "category": "dining",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        },
+        {
+          "category": "hotels",
+          "rateText": "5X points",
+          "rateValue": 5,
+          "unit": "x_points"
+        },
+        {
+          "category": "travel",
+          "rateText": "3X points",
+          "rateValue": 3,
+          "unit": "x_points"
+        }
+      ],
+      "notes": [],
+      "confidenceScore": 0.73,
       "fetchStatus": "ok",
       "fetchError": null
     }
   ],
   "failures": [
     {
-      "id": "boa-business-advantage-customized-cash",
-      "cardUrl": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/business-advantage-cash-rewards-mastercard-credit-card",
-      "error": "HTTP 404"
-    },
-    {
-      "id": "wf-signify-business-cash",
-      "cardUrl": "https://creditcards.wellsfargo.com/signify-business-cash-credit-card",
-      "error": "HTTP 404"
-    },
-    {
-      "id": "boa-business-advantage-travel",
-      "cardUrl": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/business-advantage-travel-rewards-world-mastercard-credit-card",
-      "error": "HTTP 404"
-    },
-    {
-      "id": "wf-autograph-journey-business",
-      "cardUrl": "https://creditcards.wellsfargo.com/autograph-journey-business-credit-card",
-      "error": "HTTP 404"
+      "id": "unknown-discover-it-cash-back-18-month-balance-transfer-offer",
+      "cardUrl": "https://www.nerdwallet.com/credit-cards/reviews/discover-it-cash-back-18-month-balance-transfer-offer",
+      "error": "Rejected non-card list/comparison page"
     }
   ]
 }

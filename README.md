@@ -31,13 +31,22 @@ npm run dev
 ## Pages
 
 - `/` Home and product overview
+- `/cards` Browse clean card records with filters
+- `/review` Review queue for low-quality/non-card rows
 - `/upload` Statement upload workflow UI
 - `/recommendations` Ranked recommendation view
 - `/optimizer` Per-purchase optimization + autofill preview
 
 ## Notes
 
-This repo currently uses mock data in `lib/mock-data.ts`. Connect your real backend/API by replacing those data sources and wiring form handlers.
+The app now reads reward data from Supabase when env vars are present, with local fallback to `data/rewards/cards.us.json`.
+
+Set these for live data:
+
+```bash
+export SUPABASE_URL="https://<project-ref>.supabase.co"
+export SUPABASE_SERVICE_ROLE_KEY="<service-role-key>"
+```
 
 ## Rewards Data Pipeline (US)
 
@@ -52,6 +61,7 @@ This repo now includes a low-cost rewards collection pipeline for major US issue
 - Collector script: `scripts/collect-rewards.mjs`
 - Supabase sync script: `scripts/sync-rewards-to-supabase.mjs`
 - Supabase schema: `supabase/schema/rewards.sql`
+- Clean-data view: `public.credit_card_rewards_clean` (created by schema SQL)
 
 Run data collection:
 
@@ -89,6 +99,12 @@ NerdWallet-focused discovery pass:
 DISCOVERY_ONLY=1 DISCOVERY_SOURCE_FILTER=nerdwallet npm run rewards:collect
 ```
 
+NerdWallet-only crawl + scrape (recommended fast path):
+
+```bash
+NERDWALLET_ONLY=1 ENABLE_DISCOVERY=1 ENABLE_SITEMAP_DISCOVERY=0 NERDWALLET_CRAWL_MAX_PAGES=300 NERDWALLET_CRAWL_DEPTH=4 OUTPUT_REQUIRE_REWARD_RULES=1 MIN_CONFIDENCE_SCORE=0.45 npm run rewards:collect
+```
+
 Throttle-safe tuning (recommended defaults for reliability):
 
 ```bash
@@ -107,6 +123,18 @@ Sync dataset to Supabase:
 export SUPABASE_URL="https://<project-ref>.supabase.co"
 export SUPABASE_SERVICE_ROLE_KEY="<service-role-key>"
 npm run rewards:sync
+```
+
+Sync all records (including lower-confidence rows) instead of high-quality-only:
+
+```bash
+SYNC_ONLY_HIGH_QUALITY=0 npm run rewards:sync
+```
+
+Audit rewards data quality (reads Supabase if env vars are set, else local JSON):
+
+```bash
+npm run rewards:audit
 ```
 
 Monthly refresh automation is set up in:

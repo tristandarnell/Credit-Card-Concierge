@@ -1,53 +1,32 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import { STANDARD_CATEGORIES, type StandardCategory } from "@/lib/rewards/categories";
+import type { CardRewardRecord } from "@/lib/rewards/types";
+import { CATEGORY_LABELS, formatDollars, getBestCardForPurchase } from "@/lib/rewards/scoring";
 
-type Category = "Dining" | "Groceries" | "Travel" | "Transit" | "Gas" | "Shopping" | "Streaming" | "General";
-
-type Rule = {
-  card: string;
-  rewards: string;
-  multiplier: number;
-  categories: Category[];
-  note?: string;
+type PurchaseAdvisorProps = {
+  cards: CardRewardRecord[];
 };
 
-const rules: Rule[] = [
-  { card: "American Express Gold", rewards: "4x Membership Rewards points", multiplier: 4, categories: ["Dining", "Groceries"], note: "Best for restaurants and U.S. supermarkets" },
-  { card: "Chase Sapphire Preferred", rewards: "3x Ultimate Rewards points", multiplier: 3, categories: ["Travel"], note: "Best for airlines, hotels, and travel portals" },
-  { card: "Amex Blue Cash Preferred", rewards: "6% cash back", multiplier: 6, categories: ["Streaming"], note: "Best for select U.S. streaming services" },
-  { card: "Amex Blue Cash Preferred", rewards: "3% cash back", multiplier: 3, categories: ["Gas"], note: "Best for U.S. gas stations and transit" },
-  { card: "Capital One Venture X", rewards: "2x miles", multiplier: 2, categories: ["Transit", "General", "Shopping"] },
-];
+const SELECTABLE_CATEGORIES = STANDARD_CATEGORIES.filter((category) => category !== "all_other");
 
-const CENTS_PER_POINT = 0.015; // ~1.5 cents per point (conservative UR/MR valuation)
-
-export function PurchaseAdvisor() {
+export function PurchaseAdvisor({ cards }: PurchaseAdvisorProps) {
   const [merchant, setMerchant] = useState("Airbnb");
   const [amount, setAmount] = useState("285.00");
-  const [category, setCategory] = useState<Category>("Travel");
+  const [category, setCategory] = useState<StandardCategory>("travel");
   const [submitted, setSubmitted] = useState(false);
 
   const recommendation = useMemo(() => {
-    const match = rules.find((rule) => rule.categories.includes(category));
-    const numericAmount = Number(amount) || 0;
-
-    if (!match) {
-      const fallbackPoints = numericAmount * 2;
-      const fallbackValue = (fallbackPoints * CENTS_PER_POINT).toFixed(2);
-      return { card: "Capital One Venture X", rewards: "2x miles", estValue: `$${fallbackValue}`, note: "Flat-rate fallback for uncategorized spend" };
+    const purchaseAmount = Number(amount) || 0;
+    if (purchaseAmount <= 0 || cards.length === 0) {
+      return null;
     }
 
-    const points = numericAmount * match.multiplier;
-    const value = (points * CENTS_PER_POINT).toFixed(2);
+    return getBestCardForPurchase(cards, category, purchaseAmount);
+  }, [amount, cards, category]);
 
-    return {
-      card: match.card,
-      rewards: match.rewards,
-      estValue: `$${value}`,
-      note: match.note
-    };
-  }, [amount, category]);
+  const recommendationValue = recommendation ? formatDollars(recommendation.estimatedRewardValue) : "$0";
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -67,7 +46,7 @@ export function PurchaseAdvisor() {
           />
         </label>
         <label>
-          Amount ($)
+          Amount
           <input
             inputMode="decimal"
             value={amount}
@@ -78,35 +57,39 @@ export function PurchaseAdvisor() {
         </label>
         <label>
           Category
-          <select value={category} onChange={(event) => setCategory(event.target.value as Category)}>
-            <option>Dining</option>
-            <option>Groceries</option>
-            <option>Travel</option>
-            <option>Transit</option>
-            <option>Gas</option>
-            <option>Shopping</option>
-            <option>Streaming</option>
-            <option>General</option>
+          <select value={category} onChange={(event) => setCategory(event.target.value as StandardCategory)}>
+            {SELECTABLE_CATEGORIES.map((item) => (
+              <option key={item} value={item}>
+                {CATEGORY_LABELS[item]}
+              </option>
+            ))}
           </select>
         </label>
-        <button type="submit" className="btn btn-primary">Find Best Card</button>
+        <button type="submit" className="btn btn-primary">
+          Calculate Best Card
+        </button>
       </form>
 
       {submitted ? (
         <div className="result-card" aria-live="polite">
-          <p className="result-label">Best card for this purchase</p>
-          <h3>{recommendation.card}</h3>
-          <p>
-            Use <strong>{recommendation.card}</strong> for <strong>{merchant}</strong> ({category}) to earn <strong>{recommendation.rewards}</strong>.
-          </p>
-          {recommendation.note && (
-            <p className="muted" style={{ fontSize: "0.87rem" }}>{recommendation.note}</p>
+          <p className="result-label">Recommended card for this purchase</p>
+          {recommendation ? (
+            <>
+              <h3>{recommendation.cardName}</h3>
+              <p>
+                {merchant} ({CATEGORY_LABELS[category]}) should use <strong>{recommendation.cardName}</strong> from{" "}
+                <strong>{recommendation.issuer}</strong> for <strong>{recommendation.matchedRule.rateText}</strong>.
+              </p>
+              <p className="result-value">Estimated reward value: {recommendationValue}</p>
+            </>
+          ) : (
+            <p>No eligible reward rule found for this purchase category yet.</p>
           )}
-          <p className="result-value">Estimated reward value: {recommendation.estValue}</p>
-          <p className="hint">Estimate assumes ~1.5&cent; per point. Actual value depends on redemption method.</p>
         </div>
       ) : (
-        <p className="muted">Enter a purchase above to see exactly which card maximizes your rewards for that transaction.</p>
+        <p className="muted">
+          Run a purchase to preview recommendation behavior from live card reward rules.
+        </p>
       )}
     </div>
   );

@@ -18,6 +18,12 @@ This folder stores scraped and normalized reward data for major US credit cards.
 npm run rewards:collect
 ```
 
+Target specific issuers/cards during fetch (comma-separated substring filter):
+
+```bash
+FETCH_SOURCE_FILTER="amex,bank of america,wells fargo" ENABLE_DISCOVERY=0 npm run rewards:collect
+```
+
 Optional raw HTML snapshotting:
 
 ```bash
@@ -54,6 +60,12 @@ NerdWallet-only discovery:
 DISCOVERY_ONLY=1 DISCOVERY_SOURCE_FILTER=nerdwallet npm run rewards:collect
 ```
 
+NerdWallet-only crawl + scrape:
+
+```bash
+NERDWALLET_ONLY=1 ENABLE_DISCOVERY=1 ENABLE_SITEMAP_DISCOVERY=0 NERDWALLET_CRAWL_MAX_PAGES=300 NERDWALLET_CRAWL_DEPTH=4 OUTPUT_REQUIRE_REWARD_RULES=1 MIN_CONFIDENCE_SCORE=0.45 npm run rewards:collect
+```
+
 Retry/backoff controls:
 
 ```bash
@@ -87,6 +99,18 @@ export SUPABASE_REWARDS_TABLE="credit_card_rewards"
 
 ```bash
 npm run rewards:sync
+```
+
+To sync every row from `cards.us.json` (including lower-confidence rows), disable sync filtering:
+
+```bash
+SYNC_ONLY_HIGH_QUALITY=0 npm run rewards:sync
+```
+
+Generate card-by-card audit report for manual cleanup (Supabase-aware):
+
+```bash
+npm run rewards:audit
 ```
 
 Or run collect + sync:
