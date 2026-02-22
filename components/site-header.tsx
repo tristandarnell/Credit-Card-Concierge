@@ -10,7 +10,8 @@ const links = [
   { href: "/guide", label: "Guide" },
   { href: "/upload", label: "Upload" },
   { href: "/recommendations", label: "Recommendations" },
-  { href: "/optimizer", label: "Purchase Optimizer" }
+  { href: "/optimizer", label: "Purchase Optimizer" },
+  { href: "/extension", label: "Extension" }
 ];
 
 function CardIcon() {

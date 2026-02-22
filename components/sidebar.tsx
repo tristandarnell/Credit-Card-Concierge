@@ -63,10 +63,22 @@ function BookIcon() {
   );
 }
 
+function PlugIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 22v-5" />
+      <path d="M9 8V2" />
+      <path d="M15 8V2" />
+      <path d="M18 8H6v4a6 6 0 0 0 12 0V8z" />
+    </svg>
+  );
+}
+
 const primaryNav: NavItem[] = [
   { href: "/", label: "Overview", icon: <GridIcon /> },
   { href: "/recommendations", label: "Cards", icon: <CardIcon /> },
   { href: "/optimizer", label: "Optimization", icon: <ZapIcon /> },
+  { href: "/extension", label: "Extension", icon: <PlugIcon /> },
   { href: "/guide", label: "Insights", icon: <TrendingIcon /> },
 ];
 

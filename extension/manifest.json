@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "CreditCard Concierge Autofill",
+  "description": "Recommends the best card from your wallet at checkout and autofills card fields on compatible pages.",
+  "version": "0.1.0",
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Card Autofill",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
+
