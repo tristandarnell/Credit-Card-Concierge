@@ -409,12 +409,298 @@ export type PortfolioCardRecommendation = {
   categories: Array<{ category: StandardCategory; amount: number; rewardValue: number; rateText: string }>;
 };
 
+export type PortfolioCategoryAssignment = {
+  category: StandardCategory;
+  cardName: string;
+  amount: number;
+  rewardValue: number;
+};
+
 export type PortfolioRecommendation = {
   cards: PortfolioCardRecommendation[];
   totalProjectedValue: number;
   totalFees: number;
-  categoryAssignments: Array<{ category: StandardCategory; cardName: string; amount: number; rewardValue: number }>;
+  categoryAssignments: PortfolioCategoryAssignment[];
 };
+
+export type PortfolioComboPoint = {
+  id: string;
+  cardIds: string[];
+  cardNames: string[];
+  cardCount: number;
+  annualFee: number;
+  totalRewards: number;
+  netValue: number;
+  categoryAssignments: PortfolioCategoryAssignment[];
+  onParetoFrontier: boolean;
+};
+
+export type PortfolioFrontierOptions = {
+  maxCardsPerCombo?: number;
+  candidatePoolSize?: number;
+};
+
+export type PortfolioFrontierResult = {
+  points: PortfolioComboPoint[];
+  frontier: PortfolioComboPoint[];
+  candidateCardPoolSize: number;
+  maxCardsPerCombo: number;
+  minAnnualFee: number;
+  maxAnnualFee: number;
+  maxRewardsValue: number;
+};
+
+function estimateCardRewardForCategory(card: CardRewardRecord, category: StandardCategory, amount: number): number {
+  if (amount <= 0) {
+    return 0;
+  }
+
+  const rule = bestRuleForCategory(card.rewardRules, category);
+  if (!rule) {
+    return 0;
+  }
+
+  return estimateRewardValueForCard(card, rule, amount);
+}
+
+function evaluatePortfolioCombo(
+  comboCards: CardRewardRecord[],
+  profile: AnnualSpendProfile
+): Omit<PortfolioComboPoint, "onParetoFrontier"> {
+  const categoryAssignments: PortfolioCategoryAssignment[] = [];
+  let totalRewards = 0;
+
+  for (const category of STANDARD_CATEGORIES) {
+    const amount = profile[category] ?? 0;
+    if (amount <= 0) {
+      continue;
+    }
+
+    let bestCardName = "No card";
+    let bestRewardValue = 0;
+
+    for (const card of comboCards) {
+      const rewardValue = estimateCardRewardForCategory(card, category, amount);
+      if (rewardValue > bestRewardValue) {
+        bestRewardValue = rewardValue;
+        bestCardName = card.cardName;
+      }
+    }
+
+    const roundedRewardValue = Number(bestRewardValue.toFixed(2));
+    totalRewards += roundedRewardValue;
+    categoryAssignments.push({
+      category,
+      cardName: bestCardName,
+      amount,
+      rewardValue: roundedRewardValue
+    });
+  }
+
+  const annualFee = Number(
+    comboCards
+      .reduce((sum, card) => sum + parseAnnualFee(card.annualFeeText), 0)
+      .toFixed(2)
+  );
+  const roundedRewards = Number(totalRewards.toFixed(2));
+  const netValue = Number((roundedRewards - annualFee).toFixed(2));
+
+  return {
+    id: comboCards.map((card) => card.id).sort().join("+"),
+    cardIds: comboCards.map((card) => card.id),
+    cardNames: comboCards.map((card) => card.cardName),
+    cardCount: comboCards.length,
+    annualFee,
+    totalRewards: roundedRewards,
+    netValue,
+    categoryAssignments
+  };
+}
+
+function buildCardCombinations(cards: CardRewardRecord[], maxCardsPerCombo: number): CardRewardRecord[][] {
+  const combinations: CardRewardRecord[][] = [];
+  const targetMaxSize = Math.min(Math.max(1, maxCardsPerCombo), cards.length);
+  const working: CardRewardRecord[] = [];
+
+  function backtrack(startIndex: number, targetSize: number): void {
+    if (working.length === targetSize) {
+      combinations.push([...working]);
+      return;
+    }
+
+    for (let index = startIndex; index < cards.length; index += 1) {
+      working.push(cards[index]);
+      backtrack(index + 1, targetSize);
+      working.pop();
+    }
+  }
+
+  for (let size = 1; size <= targetMaxSize; size += 1) {
+    backtrack(0, size);
+  }
+
+  return combinations;
+}
+
+function selectPortfolioCandidates(
+  cards: CardRewardRecord[],
+  profile: AnnualSpendProfile,
+  poolSize: number
+): CardRewardRecord[] {
+  const targetPoolSize = Math.max(4, poolSize);
+  const netByCardId = new Map<string, number>();
+  const cardById = new Map(cards.map((card) => [card.id, card]));
+
+  for (const card of cards) {
+    netByCardId.set(card.id, estimateNetAnnualCardValue(card, profile));
+  }
+
+  const rankedByNet = [...cards].sort(
+    (left, right) =>
+      (netByCardId.get(right.id) ?? Number.NEGATIVE_INFINITY) - (netByCardId.get(left.id) ?? Number.NEGATIVE_INFINITY)
+  );
+
+  const categoryWinners = new Set<string>();
+  for (const category of STANDARD_CATEGORIES) {
+    const amount = profile[category] ?? 0;
+    if (amount <= 0) {
+      continue;
+    }
+
+    const categoryTopCards = cards
+      .map((card) => ({
+        card,
+        rewardValue: estimateCardRewardForCategory(card, category, amount)
+      }))
+      .filter((entry) => entry.rewardValue > 0)
+      .sort((left, right) => right.rewardValue - left.rewardValue)
+      .slice(0, 2);
+
+    for (const entry of categoryTopCards) {
+      categoryWinners.add(entry.card.id);
+    }
+  }
+
+  const selected = new Map<string, CardRewardRecord>();
+  const rankedCategoryWinners = [...categoryWinners]
+    .map((cardId) => cardById.get(cardId))
+    .filter((card): card is CardRewardRecord => card != null)
+    .sort(
+      (left, right) =>
+        (netByCardId.get(right.id) ?? Number.NEGATIVE_INFINITY) - (netByCardId.get(left.id) ?? Number.NEGATIVE_INFINITY)
+    );
+
+  for (const card of rankedCategoryWinners) {
+    selected.set(card.id, card);
+  }
+
+  for (const card of rankedByNet) {
+    if (selected.size >= targetPoolSize) {
+      break;
+    }
+    selected.set(card.id, card);
+  }
+
+  const hardCap = Math.max(targetPoolSize, 16);
+  return [...selected.values()]
+    .sort(
+      (left, right) =>
+        (netByCardId.get(right.id) ?? Number.NEGATIVE_INFINITY) - (netByCardId.get(left.id) ?? Number.NEGATIVE_INFINITY)
+    )
+    .slice(0, hardCap);
+}
+
+function dominatesPortfolioPoint(left: PortfolioComboPoint, right: PortfolioComboPoint): boolean {
+  const epsilon = 0.01;
+  const lowerOrEqualFee = left.annualFee <= right.annualFee + epsilon;
+  const higherOrEqualRewards = left.totalRewards + epsilon >= right.totalRewards;
+  const strictImprovement = left.annualFee < right.annualFee - epsilon || left.totalRewards > right.totalRewards + epsilon;
+
+  return lowerOrEqualFee && higherOrEqualRewards && strictImprovement;
+}
+
+export function buildPortfolioParetoFrontier(
+  cards: CardRewardRecord[],
+  profile: AnnualSpendProfile = DEFAULT_ANNUAL_SPEND_PROFILE,
+  options: PortfolioFrontierOptions = {}
+): PortfolioFrontierResult {
+  if (cards.length === 0) {
+    return {
+      points: [],
+      frontier: [],
+      candidateCardPoolSize: 0,
+      maxCardsPerCombo: options.maxCardsPerCombo ?? 4,
+      minAnnualFee: 0,
+      maxAnnualFee: 0,
+      maxRewardsValue: 0
+    };
+  }
+
+  const maxCardsPerCombo = Math.max(1, options.maxCardsPerCombo ?? 4);
+  const candidatePoolSize = Math.max(maxCardsPerCombo, options.candidatePoolSize ?? 12);
+  const candidateCards = selectPortfolioCandidates(cards, profile, candidatePoolSize);
+  const combos = buildCardCombinations(candidateCards, maxCardsPerCombo);
+  const evaluatedPoints = combos.map((comboCards) => evaluatePortfolioCombo(comboCards, profile));
+
+  const uniquePointsByCoordinate = new Map<string, Omit<PortfolioComboPoint, "onParetoFrontier">>();
+  for (const point of evaluatedPoints) {
+    const key = `${Math.round(point.annualFee * 100)}:${Math.round(point.totalRewards * 100)}`;
+    const existing = uniquePointsByCoordinate.get(key);
+    if (
+      !existing ||
+      point.cardCount < existing.cardCount ||
+      (point.cardCount === existing.cardCount && point.netValue > existing.netValue)
+    ) {
+      uniquePointsByCoordinate.set(key, point);
+    }
+  }
+
+  const uniquePoints = [...uniquePointsByCoordinate.values()]
+    .map((point) => ({ ...point, onParetoFrontier: false }))
+    .sort(
+      (left, right) =>
+        left.annualFee - right.annualFee || right.totalRewards - left.totalRewards || left.cardCount - right.cardCount
+    );
+
+  for (let index = 0; index < uniquePoints.length; index += 1) {
+    const candidate = uniquePoints[index];
+    let dominated = false;
+    for (let compareIndex = 0; compareIndex < uniquePoints.length; compareIndex += 1) {
+      if (index === compareIndex) {
+        continue;
+      }
+      if (dominatesPortfolioPoint(uniquePoints[compareIndex], candidate)) {
+        dominated = true;
+        break;
+      }
+    }
+
+    if (!dominated) {
+      candidate.onParetoFrontier = true;
+    }
+  }
+
+  const frontier = uniquePoints
+    .filter((point) => point.onParetoFrontier)
+    .sort(
+      (left, right) =>
+        left.annualFee - right.annualFee || right.totalRewards - left.totalRewards || left.cardCount - right.cardCount
+    );
+
+  const minAnnualFee = uniquePoints.length > 0 ? Math.min(...uniquePoints.map((point) => point.annualFee)) : 0;
+  const maxAnnualFee = uniquePoints.length > 0 ? Math.max(...uniquePoints.map((point) => point.annualFee)) : 0;
+  const maxRewardsValue = uniquePoints.length > 0 ? Math.max(...uniquePoints.map((point) => point.totalRewards)) : 0;
+
+  return {
+    points: uniquePoints,
+    frontier,
+    candidateCardPoolSize: candidateCards.length,
+    maxCardsPerCombo,
+    minAnnualFee,
+    maxAnnualFee,
+    maxRewardsValue
+  };
+}
 
 /**
  * Recommend an optimal credit card portfolio for a given spend profile.
@@ -425,7 +711,7 @@ export function recommendPortfolio(
   profile: AnnualSpendProfile,
   maxCards = 5
 ): PortfolioRecommendation {
-  const categoryAssignments: PortfolioRecommendation["categoryAssignments"] = [];
+  const categoryAssignments: PortfolioCategoryAssignment[] = [];
   const cardContributions = new Map<string, { value: number; categories: PortfolioCardRecommendation["categories"] }>();
 
   for (const category of STANDARD_CATEGORIES) {

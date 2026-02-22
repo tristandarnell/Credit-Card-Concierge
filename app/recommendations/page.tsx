@@ -1,9 +1,12 @@
 import { SectionHeading } from "@/components/section-heading";
 import { SpendingTrendsChart } from "@/components/spending-trends-chart";
+import { CardVisual } from "@/components/card-visual";
+import { buildRewardsInsights } from "@/lib/rewards/insights";
 import { getCleanRewardCards } from "@/lib/rewards/data";
 import { getCategorizedTransactionsPath, buildSpendingTrendsFromCsv } from "@/lib/rewards/spend-profile";
 import { buildSpendProfileFromCsv } from "@/lib/rewards/spend-profile";
 import {
+  buildPortfolioParetoFrontier,
   DEFAULT_ANNUAL_SPEND_PROFILE,
   estimateNetAnnualCardValue,
   formatDollars,
@@ -11,15 +14,13 @@ import {
   topRewardHighlights,
   CATEGORY_LABELS,
 } from "@/lib/rewards/scoring";
-import type { StandardCategory } from "@/lib/rewards/categories";
 
 export default async function RecommendationsPage() {
   const cards = await getCleanRewardCards(1000);
 
   const categorizedPath = await getCategorizedTransactionsPath();
-  const spendProfile = categorizedPath
-    ? (await buildSpendProfileFromCsv(categorizedPath)).profile
-    : DEFAULT_ANNUAL_SPEND_PROFILE;
+  const spendProfileFromCsv = categorizedPath ? await buildSpendProfileFromCsv(categorizedPath) : null;
+  const spendProfile = spendProfileFromCsv?.profile ?? DEFAULT_ANNUAL_SPEND_PROFILE;
   const hasUserData = !!categorizedPath;
   let profileMeta: { totalSpend: number; monthsOfData: number } | null = null;
   let spendingTrends: Awaited<ReturnType<typeof buildSpendingTrendsFromCsv>> = null;
@@ -28,6 +29,9 @@ export default async function RecommendationsPage() {
     profileMeta = { totalSpend: meta.totalSpend, monthsOfData: meta.monthsOfData };
     spendingTrends = await buildSpendingTrendsFromCsv(categorizedPath);
   }
+  const profileMeta = spendProfileFromCsv
+    ? { totalSpend: spendProfileFromCsv.totalSpend, monthsOfData: spendProfileFromCsv.monthsOfData }
+    : null;
 
   const rankedCards = cards
     .map((card) => ({
@@ -37,6 +41,17 @@ export default async function RecommendationsPage() {
     .sort((left, right) => right.netAnnualValue - left.netAnnualValue);
 
   const portfolio = recommendPortfolio(cards, spendProfile, 5);
+  const portfolioFrontier = buildPortfolioParetoFrontier(cards, spendProfile, {
+    maxCardsPerCombo: 4,
+    candidatePoolSize: 12,
+  });
+  const insights = await buildRewardsInsights({
+    cards,
+    spendProfile,
+    categorizedCsvPath: categorizedPath,
+    frontier: portfolioFrontier,
+  });
+
   const topCards = rankedCards.slice(0, 12);
   const issuerCount = new Set(cards.map((card) => card.issuer)).size;
   const maxValue = topCards.length > 0 ? Math.max(...topCards.map((item) => item.netAnnualValue)) : 1;
@@ -46,6 +61,49 @@ export default async function RecommendationsPage() {
     profileMeta && profileMeta.monthsOfData > 0
       ? Math.round((profileMeta.totalSpend * 12) / profileMeta.monthsOfData)
       : 0;
+
+  const maxRewardPoint =
+    portfolioFrontier.points.length > 0
+      ? [...portfolioFrontier.points].sort(
+          (left, right) =>
+            right.totalRewards - left.totalRewards || left.annualFee - right.annualFee || left.cardCount - right.cardCount
+        )[0]
+      : null;
+
+  const efficiencyThreshold = 0.9;
+  const efficientPoint = maxRewardPoint
+    ? portfolioFrontier.frontier
+        .filter((point) => point.totalRewards >= maxRewardPoint.totalRewards * efficiencyThreshold)
+        .sort(
+          (left, right) =>
+            left.cardCount - right.cardCount || left.annualFee - right.annualFee || right.totalRewards - left.totalRewards
+        )[0] ?? maxRewardPoint
+    : null;
+
+  const chartPoints = [
+    ...portfolioFrontier.points
+      .filter((point) => !point.onParetoFrontier)
+      .sort((left, right) => right.totalRewards - left.totalRewards || left.annualFee - right.annualFee)
+      .slice(0, 220),
+    ...portfolioFrontier.frontier,
+  ];
+  const frontierPreview = portfolioFrontier.frontier.slice(0, 6);
+  const feeRange = Math.max(1, portfolioFrontier.maxAnnualFee - portfolioFrontier.minAnnualFee);
+  const rewardsRange = Math.max(1, portfolioFrontier.maxRewardsValue);
+
+  let paretoInsight: string | null = null;
+  if (maxRewardPoint && efficientPoint) {
+    const rewardsPercent =
+      maxRewardPoint.totalRewards > 0 ? Math.round((efficientPoint.totalRewards / maxRewardPoint.totalRewards) * 100) : 0;
+    const complexityRatio = efficientPoint.cardCount / Math.max(1, maxRewardPoint.cardCount);
+    const complexityText =
+      complexityRatio <= 0.5
+        ? "with half the complexity"
+        : complexityRatio < 1
+          ? `with ${Math.round((1 - complexityRatio) * 100)}% less complexity`
+          : "with the same complexity";
+    paretoInsight = `${efficientPoint.cardCount}-card setup gets ${rewardsPercent}% of max rewards ${complexityText}.`;
+  }
 
   const metrics = [
     { label: "Cards in dataset", value: String(cards.length) },
@@ -70,6 +128,28 @@ export default async function RecommendationsPage() {
             : []),
         ]
       : []),
+  ];
+
+  const topSubscriptionActions = insights.subscriptionOpportunities.slice(0, 4);
+  const rewardLeakBreakdown = [
+    {
+      key: "wrong-card",
+      label: "wrong card",
+      points: insights.rewardLeakScore.wrongCardPoints,
+      leak: insights.rewardLeakScore.wrongCardLeak,
+    },
+    {
+      key: "missed-categories",
+      label: "missed categories",
+      points: insights.rewardLeakScore.missedCategoryPoints,
+      leak: insights.rewardLeakScore.missedCategoryLeak,
+    },
+    {
+      key: "annual-fee",
+      label: "annual fee mismatch",
+      points: insights.rewardLeakScore.annualFeeMismatchPoints,
+      leak: insights.rewardLeakScore.annualFeeMismatchLeak,
+    },
   ];
 
   return (
@@ -117,15 +197,18 @@ export default async function RecommendationsPage() {
           <div className="card-grid three" style={{ marginBottom: "1.5rem" }}>
             {portfolio.cards.map(({ card, netValue, categories }) => (
               <div key={card.id} className="card">
+                <CardVisual name={card.cardName} />
                 <div className="card-head">
                   <h3>{card.cardName}</h3>
                   <span className="score">{formatDollars(netValue)}/yr</span>
                 </div>
-                <p className="muted">{card.issuer} · {card.annualFeeText ?? "Unknown"}</p>
+                <p className="muted">
+                  {card.issuer} · {card.annualFeeText ?? "Unknown"}
+                </p>
                 <ul className="compact-list">
                   {categories.slice(0, 5).map((c) => (
                     <li key={c.category}>
-                      {CATEGORY_LABELS[c.category as StandardCategory]}: {c.rateText} → {formatDollars(c.rewardValue)}
+                      {CATEGORY_LABELS[c.category]}: {c.rateText} → {formatDollars(c.rewardValue)}
                     </li>
                   ))}
                 </ul>
@@ -162,6 +245,187 @@ export default async function RecommendationsPage() {
         </article>
       )}
 
+      {portfolioFrontier.points.length > 0 && (
+        <article className="panel pareto-panel">
+          <h2 style={{ marginTop: 0 }}>Card Portfolio Optimizer</h2>
+          <p className="muted" style={{ marginBottom: "0.5rem" }}>
+            Pareto frontier of card combinations. X axis is annual fee, Y axis is projected rewards value.
+          </p>
+          {paretoInsight ? <p className="pareto-insight">{paretoInsight}</p> : null}
+
+          <div className="pareto-layout">
+            <div>
+              <div className="pareto-chart-shell">
+                <div className="pareto-y-scale">
+                  <span>{formatDollars(portfolioFrontier.maxRewardsValue)}</span>
+                  <span>$0</span>
+                </div>
+                <div className="pareto-chart">
+                  {chartPoints.map((point) => {
+                    const x =
+                      portfolioFrontier.maxAnnualFee === portfolioFrontier.minAnnualFee
+                        ? 50
+                        : ((point.annualFee - portfolioFrontier.minAnnualFee) / feeRange) * 100;
+                    const y = portfolioFrontier.maxRewardsValue <= 0 ? 50 : 100 - (point.totalRewards / rewardsRange) * 100;
+
+                    const className = [
+                      "pareto-point",
+                      point.onParetoFrontier ? "frontier" : "",
+                      efficientPoint?.id === point.id ? "efficient" : "",
+                      maxRewardPoint?.id === point.id ? "max" : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ");
+
+                    return (
+                      <span
+                        key={point.id}
+                        className={className}
+                        style={{ left: `${x}%`, top: `${y}%` }}
+                        title={`${point.cardCount} cards · ${formatDollars(point.annualFee)} fee · ${formatDollars(point.totalRewards)} rewards · ${point.cardNames.join(", ")}`}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="pareto-x-scale">
+                <span>{formatDollars(portfolioFrontier.minAnnualFee)}</span>
+                <span>{formatDollars(portfolioFrontier.maxAnnualFee)}</span>
+              </div>
+              <p className="pareto-axis-label">Annual fee</p>
+
+              <div className="pareto-legend">
+                <span>
+                  <i className="dot frontier-dot" />Pareto frontier
+                </span>
+                <span>
+                  <i className="dot efficient-dot" />Efficient setup
+                </span>
+                <span>
+                  <i className="dot max-dot" />Max rewards
+                </span>
+              </div>
+            </div>
+
+            <div className="pareto-summary">
+              <p className="muted">
+                Simulated <strong>{portfolioFrontier.points.length.toLocaleString()}</strong> unique card combos from{" "}
+                <strong>{portfolioFrontier.candidateCardPoolSize}</strong> candidate cards (up to{" "}
+                <strong>{portfolioFrontier.maxCardsPerCombo}</strong> cards per setup).
+              </p>
+              <div className="pareto-frontier-list">
+                {frontierPreview.map((point) => (
+                  <div className="pareto-frontier-item" key={`frontier-${point.id}`}>
+                    <div>
+                      <strong>{point.cardCount} cards</strong> · {point.cardNames.join(" + ")}
+                    </div>
+                    <div className="muted">
+                      {formatDollars(point.totalRewards)} rewards · {formatDollars(point.annualFee)} fee
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+      )}
+
+      <div className="insights-grid">
+        <article className="panel insight-panel">
+          <h2 style={{ marginTop: 0 }}>Subscription Waste + Reward Inefficiency</h2>
+          <p className="muted" style={{ marginBottom: "0.75rem" }}>
+            Recurring charges that look monthly and likely under-optimized at a baseline 1x earn rate.
+          </p>
+          {topSubscriptionActions.length > 0 ? (
+            <ul className="subscription-actions">
+              {topSubscriptionActions.map((opportunity) => (
+                <li key={`${opportunity.merchant}-${opportunity.category}`}>
+                  <span>
+                    <strong>{opportunity.merchant}</strong> is likely on a 1x card. Switching to{" "}
+                    <strong>{opportunity.recommendedCardName ?? "your best bonus card"}</strong> can add{" "}
+                    <strong>+{formatDollars(opportunity.incrementalRewards)}/year</strong>.
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="muted">No strong recurring-subscription patterns detected yet. Upload more monthly statements.</p>
+          )}
+        </article>
+
+        <article className="panel insight-panel">
+          <h2 style={{ marginTop: 0 }}>Spending Personality Profile</h2>
+          <p className="personality-title">{insights.personality.title}</p>
+          <p className="muted" style={{ marginBottom: "0.75rem" }}>
+            {insights.personality.summary}
+          </p>
+          {insights.personality.traits.length > 0 ? (
+            <div className="trait-chip-row">
+              {insights.personality.traits.map((trait) => (
+                <span className="trait-chip" key={trait}>
+                  {trait}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <p className="muted">Collect a few more months to unlock richer personality traits.</p>
+          )}
+          {insights.personality.monthlyVolatility != null ? (
+            <p className="muted" style={{ marginTop: "0.75rem" }}>
+              Monthly spend volatility: <strong>{Math.round(insights.personality.monthlyVolatility * 100)}%</strong>
+            </p>
+          ) : null}
+        </article>
+      </div>
+
+      <div className="insights-grid">
+        <article className="panel insight-panel reward-leak-panel">
+          <h2 style={{ marginTop: 0 }}>Reward Leak Score</h2>
+          <div className="reward-leak-score">
+            <span className="reward-leak-score-value">{insights.rewardLeakScore.score}</span>
+            <span className="reward-leak-score-max">/ 100</span>
+          </div>
+          <p className="muted" style={{ marginBottom: "0.75rem" }}>
+            Reward efficiency estimated from your spend mix and category-to-card optimization gaps.
+          </p>
+          <div className="reward-leak-list">
+            {rewardLeakBreakdown.map((item) => (
+              <div className="reward-leak-item" key={item.key}>
+                <span className="reward-leak-label">{item.label}</span>
+                <span className="reward-leak-points">-{item.points} pts</span>
+                <span className="reward-leak-value">{formatDollars(item.leak)} leak</span>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article className="panel insight-panel">
+          <h2 style={{ marginTop: 0 }}>Predictive Card Recommendation</h2>
+          {insights.predictiveRecommendation ? (
+            <>
+              <p className="muted" style={{ marginBottom: "0.6rem" }}>
+                Based on your trend history, <strong>{CATEGORY_LABELS[insights.predictiveRecommendation.category]}</strong> spend is rising{" "}
+                <strong>{Math.round(insights.predictiveRecommendation.growthPercent)}%</strong>.
+              </p>
+              <p className="predictive-callout">
+                {insights.predictiveRecommendation.cardName} ({insights.predictiveRecommendation.issuer}) turns ROI positive in{" "}
+                <strong>{insights.predictiveRecommendation.monthsToPositive} months</strong>.
+              </p>
+              <p className="muted" style={{ marginTop: "0.7rem" }}>
+                Forecast spend: {formatDollars(insights.predictiveRecommendation.predictedAnnualSpend)}/yr in{" "}
+                {CATEGORY_LABELS[insights.predictiveRecommendation.category]} · Estimated net lift:{" "}
+                <strong>{formatDollars(insights.predictiveRecommendation.netAnnualLift)}/yr</strong>.
+              </p>
+            </>
+          ) : (
+            <p className="muted">
+              Not enough trend signal yet. Upload at least 4 months of statements to enable category growth forecasts.
+            </p>
+          )}
+        </article>
+      </div>
+
       {topCards.length === 0 ? (
         <article className="panel">
           <p className="muted">
@@ -178,6 +442,7 @@ export default async function RecommendationsPage() {
 
           return (
             <article className="card" key={card.id}>
+              <CardVisual name={card.cardName} />
               <div className="card-head">
                 <h3>{card.cardName}</h3>
                 <span className="score">Fit {fitScore}</span>
