@@ -15,6 +15,10 @@ export default function ExtensionPage() {
           The extension reads checkout context (merchant + amount), asks this app for the best card from your wallet,
           and autofills card fields on compatible pages.
         </p>
+        <p style={{ marginTop: "0.55rem" }}>
+          If you are signed in and have cards saved in <Link href="/wallet">My Wallet</Link>, recommendation APIs can
+          use that wallet automatically.
+        </p>
       </div>
 
       <div className="panel">
@@ -42,4 +46,3 @@ export default function ExtensionPage() {
     </section>
   );
 }
-

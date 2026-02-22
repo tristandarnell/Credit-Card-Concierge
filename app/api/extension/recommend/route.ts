@@ -2,11 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { getCleanRewardCards } from "@/lib/rewards/data";
 import { getBestCardForPurchase } from "@/lib/rewards/scoring";
 import { resolvePurchaseCategory } from "@/lib/extension/merchant-category";
+import { getAccessTokenFromRequest, getUserFromAccessToken, hasSupabaseServerConfig, supabaseRest } from "@/lib/supabase/server";
 
 const CORS_HEADERS = {
   "access-control-allow-origin": "*",
   "access-control-allow-methods": "POST,OPTIONS",
-  "access-control-allow-headers": "content-type"
+  "access-control-allow-headers": "content-type,authorization"
 };
 
 type RecommendBody = {
@@ -16,6 +17,12 @@ type RecommendBody = {
   category?: string;
   walletCardIds?: string[];
 };
+
+type UserWalletRow = {
+  card_id: string;
+};
+
+const USER_WALLET_TABLE = process.env.SUPABASE_USER_WALLET_TABLE ?? "user_wallet_cards";
 
 function parseAmount(input: unknown): number {
   if (typeof input === "number" && Number.isFinite(input)) {
@@ -36,12 +43,39 @@ export async function OPTIONS() {
   return new NextResponse(null, { status: 204, headers: CORS_HEADERS });
 }
 
+async function walletIdsFromAccount(request: NextRequest): Promise<string[]> {
+  if (!hasSupabaseServerConfig()) {
+    return [];
+  }
+
+  const accessToken = getAccessTokenFromRequest(request);
+  if (!accessToken) {
+    return [];
+  }
+
+  const user = await getUserFromAccessToken(accessToken);
+  if (!user) {
+    return [];
+  }
+
+  const userId = encodeURIComponent(user.id);
+  const rows = await supabaseRest<UserWalletRow[]>(
+    `${USER_WALLET_TABLE}?user_id=eq.${userId}&select=card_id`
+  );
+
+  return rows.map((row) => row.card_id).filter(Boolean);
+}
+
 export async function POST(request: NextRequest) {
   const body = ((await request.json().catch(() => ({}))) ?? {}) as RecommendBody;
   const cards = await getCleanRewardCards(2000);
-  const walletCardIds = Array.isArray(body.walletCardIds)
+  let walletCardIds = Array.isArray(body.walletCardIds)
     ? body.walletCardIds.map((value) => String(value).trim()).filter(Boolean)
     : [];
+
+  if (walletCardIds.length === 0) {
+    walletCardIds = await walletIdsFromAccount(request);
+  }
 
   const walletCards =
     walletCardIds.length > 0 ? cards.filter((card) => walletCardIds.includes(card.id)) : cards;
@@ -74,4 +108,3 @@ export async function POST(request: NextRequest) {
     { headers: CORS_HEADERS }
   );
 }
-

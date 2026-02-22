@@ -1,76 +1,137 @@
+:root {
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --ink: #0f172a;
+  --ink-muted: #475569;
+  --line: #d9e0ec;
+  --accent: #2164ff;
+  --accent-muted: #e8f0ff;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #10243e;
-  background: #f6f8fb;
-  width: 360px;
+  width: 380px;
+  font-family: "Inter", "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
 }
 
 .container {
-  padding: 12px;
+  padding: 14px;
 }
 
-header {
+.brand-header {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.brand-lockup {
+  display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.brand-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.eyebrow {
+  margin: 0 0 2px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: #64748b;
 }
 
 h1 {
-  font-size: 16px;
   margin: 0;
+  font-size: 16px;
+  letter-spacing: -0.01em;
 }
 
 .link-btn {
-  border: 0;
-  background: transparent;
-  color: #2357d5;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: #1e3a8a;
+  border-radius: 8px;
+  font: 600 12px/1 "Inter", "Avenir Next", "Segoe UI", sans-serif;
+  padding: 8px 10px;
   cursor: pointer;
-  font-size: 12px;
+}
+
+.link-btn:hover {
+  background: #f8fafc;
 }
 
 .panel {
-  background: #fff;
-  border: 1px solid #dbe3f1;
-  border-radius: 10px;
-  padding: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
 }
 
 .status {
-  margin: 0 0 8px;
-  color: #2f4668;
+  margin: 0 0 10px;
+  border: 1px solid #dbe5fb;
+  background: #f6f9ff;
+  border-radius: 8px;
+  padding: 9px 10px;
+  color: #1e3a8a;
+  font-size: 12px;
+}
+
+.details {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 10px 10px 8px;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .primary {
   width: 100%;
-  margin-top: 10px;
-  border: 0;
-  border-radius: 8px;
-  background: #1f5dd8;
+  margin-top: 11px;
+  border: 1px solid #1d4ed8;
+  border-radius: 9px;
+  background: var(--accent);
   color: #fff;
-  font-weight: 600;
-  padding: 9px 10px;
+  font: 700 13px/1 "Inter", "Avenir Next", "Segoe UI", sans-serif;
+  padding: 11px;
   cursor: pointer;
 }
 
+.primary:hover:not(:disabled) {
+  background: #1f56de;
+}
+
 .primary:disabled {
-  background: #94abd6;
+  background: #8ea3d8;
+  border-color: #8ea3d8;
   cursor: default;
 }
 
 .fine-print {
-  margin: 8px 2px 0;
-  color: #566f93;
+  margin: 10px 2px 0;
+  color: var(--ink-muted);
   font-size: 11px;
+  line-height: 1.45;
 }
 
 .rec-title {
@@ -80,7 +141,7 @@ h1 {
 }
 
 .rec-meta {
-  margin: 3px 0 0;
-  color: #3c5578;
+  margin: 4px 0 0;
+  color: #334155;
+  font-size: 12px;
 }
-
