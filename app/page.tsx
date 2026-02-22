@@ -218,8 +218,8 @@ export default async function HomePage() {
             <p className="disclosure-heading">Data &amp; Privacy</p>
             <p className="disclosure-body">
               Any transaction data or bank statements you upload are analyzed locally and are not stored,
-              sold, or shared with third parties. See our{" "}
-              <Link href="/privacy" className="disclosure-link">Privacy Policy</Link> for full details.
+              sold, or shared with third parties.
+
             </p>
           </div>
         </div>
