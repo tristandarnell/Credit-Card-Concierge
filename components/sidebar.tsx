@@ -76,14 +76,14 @@ function PlugIcon() {
 
 const primaryNav: NavItem[] = [
   { href: "/", label: "Overview", icon: <GridIcon /> },
-  { href: "/optimizer", label: "Optimization", icon: <ZapIcon /> },
+  { href: "/optimizer", label: "Best Card", icon: <ZapIcon /> },
   { href: "/wallet", label: "My Wallet", icon: <CardIcon /> },
   { href: "/extension", label: "Extension", icon: <PlugIcon /> },
   { href: "/guide", label: "Insights", icon: <TrendingIcon /> },
 ];
 
 const secondaryNav: NavItem[] = [
-  { href: "/upload", label: "Transactions", icon: <UploadIcon /> },
+  { href: "/upload", label: "Upload Statements", icon: <UploadIcon /> },
   { href: "/guide", label: "Rewards Guide", icon: <BookIcon /> },
   { href: "/login", label: "Account", icon: <BookIcon /> },
 ];

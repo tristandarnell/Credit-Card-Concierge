@@ -7,9 +7,9 @@ import { usePathname } from "next/navigation";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/login", label: "Account" },
-  { href: "/optimizer", label: "Optimization" },
+  { href: "/optimizer", label: "Best Card" },
   { href: "/wallet", label: "My Wallet" },
-  { href: "/upload", label: "Transactions" },
+  { href: "/upload", label: "Upload Statements" },
   { href: "/extension", label: "Extension" },
   { href: "/guide", label: "Guide" },
   { href: "/about", label: "About Us" },
@@ -40,7 +40,7 @@ export function SiteHeader() {
             <BellIcon />
             <span className="brand-wordmark">
               <span className="brand-line1">CONCIERGE</span>
-              <span className="brand-tagline">Credit Card Intelligence Platform</span>
+              <span className="brand-tagline">AI-Driven Credit Card Intelligence Platform</span>
             </span>
           </Link>
 

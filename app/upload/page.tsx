@@ -108,7 +108,7 @@ export default function UploadPage() {
   return (
     <section className="section section-tight">
       <SectionHeading
-        title="Upload Statements"
+        title="AI Credit Card Portfolio Optimizer"
         subtitle="Import statements from one or more banks to generate personalized card recommendations."
       />
 
