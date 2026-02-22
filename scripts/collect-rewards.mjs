@@ -40,9 +40,15 @@ const ENABLE_SITEMAP_DISCOVERY = process.env.ENABLE_SITEMAP_DISCOVERY !== "0";
 const DISCOVERY_SOURCE_FILTER = (process.env.DISCOVERY_SOURCE_FILTER ?? "").toLowerCase().trim();
 const FETCH_SOURCE_FILTER = (process.env.FETCH_SOURCE_FILTER ?? "").toLowerCase().trim();
 const TARGET_BUSINESS_SHARE = Number(process.env.TARGET_BUSINESS_SHARE ?? 0.3);
-const NERDWALLET_CRAWL_MAX_PAGES = Number(process.env.NERDWALLET_CRAWL_MAX_PAGES ?? 250);
-const NERDWALLET_CRAWL_DEPTH = Number(process.env.NERDWALLET_CRAWL_DEPTH ?? 3);
+const NERDWALLET_CRAWL_MAX_PAGES = Number(process.env.NERDWALLET_CRAWL_MAX_PAGES ?? 400);
+const NERDWALLET_CRAWL_DEPTH = Number(process.env.NERDWALLET_CRAWL_DEPTH ?? 5);
+const NERDWALLET_MAX_REVIEWS_PER_SEED = Number(process.env.NERDWALLET_MAX_REVIEWS_PER_SEED ?? 6);
+const NERDWALLET_SEED_ONLY = process.env.NERDWALLET_SEED_ONLY === "1";
 const NERDWALLET_EXTRA_SEEDS = (process.env.NERDWALLET_EXTRA_SEEDS ?? "")
+  .split(",")
+  .map((value) => value.trim())
+  .filter(Boolean);
+const NERDWALLET_SEED_URLS_OVERRIDE = (process.env.NERDWALLET_SEED_URLS_OVERRIDE ?? "")
   .split(",")
   .map((value) => value.trim())
   .filter(Boolean);
@@ -169,6 +175,22 @@ const ISSUER_TEXT_HINTS = [
   ["venmo", "Venmo"],
   ["bilt", "Bilt"],
   ["robinhood", "Robinhood"]
+];
+
+const NERDWALLET_SEED_URLS = [
+  "https://www.nerdwallet.com/credit-cards",
+  "https://www.nerdwallet.com/the-best-credit-cards",
+  "https://www.nerdwallet.com/credit-cards/best",
+  "https://www.nerdwallet.com/credit-cards/best/rewards",
+  "https://www.nerdwallet.com/credit-cards/best/cash-back",
+  "https://www.nerdwallet.com/credit-cards/best/travel",
+  "https://www.nerdwallet.com/credit-cards/best/gas",
+  "https://www.nerdwallet.com/credit-cards/best/college-student",
+  "https://www.nerdwallet.com/credit-cards/best/zero-percent",
+  "https://www.nerdwallet.com/credit-cards/best/balance-transfer",
+  "https://www.nerdwallet.com/credit-cards/compare",
+  "https://www.nerdwallet.com/business/credit-cards/best",
+  "https://www.nerdwallet.com/best/credit-cards/airline"
 ];
 
 const DEFAULT_DISCOVERY_CONFIG = {
@@ -443,6 +465,59 @@ function isAggregatorHost(url) {
   return AGGREGATOR_HOSTS.some((domain) => hostname.endsWith(domain));
 }
 
+function isNerdwalletUrl(url) {
+  const hostname = getHostname(url);
+  return hostname === "nerdwallet.com" || hostname.endsWith(".nerdwallet.com");
+}
+
+function canonicalCrawlUrl(url) {
+  try {
+    const parsed = new URL(url);
+    parsed.hash = "";
+    parsed.search = "";
+    if (parsed.pathname !== "/") {
+      parsed.pathname = parsed.pathname.replace(/\/+$/, "");
+    }
+    return parsed.toString();
+  } catch {
+    return normalizeUrl(url);
+  }
+}
+
+function isNerdwalletReviewUrl(url) {
+  try {
+    return /\/credit-cards\/reviews?\//i.test(new URL(url).pathname);
+  } catch {
+    return false;
+  }
+}
+
+function shouldCrawlNerdwalletPage(url) {
+  if (!isNerdwalletUrl(url)) {
+    return false;
+  }
+
+  try {
+    const pathname = new URL(url).pathname.toLowerCase();
+    if (!pathname || pathname === "/") {
+      return false;
+    }
+
+    if (NON_CARD_PATH_REGEX.test(pathname)) {
+      return false;
+    }
+
+    return (
+      /\/credit-cards(?:\/|$)/i.test(pathname) ||
+      /\/best\/credit-cards(?:\/|$)/i.test(pathname) ||
+      /\/credit-cards\/best(?:\/|$)/i.test(pathname) ||
+      /\/business\/credit-cards(?:\/|$)/i.test(pathname)
+    );
+  } catch {
+    return false;
+  }
+}
+
 function normalizedCardName(name) {
   return String(name ?? "")
     .toLowerCase()
@@ -678,7 +753,7 @@ function dedupeRules(rules) {
   const unique = new Map();
 
   for (const rule of rules) {
-    const key = `${rule.category}|${rule.unit}|${rule.rateValue}`;
+    const key = `${rule.category}|${rule.unit}|${rule.rateValue}|${rule.capText ?? ""}|${rule.notes ?? ""}`;
     const existing = unique.get(key);
 
     if (!existing) {
@@ -717,54 +792,349 @@ function dedupeRules(rules) {
     });
 }
 
-function categoriesNearRate(sentence, rateStart, rateEnd) {
-  const left = Math.max(0, rateStart - 120);
-  const right = Math.min(sentence.length, rateEnd + 120);
-  const local = sentence.slice(left, right).toLowerCase();
-  return categoriesInText(local);
-}
-
-function hasAllOtherLanguage(text) {
-  return /(everything else|all purchases|all other purchases|all eligible purchases)/i.test(text);
-}
-
-function lowestRateValue(rates) {
-  const values = rates.map((rate) => rate.rateValue).filter((value) => typeof value === "number");
-  if (values.length === 0) {
+function readJsonArrayFrom(text, fromIndex) {
+  const start = text.indexOf("[", fromIndex);
+  if (start < 0) {
     return null;
   }
-  return Math.min(...values);
-}
 
-function assignCategoriesForRate({ sentenceLower, sentenceCategories, rate, rates }) {
-  const localCategories = categoriesNearRate(
-    sentenceLower,
-    rate.index ?? 0,
-    (rate.index ?? 0) + String(rate.rateText ?? "").length
-  );
-  let categories = localCategories.length > 0 ? localCategories : sentenceCategories;
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
 
-  if (categories.length === 0) {
-    return [];
-  }
-
-  const hasAllOther = hasAllOtherLanguage(sentenceLower);
-  const lowestRate = lowestRateValue(rates);
-  const isLowestRate = typeof lowestRate === "number" && rate.rateValue === lowestRate;
-
-  if (hasAllOther && rates.length > 1) {
-    if (isLowestRate) {
-      return ["all_other"];
+  for (let index = start; index < text.length; index += 1) {
+    const char = text[index];
+    if (inString) {
+      if (escaped) {
+        escaped = false;
+        continue;
+      }
+      if (char === "\\") {
+        escaped = true;
+        continue;
+      }
+      if (char === '"') {
+        inString = false;
+      }
+      continue;
     }
 
+    if (char === '"') {
+      inString = true;
+      continue;
+    }
+
+    if (char === "[") {
+      depth += 1;
+      continue;
+    }
+
+    if (char === "]") {
+      depth -= 1;
+      if (depth === 0) {
+        return text.slice(start, index + 1);
+      }
+    }
+  }
+
+  return null;
+}
+
+function cardLabelTokens(text) {
+  const stopwords = new Set(["card", "credit", "review", "rewards", "best", "the", "for", "from"]);
+  return normalizedCardName(
+    decodeHtmlEntities(String(text ?? ""))
+      .replace(/®|℠|™/g, " ")
+      .replace(/[^a-z0-9\s]/gi, " ")
+  )
+    .split(" ")
+    .filter((token) => token.length >= 2)
+    .filter((token) => !stopwords.has(token));
+}
+
+function tokenOverlapScore(left, right) {
+  if (!left.length || !right.length) {
+    return 0;
+  }
+
+  const rightSet = new Set(right);
+  let matches = 0;
+  for (const token of new Set(left)) {
+    if (rightSet.has(token)) {
+      matches += 1;
+    }
+  }
+
+  return matches / Math.max(1, rightSet.size);
+}
+
+function parseNumericRateValue(value) {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value;
+  }
+
+  if (typeof value === "string") {
+    const number = Number(value.replace(/[^\d.]+/g, ""));
+    if (Number.isFinite(number)) {
+      return number;
+    }
+  }
+
+  return null;
+}
+
+function formatRateValue(value) {
+  if (!Number.isFinite(value)) {
+    return "";
+  }
+  if (Number.isInteger(value)) {
+    return String(value);
+  }
+  return String(value).replace(/0+$/, "").replace(/\.$/, "");
+}
+
+function inferRateUnit(description) {
+  const lower = description.toLowerCase();
+  if (/%|cash\s*back|cashback|statement credits?/i.test(lower)) {
+    return "percent_cashback";
+  }
+  if (/\bmiles?\b/i.test(lower)) {
+    return "x_miles";
+  }
+  return "x_points";
+}
+
+function categoriesForNerdwalletDescription(description) {
+  const lower = description.toLowerCase();
+  let categories = categoriesInText(lower);
+
+  if (/all other (travel|dining|restaurants?|grocery|groceries|gas|streaming|transit|hotel|hotels|airfare|flights?|airlines?)/i.test(lower)) {
     categories = categories.filter((category) => category !== "all_other");
   }
 
-  if (categories.length === 0 && !isLowestRate && hasAllOther) {
+  if (/(all purchases|all other purchases|all eligible purchases|every purchase)/i.test(lower)) {
+    if (!categories.includes("all_other")) {
+      categories.push("all_other");
+    }
+  }
+
+  if (categories.length === 0 && /(purchases?|spend|transactions?)/i.test(lower)) {
     categories = ["all_other"];
   }
 
   return [...new Set(categories)];
+}
+
+function rateTextFromUnit(rateValue, unit) {
+  const formatted = formatRateValue(rateValue);
+  if (unit === "percent_cashback") {
+    return `${formatted}% cash back`;
+  }
+  if (unit === "x_miles") {
+    return `${formatted}X miles`;
+  }
+  return `${formatted}X points`;
+}
+
+function restrictionNotesFromText(text) {
+  const notes = [];
+  if (hasPortalRestriction(text)) {
+    notes.push("Requires booking through an issuer travel portal.");
+  }
+  if (hasMobileWalletRestriction(text)) {
+    notes.push("Requires payment via mobile wallet (e.g., Apple Pay/Google Pay).");
+  }
+  if (hasPhysicalCardRestriction(text)) {
+    notes.push("Applies only to purchases made with the physical card.");
+  }
+  if (hasMerchantRestriction(text)) {
+    notes.push("Rate is limited to select/eligible merchants.");
+  }
+
+  return notes.length > 0 ? [...new Set(notes)].join(" ") : undefined;
+}
+
+function extractNerdwalletRewardsBreakdownRules({ html, sourceCardName, finalUrl, pageTitle = "", pageH1 = "" }) {
+  const decoded = html.replace(/\\"/g, '"');
+  const marker = '"rewardsRates":';
+  const candidates = [];
+  let cursor = 0;
+
+  while (cursor < decoded.length) {
+    const index = decoded.indexOf(marker, cursor);
+    if (index < 0) {
+      break;
+    }
+
+    const arrayText = readJsonArrayFrom(decoded, index + marker.length);
+    if (!arrayText) {
+      cursor = index + marker.length;
+      continue;
+    }
+
+    let entries = [];
+    try {
+      const parsed = JSON.parse(arrayText);
+      entries = Array.isArray(parsed) ? parsed : [];
+    } catch {
+      cursor = index + marker.length;
+      continue;
+    }
+
+    const leftContext = decoded.slice(Math.max(0, index - 1600), index);
+    const nameMatches = [...leftContext.matchAll(/"product":\{"name":"([^"]+)"/g)];
+    const productName =
+      nameMatches.length > 0 ? decodeHtmlEntities(nameMatches[nameMatches.length - 1][1] ?? "") : null;
+
+    const rates = entries
+      .map((entry) => {
+        const rateValue = parseNumericRateValue(entry?.rate);
+        const description = normalizeWhitespace(decodeHtmlEntities(entry?.description ?? ""));
+        return { rateValue, description };
+      })
+      .filter((entry) => entry.rateValue != null && entry.rateValue > 0 && entry.rateValue <= 15 && entry.description.length > 0);
+
+    candidates.push({
+      productName,
+      rates
+    });
+
+    cursor = index + marker.length;
+  }
+
+  if (candidates.length === 0) {
+    return { rules: [], reason: "No NerdWallet rewards breakdown payload found." };
+  }
+
+  const sourceTokens = cardLabelTokens(sourceCardName);
+  const titleTokens = cardLabelTokens(`${pageTitle} ${pageH1}`);
+  const urlTokens = cardLabelTokens(guessCardNameFromUrl(finalUrl));
+
+  const scored = candidates.map((candidate) => {
+    const candidateTokens = cardLabelTokens(candidate.productName ?? "");
+    const sourceOverlap = tokenOverlapScore(sourceTokens, candidateTokens);
+    const titleOverlap = tokenOverlapScore(titleTokens, candidateTokens);
+    const urlOverlap = tokenOverlapScore(urlTokens, candidateTokens);
+    return {
+      ...candidate,
+      overlap: Math.max(sourceOverlap, titleOverlap, urlOverlap),
+      score: sourceOverlap * 5 + titleOverlap * 3 + urlOverlap * 2 + Math.min(candidate.rates.length, 8) * 0.03
+    };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+  const best = scored[0];
+
+  if (!best || best.overlap <= 0) {
+    return { rules: [], reason: "No matching NerdWallet product block for this card." };
+  }
+
+  if (!Array.isArray(best.rates) || best.rates.length === 0) {
+    return { rules: [], reason: "Matched NerdWallet product has no rewards breakdown rates." };
+  }
+
+  const rules = [];
+  for (const entry of best.rates) {
+    const unit = inferRateUnit(entry.description);
+    const categories = categoriesForNerdwalletDescription(entry.description);
+    if (categories.length === 0) {
+      continue;
+    }
+    const note = restrictionNotesFromText(entry.description);
+    const capText = extractCap(entry.description);
+    for (const category of categories) {
+      rules.push({
+        category,
+        rateText: rateTextFromUnit(entry.rateValue, unit),
+        rateValue: entry.rateValue,
+        unit,
+        capText,
+        notes: note
+      });
+    }
+  }
+
+  return {
+    rules: dedupeRules(rules),
+    reason: null
+  };
+}
+
+function hasPortalRestriction(text) {
+  const lower = text.toLowerCase();
+  return (
+    /booked?\s+through/i.test(lower) ||
+    /travel\s+portal/i.test(lower) ||
+    /capital one travel/i.test(lower) ||
+    /chase travel/i.test(lower) ||
+    /amex travel/i.test(lower) ||
+    /bank of america travel center/i.test(lower)
+  );
+}
+
+function hasMobileWalletRestriction(text) {
+  const lower = text.toLowerCase();
+  return (
+    /apple pay|google pay|samsung pay|mobile wallet|digital wallet|wallet app|contactless/i.test(lower)
+  );
+}
+
+function hasPhysicalCardRestriction(text) {
+  const lower = text.toLowerCase();
+  return /physical card|card swipe|swiped|dipped|tapped card|card present/i.test(lower);
+}
+
+function hasMerchantRestriction(text) {
+  const lower = text.toLowerCase();
+  return (
+    /(select|participating|eligible)\s+merchants?/i.test(lower) ||
+    /\bincluding\b[^.]{0,120},/i.test(lower) ||
+    /\bwith\s+(apple|nike|t-mobile|exxon|walgreens|amazon|uber|lyft|walmart|target|costco)\b/i.test(lower) ||
+    /\b(?:at|with|through)\s+(hilton|marriott|bonvoy|hyatt|ihg|wyndham|united|delta|southwest|jetblue|alaska|american airlines|aadvantage|frontier|spirit)\b/i.test(
+      lower
+    )
+  );
+}
+
+function hasGenericPurchaseLanguage(text) {
+  const lower = text.toLowerCase();
+  return /\b(purchases?|spend|transactions?)\b/i.test(lower);
+}
+
+function categoriesNearRate(sentence, rate) {
+  const start = Math.max(0, (rate.index ?? 0) - 120);
+  const end = Math.min(sentence.length, (rate.index ?? 0) + String(rate.rateText ?? "").length + 120);
+  const localContext = sentence.slice(start, end).toLowerCase();
+  return categoriesInText(localContext);
+}
+
+function extractRestrictionNote(sentence, rate) {
+  const start = Math.max(0, (rate.index ?? 0) - 90);
+  const end = Math.min(sentence.length, (rate.index ?? 0) + String(rate.rateText ?? "").length + 90);
+  const localContext = sentence.slice(start, end);
+  const notes = [];
+
+  if (hasPortalRestriction(localContext)) {
+    notes.push("Requires booking through an issuer travel portal.");
+  }
+
+  if (hasMobileWalletRestriction(localContext)) {
+    notes.push("Requires payment via mobile wallet (e.g., Apple Pay/Google Pay).");
+  }
+
+  if (hasPhysicalCardRestriction(localContext)) {
+    notes.push("Applies only to purchases made with the physical card.");
+  }
+
+  if (hasMerchantRestriction(localContext)) {
+    notes.push("Rate is limited to select/eligible merchants.");
+  }
+
+  if (notes.length === 0) {
+    return undefined;
+  }
+
+  return [...new Set(notes)].join(" ");
 }
 
 function extractRewardRules(text) {
@@ -782,9 +1152,6 @@ function extractRewardRules(text) {
     }
 
     const sentenceCategories = categoriesInText(lower);
-    if (sentenceCategories.length === 0) {
-      continue;
-    }
 
     const rates = parseRateCandidates(sentence).filter((candidate) => isValidRewardCandidate(candidate, sentence));
     if (rates.length === 0) {
@@ -794,16 +1161,18 @@ function extractRewardRules(text) {
     const capText = extractCap(sentence);
 
     for (const rate of rates) {
-      const categories = assignCategoriesForRate({
-        sentenceLower: lower,
-        sentenceCategories,
-        rate,
-        rates
-      });
+      let categories = categoriesNearRate(sentence, rate);
+      if (categories.length === 0) {
+        categories = sentenceCategories;
+      }
+      if (categories.length === 0 && hasGenericPurchaseLanguage(lower)) {
+        categories = ["all_other"];
+      }
       if (categories.length === 0) {
         continue;
       }
 
+      const notes = extractRestrictionNote(sentence, rate);
       for (const category of categories) {
         rules.push({
           category,
@@ -811,7 +1180,7 @@ function extractRewardRules(text) {
           rateValue: rate.rateValue,
           unit: rate.unit,
           capText,
-          notes: undefined
+          notes
         });
       }
     }
@@ -1292,7 +1661,11 @@ function looksLikeCardUrl(url) {
   }
 
   if (isAggregatorHost(url)) {
-    if (!ALLOW_AGGREGATOR_SOURCES && !NERDWALLET_ONLY) {
+    if (NERDWALLET_ONLY && isNerdwalletUrl(url)) {
+      return isNerdwalletReviewUrl(url);
+    }
+
+    if (!ALLOW_AGGREGATOR_SOURCES) {
       return false;
     }
     return SINGLE_CARD_URL_HINT_REGEX.test(url);
@@ -1360,6 +1733,39 @@ function guessIssuerFromUrl(url, fallbackIssuer = "Unknown") {
   } catch {
     return fallbackIssuer;
   }
+}
+
+function guessIssuerFromText(text, fallbackIssuer = "Unknown") {
+  const lower = String(text ?? "").toLowerCase();
+  if (!lower) {
+    return fallbackIssuer;
+  }
+
+  for (const [needle, issuer] of ISSUER_TEXT_HINTS) {
+    if (new RegExp(`\\b${escapeRegex(needle)}\\b`, "i").test(lower)) {
+      return issuer;
+    }
+  }
+
+  return fallbackIssuer;
+}
+
+function extractHtmlTitle(html) {
+  const match = html.match(/<title>([\s\S]*?)<\/title>/i);
+  if (!match?.[1]) {
+    return "";
+  }
+
+  return normalizeWhitespace(match[1].replace(/<[^>]+>/g, " "));
+}
+
+function extractHtmlH1(html) {
+  const match = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  if (!match?.[1]) {
+    return "";
+  }
+
+  return normalizeWhitespace(match[1].replace(/<[^>]+>/g, " "));
 }
 
 function guessCardNameFromUrl(url) {
@@ -1794,41 +2200,98 @@ async function discoverSources(manualSources) {
   }
 
   if (NERDWALLET_ONLY) {
-    const manualNerdwalletSeeds = manualSources
-      .map((source) => source.cardUrl)
-      .filter((url) => typeof url === "string" && isNerdwalletUrl(url));
-    const crawled = await discoverNerdwalletReviewUrls([
-      ...NERDWALLET_SEED_URLS,
-      ...NERDWALLET_EXTRA_SEEDS,
-      ...manualNerdwalletSeeds
-    ]);
-    let added = 0;
-    for (const url of crawled.urls) {
-      if (tryAddDiscovered(url, "Unknown")) {
-        added += 1;
-      }
-    }
-
-    discoveryStats.linkSources.push({
-      name: "nerdwallet-crawl",
-      url: "https://www.nerdwallet.com/credit-cards",
-      fetched: crawled.stats.pagesFetched > 0,
-      linksSeen: crawled.stats.linksSeen,
-      linksMatched: crawled.stats.reviewLinksFound,
-      added,
-      error: crawled.stats.pagesFetched === 0 ? "no pages fetched from crawl seeds" : null
-    });
-    discoveryStats.sitemapSources = [];
-    discoveryStats.discoveredCount = discovered.length;
-    discoveryStats.nerdwalletCrawl = {
-      maxPages: clampInt(NERDWALLET_CRAWL_MAX_PAGES, 10, 2500),
-      maxDepth: clampInt(NERDWALLET_CRAWL_DEPTH, 1, 6),
-      ...crawled.stats
+    const seedInput =
+      NERDWALLET_SEED_URLS_OVERRIDE.length > 0
+        ? NERDWALLET_SEED_URLS_OVERRIDE
+        : [...NERDWALLET_SEED_URLS, ...NERDWALLET_EXTRA_SEEDS];
+    const seeds = seedInput
+      .map((url) => normalizeUrl(url))
+      .filter((url, index, list) => list.indexOf(url) === index);
+    const queue = seeds.map((url) => ({ url, depth: 0 }));
+    const queued = new Set(queue.map((item) => canonicalCrawlUrl(item.url)));
+    const visited = new Set();
+    const crawlStats = {
+      seedCount: seeds.length,
+      maxPages: NERDWALLET_CRAWL_MAX_PAGES,
+      maxDepth: NERDWALLET_CRAWL_DEPTH,
+      seedOnly: NERDWALLET_SEED_ONLY,
+      pagesFetched: 0,
+      pagesQueued: queue.length,
+      linksSeen: 0,
+      reviewLinksFound: 0,
+      added: 0,
+      errors: 0
     };
 
-    discovered.sort((a, b) => a.issuer.localeCompare(b.issuer) || a.cardName.localeCompare(b.cardName));
+    while (queue.length > 0 && crawlStats.pagesFetched < NERDWALLET_CRAWL_MAX_PAGES) {
+      const next = queue.shift();
+      if (!next) {
+        continue;
+      }
+
+      if (next.depth > NERDWALLET_CRAWL_DEPTH) {
+        continue;
+      }
+
+      const key = canonicalCrawlUrl(next.url);
+      if (visited.has(key)) {
+        continue;
+      }
+      visited.add(key);
+
+      try {
+        const { body } = await fetchText(next.url);
+        crawlStats.pagesFetched += 1;
+        const links = extractLinksFromHtml(body, next.url);
+        crawlStats.linksSeen += links.length;
+        let addedFromCurrentSeed = 0;
+
+        for (const link of links) {
+          if (!isNerdwalletUrl(link)) {
+            continue;
+          }
+
+          if (isNerdwalletReviewUrl(link)) {
+            crawlStats.reviewLinksFound += 1;
+            if (NERDWALLET_SEED_ONLY && addedFromCurrentSeed >= NERDWALLET_MAX_REVIEWS_PER_SEED) {
+              continue;
+            }
+            if (tryAddDiscovered(link, "Unknown")) {
+              crawlStats.added += 1;
+              addedFromCurrentSeed += 1;
+            }
+            continue;
+          }
+
+          if (NERDWALLET_SEED_ONLY) {
+            continue;
+          }
+
+          if (next.depth >= NERDWALLET_CRAWL_DEPTH || !shouldCrawlNerdwalletPage(link)) {
+            continue;
+          }
+
+          const crawlKey = canonicalCrawlUrl(link);
+          if (visited.has(crawlKey) || queued.has(crawlKey)) {
+            continue;
+          }
+
+          queued.add(crawlKey);
+          queue.push({ url: link, depth: next.depth + 1 });
+          crawlStats.pagesQueued += 1;
+        }
+      } catch {
+        crawlStats.errors += 1;
+      }
+
+      await sleep(SAFE_REQUEST_DELAY_MS);
+    }
+
+    discoveryStats.nerdwalletCrawl = crawlStats;
+    discoveryStats.discoveredCount = discovered.length;
+
     return {
-      discovered,
+      discovered: sortSourcesByPriority(dedupeSources(discovered)).slice(0, MAX_DISCOVERED_SOURCES),
       report: discoveryStats
     };
   }
@@ -2014,8 +2477,13 @@ async function main() {
     return;
   }
 
-  const mergedSources = sortSourcesByPriority(dedupeSources([...manualSources, ...discoveredSources]));
-  const fetchCandidateSources = mergedSources.filter(sourceMatchesFetchFilter);
+  const sourceInputs =
+    NERDWALLET_ONLY && NERDWALLET_SEED_ONLY ? discoveredSources : [...manualSources, ...discoveredSources];
+  const mergedSources = sortSourcesByPriority(dedupeSources(sourceInputs));
+  const fetchSourcePool = NERDWALLET_ONLY
+    ? mergedSources.filter((source) => isNerdwalletUrl(source.cardUrl))
+    : mergedSources;
+  const fetchCandidateSources = fetchSourcePool.filter(sourceMatchesFetchFilter);
   const selectionLimit = SOURCE_LIMIT > 0 ? SOURCE_LIMIT : MAX_FETCH_SOURCES;
   const selectedSources = pickSourcesWithBusinessMix(fetchCandidateSources, selectionLimit);
 
@@ -2062,11 +2530,15 @@ async function main() {
     try {
       const { body, finalUrl } = await fetchCardPage(source.cardUrl);
       const text = stripHtml(body);
+      const pageTitle = extractHtmlTitle(body);
+      const pageH1 = extractHtmlH1(body);
       const nerdwalletBreakdown = isNerdwalletUrl(finalUrl)
         ? extractNerdwalletRewardsBreakdownRules({
             html: body,
             sourceCardName: source.cardName,
-            finalUrl
+            finalUrl,
+            pageTitle,
+            pageH1
           })
         : null;
       const rewardRules = nerdwalletBreakdown ? nerdwalletBreakdown.rules : extractRewardRules(text);
@@ -2091,9 +2563,6 @@ async function main() {
       if (rotatingCategoryProgram) {
         notes.push("Detected rotating or activation-based category language.");
       }
-      if (nerdwalletBreakdown && !nerdwalletBreakdown.productName) {
-        notes.push("NerdWallet rewards breakdown found but product name match was weak.");
-      }
       if (nerdwalletBreakdown?.reason) {
         notes.push(nerdwalletBreakdown.reason);
       }
@@ -2104,7 +2573,13 @@ async function main() {
       const resolvedIssuer =
         source.issuer && source.issuer !== "Unknown"
           ? source.issuer
-          : guessIssuerFromUrl(normalizeUrl(finalUrl), guessCardNameFromUrl(finalUrl));
+          : guessIssuerFromUrl(
+              normalizeUrl(finalUrl),
+              guessIssuerFromText(
+                `${source.cardName} ${guessCardNameFromUrl(finalUrl)} ${pageTitle} ${pageH1}`,
+                "Unknown"
+              )
+            );
 
       const record = {
         ...baseRecord,
