@@ -1,6 +1,7 @@
 import { SectionHeading } from "@/components/section-heading";
+import { SpendingTrendsChart } from "@/components/spending-trends-chart";
 import { getCleanRewardCards } from "@/lib/rewards/data";
-import { getCategorizedTransactionsPath } from "@/lib/rewards/spend-profile";
+import { getCategorizedTransactionsPath, buildSpendingTrendsFromCsv } from "@/lib/rewards/spend-profile";
 import { buildSpendProfileFromCsv } from "@/lib/rewards/spend-profile";
 import {
   DEFAULT_ANNUAL_SPEND_PROFILE,
@@ -21,9 +22,11 @@ export default async function RecommendationsPage() {
     : DEFAULT_ANNUAL_SPEND_PROFILE;
   const hasUserData = !!categorizedPath;
   let profileMeta: { totalSpend: number; monthsOfData: number } | null = null;
+  let spendingTrends: Awaited<ReturnType<typeof buildSpendingTrendsFromCsv>> = null;
   if (categorizedPath) {
     const meta = await buildSpendProfileFromCsv(categorizedPath);
     profileMeta = { totalSpend: meta.totalSpend, monthsOfData: meta.monthsOfData };
+    spendingTrends = await buildSpendingTrendsFromCsv(categorizedPath);
   }
 
   const rankedCards = cards
@@ -88,6 +91,10 @@ export default async function RecommendationsPage() {
           </article>
         ))}
       </div>
+
+      {spendingTrends?.monthly?.length ? (
+        <SpendingTrendsChart trends={spendingTrends} />
+      ) : null}
 
       {portfolio.cards.length > 0 && (
         <article className="panel" style={{ marginBottom: "2rem" }}>
