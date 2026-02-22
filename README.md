@@ -120,6 +120,12 @@ NerdWallet-focused discovery pass:
 DISCOVERY_ONLY=1 DISCOVERY_SOURCE_FILTER=nerdwallet npm run rewards:collect
 ```
 
+NerdWallet-only crawl + scrape (recommended fast path):
+
+```bash
+NERDWALLET_ONLY=1 ENABLE_DISCOVERY=1 ENABLE_SITEMAP_DISCOVERY=0 NERDWALLET_CRAWL_MAX_PAGES=300 NERDWALLET_CRAWL_DEPTH=4 OUTPUT_REQUIRE_REWARD_RULES=1 MIN_CONFIDENCE_SCORE=0.45 npm run rewards:collect
+```
+
 Throttle-safe tuning (recommended defaults for reliability):
 
 ```bash
@@ -144,6 +150,12 @@ Sync all records (including lower-confidence rows) instead of high-quality-only:
 
 ```bash
 SYNC_ONLY_HIGH_QUALITY=0 npm run rewards:sync
+```
+
+Audit rewards data quality (reads Supabase if env vars are set, else local JSON):
+
+```bash
+npm run rewards:audit
 ```
 
 Monthly refresh automation is set up in:
