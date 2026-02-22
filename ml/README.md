@@ -13,9 +13,13 @@ NLP-based classification of credit card transactions into 13 categories:
 
 Detects when real data differs from the synthetic training distribution (OOD). Uses Mahalanobis distance in feature space; flags samples beyond the 99th percentile of training distances. For high-dimensional TF-IDF, uses PCA (200 dims) before fitting.
 
-## Confidence Threshold
+## Two-Stage Prediction
 
-When the model's max probability is below a threshold (default 0.25), the prediction is overridden to **Other**. Use `--confidence-threshold` when training to change this.
+1. **LR**: If max probability ≥ threshold (default 0.25) → use LR prediction
+2. **Semantic fallback**: If LR rejects → compare embedding (all-MiniLM) to category centroids. If best similarity ≥ semantic threshold (default 0.5) → use that category
+3. **Other**: If both reject → label as **Other**
+
+Use `--confidence-threshold` and `--semantic-threshold` when training to tune.
 
 ## Usage
 
