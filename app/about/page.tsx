@@ -18,7 +18,7 @@ const founders = [
   {
     name: "Ethan Liu",
     role: "Co-Founder",
-    bio: "Data scientist with a focus on behavioral finance. Ethan built the spending categorization models and the fit-score algorithm that matches users to their ideal cards.",
+    bio: "Freshman at Duke University studying Computer Science and Mathematics. Pursuing career in SWE or AI/ML Engineer. Built the NLP classification pipeline for statement analysis.",
     initials: "EL",
     accent: "#1B2B4B",
   },
